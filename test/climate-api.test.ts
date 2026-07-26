@@ -24,9 +24,13 @@ describe("fetchDailyClimate", () => {
     expect(url).toContain("dew_point_2m_mean");
     expect(url).toContain("temperature_2m_max");
     expect(url).toContain("precipitation_sum");
+    expect(url).toContain("latitude=35.68");
+    expect(url).toContain("longitude=139.69");
     expect(url).toContain("start_date=2024-07-01");
+    expect(url).toContain("end_date=2024-07-02");
     expect(out.dewPoint).toEqual([24, 23]);
     expect(out.tempMax).toEqual([28.2, 31.4]);
+    expect(out.precip).toEqual([6.7, 4.9]);
     expect(out.time).toHaveLength(2);
   });
 
@@ -37,6 +41,17 @@ describe("fetchDailyClimate", () => {
     await expect(
       fetchDailyClimate(0, 0, "x", "y", fake),
     ).rejects.toThrow(/bad date/);
+  });
+
+  test("throws on a 200 response whose body carries an error reason", async () => {
+    const fake = (async () =>
+      new Response(
+        JSON.stringify({ error: true, reason: "invalid coordinates" }),
+        { status: 200 },
+      )) as unknown as typeof fetch;
+    await expect(
+      fetchDailyClimate(999, 999, "2024-01-01", "2024-01-02", fake),
+    ).rejects.toThrow(/invalid coordinates/);
   });
 
   test("missing daily block yields empty arrays, not a crash", async () => {
