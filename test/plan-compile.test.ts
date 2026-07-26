@@ -156,6 +156,39 @@ describe("compile", () => {
     expect(r.placements.find((x) => x.segmentId === 4)!.day).toBe(2);
   });
 
+  test("day-locked pins count fully against the pace ceiling, not just as one slot", () => {
+    // Regression: `room = ceiling - pinnedCount - locked.length` must subtract
+    // the FULL count of day-locked segments, not fold them into `pinnedCount`
+    // (which only counts already-placed timed pins) or drop the term
+    // entirely. Three day-locked pins on an easy-pace (ceiling 3) day must
+    // leave zero room for anything else — that day is already full.
+    const locked = [
+      seg(1, 38.712, -9.128), seg(2, 38.713, -9.129), seg(3, 38.714, -9.130),
+    ];
+    // A tight free cluster plus a distant outlier: farthest-point seeding
+    // reliably puts the cluster and the outlier in separate clusters, so
+    // whichever cluster lands on day 1 has at least one member — enough to
+    // break the ceiling if `locked.length` is dropped from `room`.
+    const freeCluster = [
+      seg(4, 38.6916, -9.216), seg(5, 38.692, -9.2155), seg(6, 38.691, -9.2165),
+    ];
+    const outlier = [seg(7, 38.79, -9.39)];
+    const pins = [1, 2, 3].map((segmentId) => ({ segmentId, day: 1, startMin: null }));
+
+    const r = compile([...locked, ...freeCluster, ...outlier], days(2), {
+      mode: "walking", pace: "easy", pins,
+    });
+
+    const byDay = new Map<number, number>();
+    for (const p of r.placements) byDay.set(p.day, (byDay.get(p.day) ?? 0) + 1);
+    for (const [, count] of byDay) expect(count).toBeLessThanOrEqual(3);
+
+    // The day lock itself must still be honoured.
+    for (const id of [1, 2, 3]) {
+      expect(r.placements.find((p) => p.segmentId === id)!.day).toBe(1);
+    }
+  });
+
   test("a pin to a day outside the trip is unplaced, not clamped", () => {
     // Silently moving it to the last day would be a lie about what was asked.
     const r = compile(ALFAMA, days(2), {
