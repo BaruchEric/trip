@@ -157,3 +157,34 @@ describe("cli: error contract", () => {
     rmSync(blocker, { force: true });
   });
 });
+
+describe("cli: M2 routing", () => {
+  test("the M2 commands are routed and reach their handlers", async () => {
+    const p = dbPath("m2routing");
+    expect((await run(["new", "lisbon"], { dbPath: p })).code).toBe(0);
+    expect((await run(["dates", "set", "2027-05-08..05-10"], { dbPath: p })).code).toBe(0);
+    expect((await run(["seg", "add", "Se", "--dur=60m", "--at=38.71,-9.13"], { dbPath: p })).code).toBe(0);
+    expect((await run(["plan"], { dbPath: p })).code).toBe(0);
+    const day = await run(["day", "1"], { dbPath: p });
+    expect(day.code).toBe(0);
+    expect(day.stdout).toContain("Day 1");
+  });
+
+  test("M2 value flags pass the unknown-flag gate", async () => {
+    const p = dbPath("m2flags");
+    await run(["new", "lisbon"], { dbPath: p });
+    const r = await run(
+      ["seg", "add", "X", "--dur=30m", "--tag=food", "--at=1,2",
+       "--hours=10:00-18:00", "--closed=mon", "--json"],
+      { dbPath: p },
+    );
+    expect(JSON.parse(r.stdout).error).toBeUndefined();
+  });
+
+  test("usage lists the M2 commands", async () => {
+    const r = await run([], { dbPath: dbPath("m2usage") });
+    for (const cmd of ["dates set", "seg add", "plan", "pin", "replan"]) {
+      expect(r.stdout).toContain(cmd);
+    }
+  });
+});

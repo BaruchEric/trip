@@ -1,17 +1,30 @@
 #!/usr/bin/env bun
+import type { Client } from "@libsql/client";
 import { openDb, migrate } from "@/db";
 import { runTripsCommand } from "@/commands/trips";
 import { runWhenCommand } from "@/commands/when";
+import { runDatesCommand } from "@/commands/dates";
+import { runSegmentsCommand } from "@/commands/segments";
+import { runPlanCommand } from "@/commands/plan";
 
 export const USAGE = `trip - heat-aware trip planner
 
 Usage:
   trip new <name>              Create a trip and make it active
   trip use <name>              Switch the active trip
-  trip ls                      List trips (* marks active)
-  trip show                    Show the active trip
+  trip ls / trip show          List trips / show the active one
   trip when <city>             Rank every month by dew-point comfort
-  trip when <city> --refresh   Refetch climate data instead of using the cache
+
+  trip dates set <a>..<b>      Set trip dates [--arrive=HH:MM] [--depart=HH:MM]
+  trip seg add <name>          Add a segment --dur=90m [--at=lat,lon] [--tag=food]
+  trip seg ls                  List segments [--tag=food] [--unplaced]
+  trip seg rm <id>             Remove a segment
+  trip plan                    Compile a day-by-day itinerary [--pace=] [--mode=]
+  trip day <n>                 Show one day
+  trip pin <seg> --day=<n>     Fix a segment in place [--at=HH:MM]
+  trip unpin <seg>             Release a pinned segment
+  trip move <seg> --to=day<n>  Move a segment to another day (pins it)
+  trip replan                  Rebuild the plan, respecting pins
 
 Flags:
   --json                       Machine-readable output
@@ -29,13 +42,20 @@ export interface CliResult {
  * `trip when Tokyo --refres` used to serve the cache and exit 0, so an agent
  * asking for fresh data got stale data with a success code.
  */
-const KNOWN_FLAGS = new Set(["--json", "--refresh", "--help"]);
+const KNOWN_FLAGS = new Set(["--json", "--refresh", "--help", "--unplaced"]);
 
 /** Flags that carry a value as `--name=<value>`. The value itself is validated
  *  by the command that owns the flag, not here. A space-separated form is
  *  deliberately not accepted: `trip when New York --timeout 30` would leave the
- *  30 among the positionals, which `when` joins into the city name. */
-const KNOWN_VALUE_FLAGS = ["--timeout"];
+ *  30 among the positionals, which `when` joins into the city name. Same class
+ *  of bug `trip pin "Time Out" --day 2` would hit, which is why every M2 value
+ *  flag below is `--name=value` only. */
+const KNOWN_VALUE_FLAGS = [
+  "--timeout",
+  "--arrive", "--depart", "--day-window",
+  "--dur", "--cost", "--tag", "--at", "--hours", "--closed",
+  "--mode", "--pace", "--day", "--to",
+];
 
 function isKnownFlag(arg: string): boolean {
   return (
@@ -84,18 +104,36 @@ export async function run(
     await migrate(db);
 
     const [cmd, ...args] = rest;
-    const output = cmd === "when"
-      ? await runWhenCommand(db, args, json)
-      : await runTripsCommand(db, rest, json);
+    const output = await route(db, cmd!, args, rest, json);
     return { stdout: output, stderr: "", code: 0 };
   } catch (err) {
     return fail(err instanceof Error ? err.message : String(err), json);
   }
 }
 
+const PLAN_COMMANDS = ["plan", "replan", "day", "pin", "unpin", "move"];
+
+async function route(
+  db: Client, cmd: string, args: string[], rest: string[], json: boolean,
+): Promise<string> {
+  if (cmd === "when") return runWhenCommand(db, args, json);
+  if (cmd === "dates") return runDatesCommand(db, args, json);
+  if (cmd === "seg") return runSegmentsCommand(db, args, json);
+  if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
+  return runTripsCommand(db, rest, json);
+}
+
 // Entry point only when executed directly, so tests can import `run`.
 if (import.meta.main) {
-  const result = await run(process.argv.slice(2));
+  // TRIP_TEST_DB lets a manual acceptance run (or anyone poking at the CLI
+  // from a shell) target a scratch database instead of the real
+  // ~/.trip/trip.db. Without this, `bun run src/cli.ts ...` always writes to
+  // the live database — there was no way to override it from outside a test.
+  // `|| undefined`, not a bare read: openDb's default parameter only fires on
+  // `undefined`. A bare `export TRIP_TEST_DB=` (empty string) would otherwise
+  // pass through as `openDb("")` -> `file:` in the current directory,
+  // silently missing the real database without ever pointing at a scratch one.
+  const result = await run(process.argv.slice(2), { dbPath: process.env.TRIP_TEST_DB || undefined });
   if (result.stdout) console.log(result.stdout);
   if (result.stderr) console.error(result.stderr);
   process.exit(result.code);
