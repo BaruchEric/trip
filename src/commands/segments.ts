@@ -83,7 +83,17 @@ async function addCmd(
     opensMin, closesMin, closedDays,
   });
 
-  if (json) return JSON.stringify({ id, name });
+  // Same facts as the human warning below, as booleans an agent can branch
+  // on directly instead of parsing prose or issuing a follow-up `seg ls
+  // --json` to learn a segment it just created can't be placed or scheduled.
+  // Names match Task 11's plan JSON, which also emits hoursKnown.
+  if (json) {
+    return JSON.stringify({
+      id, name,
+      hasCoordinates: coords !== null,
+      hoursKnown: opensMin !== null,
+    });
+  }
   const warn = coords === null
     ? " (no coordinates - cannot be placed until you add --at)"
     : "";

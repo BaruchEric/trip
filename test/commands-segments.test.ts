@@ -34,7 +34,31 @@ describe("trip seg add", () => {
     expect(s!.tags).toEqual(["food"]);
     expect(s!.latitude).toBeCloseTo(38.707);
     expect(s!.opensMin).toBe(600);
+    // A swap of opensMin/closesMin was previously caught only incidentally,
+    // via the closesMin <= opensMin guard throwing. Assert closesMin directly.
+    expect(s!.closesMin).toBe(1439);
     expect(s!.closedDays).toEqual(["mon"]);
+  });
+
+  test("json flags whether coordinates and hours are known, not just id/name", async () => {
+    // The human path warns "(no coordinates - cannot be placed until you add
+    // --at)" but the json path used to return only {id, name} - an agent had
+    // to issue a follow-up `seg ls --json` to learn a segment it just
+    // created can't be placed or scheduled. Field names match Task 11's plan
+    // JSON, which uses hoursKnown.
+    const db = await freshDb("addjsonflags");
+    const bare = JSON.parse(
+      await runSegmentsCommand(db, ["add", "Somewhere", "--dur=30m"], true),
+    );
+    expect(bare.hasCoordinates).toBe(false);
+    expect(bare.hoursKnown).toBe(false);
+
+    const full = JSON.parse(
+      await runSegmentsCommand(db,
+        ["add", "Cafe", "--dur=30m", "--at=38.7,-9.1", "--hours=09:00-18:00"], true),
+    );
+    expect(full.hasCoordinates).toBe(true);
+    expect(full.hoursKnown).toBe(true);
   });
 
   test("a multi-word name is joined, not truncated", async () => {
@@ -99,6 +123,38 @@ describe("trip seg ls", () => {
   test("an empty library says so instead of printing a bare header", async () => {
     const db = await freshDb("empty");
     expect(await runSegmentsCommand(db, ["ls"], false)).toMatch(/no segments/i);
+  });
+
+  // These three lock down render-plan.ts's markers, which are the visible
+  // expression of M2-2: unknown hours/coordinates are REPORTED, never guessed.
+  // Each test gives the OTHER fact (coords or hours) so it isolates exactly
+  // one marker - a silently-dropped marker would otherwise hide behind the
+  // other one still being present.
+
+  test("unknown hours render the '?' marker, not a guessed full-day range", async () => {
+    const db = await freshDb("marker-unknown-hours");
+    // --at given, --hours withheld: isolates the hours marker from "no coords".
+    await runSegmentsCommand(db, ["add", "Miradouro", "--dur=30m", "--at=38.71,-9.13"], false);
+    const out = await runSegmentsCommand(db, ["ls"], false);
+    expect(out).toContain("?");
+    expect(out).not.toContain("00:00");
+  });
+
+  test("known hours render the actual window, not the unknown marker", async () => {
+    const db = await freshDb("marker-known-hours");
+    await runSegmentsCommand(db,
+      ["add", "Cafe", "--dur=30m", "--at=38.71,-9.13", "--hours=09:00-18:00"], false);
+    const out = await runSegmentsCommand(db, ["ls"], false);
+    expect(out).toContain("09:00-18:00");
+    expect(out).not.toContain("?");
+  });
+
+  test("a segment without coordinates says so in the listing", async () => {
+    const db = await freshDb("marker-no-coords");
+    // --hours given, --at withheld: isolates "no coords" from the "?" marker.
+    await runSegmentsCommand(db, ["add", "Mystery", "--dur=30m", "--hours=09:00-18:00"], false);
+    const out = await runSegmentsCommand(db, ["ls"], false);
+    expect(out).toContain("no coords");
   });
 });
 
