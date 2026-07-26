@@ -40,6 +40,26 @@ describe("trips", () => {
     expect(all.map((t) => t.name)).toEqual(["b", "a"]);
   });
 
+  test("orders by id when two trips share a created_at", async () => {
+    const db = await freshDb("tiebreak");
+    await createTrip(db, "first", "2026-03-01");
+    await createTrip(db, "second", "2026-03-01");
+    const all = await listTrips(db);
+    // Identical created_at, so ONLY the `id DESC` tiebreak can order these.
+    // Without it this assertion is at the mercy of SQLite's scan order.
+    expect(all.map((t) => t.name)).toEqual(["second", "first"]);
+  });
+
+  test("a new trip has null destination and dates, not zeros", async () => {
+    const db = await freshDb("nulls");
+    const t = await createTrip(db, "tokyo-2027", "2026-07-26");
+    // toTrip's `=== null` guards matter: an unguarded Number(null) yields 0,
+    // which would read as "destination id 0" rather than "no destination".
+    expect(t.destinationId).toBeNull();
+    expect(t.startDate).toBeNull();
+    expect(t.endDate).toBeNull();
+  });
+
   test("getTripByName returns null for an unknown trip", async () => {
     const db = await freshDb("missing");
     expect(await getTripByName(db, "nope")).toBeNull();
