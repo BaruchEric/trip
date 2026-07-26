@@ -1,8 +1,9 @@
 import type { Client } from "@libsql/client";
 import { geocodeCity, type GeoCandidate } from "@/geocode";
-import { getClimate } from "@/climate/cache";
+import { getClimate, upsertDestination } from "@/climate/cache";
 import { rankMonths, monthsExcluded, partitionByComfort } from "@/comfort";
 import { renderMonthTable, renderVerdict, MONTH_NAMES } from "@/render";
+import { getActiveTrip, setTripDestination } from "@/trips";
 
 export interface WhenDeps {
   geocode?: (name: string, timeoutMs?: number) => Promise<GeoCandidate[]>;
@@ -49,6 +50,16 @@ export async function runWhenCommand(
     force: refresh,
     timeoutMs,
   });
+
+  // M2-6: the compiler needs coordinates to plan against, which is what makes
+  // this relationship meaningful. It stayed null through all of M1 because
+  // nothing consumed it. No active trip is fine — `trip when` is also the
+  // standalone M1 entry point and must keep working on its own.
+  const activeTrip = await getActiveTrip(db);
+  if (activeTrip) {
+    await setTripDestination(db, activeTrip.id, await upsertDestination(db, chosen));
+  }
+
   const scored = rankMonths(stats);
   const noData = monthsExcluded(stats);
 

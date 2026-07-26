@@ -2,6 +2,7 @@ import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import { runWhenCommand } from "@/commands/when";
 import type { GeoCandidate } from "@/geocode";
+import { createTrip, setActiveTrip, getTripByName } from "@/trips";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -242,5 +243,24 @@ describe("runWhenCommand", () => {
     expect(calls).toBe(1);
     await runWhenCommand(db, ["Tokyo", "--refresh"], false, d);
     expect(calls).toBe(2);
+  });
+
+  test("when attaches the destination to the active trip", async () => {
+    // trips.destination_id sat null through all of M1 because nothing made the
+    // relationship meaningful. dates set does: the compiler needs coordinates.
+    const db = await freshDb("attach");
+    await createTrip(db, "lisbon", "2026-07-26");
+    await setActiveTrip(db, "lisbon");
+    await runWhenCommand(db, ["Tokyo"], false, deps());
+    const trip = await getTripByName(db, "lisbon");
+    expect(trip!.destinationId).not.toBeNull();
+  });
+
+  test("when works with no active trip", async () => {
+    // `trip when Tokyo` before any trip exists is the M1 entry point and must
+    // keep working untouched.
+    const db = await freshDb("noattach");
+    const out = await runWhenCommand(db, ["Tokyo"], false, deps());
+    expect(out).toContain("Tokyo");
   });
 });
