@@ -34,6 +34,25 @@ describe("fetchDailyClimate", () => {
     expect(out.time).toHaveLength(2);
   });
 
+  test("null readings survive as null rather than becoming zero", async () => {
+    const fake = (async () =>
+      new Response(JSON.stringify({
+        daily: {
+          time: ["2024-07-01", "2024-07-02"],
+          dew_point_2m_mean: [24, null],
+          temperature_2m_max: [null, 31.4],
+          precipitation_sum: [6.7, null],
+        },
+      }), { status: 200 })) as unknown as typeof fetch;
+
+    const out = await fetchDailyClimate(0, 0, "a", "b", fake);
+    // Coercing these to 0 here would reintroduce the null-as-zero bug one
+    // layer above the guards in aggregate.ts that exist to prevent it.
+    expect(out.dewPoint).toEqual([24, null]);
+    expect(out.tempMax).toEqual([null, 31.4]);
+    expect(out.precip).toEqual([6.7, null]);
+  });
+
   test("throws with the API reason when the archive rejects the request", async () => {
     const fake = (async () =>
       new Response(JSON.stringify({ error: true, reason: "bad date" }), { status: 400 })
