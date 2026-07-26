@@ -132,6 +132,51 @@ const MIGRATIONS: Migration[] = [
             `DELETE FROM climate_months`,
           ],
   },
+  {
+    version: 4,
+    // M2: the segment library and the compiled plan. `days` is deliberately
+    // absent — a day's window is fully derived from trip dates, arrival and
+    // departure, and the day window, so storing it would be a second copy
+    // that can disagree with the first.
+    statements: async (db) =>
+      (await hasColumn(db, "trips", "day_start"))
+        ? []
+        : [
+            `CREATE TABLE IF NOT EXISTS segments (
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               trip_id INTEGER NOT NULL REFERENCES trips(id),
+               name TEXT NOT NULL,
+               -- NULL means the segment has no coordinates yet, so it cannot
+               -- be placed. It is NOT 0,0 (which is in the Gulf of Guinea).
+               latitude REAL,
+               longitude REAL,
+               dwell_minutes INTEGER NOT NULL,
+               cost REAL,
+               tags TEXT NOT NULL DEFAULT '',
+               -- NULL means opening hours are UNKNOWN, never "always open".
+               -- The scheduler places these freely and reports them; it must
+               -- never read a null as midnight-to-midnight.
+               opens_minutes INTEGER,
+               closes_minutes INTEGER,
+               closed_days TEXT NOT NULL DEFAULT '',
+               status TEXT NOT NULL DEFAULT 'confirmed'
+             )`,
+            `CREATE TABLE IF NOT EXISTS placements (
+               segment_id INTEGER PRIMARY KEY REFERENCES segments(id),
+               day_number INTEGER NOT NULL,
+               ordinal INTEGER NOT NULL,
+               -- Nullable on purpose: a day-locked pin (from 'trip move') has
+               -- a fixed day and NO fixed time. NOT NULL here would force a
+               -- sentinel like 0, which reads as "pinned to midnight".
+               start_minutes INTEGER,
+               pinned INTEGER NOT NULL DEFAULT 0
+             )`,
+            `ALTER TABLE trips ADD COLUMN arrival_time INTEGER`,
+            `ALTER TABLE trips ADD COLUMN departure_time INTEGER`,
+            `ALTER TABLE trips ADD COLUMN day_start INTEGER NOT NULL DEFAULT 540`,
+            `ALTER TABLE trips ADD COLUMN day_end INTEGER NOT NULL DEFAULT 1140`,
+          ],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */

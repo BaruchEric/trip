@@ -254,4 +254,27 @@ describe("schema migrations", () => {
     expect(await schemaVersion(db)).toBe(SCHEMA_VERSION);
     expect(await columnsOf(db, "climate_months")).toContain("day_count");
   });
+
+  test("migration 4 adds the M2 tables without disturbing M1 data", async () => {
+    const db = await openLegacyDb("m2-tables");
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["lisbon", "2026-07-26"],
+    });
+
+    await migrate(db);
+
+    const t = await db.execute(
+      `SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name`,
+    );
+    const names = t.rows.map((r) => r.name as string);
+    expect(names).toContain("segments");
+    expect(names).toContain("placements");
+    expect(await columnsOf(db, "trips")).toEqual(
+      expect.arrayContaining(["arrival_time", "departure_time", "day_start", "day_end"]),
+    );
+    // The trip predates the migration and must still be there.
+    const trips = await db.execute("SELECT COUNT(*) AS n FROM trips");
+    expect(Number(trips.rows[0]!.n)).toBe(1);
+  });
 });
