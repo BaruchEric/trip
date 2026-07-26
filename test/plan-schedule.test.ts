@@ -100,6 +100,34 @@ describe("layoutDay", () => {
     expect(r.placements[1]!.startMin).toBe(600);
   });
 
+  test("a segment skipped via closesMin mid-day charges no phantom travel", () => {
+    // Same shape as the closedDays skip above, but for the closesMin path:
+    // a distant, expensive-to-reach segment that closes before it could
+    // finish. If `previous`/cursor were updated on this skip too, segment 3
+    // would inherit a phantom leg from the skipped segment's coordinates
+    // (and Task 7's score would be corrupted by it).
+    const far = seg(2, {
+      latitude: 38.6916, longitude: -9.216, closesMin: 601, dwellMinutes: 5,
+    });
+    const r = layoutDay([seg(1), far, seg(3)], DAY, "walking", []);
+    expect(r.placements.map((p) => p.segmentId)).toEqual([1, 3]);
+    expect(r.unplaced[0]!.segmentId).toBe(2);
+    expect(r.unplaced[0]!.reason).toMatch(/clos/i);
+    expect(r.transitMinutes).toBe(0);
+    expect(r.placements[1]!.startMin).toBe(600);
+  });
+
+  test("a segment skipped for lack of room mid-day charges no phantom travel", () => {
+    const shortDay: DayWindow = { ...DAY, endMin: 700 };
+    const far = seg(2, { latitude: 38.6916, longitude: -9.216, dwellMinutes: 200 });
+    const r = layoutDay([seg(1), far, seg(3)], shortDay, "walking", []);
+    expect(r.placements.map((p) => p.segmentId)).toEqual([1, 3]);
+    expect(r.unplaced[0]!.segmentId).toBe(2);
+    expect(r.unplaced[0]!.reason).toMatch(/room/i);
+    expect(r.transitMinutes).toBe(0);
+    expect(r.placements[1]!.startMin).toBe(600);
+  });
+
   test("blocked intervals are stepped over, not scheduled through", () => {
     // This is how a pinned segment reserves its time.
     const r = layoutDay([seg(1)], DAY, "walking", [{ startMin: 540, endMin: 660 }]);
