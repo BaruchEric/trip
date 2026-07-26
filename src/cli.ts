@@ -3,7 +3,7 @@ import { openDb, migrate } from "@/db";
 import { runTripsCommand } from "@/commands/trips";
 import { runWhenCommand } from "@/commands/when";
 
-const USAGE = `trip - heat-aware trip planner
+export const USAGE = `trip - heat-aware trip planner
 
 Usage:
   trip new <name>              Create a trip and make it active
@@ -17,32 +17,72 @@ Global flags:
   --json                       Machine-readable output
 `;
 
-async function main(): Promise<number> {
-  const raw = process.argv.slice(2);
-  const json = raw.includes("--json");
-  const argv = raw.filter((a) => a !== "--json");
+export interface CliResult {
+  stdout: string;
+  stderr: string;
+  code: number;
+}
 
-  if (argv.length === 0 || argv[0] === "help" || argv[0] === "--help") {
-    console.log(USAGE);
-    return 0;
+/**
+ * Flags the CLI accepts. Anything else is rejected rather than ignored:
+ * `trip when Tokyo --refres` used to serve the cache and exit 0, so an agent
+ * asking for fresh data got stale data with a success code.
+ */
+const KNOWN_FLAGS = new Set(["--json", "--refresh", "--help"]);
+
+function fail(msg: string, json: boolean): CliResult {
+  return json
+    ? { stdout: JSON.stringify({ error: msg }), stderr: "", code: 1 }
+    : { stdout: "", stderr: `error: ${msg}`, code: 1 };
+}
+
+/**
+ * The whole CLI as a pure-ish function: argv in, output and exit code out.
+ * It never touches process.argv, never prints, and never exits — that is the
+ * entry shim's job below. This is what makes the argv handling, routing, and
+ * exit codes testable.
+ */
+export async function run(
+  argv: string[],
+  opts: { dbPath?: string } = {},
+): Promise<CliResult> {
+  const json = argv.includes("--json");
+
+  const unknown = argv.filter((a) => a.startsWith("--") && !KNOWN_FLAGS.has(a));
+  if (unknown.length > 0) return fail(`unknown flag: ${unknown.join(", ")}`, json);
+
+  const rest = argv.filter((a) => a !== "--json");
+
+  if (rest.length === 0 || rest[0] === "help" || rest[0] === "--help") {
+    // Under --json, emit a parseable envelope. Printing the human usage block
+    // on a success exit gave an agent unparseable stdout with code 0 — the
+    // worst combination for a consumer.
+    return json
+      ? { stdout: JSON.stringify({ usage: USAGE.trimEnd().split("\n") }), stderr: "", code: 0 }
+      : { stdout: USAGE, stderr: "", code: 0 };
   }
 
-  const db = openDb();
-  await migrate(db);
-
+  // openDb/migrate live INSIDE the try. Previously a database failure
+  // (unwritable ~/.trip, corrupt file) escaped as an unhandled rejection:
+  // a stack trace on stderr and no {"error": ...} envelope even under --json.
   try {
-    const [cmd, ...rest] = argv;
+    const db = openDb(opts.dbPath);
+    await migrate(db);
+
+    const [cmd, ...args] = rest;
     const output = cmd === "when"
-      ? await runWhenCommand(db, rest, json)
-      : await runTripsCommand(db, argv, json);
-    console.log(output);
-    return 0;
+      ? await runWhenCommand(db, args, json)
+      : await runTripsCommand(db, rest, json);
+    return { stdout: output, stderr: "", code: 0 };
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    if (json) console.log(JSON.stringify({ error: msg }));
-    else console.error(`error: ${msg}`);
-    return 1;
+    return fail(err instanceof Error ? err.message : String(err), json);
   }
 }
 
-process.exit(await main());
+// Entry point only when executed directly, so tests can import `run`.
+if (import.meta.main) {
+  const result = await run(process.argv.slice(2));
+  if (result.stdout) console.log(result.stdout);
+  if (result.stderr) console.error(result.stderr);
+  process.exit(result.code);
+}
