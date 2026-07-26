@@ -3,10 +3,12 @@ import { openDb, migrate } from "@/db";
 import {
   createTrip, getTripByName, setTripSchedule, setTripDestination,
 } from "@/trips";
-import { addSegment } from "@/segments";
+import { addSegment, listSegments } from "@/segments";
 import {
   savePlacements, readPlacements, readPins, setPinned, clearPin,
 } from "@/placements";
+import { compile } from "@/plan/compile";
+import { deriveDays } from "@/days";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -112,6 +114,98 @@ describe("placements", () => {
     const tripOne = await readPlacements(db, 1);
     expect(tripOne).toHaveLength(1);
     expect(tripOne[0]!.segmentId).toBe(a!);
+  });
+});
+
+describe("day-locked pins across replan (migration 5)", () => {
+  // Reported crash: `trip plan` -> `trip move <seg> --to=day1` (a day-locked
+  // pin, startMin null) -> `trip replan` threw SQLITE_CONSTRAINT. compile()
+  // only marks a *timed* pin `pinned: true` at Stage 1; a day-locked segment
+  // runs through orderDay like any free segment and comes back
+  // `pinned: false`. The old savePlacements filtered `!p.pinned` and did a
+  // plain INSERT, which collided with setPinned's still-pinned row on the
+  // segment_id primary key. Migration 5 splits the assertion
+  // (pin_start_minutes) from the compiled result (start_minutes) and
+  // savePlacements upserts every compiled placement, so this must be a
+  // no-op even when compile()'s `pinned` flag disagrees with the DB's.
+  const SCHEDULE = {
+    startDate: "2027-05-08", endDate: "2027-05-10",
+    arrivalMin: null, departureMin: null, dayStartMin: 540, dayEndMin: 1140,
+  };
+
+  async function replan(db: Awaited<ReturnType<typeof freshDb>>, tripId: number) {
+    const days = deriveDays(SCHEDULE);
+    const segments = await listSegments(db, tripId);
+    const pins = await readPins(db, tripId);
+    const result = compile(segments, days, { mode: "walking", pace: "normal", pins });
+    await savePlacements(db, tripId, result.placements);
+    return result;
+  }
+
+  test("move (day-lock) then replan succeeds and gives the segment a real time", async () => {
+    const db = await freshDb("daylock-replan");
+    await setTripSchedule(db, 1, SCHEDULE);
+    const [a] = await addTwo(db);
+    await replan(db, 1);              // trip plan
+    await setPinned(db, a!, 1, null); // trip move a --to=day1
+    await replan(db, 1);              // trip replan: must not throw
+
+    const placed = await readPlacements(db, 1);
+    const row = placed.find((p) => p.segmentId === a!)!;
+    expect(row.day).toBe(1);
+    expect(row.startMin).toBeGreaterThan(0);
+    expect(row.pinned).toBe(true);
+  });
+
+  test("a day-lock made before any plan exists still gets a real compiled time", async () => {
+    // Same defect as above, tightened so the assertion cannot pass on a
+    // stale value by coincidence. `setPinned` alone creates the placements
+    // row (pinned = 1, start_minutes NULL — no plan has run yet), so if
+    // `savePlacements` ever fails to write the compiled time on conflict,
+    // `start_minutes` stays NULL and reads back as 0. A prior successful
+    // plan for this same segment could leave a stale non-zero value that
+    // happens to match the fresh one (deterministic layouts can repeat),
+    // which is exactly the gap this variant closes.
+    const db = await freshDb("daylock-fresh");
+    await setTripSchedule(db, 1, SCHEDULE);
+    const [a] = await addTwo(db);
+    await setPinned(db, a!, 1, null); // trip move a --to=day1, before any plan
+    await replan(db, 1);
+
+    const placed = await readPlacements(db, 1);
+    const row = placed.find((p) => p.segmentId === a!)!;
+    expect(row.day).toBe(1);
+    expect(row.startMin).not.toBe(0);
+    expect(row.pinned).toBe(true);
+  });
+
+  test("a day-locked pin stays day-locked across two consecutive replans", async () => {
+    // If savePlacements ever wrote the compiled time into pin_start_minutes,
+    // the second replan would silently promote a day-lock into a time-lock.
+    const db = await freshDb("daylock-twice");
+    await setTripSchedule(db, 1, SCHEDULE);
+    const [a] = await addTwo(db);
+    await replan(db, 1);
+    await setPinned(db, a!, 2, null);
+    await replan(db, 1);
+    await replan(db, 1);
+
+    expect(await readPins(db, 1)).toEqual([{ segmentId: a!, day: 2, startMin: null }]);
+  });
+
+  test("a timed pin still lands at exactly its asserted time after replan", async () => {
+    const db = await freshDb("timed-replan");
+    await setTripSchedule(db, 1, SCHEDULE);
+    const [a] = await addTwo(db);
+    await setPinned(db, a!, 1, 600);
+    await replan(db, 1);
+
+    const placed = await readPlacements(db, 1);
+    const row = placed.find((p) => p.segmentId === a!)!;
+    expect(row.day).toBe(1);
+    expect(row.startMin).toBe(600);
+    expect(row.pinned).toBe(true);
+    expect(await readPins(db, 1)).toEqual([{ segmentId: a!, day: 1, startMin: 600 }]);
   });
 });
 

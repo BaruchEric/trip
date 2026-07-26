@@ -60,6 +60,45 @@ async function openLegacyDb(name: string): Promise<Client> {
   return db;
 }
 
+// The `segments`/`placements` shape exactly as migration 4 created it, before
+// migration 5 split `start_minutes` into an assertion column and a compiled
+// column. Frozen for the same reason V1_SCHEMA is: it stands in for every
+// database that has run migration 4 but not migration 5, and must NEVER be
+// updated to match src/db.ts.
+const V4_M2_SCHEMA = [
+  `CREATE TABLE IF NOT EXISTS segments (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     trip_id INTEGER NOT NULL REFERENCES trips(id),
+     name TEXT NOT NULL,
+     latitude REAL,
+     longitude REAL,
+     dwell_minutes INTEGER NOT NULL,
+     cost REAL,
+     tags TEXT NOT NULL DEFAULT '',
+     opens_minutes INTEGER,
+     closes_minutes INTEGER,
+     closed_days TEXT NOT NULL DEFAULT '',
+     status TEXT NOT NULL DEFAULT 'confirmed'
+   )`,
+  `CREATE TABLE IF NOT EXISTS placements (
+     segment_id INTEGER PRIMARY KEY REFERENCES segments(id),
+     day_number INTEGER NOT NULL,
+     ordinal INTEGER NOT NULL,
+     start_minutes INTEGER,
+     pinned INTEGER NOT NULL DEFAULT 0
+   )`,
+];
+
+/** A database that has physically run migration 4 (segments/placements exist,
+ *  no pin_start_minutes) but is unversioned, same shape as the "unversioned
+ *  database that already has day_count" case below — it exercises the
+ *  `hasColumn` guard rather than a hand-set schema_version row. */
+async function openV4Db(name: string): Promise<Client> {
+  const db = await openLegacyDb(name);
+  for (const stmt of V4_M2_SCHEMA) await db.execute(stmt);
+  return db;
+}
+
 async function columnsOf(db: Client, table: string): Promise<string[]> {
   const r = await db.execute(`PRAGMA table_info(${table})`);
   return r.rows.map((row) => row.name as string).sort();
@@ -189,7 +228,13 @@ describe("schema migrations", () => {
     const fresh = openDb(tmpDb("fresh-shape"));
     await migrate(fresh);
 
-    for (const table of ["destinations", "trips", "climate_months", "app_state"]) {
+    for (const table of [
+      "destinations", "trips", "climate_months", "app_state",
+      // M2's tables (migration 4) weren't covered here before migration 5
+      // touched one of them — closing that gap now rather than leaving it
+      // for the next person to add a column to `placements` blind.
+      "segments", "placements",
+    ]) {
       expect(await columnsOf(legacy, table)).toEqual(await columnsOf(fresh, table));
     }
   });
@@ -276,5 +321,39 @@ describe("schema migrations", () => {
     // The trip predates the migration and must still be there.
     const trips = await db.execute("SELECT COUNT(*) AS n FROM trips");
     expect(Number(trips.rows[0]!.n)).toBe(1);
+  });
+
+  test("migration 5 adds pin_start_minutes without disturbing existing placement rows", async () => {
+    // The bug this migration exists to fix: a day-locked pin and the
+    // compiler's result shared one column, so a replan after `trip move`
+    // threw SQLITE_CONSTRAINT. Migration 5 splits them — this test proves
+    // the split lands on a database that already has real placement rows.
+    const db = await openV4Db("m5-placements");
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["lisbon", "2026-07-26"],
+    });
+    await db.execute({
+      sql: `INSERT INTO segments (trip_id, name, latitude, longitude, dwell_minutes)
+            VALUES (?, ?, ?, ?, ?)`,
+      args: [1, "Torre", 38.69, -9.21, 60],
+    });
+    await db.execute({
+      sql: `INSERT INTO placements (segment_id, day_number, ordinal, start_minutes, pinned)
+            VALUES (?, ?, ?, ?, ?)`,
+      args: [1, 2, 0, 600, 1],
+    });
+
+    await migrate(db);
+
+    expect(await columnsOf(db, "placements")).toContain("pin_start_minutes");
+    const row = await db.execute("SELECT * FROM placements WHERE segment_id = 1");
+    expect(row.rows).toHaveLength(1);
+    expect(Number(row.rows[0]!.day_number)).toBe(2);
+    expect(Number(row.rows[0]!.start_minutes)).toBe(600);
+    expect(Number(row.rows[0]!.pinned)).toBe(1);
+    // A pre-existing row predates the assertion/compiled split, so there is
+    // no honest value to invent for the new column.
+    expect(row.rows[0]!.pin_start_minutes).toBeNull();
   });
 });

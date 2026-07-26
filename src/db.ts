@@ -177,6 +177,23 @@ const MIGRATIONS: Migration[] = [
             `ALTER TABLE trips ADD COLUMN day_end INTEGER NOT NULL DEFAULT 1140`,
           ],
   },
+  {
+    version: 5,
+    // M2: migration 4's `placements` gave the user's assertion and the
+    // compiler's result the SAME column (`start_minutes`). That works for a
+    // timed pin, where the two coincide, but a day-locked pin (`trip move`,
+    // startMin null) has no time to assert while the compiler still owes it
+    // one — so `savePlacements`'s insert collided with `setPinned`'s row on
+    // the very next replan (SQLITE_CONSTRAINT on segment_id). Splitting them
+    // fixes it: `pin_start_minutes` is the user's assertion (only `setPinned`
+    // writes it, NULL = day-locked), `start_minutes` becomes purely the
+    // compiler's output (only `savePlacements` writes it, NULL until the
+    // first plan).
+    statements: async (db) =>
+      (await hasColumn(db, "placements", "pin_start_minutes"))
+        ? []
+        : [`ALTER TABLE placements ADD COLUMN pin_start_minutes INTEGER`],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */
