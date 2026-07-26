@@ -1,3 +1,5 @@
+import { fetchJson } from "@/http";
+
 export interface GeoCandidate {
   name: string;
   country: string | null;
@@ -53,13 +55,14 @@ export function parseGeocodeResponse(json: unknown): GeoCandidate[] {
 
 export async function geocodeCity(
   name: string,
-  fetchFn: typeof fetch = fetch,
+  fetchFn?: typeof fetch,
+  timeoutMs?: number,
 ): Promise<GeoCandidate[]> {
   const url =
     `${GEOCODE_URL}?name=${encodeURIComponent(name)}&count=10&language=en&format=json`;
-  const res = await fetchFn(url);
-  if (!res.ok) {
-    throw new Error(`geocoding failed for "${name}": HTTP ${res.status}`);
-  }
-  return parseGeocodeResponse(await res.json());
+  const json = await fetchJson(url, `geocoding for "${name}"`, {
+    fetchFn,
+    timeoutMs,
+  });
+  return parseGeocodeResponse(json);
 }

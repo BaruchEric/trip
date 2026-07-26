@@ -1,4 +1,5 @@
 import type { DailyClimate } from "@/climate/aggregate";
+import { fetchJson } from "@/http";
 
 const ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive";
 
@@ -19,23 +20,27 @@ export async function fetchDailyClimate(
   lon: number,
   startDate: string,
   endDate: string,
-  fetchFn: typeof fetch = fetch,
+  fetchFn?: typeof fetch,
+  timeoutMs?: number,
 ): Promise<DailyClimate> {
   const url =
     `${ARCHIVE_URL}?latitude=${lat}&longitude=${lon}` +
     `&start_date=${startDate}&end_date=${endDate}` +
-    `&daily=${DAILY_VARS.join(",")}&timezone=auto`;
+    `&daily=${DAILY_VARS.join(",")}&timezone=auto` +
+    // Pinned, not assumed. The comfort bands are Celsius constants and the rain
+    // threshold is in mm; riding on the API's default would put the whole model
+    // one upstream change away from silently ranking every city as unlivable.
+    `&temperature_unit=celsius&precipitation_unit=mm`;
 
-  const res = await fetchFn(url);
-  const json = (await res.json()) as {
-    reason?: string;
-    daily?: Record<string, unknown>;
-  };
+  const json = (await fetchJson(url, "Open-Meteo archive request", {
+    fetchFn,
+    timeoutMs,
+  })) as { reason?: string; daily?: Record<string, unknown> };
 
-  if (!res.ok || json.reason) {
-    throw new Error(
-      `Open-Meteo archive request failed (HTTP ${res.status}): ${json.reason ?? "unknown error"}`,
-    );
+  // Open-Meteo also reports failures on a 200, so the status check inside
+  // fetchJson is not sufficient on its own.
+  if (json.reason) {
+    throw new Error(`Open-Meteo archive request failed: ${json.reason}`);
   }
 
   const daily = json.daily ?? {};

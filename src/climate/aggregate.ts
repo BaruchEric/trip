@@ -32,6 +32,10 @@ export function aggregateToMonths(daily: DailyClimate): MonthStats[] {
   // rain days counted per (month, year) so the mean is "days per month", not "days total"
   const rain: Map<string, number>[] = Array.from({ length: 12 }, () => new Map());
   const yearsSeen: Set<string>[] = Array.from({ length: 12 }, () => new Set());
+  // Days the window covered, reading or not. The archive returns a contiguous
+  // daily series with nulls for gaps, so this is the exact denominator for
+  // coverage — no assumption about how many years were requested.
+  const windowDays: number[] = Array.from({ length: 12 }, () => 0);
 
   for (let i = 0; i < daily.time.length; i++) {
     const stamp = daily.time[i];
@@ -41,6 +45,7 @@ export function aggregateToMonths(daily: DailyClimate): MonthStats[] {
     if (idx < 0 || idx > 11) continue;
 
     yearsSeen[idx]!.add(year);
+    windowDays[idx]!++;
 
     const d = daily.dewPoint[i];
     if (typeof d === "number") dew[idx]!.push(d);
@@ -65,6 +70,7 @@ export function aggregateToMonths(daily: DailyClimate): MonthStats[] {
       // Coverage of the PRIMARY signal. The means still read 0 for an empty
       // month; dayCount is what lets consumers tell "0 C" from "no data".
       dayCount: dew[idx]!.length,
+      expectedDays: windowDays[idx]!,
     };
   });
 }

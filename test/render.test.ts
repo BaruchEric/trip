@@ -3,10 +3,10 @@ import { renderMonthTable, renderVerdict, MONTH_NAMES } from "@/render";
 import { rankMonths } from "@/comfort";
 
 const TOKYOISH = rankMonths([
-  { month: 1, dewPointMean: 1, tempMaxMean: 10, rainDays: 3, dayCount: 300 },
-  { month: 5, dewPointMean: 13, tempMaxMean: 23, rainDays: 6, dayCount: 300 },
-  { month: 7, dewPointMean: 23.4, tempMaxMean: 30.5, rainDays: 12, dayCount: 300 },
-  { month: 11, dewPointMean: 9, tempMaxMean: 18, rainDays: 5, dayCount: 300 },
+  { month: 1, dewPointMean: 1, tempMaxMean: 10, rainDays: 3, dayCount: 300, expectedDays: 300 },
+  { month: 5, dewPointMean: 13, tempMaxMean: 23, rainDays: 6, dayCount: 300, expectedDays: 300 },
+  { month: 7, dewPointMean: 23.4, tempMaxMean: 30.5, rainDays: 12, dayCount: 300, expectedDays: 300 },
+  { month: 11, dewPointMean: 9, tempMaxMean: 18, rainDays: 5, dayCount: 300, expectedDays: 300 },
 ]);
 
 describe("renderMonthTable", () => {
@@ -35,14 +35,14 @@ describe("renderVerdict", () => {
 
   test("handles a single-month input without crashing", () => {
     const out = renderVerdict(rankMonths([
-      { month: 3, dewPointMean: 10, tempMaxMean: 18, rainDays: 4, dayCount: 300 },
+      { month: 3, dewPointMean: 10, tempMaxMean: 18, rainDays: 4, dayCount: 300, expectedDays: 300 },
     ]));
     expect(out).toContain("Mar");
   });
 
   test("says so plainly when nothing has data, rather than inventing a verdict", () => {
     const out = renderVerdict(rankMonths([
-      { month: 1, dewPointMean: 0, tempMaxMean: 0, rainDays: 0, dayCount: 0 },
+      { month: 1, dewPointMean: 0, tempMaxMean: 0, rainDays: 0, dayCount: 0, expectedDays: 300 },
     ]));
     expect(out.toLowerCase()).toContain("no climate data");
   });
@@ -51,10 +51,10 @@ describe("renderVerdict", () => {
     // Real Tokyo shape: Sep is the highest-SCORING bad month (dew 20.3) but Aug
     // is the actual peak (dew 23.2). Reporting Sep understated the peak by 3C.
     const out = renderVerdict(rankMonths([
-      { month: 1, dewPointMean: 0.5, tempMaxMean: 10, rainDays: 4, dayCount: 300 },
-      { month: 7, dewPointMean: 22.3, tempMaxMean: 30, rainDays: 12, dayCount: 300 },
-      { month: 8, dewPointMean: 23.2, tempMaxMean: 32, rainDays: 11, dayCount: 300 },
-      { month: 9, dewPointMean: 20.3, tempMaxMean: 29, rainDays: 12, dayCount: 300 },
+      { month: 1, dewPointMean: 0.5, tempMaxMean: 10, rainDays: 4, dayCount: 300, expectedDays: 300 },
+      { month: 7, dewPointMean: 22.3, tempMaxMean: 30, rainDays: 12, dayCount: 300, expectedDays: 300 },
+      { month: 8, dewPointMean: 23.2, tempMaxMean: 32, rainDays: 11, dayCount: 300, expectedDays: 300 },
+      { month: 9, dewPointMean: 20.3, tempMaxMean: 29, rainDays: 12, dayCount: 300, expectedDays: 300 },
     ]));
     expect(out).toContain("23C in Aug");
     expect(out).not.toContain("20C in Sep");
@@ -66,7 +66,7 @@ describe("renderVerdict", () => {
     // Mar, ... Dec." — recommending months it simultaneously warned against.
     const allMuggy = Array.from({ length: 12 }, (_, i) => ({
       month: i + 1, dewPointMean: 23 + (i % 3) * 0.5, tempMaxMean: 31,
-      rainDays: 14, dayCount: 300,
+      rainDays: 14, dayCount: 300, expectedDays: 300,
     }));
     const out = renderVerdict(rankMonths(allMuggy));
     expect(out).not.toMatch(/^Go in /m);
@@ -75,8 +75,8 @@ describe("renderVerdict", () => {
     // And prove the general invariant: no recommended month appears on the
     // avoid list, for a city that has both good and bad months.
     const mixed = renderVerdict(rankMonths([
-      { month: 2, dewPointMean: 5, tempMaxMean: 14, rainDays: 3, dayCount: 300 },
-      { month: 8, dewPointMean: 24, tempMaxMean: 33, rainDays: 12, dayCount: 300 },
+      { month: 2, dewPointMean: 5, tempMaxMean: 14, rainDays: 3, dayCount: 300, expectedDays: 300 },
+      { month: 8, dewPointMean: 24, tempMaxMean: 33, rainDays: 12, dayCount: 300, expectedDays: 300 },
     ]));
     const goIn = mixed.match(/Go in (.+)\./);
     const avoid = mixed.match(/Avoid ([^-]+) -/);

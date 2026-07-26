@@ -1,5 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { parseGeocodeResponse, geocodeCity } from "@/geocode";
+import { hangingFetch, within } from "./helpers";
 
 const LISBON_FIXTURE = {
   results: [
@@ -47,8 +48,19 @@ describe("geocodeCity", () => {
   });
 
   test("throws a helpful error on a non-200", async () => {
+    // Body is deliberately not JSON: a proxy error page used to surface as a
+    // SyntaxError with the status lost. Both the city and the status have to
+    // survive, since the status is what says whether retrying is worth it.
     const failing = (async () =>
       new Response("nope", { status: 500 })) as unknown as typeof fetch;
-    await expect(geocodeCity("Lisbon", failing)).rejects.toThrow(/geocoding failed/i);
+    const err = await geocodeCity("Lisbon", failing).catch((e: Error) => e);
+    expect((err as Error).message).toMatch(/geocoding for "Lisbon"/i);
+    expect((err as Error).message).toContain("500");
+  });
+
+  test("gives up rather than hanging when geocoding never answers", async () => {
+    await expect(
+      within(1000, geocodeCity("Lisbon", hangingFetch(), 30)),
+    ).rejects.toThrow(/timed out/i);
   });
 });

@@ -1,4 +1,4 @@
-import type { ScoredMonth } from "@/comfort";
+import { partitionByComfort, type ScoredMonth } from "@/comfort";
 
 export const MONTH_NAMES = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -28,18 +28,16 @@ export function renderMonthTable(city: string, months: ScoredMonth[]): string {
 export function renderVerdict(months: ScoredMonth[]): string {
   if (months.length === 0) return "No climate data available.";
 
-  const ranked = [...months].sort((a, b) => b.score - a.score || a.month - b.month);
-  const isBad = (m: ScoredMonth) => m.band === "muggy" || m.band === "oppressive";
-  const bad = ranked.filter(isBad);
-  // Recommend only from months NOT on the avoid list. Slicing the top 2 of the
-  // full ranking produced self-contradicting output for tropical cities:
+  // The split comes from comfort.ts, next to the band table whose cliff it
+  // encodes. Recommending only from months NOT on the avoid list is what stops
+  // the self-contradiction tropical cities used to produce:
   // "Go in Feb or Mar. Avoid Jan, Feb, Mar, ... Dec."
-  const good = ranked.filter((m) => !isBad(m));
+  const { recommend: good, avoid: bad } = partitionByComfort(months);
 
   const lines: string[] = [];
   if (good.length === 0) {
     // Every month is muggy or worse. Say so instead of inventing a good window.
-    const mildest = ranked[0]!;
+    const mildest = bad[0]!;
     lines.push(
       `No comfortable month here - every month is muggy or worse. ` +
       `${MONTH_NAMES[mildest.month - 1]} is the least bad.`,

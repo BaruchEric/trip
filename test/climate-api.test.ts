@@ -1,5 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { fetchDailyClimate } from "@/climate/api";
+import { hangingFetch, within } from "./helpers";
 
 const RESPONSE = {
   daily: {
@@ -32,6 +33,22 @@ describe("fetchDailyClimate", () => {
     expect(out.tempMax).toEqual([28.2, 31.4]);
     expect(out.precip).toEqual([6.7, 4.9]);
     expect(out.time).toHaveLength(2);
+  });
+
+  test("pins metric units rather than trusting the API default", async () => {
+    // The entire comfort model is calibrated in Celsius: the muggy band starts
+    // at 20 and oppressive at 24. If Open-Meteo's default ever moved to
+    // Fahrenheit, every dew point would clear 24 and every city on earth would
+    // report "no comfortable month" — wrong, confident, and with no error.
+    let url = "";
+    const fake = (async (u: string | URL) => {
+      url = String(u);
+      return new Response(JSON.stringify(RESPONSE), { status: 200 });
+    }) as unknown as typeof fetch;
+
+    await fetchDailyClimate(35.68, 139.69, "2024-07-01", "2024-07-02", fake);
+    expect(url).toContain("temperature_unit=celsius");
+    expect(url).toContain("precipitation_unit=mm");
   });
 
   test("null readings survive as null rather than becoming zero", async () => {
@@ -118,6 +135,27 @@ describe("fetchDailyClimate", () => {
     await expect(
       fetchDailyClimate(0, 0, "a", "b", fake),
     ).rejects.toThrow(/temperature_2m_max/);
+  });
+
+  test("gives up rather than hanging when the archive never answers", async () => {
+    // The archive pull is the long one (10 years of daily rows), so it is the
+    // request most likely to stall — and a stall here means `trip when` prints
+    // nothing and never exits.
+    await expect(
+      within(
+        1000,
+        fetchDailyClimate(35.68, 139.69, "2014-01-01", "2024-01-01", hangingFetch(), 30),
+      ),
+    ).rejects.toThrow(/timed out/i);
+  });
+
+  test("a proxy error page keeps its status instead of becoming a SyntaxError", async () => {
+    const html = (async () =>
+      new Response("<html>502 Bad Gateway</html>", { status: 502 })
+    ) as unknown as typeof fetch;
+    const err = await fetchDailyClimate(0, 0, "a", "b", html).catch((e: Error) => e);
+    expect((err as Error).message).toContain("502");
+    expect((err as Error).message).not.toMatch(/Unexpected token/i);
   });
 
   test("all-zero precipitation is legitimate data, not a missing axis", async () => {

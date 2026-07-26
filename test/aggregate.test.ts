@@ -10,6 +10,31 @@ describe("archiveWindow", () => {
   });
 });
 
+describe("expectedDays", () => {
+  test("counts every day the window covered, reading or not", () => {
+    // The denominator for coverage. Counting only days that carried a reading
+    // would make it equal dayCount, so coverage would be 100% for every month
+    // including one built from three readings — the exact failure it prevents.
+    const out = aggregateToMonths({
+      time: ["2024-01-01", "2024-01-02", "2024-01-03", "2024-01-04"],
+      dewPoint: [5, null, 7, null],
+      tempMax: [10, 11, 12, 13],
+      precip: [0, 0, 0, 0],
+    });
+    const jan = out[0]!;
+    expect(jan.expectedDays).toBe(4);
+    expect(jan.dayCount).toBe(2);
+  });
+
+  test("a month absent from the window has no expected days", () => {
+    const out = aggregateToMonths({
+      time: ["2024-01-01"], dewPoint: [5], tempMax: [10], precip: [0],
+    });
+    expect(out[0]!.expectedDays).toBe(1);
+    expect(out[6]!.expectedDays).toBe(0);
+  });
+});
+
 describe("aggregateToMonths", () => {
   test("averages each month across years and counts rain days per year", () => {
     // Two Januaries, two Julys. Jan: dew 5 and 7; Jul: dew 23 and 25.

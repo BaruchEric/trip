@@ -1,6 +1,7 @@
 import { expect, test, describe } from "bun:test";
 import {
-  classifyDewPoint, scoreMonth, rankMonths, monthsWithoutData,
+  classifyDewPoint, scoreMonth, rankMonths, monthsExcluded,
+  partitionByComfort, BAND_SCORE,
 } from "@/comfort";
 import type { MonthStats } from "@/comfort";
 
@@ -10,7 +11,10 @@ import type { MonthStats } from "@/comfort";
  * restate it; the no-data tests override it to 0 explicitly.
  */
 function stats(o: Partial<MonthStats> & { month: number }): MonthStats {
-  return { dewPointMean: 12, tempMaxMean: 22, rainDays: 0, dayCount: 300, ...o };
+  return {
+    dewPointMean: 12, tempMaxMean: 22, rainDays: 0,
+    dayCount: 300, expectedDays: 300, ...o,
+  };
 }
 
 describe("classifyDewPoint", () => {
@@ -114,12 +118,127 @@ describe("rankMonths", () => {
   });
 });
 
-describe("monthsWithoutData", () => {
+describe("monthsExcluded", () => {
   test("names exactly the months lacking coverage", () => {
-    expect(monthsWithoutData([
+    expect(monthsExcluded([
       stats({ month: 1, dayCount: 0 }),
       stats({ month: 2, dayCount: 300 }),
       stats({ month: 3, dayCount: 0 }),
-    ])).toEqual([1, 3]);
+    ]).map((m) => m.month)).toEqual([1, 3]);
+  });
+});
+
+describe("partitionByComfort", () => {
+  test("splits the ranking at the band cliff, best-first on each side", () => {
+    const scored = rankMonths([
+      stats({ month: 1, dewPointMean: 5 }),    // dry
+      stats({ month: 6, dewPointMean: 18 }),   // sticky
+      stats({ month: 7, dewPointMean: 22 }),   // muggy
+      stats({ month: 8, dewPointMean: 26 }),   // oppressive
+    ]);
+    const { recommend, avoid } = partitionByComfort(scored);
+    expect(recommend.map((m) => m.month)).toEqual([1, 6]);
+    expect(avoid.map((m) => m.month)).toEqual([7, 8]);
+  });
+
+  test("the cliff is read from the bands, not restated", () => {
+    // The avoid list used to be defined in render.ts while the band scores it
+    // encodes lived here, so re-tuning the scores left the avoid list behind.
+    // Every band at or below the muggy score must be on the avoid side.
+    const scored = rankMonths(
+      [5, 12, 18, 22, 26].map((dewPointMean, i) =>
+        stats({ month: i + 1, dewPointMean }),
+      ),
+    );
+    const { avoid } = partitionByComfort(scored);
+    expect(avoid.every((m) => BAND_SCORE[m.band] <= BAND_SCORE.muggy)).toBe(true);
+    expect(avoid.map((m) => m.band).sort()).toEqual(["muggy", "oppressive"]);
+  });
+
+  test("every scored month lands on exactly one side", () => {
+    const scored = rankMonths(
+      [2, 8, 14, 17, 21, 25].map((dewPointMean, i) =>
+        stats({ month: i + 1, dewPointMean }),
+      ),
+    );
+    const { recommend, avoid } = partitionByComfort(scored);
+    expect(recommend.length + avoid.length).toBe(scored.length);
+    expect(recommend.filter((r) => avoid.includes(r))).toEqual([]);
+  });
+});
+
+describe("coverage threshold", () => {
+  test("a thinly covered month is not ranked", () => {
+    // dayCount spans the whole 10-year window, so a fully covered month sits at
+    // 283-310. A month with 28 readings is ~9% coverage, not "a month of data" —
+    // it would otherwise score ~95 off a handful of days and rank first.
+    const ranked = rankMonths([
+      stats({ month: 6, dewPointMean: 12, dayCount: 28, expectedDays: 300 }),
+      stats({ month: 7, dewPointMean: 23, tempMaxMean: 31, rainDays: 10 }),
+    ]);
+    expect(ranked.map((m) => m.month)).toEqual([7]);
+  });
+
+  test("a thinly covered month is reported rather than vanishing", () => {
+    // The trap this guards: the include and exclude rules are complementary, so
+    // raising one and not the other makes a month neither ranked NOR reported —
+    // it just disappears with nothing saying it existed.
+    const excluded = monthsExcluded([
+      stats({ month: 6, dayCount: 28, expectedDays: 300 }),
+      stats({ month: 7, dayCount: 300, expectedDays: 300 }),
+    ]);
+    expect(excluded.map((m) => m.month)).toEqual([6]);
+  });
+
+  test("every month is either ranked or reported, never both, never neither", () => {
+    // The property that makes the two rules impossible to drift apart. Spans the
+    // threshold from empty to full so a one-sided edit fails here.
+    const months = [0, 1, 28, 200, 239, 240, 241, 280, 300].map((dayCount, i) =>
+      stats({ month: i + 1, dayCount, expectedDays: 300 }),
+    );
+    const ranked = rankMonths(months).map((m) => m.month);
+    const excluded = monthsExcluded(months).map((m) => m.month);
+
+    expect([...ranked, ...excluded].sort((a, b) => a - b)).toEqual(
+      months.map((m) => m.month),
+    );
+    expect(ranked.filter((m) => excluded.includes(m))).toEqual([]);
+  });
+
+  test("coverage is judged as a fraction, not an absolute day count", () => {
+    // A short window is not a broken one. 220 of 300 is thin; 220 of 250 is not.
+    // A hardcoded day-count cutoff cannot tell these apart.
+    const thin = rankMonths([stats({ month: 1, dayCount: 220, expectedDays: 300 })]);
+    const fine = rankMonths([stats({ month: 1, dayCount: 220, expectedDays: 250 })]);
+    expect(thin).toHaveLength(0);
+    expect(fine).toHaveLength(1);
+  });
+
+  test("expectedDays of 0 is excluded rather than dividing by zero", () => {
+    const ranked = rankMonths([stats({ month: 1, dayCount: 0, expectedDays: 0 })]);
+    expect(ranked).toEqual([]);
+    expect(monthsExcluded([stats({ month: 1, dayCount: 0, expectedDays: 0 })]))
+      .toHaveLength(1);
+  });
+
+  test("scoreMonth refuses to score a month it should never have been handed", () => {
+    // scoreMonth is exported, and only rankMonths gates coverage. A direct
+    // caller passing a thin month used to get a confident ~95 back — the
+    // phantom-79 bug through a side door. It has to enforce its own contract.
+    expect(() => scoreMonth(stats({ month: 1, dayCount: 3, expectedDays: 300 })))
+      .toThrow(/coverage/i);
+    expect(() => scoreMonth(stats({ month: 1, dayCount: 300, expectedDays: 300 })))
+      .not.toThrow();
+  });
+
+  test("the excluded report carries the coverage that caused it", () => {
+    // "No data for Jun" is a lie when Jun has 28 readings. The number is what
+    // lets a human tell a broken fetch from a genuinely unmeasured month.
+    const [only] = monthsExcluded([
+      stats({ month: 6, dayCount: 30, expectedDays: 300 }),
+    ]);
+    expect(only!.dayCount).toBe(30);
+    expect(only!.expectedDays).toBe(300);
+    expect(only!.coverage).toBeCloseTo(0.1, 5);
   });
 });

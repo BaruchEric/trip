@@ -54,7 +54,7 @@ describe("months storage", () => {
     const id = await upsertDestination(db, TOKYO);
     const months = Array.from({ length: 12 }, (_, i) => ({
       month: i + 1, dewPointMean: i, tempMaxMean: i * 2, rainDays: i / 2,
-      dayCount: i * 10,
+      dayCount: i * 10, expectedDays: 280 + i,
     }));
     await writeMonths(db, id, months, "2026-07-26");
     const back = await readMonths(db, id);
@@ -65,13 +65,18 @@ describe("months storage", () => {
     // 0 C month from a month with no data at all.
     expect(back![0]!.dayCount).toBe(0);
     expect(back![11]!.dayCount).toBe(110);
+    // expectedDays is the denominator of the coverage test. Losing it in the
+    // round trip makes every cached month read as 0% covered, which silently
+    // empties the ranking for every city already in the cache.
+    expect(back![0]!.expectedDays).toBe(280);
+    expect(back![11]!.expectedDays).toBe(291);
   });
 
   test("writeMonths replaces prior data rather than duplicating it", async () => {
     const db = await freshDb("replace");
     const id = await upsertDestination(db, TOKYO);
-    const first = [{ month: 1, dewPointMean: 1, tempMaxMean: 1, rainDays: 1, dayCount: 1 }];
-    const second = [{ month: 1, dewPointMean: 9, tempMaxMean: 9, rainDays: 9, dayCount: 9 }];
+    const first = [{ month: 1, dewPointMean: 1, tempMaxMean: 1, rainDays: 1, dayCount: 1, expectedDays: 300 }];
+    const second = [{ month: 1, dewPointMean: 9, tempMaxMean: 9, rainDays: 9, dayCount: 9, expectedDays: 300 }];
     await writeMonths(db, id, first, "2026-07-26");
     await writeMonths(db, id, second, "2026-07-27");
     const back = await readMonths(db, id);

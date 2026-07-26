@@ -54,7 +54,8 @@ export async function readMonths(
   destinationId: number,
 ): Promise<MonthStats[] | null> {
   const r = await db.execute({
-    sql: `SELECT month, dew_point_mean, temp_max_mean, rain_days, day_count
+    sql: `SELECT month, dew_point_mean, temp_max_mean, rain_days, day_count,
+                 expected_days
           FROM climate_months WHERE destination_id = ? ORDER BY month`,
     args: [destinationId],
   });
@@ -65,6 +66,7 @@ export async function readMonths(
     tempMaxMean: Number(row.temp_max_mean),
     rainDays: Number(row.rain_days),
     dayCount: Number(row.day_count),
+    expectedDays: Number(row.expected_days),
   }));
 }
 
@@ -82,10 +84,10 @@ export async function writeMonths(
     months.map((m) => ({
       sql: `INSERT INTO climate_months
               (destination_id, month, dew_point_mean, temp_max_mean, rain_days,
-               day_count, fetched_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+               day_count, expected_days, fetched_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       args: [destinationId, m.month, m.dewPointMean, m.tempMaxMean, m.rainDays,
-             m.dayCount, fetchedAt],
+             m.dayCount, m.expectedDays, fetchedAt],
     })),
     "write",
   );
@@ -94,7 +96,12 @@ export async function writeMonths(
 export async function getClimate(
   db: Client,
   candidate: GeoCandidate,
-  opts: { todayIso?: string; force?: boolean; fetchFn?: typeof fetch } = {},
+  opts: {
+    todayIso?: string;
+    force?: boolean;
+    fetchFn?: typeof fetch;
+    timeoutMs?: number;
+  } = {},
 ): Promise<MonthStats[]> {
   const todayIso = opts.todayIso ?? new Date().toISOString().slice(0, 10);
   const id = await upsertDestination(db, candidate);
@@ -111,6 +118,7 @@ export async function getClimate(
     startDate,
     endDate,
     opts.fetchFn,
+    opts.timeoutMs,
   );
   const months = aggregateToMonths(daily);
 

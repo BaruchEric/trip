@@ -13,8 +13,9 @@ Usage:
   trip when <city>             Rank every month by dew-point comfort
   trip when <city> --refresh   Refetch climate data instead of using the cache
 
-Global flags:
+Flags:
   --json                       Machine-readable output
+  --timeout=<seconds>          Network timeout per request (default 15)
 `;
 
 export interface CliResult {
@@ -29,6 +30,19 @@ export interface CliResult {
  * asking for fresh data got stale data with a success code.
  */
 const KNOWN_FLAGS = new Set(["--json", "--refresh", "--help"]);
+
+/** Flags that carry a value as `--name=<value>`. The value itself is validated
+ *  by the command that owns the flag, not here. A space-separated form is
+ *  deliberately not accepted: `trip when New York --timeout 30` would leave the
+ *  30 among the positionals, which `when` joins into the city name. */
+const KNOWN_VALUE_FLAGS = ["--timeout"];
+
+function isKnownFlag(arg: string): boolean {
+  return (
+    KNOWN_FLAGS.has(arg) ||
+    KNOWN_VALUE_FLAGS.some((f) => arg === f || arg.startsWith(`${f}=`))
+  );
+}
 
 function fail(msg: string, json: boolean): CliResult {
   return json
@@ -48,7 +62,7 @@ export async function run(
 ): Promise<CliResult> {
   const json = argv.includes("--json");
 
-  const unknown = argv.filter((a) => a.startsWith("--") && !KNOWN_FLAGS.has(a));
+  const unknown = argv.filter((a) => a.startsWith("--") && !isKnownFlag(a));
   if (unknown.length > 0) return fail(`unknown flag: ${unknown.join(", ")}`, json);
 
   const rest = argv.filter((a) => a !== "--json");

@@ -73,6 +73,19 @@ describe("cli: unknown flags", () => {
     expect(r.stderr).toContain("--refres");
   });
 
+  test("a value flag is recognised by name, and a typo of it still is not", async () => {
+    // --timeout=<n> has to pass the unknown-flag gate without turning that gate
+    // into a prefix match that waves through anything starting with --time.
+    const ok = await run(["when", "Tokyo", "--timeout=abc", "--json"],
+      { dbPath: dbPath("timeoutknown") });
+    expect(JSON.parse(ok.stdout).error).not.toContain("unknown flag");
+    expect(JSON.parse(ok.stdout).error).toContain("timeout");
+
+    const typo = await run(["when", "Tokyo", "--timeoutt=5", "--json"],
+      { dbPath: dbPath("timeouttypo") });
+    expect(JSON.parse(typo.stdout).error).toContain("unknown flag");
+  });
+
   test("an unknown flag under --json still yields an error envelope", async () => {
     const r = await run(["ls", "--nope", "--json"], { dbPath: dbPath("badflagjson") });
     expect(r.code).toBe(1);

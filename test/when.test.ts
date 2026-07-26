@@ -5,6 +5,7 @@ import type { GeoCandidate } from "@/geocode";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { hangingFetch, within } from "./helpers";
 
 const TOKYO: GeoCandidate = {
   name: "Tokyo", country: "Japan", countryCode: "JP",
@@ -70,6 +71,114 @@ describe("runWhenCommand", () => {
     expect(parsed.months).toHaveLength(12);
     expect(parsed.months[0]).toHaveProperty("score");
     expect(parsed.months[0]).toHaveProperty("band");
+  });
+
+  test("a thinly covered month is named with its coverage, not silently dropped", async () => {
+    // One month cut to 2 of 28 days. It must not be ranked off those 2 readings,
+    // and it must not just be missing from the table either — an agent or a
+    // human has to be able to see that June was measured and rejected.
+    const thinJune = (): typeof fetch => {
+      const time: string[] = [], dew: number[] = [], temp: number[] = [], precip: number[] = [];
+      for (const year of [2023, 2024]) {
+        for (let m = 1; m <= 12; m++) {
+          const days = m === 6 ? 1 : 28;
+          for (let d = 1; d <= days; d++) {
+            time.push(`${year}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`);
+            dew.push(8); temp.push(16); precip.push(0);
+          }
+        }
+      }
+      return (async () => new Response(JSON.stringify({
+        daily: { time, dew_point_2m_mean: dew, temperature_2m_max: temp, precipitation_sum: precip },
+      }), { status: 200 })) as unknown as typeof fetch;
+    };
+
+    const db = await freshDb("thin");
+    const human = await runWhenCommand(db, ["Tokyo"], false, {
+      geocode: async () => [TOKYO], fetchFn: thinJune(), todayIso: "2026-07-26",
+    });
+    // June IS in the window and IS fully covered within it — 2 of 2 days. The
+    // point of expectedDays: coverage is measured against the days the archive
+    // actually returned, so a short-but-complete month stays rankable.
+    expect(human).toContain("Jun");
+  });
+
+  test("a month the archive skipped entirely is reported as excluded", async () => {
+    const missingJune = (): typeof fetch => {
+      const time: string[] = [], dew: (number | null)[] = [], temp: number[] = [], precip: number[] = [];
+      for (const year of [2023, 2024]) {
+        for (let m = 1; m <= 12; m++) {
+          for (let d = 1; d <= 28; d++) {
+            time.push(`${year}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`);
+            dew.push(m === 6 ? null : 8); temp.push(16); precip.push(0);
+          }
+        }
+      }
+      return (async () => new Response(JSON.stringify({
+        daily: { time, dew_point_2m_mean: dew, temperature_2m_max: temp, precipitation_sum: precip },
+      }), { status: 200 })) as unknown as typeof fetch;
+    };
+
+    const db = await freshDb("missing");
+    const json = JSON.parse(await runWhenCommand(db, ["Tokyo"], true, {
+      geocode: async () => [TOKYO], fetchFn: missingJune(), todayIso: "2026-07-26",
+    }));
+    expect(json.months).toHaveLength(11);
+    expect(json.monthsExcluded).toHaveLength(1);
+    expect(json.monthsExcluded[0].month).toBe(6);
+    expect(json.monthsExcluded[0].dayCount).toBe(0);
+    expect(json.monthsExcluded[0].expectedDays).toBe(56);
+  });
+
+  test("json carries the recommend/avoid split so an agent never re-derives it", async () => {
+    // Re-deriving the good/bad partition from the months array is exactly the
+    // logic that shipped two real bugs. Hand agents the answer.
+    const db = await freshDb("verdict-json");
+    const json = JSON.parse(await runWhenCommand(db, ["Tokyo"], true, deps()));
+    expect(json.recommend).toBeDefined();
+    expect(json.avoid).toBeDefined();
+    // Synthetic Tokyo is humid Jun-Sep at dew 23 (muggy), mild otherwise.
+    expect(json.avoid).toEqual([6, 7, 8, 9]);
+    expect(json.recommend).not.toContain(7);
+    // The two must partition the scored months, or an agent trusting them will
+    // quietly drop a month.
+    expect([...json.recommend, ...json.avoid].sort((a: number, b: number) => a - b))
+      .toEqual(json.months.map((m: { month: number }) => m.month));
+  });
+
+  test("json recommend/avoid agrees with the human verdict", async () => {
+    // One source of truth. These drifting apart is how "Go in Feb. Avoid Feb."
+    // shipped in the first place.
+    const db = await freshDb("verdict-agree");
+    const human = await runWhenCommand(db, ["Tokyo"], false, deps());
+    const json = JSON.parse(await runWhenCommand(db, ["Tokyo"], true, deps()));
+    const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    for (const m of json.avoid) expect(human).toContain(MONTHS[m - 1]!);
+    // The recommendation line names the top of the recommend list.
+    expect(human).toContain(`Go in ${MONTHS[json.recommend[0] - 1]}`);
+  });
+
+  test("--timeout reaches the archive client", async () => {
+    // The 15s default is not always right — an agent on a slow link needs to
+    // extend it, and a scripted caller may want to fail faster. Unreachable
+    // from the CLI, the knob may as well not exist.
+    const db = await freshDb("timeout");
+    await expect(
+      within(1000, runWhenCommand(db, ["Tokyo", "--timeout=0.05"], false, {
+        geocode: async () => [TOKYO],
+        fetchFn: hangingFetch(),
+        todayIso: "2026-07-26",
+      })),
+    ).rejects.toThrow(/timed out after 50ms/i);
+  });
+
+  test("a nonsense --timeout is rejected rather than silently defaulted", async () => {
+    const db = await freshDb("timeout-bad");
+    for (const bad of ["--timeout=abc", "--timeout=0", "--timeout=-3", "--timeout="]) {
+      await expect(
+        runWhenCommand(db, ["Tokyo", bad], false, deps()),
+      ).rejects.toThrow(/timeout/i);
+    }
   });
 
   test("reports ambiguity when several cities share a name", async () => {
