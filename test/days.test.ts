@@ -83,4 +83,33 @@ describe("deriveDays", () => {
       "2027-05-30", "2027-05-31", "2027-06-01", "2027-06-02",
     ]);
   });
+
+  test("backwards date range throws with both dates in message", () => {
+    expect(() => deriveDays({ ...base, startDate: "2027-05-10", endDate: "2027-05-08" })).toThrow(
+      /trip ends 2027-05-08 before it starts 2027-05-10/
+    );
+  });
+
+  test("backwards date range throws even without arrival or departure", () => {
+    expect(() => deriveDays({
+      ...base, startDate: "2027-05-10", endDate: "2027-05-08",
+      arrivalMin: null, departureMin: null,
+    })).toThrow(
+      /trip ends 2027-05-08 before it starts 2027-05-10/
+    );
+  });
+
+  test("dates advance correctly across a year boundary", () => {
+    const days = deriveDays({ ...base, startDate: "2027-12-30", endDate: "2028-01-02" });
+    expect(days.map((d) => d.date)).toEqual([
+      "2027-12-30", "2027-12-31", "2028-01-01", "2028-01-02",
+    ]);
+  });
+
+  test("leap day is handled correctly", () => {
+    const days = deriveDays({ ...base, startDate: "2028-02-27", endDate: "2028-03-01" });
+    expect(days.map((d) => d.date)).toEqual([
+      "2028-02-27", "2028-02-28", "2028-02-29", "2028-03-01",
+    ]);
+  });
 });

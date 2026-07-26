@@ -33,6 +33,14 @@ export function deriveDays(schedule: TripSchedule): DayWindow[] {
   const start = new Date(`${schedule.startDate}T00:00:00Z`);
   const end = new Date(`${schedule.endDate}T00:00:00Z`);
 
+  // Guard against backwards date range. Absence of output is an easy-to-miss
+  // failure shape; throw early with both dates to make it visible.
+  if (start > end) {
+    throw new Error(
+      `trip ends ${schedule.endDate} before it starts ${schedule.startDate}`
+    );
+  }
+
   for (let d = new Date(start), i = 1; d <= end; d.setUTCDate(d.getUTCDate() + 1), i++) {
     const date = d.toISOString().slice(0, 10);
     days.push({
