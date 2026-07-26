@@ -66,13 +66,28 @@ export async function runDatesCommand(
       `${formatClock(d.startMin)}-${formatClock(d.endMin)}`,
     );
   }
-  // M2-3: the assumption has to be visible. A silently-full arrival day
-  // overpacks every real trip's first day.
-  if (arrivalMin === null || departureMin === null) {
+  // M2-3: the assumption has to be visible. But it must name only what is
+  // ACTUALLY missing — claiming "all days assumed full" when one end WAS
+  // given contradicts the table right above it (day 1 or the last day is
+  // visibly shortened there), which is the same self-contradiction shape
+  // that once shipped "Go in Feb. Avoid Feb." in the same verdict.
+  if (arrivalMin === null && departureMin === null) {
     lines.push(
       "",
-      "No arrival/departure times given - all days assumed full. " +
-      "Use --arrive/--depart if you fly in or out mid-day.",
+      "No arrival or departure time given - day 1 and the last day are both " +
+      "assumed full. Use --arrive/--depart if you fly in or out mid-day.",
+    );
+  } else if (arrivalMin === null) {
+    lines.push(
+      "",
+      "No --arrive time given - day 1 is assumed full. " +
+      "Use --arrive if you fly in mid-day.",
+    );
+  } else if (departureMin === null) {
+    lines.push(
+      "",
+      "No --depart time given - the last day is assumed full. " +
+      "Use --depart if you fly out mid-day.",
     );
   }
   return lines.join("\n");

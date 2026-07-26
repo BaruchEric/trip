@@ -46,6 +46,36 @@ describe("trip dates set", () => {
     expect(out.toLowerCase()).toMatch(/assum|full/);
   });
 
+  test("with only --arrive given, the message flags the missing departure, not arrival", async () => {
+    // Bug: the old guard was `arrivalMin === null || departureMin === null`,
+    // so giving --arrive alone still printed the both-missing message even
+    // though the table right above it shows day 1 correctly shortened to
+    // 15:30. Asserting on --depart-only-mentioned (and --arrive absent) is
+    // what actually catches a regression back to that `||`: a looser check
+    // like "doesn't say all days" turned out to pass under the reworded
+    // buggy branch too, since that branch no longer used the phrase "all
+    // days" once corrected wording language changed - only the flag named
+    // in the advisory reliably tracks which end is really missing.
+    const db = await freshDb("onlyarrive");
+    const out = await runDatesCommand(db, ["set", "2027-05-08..05-10", "--arrive=15:30"], false);
+    expect(out).toContain("--depart");
+    expect(out).not.toContain("--arrive");
+  });
+
+  test("with only --depart given, the message flags the missing arrival, not departure", async () => {
+    const db = await freshDb("onlydepart");
+    const out = await runDatesCommand(db, ["set", "2027-05-08..05-10", "--depart=11:00"], false);
+    expect(out).toContain("--arrive");
+    expect(out).not.toContain("--depart");
+  });
+
+  test("with both --arrive and --depart given, no assumed-full advisory is printed", async () => {
+    const db = await freshDb("bothgiven");
+    const out = await runDatesCommand(db,
+      ["set", "2027-05-08..05-10", "--arrive=15:30", "--depart=11:00"], false);
+    expect(out.toLowerCase()).not.toMatch(/assum|full/);
+  });
+
   test("--day-window overrides the default", async () => {
     const db = await freshDb("window");
     await runDatesCommand(db, ["set", "2027-05-08..05-09", "--day-window=08:00-22:00"], false);
