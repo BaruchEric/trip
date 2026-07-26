@@ -46,8 +46,41 @@ describe("placements", () => {
     const back = await readPlacements(db, 1);
     expect(back).toHaveLength(2);
     expect(back[0]!.startMin).toBe(540);
+    // dwellMinutes is 60 (addTwo's `base`) — endMin must be start + dwell,
+    // not start - dwell or a stored/stale copy.
+    expect(back[0]!.endMin).toBe(600);
+    expect(back[1]!.endMin).toBe(720);
     expect(back[1]!.ordinal).toBe(1);
     expect(back[0]!.pinned).toBe(false);
+  });
+
+  test("readPlacements orders by day and ordinal, not insertion order", async () => {
+    // The fixture deliberately inserts the day-2 row BEFORE the day-1 row,
+    // so a missing ORDER BY can't hide behind "insertion order happened to
+    // match" — the same trap M1's readMonths test caught.
+    const db = await freshDb("order");
+    const [a, b] = await addTwo(db);
+    await savePlacements(db, 1, [place(a!, 2, 0, 600), place(b!, 1, 0, 540)]);
+    const back = await readPlacements(db, 1);
+    expect(back.map((p) => p.segmentId)).toEqual([b!, a!]);
+  });
+
+  test("savePlacements writing a pinned element does not clobber the pin", async () => {
+    // compile() legitimately includes pinned segments in its output (that is
+    // what gives a day-locked pin a real time — see the migration-5 tests
+    // below). This is the property that actually matters once savePlacements
+    // stopped filtering pinned rows out: it may overwrite the compiled
+    // columns, but must never touch the user's assertion.
+    const db = await freshDb("pinned-in-batch");
+    const [a] = await addTwo(db);
+    await setPinned(db, a!, 2, 780);
+    await savePlacements(db, 1, [place(a!, 2, 0, 800, true)]);
+
+    const placed = await readPlacements(db, 1);
+    const row = placed.find((p) => p.segmentId === a!)!;
+    expect(row.startMin).toBe(800);
+    expect(row.pinned).toBe(true);
+    expect(await readPins(db, 1)).toEqual([{ segmentId: a!, day: 2, startMin: 780 }]);
   });
 
   test("saving replaces the previous plan rather than appending", async () => {
@@ -77,6 +110,21 @@ describe("placements", () => {
     const [a] = await addTwo(db);
     await setPinned(db, a!, 2, null);
     expect(await readPins(db, 1)).toEqual([{ segmentId: a!, day: 2, startMin: null }]);
+  });
+
+  test("re-pinning a segment resets its stale ordinal from a prior plan", async () => {
+    // `a` gets ordinal 1 from an ordinary plan, before it is ever pinned.
+    // Pinning it afterward must not leave that ordinal sitting there —
+    // ordinal belongs to savePlacements/compile(), and a fresh pin has no
+    // opinion on it until the next plan assigns a real one.
+    const db = await freshDb("repin-ordinal");
+    const [a, b] = await addTwo(db);
+    await savePlacements(db, 1, [place(b!, 1, 0, 540), place(a!, 1, 1, 600)]);
+    await setPinned(db, a!, 2, 700);
+
+    const placed = await readPlacements(db, 1);
+    const row = placed.find((p) => p.segmentId === a!)!;
+    expect(row.ordinal).toBe(0);
   });
 
   test("clearPin reports whether it removed anything", async () => {

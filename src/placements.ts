@@ -126,6 +126,10 @@ export async function setPinned(
           VALUES (?, ?, 0, ?, 1)
           ON CONFLICT (segment_id) DO UPDATE SET
             day_number = excluded.day_number,
+            -- Reset, not preserved: ordinal belongs to the compiler, and a
+            -- pin re-asserted after a plan ran must not keep that plan's
+            -- stale position. The next replan assigns a real one.
+            ordinal = 0,
             pin_start_minutes = excluded.pin_start_minutes,
             pinned = 1`,
     args: [segmentId, day, startMin],
