@@ -1,0 +1,13 @@
+{
+  "name": "trip",
+  "version": "0.1.0",
+  "module": "src/cli.ts",
+  "type": "module",
+  "bin": { "trip": "./src/cli.ts" },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": { "@libsql/client": "^0.17.4" },
+  "devDependencies": { "@types/bun": "latest", "typescript": "^5" }
+}
