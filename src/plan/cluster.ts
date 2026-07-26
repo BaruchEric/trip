@@ -47,7 +47,7 @@ export function clusterSegments(
     clusters[best]!.push(s);
   }
 
-  const overflow = rebalance(clusters, capacity);
+  const overflow = rebalance(clusters, seeds, capacity);
   return { clusters, overflow };
 }
 
@@ -93,9 +93,17 @@ function pickSeeds(pool: PlannableSegment[], k: number): PlannableSegment[] {
 
 /** Move the worst-fitting members of over-capacity clusters into the nearest
  *  cluster with room. Anything that still does not fit becomes overflow — the
- *  caller reports it as unplaced. Nothing is dropped. */
+ *  caller reports it as unplaced. Nothing is dropped.
+ *
+ *  `seeds` is needed here, not just `clusters`: an empty cluster has no
+ *  members to average, so centroidOf([]) would read as {0,0} — Null Island,
+ *  thousands of km from anywhere real — and could out-compete a genuinely
+ *  nearby non-empty cluster for the eviction target. An empty cluster is
+ *  scored by the seed it was built around instead, which is always a real
+ *  coordinate. */
 function rebalance(
   clusters: PlannableSegment[][],
+  seeds: PlannableSegment[],
   capacity: number,
 ): PlannableSegment[] {
   const overflow: PlannableSegment[] = [];
@@ -122,7 +130,8 @@ function rebalance(
     let bestDist = Infinity;
     for (let i = 0; i < clusters.length; i++) {
       if (i === fromIdx || clusters[i]!.length >= capacity) continue;
-      const d = haversineKm(victim, centroidOf(clusters[i]!));
+      const targetCentre = clusters[i]!.length === 0 ? seeds[i]! : centroidOf(clusters[i]!);
+      const d = haversineKm(victim, targetCentre);
       if (d < bestDist) {
         bestDist = d;
         target = i;

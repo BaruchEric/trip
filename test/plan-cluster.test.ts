@@ -36,6 +36,28 @@ describe("clusterSegments", () => {
     expect(norm(shuffled)).toEqual(norm(forward));
   });
 
+  test("is deterministic across input order even with exact distance ties", () => {
+    // ALFAMA/BELEM/SINTRA above have no exact distance ties, so that test
+    // would not catch a dropped `pool.sort((a, b) => a.id - b.id)` on its
+    // own: with three points pinned to one exact coordinate, symmetric
+    // fixtures still "accidentally" pass without the sort, because
+    // relabeling which of the tied points becomes a seed doesn't change
+    // which points end up together. This fixture was picked because it
+    // does not have that accident: without the id-sort, the tie-break in
+    // `rebalance`'s eviction (not just `pickSeeds`) depends on the
+    // pre-sort order segments were pushed into their cluster, and that
+    // changes actual membership — e.g. id1 lands with the far outlier id4
+    // under one input order and with its identical twins under another.
+    const TIES = [seg(1, -29, 27.4), seg(2, -29, 27.4), seg(3, -29, 27.4), seg(4, 28, -26.4)];
+    const forward = clusterSegments(TIES, 2, 2);
+    const shuffled = clusterSegments([TIES[3]!, TIES[2]!, TIES[0]!, TIES[1]!], 2, 2);
+    const norm = (r: { clusters: PlannableSegment[][] }) =>
+      r.clusters
+        .map((c) => c.map((s) => s.id).sort((a, b) => a - b))
+        .sort((a, b) => (a[0] ?? 0) - (b[0] ?? 0));
+    expect(norm(shuffled)).toEqual(norm(forward));
+  });
+
   test("repeated runs on identical input give identical output", () => {
     const a = clusterSegments([...ALFAMA, ...BELEM], 2, 5);
     const b = clusterSegments([...ALFAMA, ...BELEM], 2, 5);
@@ -53,6 +75,26 @@ describe("clusterSegments", () => {
     expect(overflow).toHaveLength(0);
     for (const c of clusters) expect(c.length).toBeLessThanOrEqual(2);
     expect(clusters.flat()).toHaveLength(5);
+  });
+
+  test("an empty cluster's real seed, not {0,0}, is used when scoring an eviction target", () => {
+    // Regression: rebalance used to score an empty candidate cluster with
+    // centroidOf([]) === {0,0} (Null Island), thousands of km from
+    // anywhere real. Four segments pinned to one exact point plus one far
+    // outlier, k=3, capacity=2: the natural (pre-rebalance) clustering is
+    // [outlier] / [all four duplicates] / [] — an empty third cluster
+    // seeded at one of the duplicates' own coordinates. Evicting from the
+    // over-capacity duplicate cluster must land back among the other
+    // duplicates (true distance 0) rather than with the outlier (true
+    // distance ~150km), which is only possible if the empty cluster is
+    // scored by its seed's real coordinates.
+    const same = [seg(1, 20, 20), seg(2, 20, 20), seg(3, 20, 20), seg(4, 20, 20)];
+    const outlier = seg(5, 21, 21);
+    const { clusters, overflow } = clusterSegments([...same, outlier], 3, 2);
+    expect(overflow).toHaveLength(0);
+    expect(clusters.flat()).toHaveLength(5);
+    const outlierCluster = clusters.find((c) => c.some((s) => s.id === 5))!;
+    expect(outlierCluster).toHaveLength(1);
   });
 
   test("segments beyond total capacity become overflow, never silently lost", () => {
