@@ -17,7 +17,18 @@ import type { Pin, Placement } from "@/plan/types";
  *  row on the `segment_id` primary key the moment a day-locked pin got
  *  replanned. Splitting the columns and upserting fixes it: only
  *  `setPinned`/`clearPin` ever write `pinned` or `pin_start_minutes`; only
- *  `savePlacements` ever writes `start_minutes`, `day_number`, `ordinal`. */
+ *  `savePlacements` ever writes `start_minutes`, `day_number`, `ordinal`.
+ *
+ *  Fix round 1 (team-lead review): a pinned row this compile did NOT place
+ *  (its asserted slot no longer fits — e.g. another pin now blocks it) used
+ *  to keep whatever `start_minutes` an EARLIER successful plan gave it,
+ *  because the upsert below only ever touches rows that ARE in the new
+ *  compiled list. `trip day` then rendered that segment at a stale time in
+ *  the same breath `trip plan --json` correctly reported it unplaced.
+ *  `savePlacements` now clears `start_minutes`/`ordinal` back to "never
+ *  placed" for any pinned row it did not just compile, and `readPlacements`
+ *  skips rows with a NULL `start_minutes` — those are pinned-but-unplaced,
+ *  and belong in the unplaced report, not the itinerary. */
 
 function numOrNull(v: unknown): number | null {
   return v === null || v === undefined ? null : Number(v);
@@ -39,6 +50,32 @@ export async function savePlacements(
             AND segment_id IN (SELECT id FROM segments WHERE trip_id = ?)`,
     args: [tripId],
   });
+
+  // A pinned row that survived the delete above but is NOT among this
+  // round's compiled placements was attempted and did not fit (see the
+  // module docstring). Clear its compiled RESULT columns back to "never
+  // placed" — leave `pinned`, `day_number`, and `pin_start_minutes` alone,
+  // since the user's assertion still stands and `trip replan` should keep
+  // trying to honour it.
+  const compiledIds = new Set(placements.map((p) => p.segmentId));
+  const pinnedRows = await db.execute({
+    sql: `SELECT p.segment_id FROM placements p
+          JOIN segments s ON s.id = p.segment_id
+          WHERE s.trip_id = ? AND p.pinned = 1`,
+    args: [tripId],
+  });
+  const staleIds = pinnedRows.rows
+    .map((row) => Number(row.segment_id))
+    .filter((id) => !compiledIds.has(id));
+  if (staleIds.length > 0) {
+    await db.batch(
+      staleIds.map((id) => ({
+        sql: `UPDATE placements SET start_minutes = NULL, ordinal = 0 WHERE segment_id = ?`,
+        args: [id],
+      })),
+      "write",
+    );
+  }
 
   if (placements.length === 0) return;
 
@@ -70,22 +107,20 @@ export async function readPlacements(
     sql: `SELECT p.segment_id, p.day_number, p.ordinal, p.start_minutes,
                  p.pinned, s.dwell_minutes
           FROM placements p JOIN segments s ON s.id = p.segment_id
-          WHERE s.trip_id = ?
+          WHERE s.trip_id = ? AND p.start_minutes IS NOT NULL
           ORDER BY p.day_number, p.ordinal`,
     args: [tripId],
   });
+  // `start_minutes` is purely the COMPILED time (migration 5) — every
+  // placement `savePlacements` actually placed gets one, pinned or not. A
+  // NULL here means "not currently placed" (pinned but never compiled, or
+  // pinned and dropped by the last compile — fix round 1 above) and is
+  // filtered out above: those rows belong to the unplaced report, not the
+  // itinerary, and readPins is the way to see the pin itself.
   return r.rows.map((row) => ({
     segmentId: Number(row.segment_id),
     day: Number(row.day_number),
     ordinal: Number(row.ordinal),
-    // `start_minutes` is now purely the COMPILED time (migration 5) — every
-    // placement `savePlacements` writes gets one, pinned or not. It is only
-    // ever NULL for a pinned segment that has never been through a
-    // successful `savePlacements` (pinned before the first `trip plan`, or
-    // permanently unplaceable, e.g. pinned to a day outside the trip).
-    // Number(null) -> 0 still reads as midnight in that narrow window;
-    // callers that display a single segment before any plan has run should
-    // guard on that separately (see `trip day`'s "nothing planned yet").
     startMin: Number(row.start_minutes),
     endMin: Number(row.start_minutes) + Number(row.dwell_minutes),
     pinned: Number(row.pinned) === 1,

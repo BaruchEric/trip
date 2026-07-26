@@ -26,6 +26,11 @@ export function renderDay(
   day: DayWindow,
   placements: Placement[],
   segments: Map<number, Segment>,
+  // Pinned-to-this-day segments the compiler could NOT place this round
+  // (fix round 1). Defaulted to [] so renderPlan's per-day calls, which
+  // already report the complete unplaced list in their own trailer, are
+  // unaffected — only `trip day`'s single-day view needs this.
+  unplaced: Unplaced[] = [],
 ): string {
   const lines = [
     `Day ${day.day}  ${day.date} ${day.weekday}  ` +
@@ -43,21 +48,31 @@ export function renderDay(
 
   if (onDay.length === 0) {
     lines.push("  (nothing planned)");
-    return lines.join("\n");
+  } else {
+    for (const p of onDay) {
+      const s = segments.get(p.segmentId);
+      if (!s) continue;
+      const marks: string[] = [];
+      // Unknown hours are marked, never hidden. This is the visible half of
+      // M2-2 — the plan says which segments it placed blind.
+      if (s.opensMin === null) marks.push("?");
+      if (p.pinned) marks.push("pinned");
+      lines.push(
+        `  ${formatClock(p.startMin)} ${s.name.padEnd(28)}` +
+        `${String(s.dwellMinutes).padStart(4)}m  ${marks.join(" ")}`.trimEnd(),
+      );
+    }
   }
 
-  for (const p of onDay) {
-    const s = segments.get(p.segmentId);
-    if (!s) continue;
-    const marks: string[] = [];
-    // Unknown hours are marked, never hidden. This is the visible half of
-    // M2-2 — the plan says which segments it placed blind.
-    if (s.opensMin === null) marks.push("?");
-    if (p.pinned) marks.push("pinned");
-    lines.push(
-      `  ${formatClock(p.startMin)} ${s.name.padEnd(28)}` +
-      `${String(s.dwellMinutes).padStart(4)}m  ${marks.join(" ")}`.trimEnd(),
-    );
+  // A pinned segment the compiler dropped is called out here, not silently
+  // omitted — the same M2 principle renderPlan's own "not placed" trailer
+  // follows. Without this, a day with a failed pin looked identical to a
+  // day that simply had less to do.
+  if (unplaced.length > 0) {
+    lines.push("", `${unplaced.length} pinned to this day but not placed:`);
+    for (const u of unplaced) {
+      lines.push(`  ${segments.get(u.segmentId)?.name ?? `#${u.segmentId}`} - ${u.reason}`);
+    }
   }
   return lines.join("\n");
 }

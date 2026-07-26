@@ -144,6 +144,29 @@ describe("placements", () => {
     expect(await readPlacements(db, 2)).toHaveLength(0);
   });
 
+  test("a pinned row this save did not compile has its stale compiled time cleared", async () => {
+    // Reported bug: `a` is pinned and successfully compiled once (a real,
+    // non-null start_minutes). A later save's compiled result no longer
+    // includes `a` (something else now occupies its slot) -- but the OLD
+    // row survived untouched, because savePlacements only ever upserted
+    // rows IN the new compiled list. The stale start_minutes from the
+    // earlier plan just sat there, and callers reading it (`trip day`) had
+    // no way to tell "still scheduled" from "scheduled once, not anymore".
+    const db = await freshDb("stale-unplaced");
+    const [a, b] = await addTwo(db);
+    // First plan: both compiled for real.
+    await savePlacements(db, 1, [place(a!, 1, 0, 540), place(b!, 1, 1, 600)]);
+    await setPinned(db, a!, 1, null); // day-lock `a` (it's already on day 1)
+    // Second plan: only `b` comes back compiled this time.
+    await savePlacements(db, 1, [place(b!, 1, 0, 600)]);
+
+    const placed = await readPlacements(db, 1);
+    // `a` must not appear at all -- not at its stale time, not at any time.
+    expect(placed.find((p) => p.segmentId === a!)).toBeUndefined();
+    // The pin itself (the user's assertion) survives untouched.
+    expect(await readPins(db, 1)).toEqual([{ segmentId: a!, day: 1, startMin: null }]);
+  });
+
   test("saving one trip's placements does not touch another trip's", async () => {
     // The delete in savePlacements has no trip_id column to filter on — it
     // must reach the right rows only through the segments join. A missing

@@ -4,7 +4,7 @@ import { listSegments, type Segment } from "@/segments";
 import { readPins, readPlacements, savePlacements, setPinned, clearPin } from "@/placements";
 import { deriveDays, type DayWindow } from "@/days";
 import { compile } from "@/plan/compile";
-import { MODES, PACES, type Mode, type Pace } from "@/plan/types";
+import { MODES, PACES, type Mode, type Pace, type Unplaced } from "@/plan/types";
 import { formatClock, parseClock } from "@/parse";
 import { renderDay, renderPlan } from "@/render-plan";
 
@@ -143,8 +143,24 @@ async function doDay(db: Client, argv: string[], json: boolean): Promise<string>
   const placements = await readPlacements(db, trip.id);
   if (placements.length === 0) throw new Error("nothing planned yet - run `trip plan`");
 
-  if (json) return planJson([day], placements, segments, []);
-  return renderDay(day, placements, new Map(segments.map((s) => [s.id, s])));
+  // A pin asserted onto THIS day that the last compile could not place has
+  // no row in `placements` at all (fix round 1 in placements.ts: its
+  // compiled result gets cleared rather than left stale) — cross-reference
+  // against the pins themselves so it is called out here, not silently
+  // absent. `trip plan`'s own reason string is not persisted (compile()
+  // recomputes it fresh each run), so this can only say THAT it was
+  // dropped, not why.
+  const pins = await readPins(db, trip.id);
+  const placedIds = new Set(placements.map((p) => p.segmentId));
+  const dayUnplaced: Unplaced[] = pins
+    .filter((p) => p.day === day.day && !placedIds.has(p.segmentId))
+    .map((p) => ({
+      segmentId: p.segmentId,
+      reason: "not placed by the last plan - run `trip plan` to see why",
+    }));
+
+  if (json) return planJson([day], placements, segments, dayUnplaced);
+  return renderDay(day, placements, new Map(segments.map((s) => [s.id, s])), dayUnplaced);
 }
 
 async function doPin(db: Client, argv: string[], json: boolean): Promise<string> {
