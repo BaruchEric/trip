@@ -46,4 +46,44 @@ describe("renderVerdict", () => {
     ]));
     expect(out.toLowerCase()).toContain("no climate data");
   });
+
+  test("names the highest-dew-point month as the peak, not the mildest bad one", () => {
+    // Real Tokyo shape: Sep is the highest-SCORING bad month (dew 20.3) but Aug
+    // is the actual peak (dew 23.2). Reporting Sep understated the peak by 3C.
+    const out = renderVerdict(rankMonths([
+      { month: 1, dewPointMean: 0.5, tempMaxMean: 10, rainDays: 4, dayCount: 300 },
+      { month: 7, dewPointMean: 22.3, tempMaxMean: 30, rainDays: 12, dayCount: 300 },
+      { month: 8, dewPointMean: 23.2, tempMaxMean: 32, rainDays: 11, dayCount: 300 },
+      { month: 9, dewPointMean: 20.3, tempMaxMean: 29, rainDays: 12, dayCount: 300 },
+    ]));
+    expect(out).toContain("23C in Aug");
+    expect(out).not.toContain("20C in Sep");
+  });
+
+  test("never recommends a month it also tells you to avoid", () => {
+    // Singapore shape: every month muggy or worse. The old code sliced the top
+    // two of the full ranking and emitted "Go in Feb or Mar. Avoid Jan, Feb,
+    // Mar, ... Dec." — recommending months it simultaneously warned against.
+    const allMuggy = Array.from({ length: 12 }, (_, i) => ({
+      month: i + 1, dewPointMean: 23 + (i % 3) * 0.5, tempMaxMean: 31,
+      rainDays: 14, dayCount: 300,
+    }));
+    const out = renderVerdict(rankMonths(allMuggy));
+    expect(out).not.toMatch(/^Go in /m);
+    expect(out.toLowerCase()).toContain("least bad");
+
+    // And prove the general invariant: no recommended month appears on the
+    // avoid list, for a city that has both good and bad months.
+    const mixed = renderVerdict(rankMonths([
+      { month: 2, dewPointMean: 5, tempMaxMean: 14, rainDays: 3, dayCount: 300 },
+      { month: 8, dewPointMean: 24, tempMaxMean: 33, rainDays: 12, dayCount: 300 },
+    ]));
+    const goIn = mixed.match(/Go in (.+)\./);
+    const avoid = mixed.match(/Avoid ([^-]+) -/);
+    expect(goIn).not.toBeNull();
+    expect(avoid).not.toBeNull();
+    const recommended = goIn![1]!.split(" or ").map((s) => s.trim());
+    const avoided = avoid![1]!.split(",").map((s) => s.trim());
+    for (const r of recommended) expect(avoided).not.toContain(r);
+  });
 });
