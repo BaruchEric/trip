@@ -95,6 +95,24 @@ describe("runWhenCommand", () => {
     await expect(runWhenCommand(db, [], false, deps())).rejects.toThrow(/usage/i);
   });
 
+  test("joins multi-word city names instead of using only the first word", async () => {
+    // Regression: taking only the first positional made `trip when New York`
+    // geocode "New" and answer about Patna, India with exit code 0.
+    const db = await freshDb("multiword");
+    let asked = "";
+    const d = {
+      geocode: async (name: string) => { asked = name; return [TOKYO]; },
+      fetchFn: syntheticArchive(),
+      todayIso: "2026-07-26",
+    };
+    await runWhenCommand(db, ["New", "York"], false, d);
+    expect(asked).toBe("New York");
+
+    // ...and flags must still be stripped, in any position.
+    await runWhenCommand(db, ["San", "Francisco", "--refresh"], false, d);
+    expect(asked).toBe("San Francisco");
+  });
+
   test("--refresh bypasses the cache and refetches", async () => {
     const db = await freshDb("refresh");
     let calls = 0;

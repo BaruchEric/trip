@@ -101,4 +101,37 @@ describe("fetchDailyClimate", () => {
       ).rejects.toThrow(new RegExp(drop));
     }
   });
+
+  test("throws when a variable array is present but entirely null", async () => {
+    // Regression: the guard checked only `.length`, so an all-null array passed.
+    // An all-null temperature array left tempMaxMean at 0, rendering a muggy
+    // 29C August as "cold, highs 0C" while dayCount stayed healthy.
+    const fake = (async () =>
+      new Response(JSON.stringify({
+        daily: {
+          time: ["2024-07-01", "2024-07-02"],
+          dew_point_2m_mean: [24, 23],
+          temperature_2m_max: [null, null],
+          precipitation_sum: [6.7, 4.9],
+        },
+      }), { status: 200 })) as unknown as typeof fetch;
+    await expect(
+      fetchDailyClimate(0, 0, "a", "b", fake),
+    ).rejects.toThrow(/temperature_2m_max/);
+  });
+
+  test("all-zero precipitation is legitimate data, not a missing axis", async () => {
+    // A desert reports 0mm, not null. Rejecting zeros would break dry cities.
+    const fake = (async () =>
+      new Response(JSON.stringify({
+        daily: {
+          time: ["2024-07-01", "2024-07-02"],
+          dew_point_2m_mean: [24, 23],
+          temperature_2m_max: [40, 41],
+          precipitation_sum: [0, 0],
+        },
+      }), { status: 200 })) as unknown as typeof fetch;
+    const out = await fetchDailyClimate(0, 0, "a", "b", fake);
+    expect(out.precip).toEqual([0, 0]);
+  });
 });

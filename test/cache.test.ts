@@ -132,4 +132,35 @@ describe("getClimate", () => {
     await getClimate(db, TOKYO, { todayIso: "2026-07-26", fetchFn, force: true });
     expect(counter.n).toBe(2);
   });
+
+  test("a zero-coverage fetch throws and is NOT cached, so a retry recovers", async () => {
+    // Regression: an empty response was written as 12 zero-coverage rows, and
+    // since readMonths only nulls on ZERO rows, every later run was a cache hit
+    // — the city reported "no climate data" forever, even after the API healed.
+    const db = await freshDb("nopoison");
+    let broken = true;
+    let calls = 0;
+    const fetchFn = (async () => {
+      calls++;
+      if (broken) return new Response("{}", { status: 200 });
+      return new Response(JSON.stringify({
+        daily: {
+          time: ["2024-07-01", "2024-07-02"],
+          dew_point_2m_mean: [24, 23],
+          temperature_2m_max: [28.2, 31.4],
+          precipitation_sum: [6.7, 4.9],
+        },
+      }), { status: 200 });
+    }) as unknown as typeof fetch;
+    const opts = { todayIso: "2026-07-26", fetchFn };
+
+    await expect(getClimate(db, TOKYO, opts)).rejects.toThrow(/no usable climate data/i);
+    expect(calls).toBe(1);
+
+    // Nothing was written, so the next call must hit the network again.
+    broken = false;
+    const recovered = await getClimate(db, TOKYO, opts);
+    expect(calls).toBe(2);
+    expect(recovered.some((m) => m.dayCount > 0)).toBe(true);
+  });
 });

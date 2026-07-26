@@ -17,7 +17,10 @@ export async function runWhenCommand(
   deps: WhenDeps = {},
 ): Promise<string> {
   const refresh = argv.includes("--refresh");
-  const city = argv.find((a) => !a.startsWith("--"));
+  // JOIN every positional, don't take the first. `trip when New York` used to
+  // geocode just "New" and silently answer about Patna, India — a wrong-continent
+  // answer with exit code 0. Most major cities are multi-word.
+  const city = argv.filter((a) => !a.startsWith("--")).join(" ").trim();
   if (!city) throw new Error("usage: trip when <city> [--refresh]");
 
   const geocode = deps.geocode ?? ((n: string) => geocodeCity(n));

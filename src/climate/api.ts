@@ -51,15 +51,21 @@ export async function fetchDailyClimate(
   // can reorder the ranking with no visible tell. That is the same failure
   // class dayCount exists to prevent, on the two axes it does not cover.
   // Fail loudly instead.
+  // An array that is PRESENT but carries no usable numbers is the same failure
+  // as an absent one, and checking only `.length` missed it: an all-null
+  // temperature array left tempMaxMean at 0, so a muggy 29C August rendered as
+  // "cold, highs 0C" while dayCount stayed healthy and nothing was excluded.
+  const usable = (a: (number | null)[]) => a.some((v) => typeof v === "number");
+
   if (time.length > 0) {
     const missing = [
-      dewPoint.length === 0 ? "dew_point_2m_mean" : null,
-      tempMax.length === 0 ? "temperature_2m_max" : null,
-      precip.length === 0 ? "precipitation_sum" : null,
+      !usable(dewPoint) ? "dew_point_2m_mean" : null,
+      !usable(tempMax) ? "temperature_2m_max" : null,
+      !usable(precip) ? "precipitation_sum" : null,
     ].filter((v): v is string => v !== null);
     if (missing.length > 0) {
       throw new Error(
-        `Open-Meteo returned ${time.length} days but no data for: ${missing.join(", ")}`,
+        `Open-Meteo returned ${time.length} days but no usable data for: ${missing.join(", ")}`,
       );
     }
   }

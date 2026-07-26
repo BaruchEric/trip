@@ -113,6 +113,20 @@ export async function getClimate(
     opts.fetchFn,
   );
   const months = aggregateToMonths(daily);
+
+  // NEVER cache a fetch that produced no usable coverage. A single transient
+  // empty response would otherwise be written as 12 zero-coverage rows, and
+  // because readMonths only returns null on ZERO rows, every later run is a
+  // cache hit — permanently reporting "no climate data" for that city even
+  // once the API recovers. `--refresh` was the only escape and nothing in the
+  // output hinted at it. Throw instead, so the next run retries.
+  if (months.every((m) => m.dayCount === 0)) {
+    throw new Error(
+      `Open-Meteo returned no usable climate data for ${candidate.name} ` +
+      `(${startDate}..${endDate}). Not caching; try again.`,
+    );
+  }
+
   await writeMonths(db, id, months, todayIso);
   return months;
 }
