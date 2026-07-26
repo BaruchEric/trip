@@ -51,8 +51,15 @@ export function parseCoords(input: string): { latitude: number; longitude: numbe
   };
   if (parts.length !== 2) return bad();
 
-  const latitude = Number(parts[0]!.trim());
-  const longitude = Number(parts[1]!.trim());
+  const latStr = parts[0]!.trim();
+  const lonStr = parts[1]!.trim();
+  // Number("") is 0, not NaN, so empty strings must be caught before conversion.
+  // A segment silently at 0,0 (Gulf of Guinea) instead of throwing is a data
+  // integrity bug.
+  if (!latStr || !lonStr) return bad();
+
+  const latitude = Number(latStr);
+  const longitude = Number(lonStr);
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return bad();
   // A swapped pair is the common mistake and lands the segment in the wrong
   // hemisphere, where clustering silently produces a nonsense day.
@@ -67,7 +74,12 @@ export function parseDateRange(input: string): { start: string; end: string } {
       `invalid date range "${input}" (expected 2027-05-08..05-16)`,
     );
   };
-  const [rawStart, rawEnd] = input.split("..");
+  const parts = input.split("..");
+  // input.split("..") only destructures the first two parts, silently dropping
+  // anything after a second .., so reject input that does not split into exactly two.
+  if (parts.length !== 2) return bad();
+
+  const [rawStart, rawEnd] = parts;
   if (!rawStart || !rawEnd) return bad();
 
   const start = rawStart.trim();
@@ -93,10 +105,19 @@ function isIsoDate(s: string): boolean {
 export function parseWeekdays(input: string): string[] {
   if (input.trim() === "") return [];
   return input.split(",").map((raw) => {
-    const day = raw.trim().toLowerCase().slice(0, 3);
-    if (!WEEKDAYS.includes(day)) {
+    const trimmed = raw.trim().toLowerCase();
+    // Accept either a 3-letter code (mon) or a full name (monday).
+    // .slice(0, 3) only validates the first three chars, so "monkey" → "mon".
+    // Instead, verify the whole string is either 3 letters or a full weekday name.
+    const normalized = trimmed.slice(0, 3);
+    if (!WEEKDAYS.includes(normalized)) {
       throw new Error(`invalid weekday "${raw.trim()}" (expected mon..sun)`);
     }
-    return day;
+    // Accept exact 3-letter codes, or strings that match a full weekday name.
+    const fullDayNames = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    if (trimmed.length !== 3 && !fullDayNames.includes(trimmed)) {
+      throw new Error(`invalid weekday "${raw.trim()}" (expected mon..sun)`);
+    }
+    return normalized;
   });
 }

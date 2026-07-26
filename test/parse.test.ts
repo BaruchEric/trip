@@ -20,6 +20,11 @@ describe("parseDuration", () => {
       expect(() => parseDuration(bad)).toThrow(/duration/i);
     }
   });
+
+  test("rejects invalid minutes in hour form (e.g. 1h60m)", () => {
+    // The minutes > 59 boundary must not regress from > 59 to > 60.
+    expect(() => parseDuration("1h60m")).toThrow(/duration/i);
+  });
 });
 
 describe("parseClock / formatClock", () => {
@@ -59,6 +64,20 @@ describe("parseCoords", () => {
       expect(() => parseCoords(bad)).toThrow(/coordinate/i);
     }
   });
+
+  test("rejects empty or whitespace-only components", () => {
+    // Number("") returns 0, not NaN, so empty strings must be caught before
+    // conversion. A segment silently at 0,0 (Gulf of Guinea) instead of throwing
+    // is a data integrity bug.
+    for (const bad of ["38.707,", ",−9.145", ",", " , "]) {
+      expect(() => parseCoords(bad)).toThrow(/coordinate/i);
+    }
+  });
+
+  test("accepts 0,0 as a valid coordinate", () => {
+    // 0,0 is a real location; the empty-component guard must not reject it.
+    expect(parseCoords("0,0")).toEqual({ latitude: 0, longitude: 0 });
+  });
 });
 
 describe("parseDateRange", () => {
@@ -80,6 +99,19 @@ describe("parseDateRange", () => {
       expect(() => parseDateRange(bad)).toThrow(/date/i);
     }
   });
+
+  test("rejects input with trailing junk after the second ..", () => {
+    // input.split("..") only destructures the first two parts, silently dropping
+    // anything after a second .., so "2027-05-08..05-16..junk" doesn't throw.
+    expect(() => parseDateRange("2027-05-08..05-16..junk")).toThrow(/date/i);
+  });
+
+  test("accepts an equal start and end date", () => {
+    // A one-day trip is valid; end < start rejects backwards ranges, not equal ones.
+    expect(parseDateRange("2027-05-08..05-08")).toEqual({
+      start: "2027-05-08", end: "2027-05-08",
+    });
+  });
 });
 
 describe("parseWeekdays", () => {
@@ -90,5 +122,19 @@ describe("parseWeekdays", () => {
 
   test("rejects a day that is not a day", () => {
     expect(() => parseWeekdays("mon,funday")).toThrow(/weekday/i);
+  });
+
+  test("accepts full weekday names", () => {
+    // Full names like "monday" and "tuesday" are valid, not just 3-letter codes.
+    expect(parseWeekdays("monday,tuesday")).toEqual(["mon", "tue"]);
+    expect(parseWeekdays("Monday")).toEqual(["mon"]);
+  });
+
+  test("rejects strings that start with a weekday but have junk", () => {
+    // .slice(0, 3) only checks the first three chars, so "monkey" → "mon".
+    // Only accept exact full names or 3-letter codes.
+    for (const bad of ["monkey", "friday!!", "satan"]) {
+      expect(() => parseWeekdays(bad)).toThrow(/weekday/i);
+    }
   });
 });
