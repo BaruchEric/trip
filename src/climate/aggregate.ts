@@ -62,6 +62,9 @@ export function aggregateToMonths(daily: DailyClimate): MonthStats[] {
       dewPointMean: mean(dew[idx]!),
       tempMaxMean: mean(temp[idx]!),
       rainDays: years === 0 ? 0 : rainTotal / years,
+      // Coverage of the PRIMARY signal. The means still read 0 for an empty
+      // month; dayCount is what lets consumers tell "0 C" from "no data".
+      dayCount: dew[idx]!.length,
     };
   });
 }

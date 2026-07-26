@@ -5,6 +5,13 @@ export interface MonthStats {
   dewPointMean: number;
   tempMaxMean: number;
   rainDays: number;
+  /**
+   * Days that actually carried a dew-point reading. 0 means no data.
+   * Without this, a zero-filled month reads as dew point 0 C -> "dry" -> 95
+   * points and can outrank a real destination. Coverage has to be explicit;
+   * it cannot be inferred from the means.
+   */
+  dayCount: number;
 }
 
 export interface ScoredMonth extends MonthStats {
@@ -67,8 +74,19 @@ export function scoreMonth(stats: MonthStats): ScoredMonth {
   return { ...stats, band, score, verdict: parts.join("; ") };
 }
 
+/**
+ * Months with no coverage are EXCLUDED, not scored. A zero-filled month would
+ * otherwise score 79 and outrank real destinations. Callers that need to tell
+ * the user which months were dropped should compare against the input.
+ */
 export function rankMonths(stats: MonthStats[]): ScoredMonth[] {
   return stats
+    .filter((s) => s.dayCount > 0)
     .map(scoreMonth)
     .sort((a, b) => b.score - a.score || a.month - b.month);
+}
+
+/** Months present in the input but excluded from the ranking for lack of data. */
+export function monthsWithoutData(stats: MonthStats[]): number[] {
+  return stats.filter((s) => s.dayCount === 0).map((s) => s.month);
 }

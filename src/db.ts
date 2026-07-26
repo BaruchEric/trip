@@ -42,6 +42,9 @@ const SCHEMA = [
      dew_point_mean REAL NOT NULL,
      temp_max_mean REAL NOT NULL,
      rain_days REAL NOT NULL,
+     -- How many days actually carried a dew-point reading for this month.
+     -- 0 means "no data", which must never be scored as though it were 0 C.
+     day_count INTEGER NOT NULL DEFAULT 0,
      fetched_at TEXT NOT NULL,
      PRIMARY KEY (destination_id, month)
    )`,
