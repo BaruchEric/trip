@@ -35,13 +35,13 @@ describe("db", () => {
   test("climate_months enforces one row per city-month", async () => {
     const db = openDb(tmpDb("unique"));
     await migrate(db);
-    // Seed the parent row: destination_id is a FK, and @libsql/client
-    // enables `PRAGMA foreign_keys` by default, so an orphan destination_id
-    // would fail on the FK check before ever reaching the PK/UNIQUE
-    // constraint this test is actually asserting.
+    // @libsql/client enforces foreign keys (unlike bare SQLite, which defaults
+    // them off), so a destination must exist before months can reference it.
     await db.execute({
-      sql: `INSERT INTO destinations (name, latitude, longitude) VALUES (?, ?, ?)`,
-      args: ["Testville", 0, 0],
+      sql: `INSERT INTO destinations
+              (name, country, country_code, latitude, longitude, timezone)
+            VALUES (?, ?, ?, ?, ?, ?)`,
+      args: ["Tokyo", "Japan", "JP", 35.68, 139.69, "Asia/Tokyo"],
     });
     const args = [1, 5, 14.2, 22.1, 4, "2026-07-26"];
     await db.execute({
