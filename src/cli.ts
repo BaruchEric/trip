@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 import { openDb, migrate } from "@/db";
 import { runTripsCommand } from "@/commands/trips";
+import { runWhenCommand } from "@/commands/when";
 
 const USAGE = `trip - heat-aware trip planner
 
@@ -9,6 +10,8 @@ Usage:
   trip use <name>              Switch the active trip
   trip ls                      List trips (* marks active)
   trip show                    Show the active trip
+  trip when <city>             Rank every month by dew-point comfort
+  trip when <city> --refresh   Refetch climate data instead of using the cache
 
 Global flags:
   --json                       Machine-readable output
@@ -28,7 +31,11 @@ async function main(): Promise<number> {
   await migrate(db);
 
   try {
-    console.log(await runTripsCommand(db, argv, json));
+    const [cmd, ...rest] = argv;
+    const output = cmd === "when"
+      ? await runWhenCommand(db, rest, json)
+      : await runTripsCommand(db, argv, json);
+    console.log(output);
     return 0;
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
