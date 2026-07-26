@@ -49,6 +49,14 @@ describe("travelMinutes", () => {
     expect(travelMinutes(ROSSIO, ROSSIO, "walking")).toBe(0);
     expect(travelMinutes(ROSSIO, ROSSIO, "transit")).toBe(6);
   });
+
+  test("transit model uses the correct speed, detour, and access penalty", () => {
+    // Verify transit constants by computing expected time from model:
+    // (distance_km * detour / kmh) * 60 + perHopMinutes
+    const distKm = haversineKm(ROSSIO, BELEM);
+    const expected = Math.round((distKm * 1.2 / 18) * 60 + 6);
+    expect(travelMinutes(ROSSIO, BELEM, "transit")).toBe(expected);
+  });
 });
 
 describe("plan types", () => {
