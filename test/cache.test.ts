@@ -80,6 +80,35 @@ describe("months storage", () => {
   });
 });
 
+describe("coordinate changes", () => {
+  test("moving a destination's coordinates invalidates its cached climate", async () => {
+    const db = await freshDb("moved");
+    const counter = { n: 0 };
+    const opts = { todayIso: "2026-07-26", fetchFn: fakeArchive(counter) };
+
+    await getClimate(db, TOKYO, opts);
+    expect(counter.n).toBe(1);
+
+    // Same name and country code, different place. Serving the first Tokyo's
+    // climate under these coordinates would be silently wrong.
+    const elsewhere = { ...TOKYO, latitude: -6.2, longitude: 106.8 };
+    await getClimate(db, elsewhere, opts);
+    expect(counter.n).toBe(2);
+  });
+
+  test("an identical re-geocode does NOT invalidate the cache", async () => {
+    const db = await freshDb("notmoved");
+    const counter = { n: 0 };
+    const opts = { todayIso: "2026-07-26", fetchFn: fakeArchive(counter) };
+
+    await getClimate(db, TOKYO, opts);
+    // A jitter far below the ~1.1km threshold must not trigger a refetch,
+    // otherwise the cache would be useless against normal geocoder variation.
+    await getClimate(db, { ...TOKYO, latitude: 35.681, longitude: 139.691 }, opts);
+    expect(counter.n).toBe(1);
+  });
+});
+
 describe("getClimate", () => {
   test("fetches on a miss and serves from cache on the second call", async () => {
     const db = await freshDb("miss-hit");

@@ -8,6 +8,29 @@ export async function upsertDestination(
   db: Client,
   c: GeoCandidate,
 ): Promise<number> {
+  // If this (name, country_code) already exists at materially different
+  // coordinates, geocoding resolved to a DIFFERENT place under the same
+  // identity. The ON CONFLICT below overwrites lat/lon, so without this the
+  // cached climate_months would keep being served under the new identity —
+  // one city's climate reported as another's, silently. ~0.01 deg is ~1.1 km.
+  const prior = await db.execute({
+    sql: `SELECT id, latitude, longitude FROM destinations
+          WHERE name = ? AND country_code = ?`,
+    args: [c.name, c.countryCode ?? ""],
+  });
+  const row = prior.rows[0];
+  if (row) {
+    const moved =
+      Math.abs(Number(row.latitude) - c.latitude) > 0.01 ||
+      Math.abs(Number(row.longitude) - c.longitude) > 0.01;
+    if (moved) {
+      await db.execute({
+        sql: `DELETE FROM climate_months WHERE destination_id = ?`,
+        args: [Number(row.id)],
+      });
+    }
+  }
+
   await db.execute({
     sql: `INSERT INTO destinations
             (name, country, country_code, latitude, longitude, timezone)

@@ -80,4 +80,25 @@ describe("fetchDailyClimate", () => {
     expect(out.time).toEqual([]);
     expect(out.dewPoint).toEqual([]);
   });
+
+  test("throws when days are returned but a variable array is absent", async () => {
+    // dayCount only covers the dew-point axis. A response with days but no
+    // precipitation would zero rainDays for all 12 months, removing the rain
+    // penalty differentially and silently reordering the ranking.
+    for (const drop of ["dew_point_2m_mean", "temperature_2m_max", "precipitation_sum"]) {
+      const daily: Record<string, unknown> = {
+        time: ["2024-07-01", "2024-07-02"],
+        dew_point_2m_mean: [24, 23],
+        temperature_2m_max: [28.2, 31.4],
+        precipitation_sum: [6.7, 4.9],
+      };
+      delete daily[drop];
+      const fake = (async () =>
+        new Response(JSON.stringify({ daily }), { status: 200 })) as unknown as typeof fetch;
+      // The message must name the offending variable so the failure is debuggable.
+      await expect(
+        fetchDailyClimate(0, 0, "a", "b", fake),
+      ).rejects.toThrow(new RegExp(drop));
+    }
+  });
 });

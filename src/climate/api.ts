@@ -39,10 +39,30 @@ export async function fetchDailyClimate(
   }
 
   const daily = json.daily ?? {};
-  return {
-    time: Array.isArray(daily.time) ? (daily.time as string[]) : [],
-    dewPoint: numArray(daily["dew_point_2m_mean"]),
-    tempMax: numArray(daily["temperature_2m_max"]),
-    precip: numArray(daily["precipitation_sum"]),
-  };
+  const time = Array.isArray(daily.time) ? (daily.time as string[]) : [];
+  const dewPoint = numArray(daily["dew_point_2m_mean"]);
+  const tempMax = numArray(daily["temperature_2m_max"]);
+  const precip = numArray(daily["precipitation_sum"]);
+
+  // If the archive returns days but drops ONE variable entirely, every month
+  // silently loses that axis. `dayCount` only tracks dew-point coverage, so a
+  // missing precip array zeroes rainDays for all 12 months without excluding
+  // or flagging anything — which removes the rain penalty DIFFERENTIALLY and
+  // can reorder the ranking with no visible tell. That is the same failure
+  // class dayCount exists to prevent, on the two axes it does not cover.
+  // Fail loudly instead.
+  if (time.length > 0) {
+    const missing = [
+      dewPoint.length === 0 ? "dew_point_2m_mean" : null,
+      tempMax.length === 0 ? "temperature_2m_max" : null,
+      precip.length === 0 ? "precipitation_sum" : null,
+    ].filter((v): v is string => v !== null);
+    if (missing.length > 0) {
+      throw new Error(
+        `Open-Meteo returned ${time.length} days but no data for: ${missing.join(", ")}`,
+      );
+    }
+  }
+
+  return { time, dewPoint, tempMax, precip };
 }
