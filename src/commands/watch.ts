@@ -186,6 +186,11 @@ async function ingestCmd(
   }
 
   const existing = await listMentions(db, trip.id, { sourceId: source.id });
+  // How many mentions --replace discarded. Left at 0 for a first ingest
+  // (nothing existed to discard) so that count is the only thing that
+  // distinguishes the two in the output below — a --replace that destroyed
+  // twelve mentions must not look identical to a first ingest.
+  let replaced = 0;
   if (existing.length > 0) {
     const resolved = existing.filter((m) => m.state === "resolved");
     if (!argv.includes("--replace")) {
@@ -204,7 +209,7 @@ async function ingestCmd(
         `\`trip seg rm\` first if you really mean to start over.`,
       );
     }
-    await deleteUnresolvedMentions(db, trip.id, source.id);
+    replaced = await deleteUnresolvedMentions(db, trip.id, source.id);
   }
 
   const readFile = deps.readFile ?? ((p: string) => readFileSync(p, "utf8"));
@@ -223,6 +228,7 @@ async function ingestCmd(
   if (json) {
     return JSON.stringify({
       sourceId: source.id,
+      replaced,
       ...result,
       skipped: errors.length,
       errors,
@@ -237,6 +243,9 @@ async function ingestCmd(
     (result.failed > 0 ? `, ${result.failed} lookup failure(s)` : ""),
     `searched a ${SEARCH_RADIUS_KM} km box around ${dest.name}`,
   ];
+  if (replaced > 0) {
+    lines.push(`--replace discarded ${replaced} unresolved mention${replaced === 1 ? "" : "s"}`);
+  }
   if (errors.length > 0) {
     lines.push(
       "",

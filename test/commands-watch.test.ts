@@ -329,6 +329,41 @@ describe("trip watch ingest", () => {
     expect((await listMentions(db, 1)).length).toBe(2);
   });
 
+  test("--replace reports how many mentions it discarded", async () => {
+    // Regression (M3 final review): deleteUnresolvedMentions already returns
+    // the count; runWatchCommand threw it away, so a --replace that
+    // destroyed twelve mentions looked identical in the output to a first
+    // ingest of one. Check both output shapes.
+    const db = await watched("ingest-replace-count");
+    const NO_HIT = { ingestDeps: { geocode: async () => [], sleepFn: async () => {} } };
+    const file1 = mentionsFile("rc1", [{ text: "a" }, { text: "b" }, { text: "c" }]);
+    await runWatchCommand(db, ["ingest", `--mentions=${file1}`], false, NO_HIT);
+    expect((await listMentions(db, 1)).length).toBe(3);
+
+    const file2 = mentionsFile("rc2", [{ text: "d" }]);
+    const jsonOut = JSON.parse(
+      await runWatchCommand(db, ["ingest", `--mentions=${file2}`, "--replace"], true, NO_HIT),
+    );
+    expect(jsonOut.replaced).toBe(3);
+
+    const db2 = await watched("ingest-replace-count-text");
+    await runWatchCommand(db2, ["ingest", `--mentions=${file1}`], false, NO_HIT);
+    const textOut = await runWatchCommand(
+      db2, ["ingest", `--mentions=${file2}`, "--replace"], false, NO_HIT,
+    );
+    expect(textOut).toContain("--replace discarded 3 unresolved mentions");
+  });
+
+  test("a first ingest (nothing to replace) reports 0, distinguishing it from --replace", async () => {
+    const db = await watched("ingest-first-replaced-zero");
+    const NO_HIT = { ingestDeps: { geocode: async () => [], sleepFn: async () => {} } };
+    const file = mentionsFile("first", [{ text: "a" }]);
+    const jsonOut = JSON.parse(
+      await runWatchCommand(db, ["ingest", `--mentions=${file}`], true, NO_HIT),
+    );
+    expect(jsonOut.replaced).toBe(0);
+  });
+
   test("--mentions is required", async () => {
     const db = await watched("ingest-nofile");
     await expect(runWatchCommand(db, ["ingest"], false, ONE_HIT)).rejects.toThrow(/--mentions/);
