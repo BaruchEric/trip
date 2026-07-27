@@ -4,12 +4,17 @@ import { addSegment, listSegments, removeSegment, setSegmentDwell } from "@/segm
 import { readPlacements } from "@/placements";
 import { parseClock, parseCoords, parseDuration, parseWeekdays } from "@/parse";
 import { renderSegmentList } from "@/render-plan";
+import { parsePriceFlags } from "@/pricing/flags";
+import { validateRuleSet } from "@/pricing/rules";
+import { setPriceRules, readPriceRules, deletePriceRules } from "@/prices";
 
 const USAGE =
-  "usage: trip seg add <name> --dur=<90m> [--cost=25] [--tag=food] " +
-  "[--at=lat,lon] [--hours=HH:MM-HH:MM] [--closed=mon,tue]\n" +
+  "usage: trip seg add <name> --dur=<90m> [--price=30] [--price=65+:0] " +
+  "[--tag=food] [--at=lat,lon] [--hours=HH:MM-HH:MM] [--closed=mon,tue] " +
+  "[--free-days=tue]\n" +
   "       trip seg ls [--tag=food] [--unplaced] [--from=<source-id>]\n" +
   "       trip seg set <id> --dur=<90m>\n" +
+  "       trip seg price <id> --price=30 | --clear\n" +
   "       trip seg rm <id>";
 
 function flag(argv: string[], name: string): string | null {
@@ -36,6 +41,7 @@ export async function runSegmentsCommand(
   if (sub === "ls") return lsCmd(db, trip.id, rest, json);
   if (sub === "rm") return rmCmd(db, trip.id, rest, json);
   if (sub === "set") return setCmd(db, trip.id, rest, json);
+  if (sub === "price") return priceCmd(db, trip.id, rest, json);
   throw new Error(USAGE);
 }
 
@@ -80,13 +86,26 @@ async function addCmd(
   const closedRaw = flag(argv, "--closed");
   const closedDays = closedRaw === null ? [] : parseWeekdays(closedRaw);
 
+  // Same weekday vocabulary as --closed, deliberately. A day listed in both
+  // is allowed and inert: the scheduler never places the segment there, so
+  // the free rule never fires, and a venue's own listing can say both.
+  const freeRaw = flag(argv, "--free-days");
+  const freeDays = freeRaw === null ? [] : parseWeekdays(freeRaw);
+
+  // Parsed and validated BEFORE the row is written. A bad rule set must add
+  // no segment at all -- half-adding one and then failing on its prices
+  // leaves a row the user did not ask for and cannot see the price of.
+  const rules = parsePriceFlags(argv, flags, flag);
+  validateRuleSet(rules);
+
   const id = await addSegment(db, tripId, {
     name,
     latitude: coords?.latitude ?? null,
     longitude: coords?.longitude ?? null,
     dwellMinutes, tags: flags(argv, "--tag"),
-    opensMin, closesMin, closedDays, freeDays: [],
+    opensMin, closesMin, closedDays, freeDays,
   });
+  if (rules.length > 0) await setPriceRules(db, "segment", id, rules);
 
   // Same facts as the human warning below, as booleans an agent can branch
   // on directly instead of parsing prose or issuing a follow-up `seg ls
@@ -138,7 +157,47 @@ async function rmCmd(
   }
   const removed = await removeSegment(db, tripId, id);
   if (!removed) throw new Error(`no segment #${id} in this trip`);
+  // Rules go with the segment. `segments.id` is AUTOINCREMENT so an id is
+  // never reused and an orphan could not re-attach to anything, but a table
+  // that accumulates rows nobody can reach is how a later reader concludes
+  // the data means something it does not.
+  await deletePriceRules(db, "segment", id);
   return json ? JSON.stringify({ removed: id }) : `removed #${id}`;
+}
+
+async function priceCmd(
+  db: Client, tripId: number, argv: string[], json: boolean,
+): Promise<string> {
+  const raw = argv[0];
+  const id = Number(raw);
+  if (!raw || !/^\d+$/.test(raw)) {
+    throw new Error(
+      "usage: trip seg price <id> --price=30 [--price=65+:0] | --clear",
+    );
+  }
+  const segments = await listSegments(db, tripId);
+  if (!segments.some((s) => s.id === id)) {
+    throw new Error(`no segment #${id} in this trip`);
+  }
+
+  if (argv.includes("--clear")) {
+    if (flags(argv, "--price").length > 0 || flag(argv, "--cost") !== null) {
+      throw new Error("--clear takes no prices");
+    }
+    await deletePriceRules(db, "segment", id);
+    return json
+      ? JSON.stringify({ id, rules: [] })
+      : `Cleared the prices on #${id}. It now costs UNKNOWN, not free.`;
+  }
+
+  const rules = parsePriceFlags(argv, flags, flag);
+  if (rules.length === 0) {
+    throw new Error("give at least one --price, or --clear to make it unknown");
+  }
+  await setPriceRules(db, "segment", id, rules);
+  return json
+    ? JSON.stringify({ id, rules })
+    : `Set ${rules.length} price rule${rules.length === 1 ? "" : "s"} on #${id}.`;
 }
 
 async function setCmd(

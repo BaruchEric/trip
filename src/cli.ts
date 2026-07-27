@@ -24,6 +24,7 @@ Usage:
   trip seg add <name>          Add a segment --dur=90m [--at=lat,lon] [--tag=food]
   trip seg ls                  List segments [--tag=food] [--unplaced] [--from=<source-id>]
   trip seg set <id> --dur=90m  Correct a segment's dwell time
+  trip seg price <id>          Set concession prices --price=30 --price=65+:0
   trip seg rm <id>             Remove a segment
   trip plan                    Compile a day-by-day itinerary [--pace=] [--mode=]
   trip day <n>                 Show one day
@@ -112,12 +113,15 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // what a subcommand-less invocation validates against, before the command
   // itself fails for the right reason.
   seg: {
-    bool: ["--unplaced"],
-    value: ["--dur", "--cost", "--tag", "--at", "--hours", "--closed", "--from"],
+    bool: ["--unplaced", "--clear"],
+    value: ["--dur", "--cost", "--price", "--tag", "--at", "--hours",
+            "--closed", "--free-days", "--from"],
   },
   "seg add": {
-    value: ["--dur", "--cost", "--tag", "--at", "--hours", "--closed"],
+    value: ["--dur", "--cost", "--price", "--tag", "--at", "--hours",
+            "--closed", "--free-days"],
   },
+  "seg price": { bool: ["--clear"], value: ["--price", "--cost"] },
   "seg ls": { bool: ["--unplaced"], value: ["--from"] },
   "seg rm": {},
   "seg set": { value: ["--dur"] },
@@ -153,11 +157,34 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
  *  block, which is the honest default — a stub reading "no help available"
  *  would be worse than the real thing. */
 const SUBCOMMAND_HELP: Record<string, string> = {
-  "seg add": `trip seg add <name...> [--dur=90m] [--cost=25] [--tag=food]
+  "seg add": `trip seg add <name...> [--dur=90m] [--price=30] [--tag=food]
                     [--at=<lat,lon>] [--hours=10:00-24:00] [--closed=mon,tue]
+                    [--free-days=tue]
 
   --hours accepts 24:00 as a closing time, stored as the end of the day.
   Omitting --hours means opening hours are UNKNOWN, not "open all day".
+
+  --price is repeatable and takes an optional age range:
+
+    --price=30        the base price, used where no range matches
+    --price=60-64:15  bounded both ways
+    --price=65+:0     bounded below; 0 means free
+    --price=0-5:0     under six free -- ages are non-negative, so N-M says it
+
+  Omitting --price entirely means the price is UNKNOWN, not free, and the
+  plan counts it as unknown rather than adding 0 to your total.
+
+  --cost=30 is an exact alias for a bare --price=30. Giving both is an error.
+
+  --free-days uses the same weekday vocabulary as --closed. Everyone pays
+  nothing there on those days, overriding every age rule.
+`,
+  "seg price": `trip seg price <id> --price=30 [--price=65+:0] | --clear
+
+  Replaces the segment's whole rule set. Age ranges are N-M or N+; a bare
+  --price is the base rule, used only where no range matches.
+
+  --clear leaves the segment costing UNKNOWN. It does NOT make it free.
 `,
   "seg ls": `trip seg ls [--unplaced] [--from=<source-id>]
 

@@ -4,6 +4,7 @@ import { createTrip, setActiveTrip } from "@/trips";
 import { runSegmentsCommand } from "@/commands/segments";
 import { addSegment, listSegments } from "@/segments";
 import { renderSegmentList } from "@/render-plan";
+import { readPriceRules } from "@/prices";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -81,11 +82,7 @@ describe("trip seg add", () => {
     expect((await listSegments(db, 1))[0]!.name).toBe("Museu Nacional do Azulejo");
   });
 
-  // SKIPPED FOR ONE COMMIT ONLY. Migration 8 removed segments.cost, and Task 5
-  // of the M5 plan brings --cost back as an exact alias for a bare --price.
-  // Deleting this would lose the F5 regression guard, which is the whole reason
-  // --cost survives at all rather than being retired with its column.
-  test.skip("--cost= (empty) is rejected rather than stored as 0", async () => {
+  test("--cost= (empty) is rejected rather than stored as 0", async () => {
     // F5: Number("") is 0, not NaN, so this used to pass Number.isFinite and
     // silently store a real $0 cost instead of throwing -- the same trap
     // parseCoords already guards against for --at=.
@@ -235,5 +232,146 @@ describe("trip seg ls --from", () => {
     const out = JSON.parse(await runSegmentsCommand(db, ["ls", "--from=1"], true));
     expect(out.segments.length).toBe(1);
     expect(out.segments[0].name).toBe("From video");
+  });
+});
+
+describe("trip seg prices and free days", () => {
+  test("--price rules are stored against the segment, in order", async () => {
+    const db = await freshDb("price");
+    await runSegmentsCommand(
+      db,
+      ["add", "Hongya", "Cave", "--dur=90m", "--price=30", "--price=65+:0"],
+      false,
+    );
+    expect((await readPriceRules(db, "segment", [1])).get(1)).toEqual([
+      { minAge: null, maxAge: null, price: 30 },
+      { minAge: 65, maxAge: null, price: 0 },
+    ]);
+  });
+
+  test("no --price at all leaves the segment UNKNOWN, with no rule row", async () => {
+    const db = await freshDb("noprice");
+    await runSegmentsCommand(db, ["add", "Jiefangbei", "--dur=60m"], false);
+    expect((await readPriceRules(db, "segment", [1])).has(1)).toBe(false);
+  });
+
+  test("--cost is an exact alias for a bare --price", async () => {
+    const db = await freshDb("costalias");
+    await runSegmentsCommand(db, ["add", "A", "--dur=30m", "--cost=25"], false);
+    await runSegmentsCommand(db, ["add", "B", "--dur=30m", "--price=25"], false);
+    const rules = await readPriceRules(db, "segment", [1, 2]);
+    expect(rules.get(1)).toEqual(rules.get(2)!);
+  });
+
+  test("--cost and --price together are an error, not a silent winner", async () => {
+    // A silent precedence rule would price the place differently from what
+    // the user typed, with nothing in the output saying which won.
+    const db = await freshDb("both");
+    await expect(
+      runSegmentsCommand(db, ["add", "A", "--dur=30m", "--cost=25", "--price=30"], false),
+    ).rejects.toThrow(/--cost and --price/);
+  });
+
+  test("overlapping --price rules are rejected, naming both", async () => {
+    const db = await freshDb("overlap");
+    await expect(
+      runSegmentsCommand(
+        db, ["add", "A", "--dur=30m", "--price=60-70:5", "--price=65+:0"], false),
+    ).rejects.toThrow(/overlapping/);
+  });
+
+  test("a base rule alongside a bounded one is accepted", async () => {
+    // The carve-out, exercised through the CLI: an unbounded rule overlaps
+    // every age, so a uniform overlap check would reject the commonest case.
+    const db = await freshDb("baseok");
+    await runSegmentsCommand(
+      db, ["add", "A", "--dur=30m", "--price=30", "--price=65+:0"], false);
+    expect((await readPriceRules(db, "segment", [1])).get(1)!.length).toBe(2);
+  });
+
+  test("a rejected rule set adds NO segment at all", async () => {
+    // Half-adding a segment and then failing on its prices leaves a row the
+    // user did not ask for and cannot see the price of.
+    const db = await freshDb("atomic");
+    await expect(
+      runSegmentsCommand(
+        db, ["add", "A", "--dur=30m", "--price=60-70:5", "--price=65+:0"], false),
+    ).rejects.toThrow();
+    expect(await listSegments(db, 1)).toEqual([]);
+  });
+
+  test("--free-days accepts the same weekday vocabulary as --closed", async () => {
+    const db = await freshDb("freedays");
+    await runSegmentsCommand(
+      db, ["add", "Museum", "--dur=60m", "--free-days=Tuesday,wed"], false);
+    expect((await listSegments(db, 1))[0]!.freeDays).toEqual(["tue", "wed"]);
+  });
+
+  test("an invalid free day is rejected, naming it", async () => {
+    const db = await freshDb("badfreeday");
+    await expect(
+      runSegmentsCommand(db, ["add", "M", "--dur=60m", "--free-days=funday"], false),
+    ).rejects.toThrow(/funday/);
+  });
+
+  test("a weekday in both --closed and --free-days is allowed and inert", async () => {
+    // Not a contradiction to reject: the scheduler never places the segment
+    // on a closed day, so the free rule simply never fires -- and a venue's
+    // own listing can genuinely say both. This test exists so a later
+    // contributor who "fixes the contradiction" finds out it was deliberate.
+    const db = await freshDb("closedandfree");
+    await runSegmentsCommand(
+      db, ["add", "M", "--dur=60m", "--closed=mon", "--free-days=mon"], false);
+    const [s] = await listSegments(db, 1);
+    expect(s!.closedDays).toEqual(["mon"]);
+    expect(s!.freeDays).toEqual(["mon"]);
+  });
+
+  test("seg price replaces a segment's whole rule set", async () => {
+    const db = await freshDb("priceset");
+    await runSegmentsCommand(db, ["add", "M", "--dur=60m", "--price=30"], false);
+    await runSegmentsCommand(db, ["price", "1", "--price=40", "--price=65+:0"], false);
+    expect((await readPriceRules(db, "segment", [1])).get(1)!.map((r) => r.price))
+      .toEqual([40, 0]);
+  });
+
+  test("seg price --clear reaches UNKNOWN, not free", async () => {
+    // The distinction the whole milestone rests on, exercised through the CLI.
+    const db = await freshDb("priceclear");
+    await runSegmentsCommand(db, ["add", "M", "--dur=60m", "--price=30"], false);
+    const out = await runSegmentsCommand(db, ["price", "1", "--clear"], false);
+    // The message must say the distinction out loud, because "cleared the
+    // prices" alone reads as "set them to nothing", i.e. free.
+    expect(out).toContain("UNKNOWN");
+    expect(out).toMatch(/not free/);
+    expect((await readPriceRules(db, "segment", [1])).has(1)).toBe(false);
+  });
+
+  test("seg price --clear with a price is an error", async () => {
+    const db = await freshDb("clearboth");
+    await runSegmentsCommand(db, ["add", "M", "--dur=60m"], false);
+    await expect(
+      runSegmentsCommand(db, ["price", "1", "--clear", "--price=5"], false),
+    ).rejects.toThrow(/--clear takes no prices/);
+  });
+
+  test("seg price with no price and no --clear is an error", async () => {
+    const db = await freshDb("pricenothing");
+    await runSegmentsCommand(db, ["add", "M", "--dur=60m"], false);
+    await expect(runSegmentsCommand(db, ["price", "1"], false))
+      .rejects.toThrow(/at least one --price/);
+  });
+
+  test("seg price on an unknown id is an error", async () => {
+    const db = await freshDb("pricemissing");
+    await expect(runSegmentsCommand(db, ["price", "99", "--price=5"], false))
+      .rejects.toThrow(/99/);
+  });
+
+  test("seg rm takes the price rules with it", async () => {
+    const db = await freshDb("rmprices");
+    await runSegmentsCommand(db, ["add", "M", "--dur=60m", "--price=30"], false);
+    await runSegmentsCommand(db, ["rm", "1"], false);
+    expect((await readPriceRules(db, "segment", [1])).has(1)).toBe(false);
   });
 });
