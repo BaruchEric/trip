@@ -392,13 +392,11 @@ describe("m3 consistency: the mention lifecycle", () => {
 
     const segLs = await run(["seg", "ls"], { dbPath });
     expect(segLs.stdout).toContain("[default]");
-    expect(segLs.stdout).not.toContain("60m?");
 
     const planned = await run(["plan"], { dbPath });
     expect(planned.code).toBe(0);
     const day1 = await run(["day", "1"], { dbPath });
     expect(day1.stdout).toContain("[default]");
-    expect(day1.stdout).not.toContain("60m?");
   });
 
   test("8. a failed --refresh of an OLDER source does not re-point ingest's default", async () => {

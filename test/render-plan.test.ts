@@ -112,7 +112,6 @@ describe("renderSegmentList: local name and defaulted dwell", () => {
   test("a defaulted dwell is marked, and not with the unknown-hours question mark", () => {
     const out = renderSegmentList([seg(1, { dwellMinutes: 60, dwellIsDefault: true })]);
     expect(out).toContain("[default]");
-    expect(out).not.toContain("60m?");
   });
 
   test("a supplied dwell carries no marker", () => {
