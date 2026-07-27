@@ -1,11 +1,30 @@
 import type { Mode, Point } from "@/plan/types";
 
-/** Straight-line distance and a per-mode fudge factor.
+/** Straight-line distance and a per-mode fudge factor: the answer when NOTHING
+ *  HAS BEEN MEASURED.
  *
- *  These constants are PLACEHOLDERS. M4 replaces this whole file with OSRM
- *  walking routes and GTFS-Transitland transit legs. Nothing else in the
- *  compiler should encode a speed or a detour assumption — when the real
- *  router lands, this file is the only thing that changes. */
+ *  This header used to read "These constants are PLACEHOLDERS. M4 replaces this
+ *  whole file with OSRM walking routes and GTFS-Transitland transit legs." M4
+ *  shipped the plausibility check instead, and that sentence stayed false for
+ *  four milestones while every arrival time this project printed was derived
+ *  from the constants below, to the minute. A placeholder that is never
+ *  replaced is an assertion; the label decays and the number ships.
+ *
+ *  M8 measured them. Against two pedestrian routers over the seven places this
+ *  project has actually resolved to a segment, the WALKING model came in below
+ *  both routers in 18 of 21 pairs and above both in none — 27% optimistic
+ *  under 2 km, which is exactly where day-planning happens.
+ *  See docs/superpowers/specs/2026-07-27-trip-m8-recon.md.
+ *
+ *  The constants are deliberately NOT recalibrated to that measurement: one
+ *  city, and a famously vertical one, so a global constant tuned on Chongqing
+ *  would be overfitting — the same error M7 rejected in "always query in local
+ *  script". Real legs live in `route_legs` and are preferred over this by
+ *  `@/plan/travel`. What remains here is the honest fallback.
+ *
+ *  The TRANSIT constants remain entirely unevidenced. Nothing in M8 measured
+ *  transit, and no free GTFS ground truth for Chongqing was found. Nothing
+ *  else in the compiler should encode a speed or a detour assumption. */
 
 const EARTH_RADIUS_KM = 6371;
 
