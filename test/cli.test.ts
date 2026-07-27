@@ -278,17 +278,21 @@ describe("cli: per-command flag validation (M3)", () => {
     expect(JSON.parse(review.stdout).error).toContain("no mention #1");
   });
 
-  test("review ls --reject passes validation but ls itself silently ignores it", async () => {
-    // Documents the USAGE comment this test guards: validation is keyed per
-    // TOP-LEVEL command, not per subcommand. "review"'s flag set covers both
-    // "ls" and "resolve" together, so --reject (owned by "resolve") passes
-    // the validator for "ls" too, then reaches lsCmd, which never reads it -
-    // no "unknown flag" error, no different output, just silently ignored.
+  test("review ls --reject is now rejected, not silently ignored", async () => {
+    // INVERTED IN M4, deliberately. Through M3 this test asserted the
+    // opposite: --reject (owned by "resolve") passed the validator for "ls"
+    // too, reached lsCmd, and was silently ignored — and the test, and the
+    // USAGE block, documented that honestly rather than fixing it.
+    //
+    // M4 re-keyed the allowlist on command + subcommand, so the behaviour
+    // this test guards changed on purpose. It is kept, inverted, because the
+    // gap is exactly the kind that reappears when someone "simplifies" the
+    // key lookup back to the top-level command.
     const p = dbPath("review-ls-reject");
     await run(["new", "lisbon"], { dbPath: p });
     const r = await run(["review", "ls", "--reject", "--json"], { dbPath: p });
-    expect(r.code).toBe(0);
-    expect(JSON.parse(r.stdout).pending).toEqual([]);
+    expect(r.code).toBe(1);
+    expect(JSON.parse(r.stdout).error).toContain("unknown flag for `trip review ls`");
   });
 
   test("watch and review are routed", async () => {
@@ -305,5 +309,71 @@ describe("cli: per-command flag validation (M3)", () => {
     const r = await run([], { dbPath: dbPath("usage") });
     expect(r.stdout).toContain("trip watch");
     expect(r.stdout).toContain("trip review");
+  });
+});
+
+describe("cli: per-subcommand flag validation", () => {
+  test("a flag belonging to a sibling subcommand is rejected", async () => {
+    // The failure cli.ts's own policy comment existed to prevent while not
+    // preventing: --reject is `review resolve`'s, and `review ls` accepted it
+    // and silently ignored it.
+    const r = await run(["review", "ls", "--reject"], { dbPath: dbPath("sub-flag") });
+    expect(r.code).toBe(1);
+    expect(r.stderr).toContain("unknown flag for `trip review ls`");
+  });
+
+  test("each subcommand still accepts its own flags", async () => {
+    // Not asserting the command succeeds — only that flag validation let it
+    // through to the command, which then fails for its own reasons.
+    const r = await run(["review", "ls", "--source=1"], { dbPath: dbPath("sub-ok") });
+    expect(r.stderr).not.toContain("unknown flag");
+  });
+
+  test("`trip watch <url>` is not mistaken for a subcommand", async () => {
+    // The second positional is a URL here, not a subcommand. Only a positional
+    // that names a real key may narrow validation.
+    const r = await run(
+      ["watch", "https://youtu.be/KHHlcCUTwZA", "--refresh"],
+      { dbPath: dbPath("watch-url") },
+    );
+    expect(r.stderr).not.toContain("unknown flag");
+  });
+
+  test("seg add rejects seg ls's flag and vice versa", async () => {
+    const a = await run(["seg", "add", "X", "--unplaced"], { dbPath: dbPath("seg-a") });
+    expect(a.stderr).toContain("unknown flag for `trip seg add`");
+    const b = await run(["seg", "ls", "--dur=60m"], { dbPath: dbPath("seg-b") });
+    expect(b.stderr).toContain("unknown flag for `trip seg ls`");
+  });
+
+  test("--help on a subcommand describes that subcommand", async () => {
+    const r = await run(["review", "resolve", "--help"], { dbPath: dbPath("sub-help") });
+    expect(r.code).toBe(0);
+    expect(r.stdout).toContain("--pick");
+    expect(r.stdout).toContain("--rename");
+    expect(r.stdout).not.toContain("trip replan");
+  });
+
+  test("watch ingest --help documents the kind vocabulary", async () => {
+    // This is where the agent contract is discoverable from the CLI itself.
+    const r = await run(["watch", "ingest", "--help"], { dbPath: dbPath("ing-help") });
+    expect(r.code).toBe(0);
+    expect(r.stdout).toContain("kind");
+    expect(r.stdout).toContain("landmark");
+  });
+
+  test("--help on a command with no subcommand help prints usage, never runs it", async () => {
+    // --help is a global bool flag, so without a fallback it would pass
+    // validation and then RUN the command — a silently ignored flag, in the
+    // very change that exists to end silently ignored flags.
+    const r = await run(["plan", "--help"], { dbPath: dbPath("plan-help") });
+    expect(r.code).toBe(0);
+    expect(r.stdout).toContain("trip replan");
+  });
+
+  test("--help with no command at all still prints the full usage", async () => {
+    const r = await run(["--help"], { dbPath: dbPath("top-help") });
+    expect(r.code).toBe(0);
+    expect(r.stdout).toContain("trip replan");
   });
 });

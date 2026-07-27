@@ -37,12 +37,11 @@ Usage:
 Flags:
   --json                       Machine-readable output (accepted by every command)
 
-Every command validates its own flags: one it does not own, or a value flag
-given space-separated instead of --name=value, is rejected rather than
-silently ignored. Validation is keyed per TOP-LEVEL command, not per
-subcommand, though - "review"'s flags cover "ls" and "resolve" together, so
-"trip review ls --reject" passes validation but ls itself never reads
---reject and silently ignores it.
+Every command validates its own flags, PER SUBCOMMAND: one it does not own, or
+a value flag given space-separated instead of --name=value, is rejected rather
+than silently ignored. "trip review ls --reject" is an error, because --reject
+belongs to "review resolve". Add --help after any command or subcommand for
+its own usage.
 `;
 
 export interface CliResult {
@@ -101,10 +100,20 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   new: {}, use: {}, ls: {}, show: {},
   when: { bool: ["--refresh"], value: ["--timeout"] },
   dates: { value: ["--arrive", "--depart", "--day-window"] },
+  // Fallback for a bare `trip seg`, and the union of the four below. It is
+  // what a subcommand-less invocation validates against, before the command
+  // itself fails for the right reason.
   seg: {
     bool: ["--unplaced"],
     value: ["--dur", "--cost", "--tag", "--at", "--hours", "--closed", "--from"],
   },
+  "seg add": {
+    value: ["--dur", "--cost", "--tag", "--at", "--hours", "--closed"],
+  },
+  "seg ls": { bool: ["--unplaced"], value: ["--from"] },
+  "seg rm": {},
+  "seg set": { value: ["--dur"] },
+
   plan: { value: ["--mode", "--pace"] },
   replan: { value: ["--mode", "--pace"] },
   day: {},
@@ -118,7 +127,74 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
     bool: ["--refresh", "--whisper", "--replace"],
     value: ["--mentions", "--source"],
   },
+  // No `"watch <url>"` key exists, and none can: `trip watch https://...`
+  // takes a URL where `trip watch ingest` takes a subcommand, so it falls
+  // back to `watch` above. That is why the key lookup below tests for
+  // EXISTENCE rather than for "this command has subcommands".
+  "watch ingest": {
+    bool: ["--replace"],
+    value: ["--mentions", "--source"],
+  },
+
   review: { bool: ["--reject"], value: ["--source", "--pick", "--rename"] },
+  "review ls": { value: ["--source"] },
+  "review resolve": { bool: ["--reject"], value: ["--pick", "--rename"] },
+};
+
+/** Per-subcommand usage. A key absent here falls back to the full USAGE
+ *  block, which is the honest default — a stub reading "no help available"
+ *  would be worse than the real thing. */
+const SUBCOMMAND_HELP: Record<string, string> = {
+  "seg add": `trip seg add <name...> [--dur=90m] [--cost=25] [--tag=food]
+                    [--at=<lat,lon>] [--hours=10:00-24:00] [--closed=mon,tue]
+
+  --hours accepts 24:00 as a closing time, stored as the end of the day.
+  Omitting --hours means opening hours are UNKNOWN, not "open all day".
+`,
+  "seg ls": `trip seg ls [--unplaced] [--from=<source-id>]
+
+  --unplaced  only segments with no coordinates
+  --from      only segments a given video produced
+`,
+  "seg rm": `trip seg rm <id>
+
+  A video-sourced segment returns its mention to the review queue rather
+  than vanishing from the record of what the video said.
+`,
+  "seg set": `trip seg set <id> --dur=90m
+
+  Corrects a dwell without delete-and-re-add.
+`,
+  "watch ingest": `trip watch ingest --mentions=<file.json> [--source=<id>] [--replace]
+
+  The file is a JSON array. One required field, four optional:
+
+    text   required, the name as the video said it
+    at     MM:SS or HH:MM:SS, minutes unbounded (102:15 is valid)
+    dwell  same grammar as --dur; absent means 60m, flagged [default]
+    tags   array of strings
+    kind   one of: street, temple, park, museum, station, restaurant,
+           market, shop, hotel, viewpoint, nature, neighbourhood, landmark
+
+  kind is compared against the geocoder's own classification, so a lone
+  result that contradicts it is queued for review instead of becoming a
+  segment. Declare the most precise kind you are confident in: a vaguer one
+  is safe but buys less checking, and omitting it is checked least.
+`,
+  "review ls": `trip review ls [--source=<id>]
+
+  Mentions awaiting a decision, with their candidates ranked and the reason
+  each is queued.
+`,
+  "review resolve": `trip review resolve <id> --pick=<n> | --reject | --rename="Actual Name"
+
+  Exactly one of the three is required.
+
+  --pick    accept candidate N from the list "trip review ls" printed
+  --reject  discard the mention, keeping the record that it was said
+  --rename  re-geocode under a corrected name; the mention may resolve or
+            return to the queue with fresh candidates
+`,
 };
 
 interface FlagIssues {
@@ -131,6 +207,21 @@ interface FlagIssues {
    *  `--cost=` in `seg add`, closed here at the CLI layer for every command's
    *  value flags at once. */
   empty: string[];
+}
+
+/** `trip review ls` validates against "review ls" when that key exists, and
+ *  against "review" otherwise.
+ *
+ *  Keyed on EXISTENCE, not on "this command has subcommands": `trip watch
+ *  <url>` takes a URL in the same position `trip watch ingest` takes a
+ *  subcommand, so treating every second positional as a subcommand would
+ *  look up "watch https://youtu.be/..." and fall through to an empty flag
+ *  set, rejecting every flag the command legitimately owns. */
+function flagKey(cmd: string, rest: string[]): string {
+  const sub = rest[1];
+  if (sub === undefined || sub.startsWith("--")) return cmd;
+  const composite = `${cmd} ${sub}`;
+  return composite in COMMAND_FLAGS ? composite : cmd;
 }
 
 function flagIssues(cmd: string, argv: string[]): FlagIssues {
@@ -193,10 +284,26 @@ export async function run(
   // `pin` and nothing to `plan`), so there is no correct answer before `cmd`
   // is resolved.
   const cmd = rest[0]!;
-  const { unknown, empty } = flagIssues(cmd, argv);
+  const key = flagKey(cmd, rest);
+
+  // Before validation, because `--help` is a GLOBAL_BOOL_FLAG and would
+  // otherwise pass validation and then let the command RUN — a silently
+  // ignored flag, in the very mechanism that exists to end them. Falls back
+  // to the full usage, so `--help` is never ignored anywhere.
+  if (argv.includes("--help")) {
+    const help = SUBCOMMAND_HELP[key] ?? USAGE;
+    return json
+      ? { stdout: JSON.stringify({ usage: help.trimEnd().split("\n") }), stderr: "", code: 0 }
+      : { stdout: help, stderr: "", code: 0 };
+  }
+
+  const { unknown, empty } = flagIssues(key, argv);
   if (unknown.length > 0) {
     return fail(
-      `unknown flag for \`trip ${cmd}\`: ${unknown.join(", ")}` +
+      // Names the SUBCOMMAND, which is the point: "unknown flag for
+      // `trip review ls`" tells the reader why a flag they know exists was
+      // rejected, where "for `trip review`" would read as a lie.
+      `unknown flag for \`trip ${key}\`: ${unknown.join(", ")}` +
       ` (values are --name=value, never space-separated)`,
       json,
     );
