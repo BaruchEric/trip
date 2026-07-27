@@ -3,6 +3,7 @@ import type { Client } from "@libsql/client";
 import { openDb, migrate } from "@/db";
 import { run } from "@/cli";
 import { listMentions, getMention } from "@/mentions";
+import { listSegments } from "@/segments";
 import { latestSource } from "@/sources";
 import { MODES, PACES } from "@/plan/types";
 import type { PoiCandidate } from "@/geo/poi";
@@ -186,7 +187,14 @@ async function assertAccounted(db: Client, tripId: number) {
     resolved: all.filter((m) => m.state === "resolved").length,
     rejected: all.filter((m) => m.state === "rejected").length,
   };
-  expect(byState.pending + byState.resolved + byState.rejected).toBe(all.length);
+  // The name's own promise: `seg ls` (segments) + `review ls` (pending) +
+  // rejected must equal the mention count. None of the fixtures in this file
+  // ever add a segment outside the ingest/resolve pipeline, so every segment
+  // in the trip is attributed to exactly one resolved mention - a duplicate
+  // or a silently-missing segment would drift this count without ever
+  // touching `byState.resolved`, which only reads the mentions table.
+  const segments = await listSegments(db, tripId);
+  expect(segments.length).toBe(byState.resolved);
   return byState;
 }
 
