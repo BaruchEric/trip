@@ -1,6 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { resolveWatchScript, watchArgv, runWatch } from "@/watch/run";
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -72,6 +72,24 @@ describe("watchArgv", () => {
   });
 });
 
+/** Pull the work dir out of a failure message, and assert it was named at
+ *  all. A failure that keeps a directory but does not say where it is leaves
+ *  the user with nothing to inspect, which is the whole point of keeping it. */
+function keptWorkDir(message: string): string {
+  const m = /Working directory kept at (\S+)/.exec(message);
+  if (!m) throw new Error(`error did not name a work dir: ${message}`);
+  return m[1]!;
+}
+
+async function failureOf(opts: Parameters<typeof runWatch>[1]): Promise<Error> {
+  try {
+    await runWatch("https://x", opts);
+  } catch (e) {
+    return e as Error;
+  }
+  throw new Error("expected runWatch to reject, but it resolved");
+}
+
 describe("runWatch", () => {
   test("parses the report from a successful run", async () => {
     const report = await runWatch("https://x", {
@@ -83,20 +101,51 @@ describe("runWatch", () => {
   });
 
   test("a non-zero exit throws with the stderr tail", async () => {
-    await expect(
-      runWatch("https://x", {
-        scriptPath: "/w.py",
-        runner: async () => ({ stdout: "", stderr: "yt-dlp: video unavailable", code: 1 }),
-      }),
-    ).rejects.toThrow(/video unavailable/);
+    const err = await failureOf({
+      scriptPath: "/w.py",
+      runner: async () => ({ stdout: "", stderr: "yt-dlp: video unavailable", code: 1 }),
+    });
+    expect(err.message).toMatch(/video unavailable/);
+    rmSync(keptWorkDir(err.message), { recursive: true, force: true });
   });
 
   test("an exit 0 with empty stdout is still a failure, not an empty report", async () => {
-    await expect(
-      runWatch("https://x", {
-        scriptPath: "/w.py",
-        runner: async () => ({ stdout: "   ", stderr: "", code: 0 }),
-      }),
-    ).rejects.toThrow(/no output/i);
+    const err = await failureOf({
+      scriptPath: "/w.py",
+      runner: async () => ({ stdout: "   ", stderr: "", code: 0 }),
+    });
+    expect(err.message).toMatch(/no output/i);
+    rmSync(keptWorkDir(err.message), { recursive: true, force: true });
+  });
+
+  test("a runner that throws keeps the work dir and names it", async () => {
+    const err = await failureOf({
+      scriptPath: "/w.py",
+      runner: async () => { throw new Error("spawn python3 ENOENT"); },
+    });
+    expect(err.message).toContain("ENOENT");
+    const dir = keptWorkDir(err.message);
+    expect(existsSync(dir)).toBe(true);
+    rmSync(dir, { recursive: true, force: true });
+  });
+
+  test("a non-zero exit keeps the work dir and names it", async () => {
+    const err = await failureOf({
+      scriptPath: "/w.py",
+      runner: async () => ({ stdout: "", stderr: "yt-dlp: video unavailable", code: 1 }),
+    });
+    const dir = keptWorkDir(err.message);
+    expect(existsSync(dir)).toBe(true);
+    rmSync(dir, { recursive: true, force: true });
+  });
+
+  test("an empty stdout keeps the work dir and names it", async () => {
+    const err = await failureOf({
+      scriptPath: "/w.py",
+      runner: async () => ({ stdout: "   ", stderr: "", code: 0 }),
+    });
+    const dir = keptWorkDir(err.message);
+    expect(existsSync(dir)).toBe(true);
+    rmSync(dir, { recursive: true, force: true });
   });
 });
