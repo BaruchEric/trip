@@ -6,11 +6,15 @@ import {
   getMention,
 } from "@/mentions";
 import { addSegment, listSegments } from "@/segments";
+import type { Kind } from "@/geo/plausibility";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-async function queued(tag: string, opts: { dwellMinutes?: number | null } = {}) {
+async function queued(
+  tag: string,
+  opts: { dwellMinutes?: number | null; kind?: Kind | null } = {},
+) {
   const p = join(tmpdir(), `trip-review-${tag}-${process.pid}.db`);
   rmSync(p, { force: true });
   const db = openDb(p);
@@ -37,7 +41,7 @@ async function queued(tag: string, opts: { dwellMinutes?: number | null } = {}) 
   });
   const id = await createMention(db, 1, 1, {
     text: "hot pot", atSeconds: 272, dwellMinutes: opts.dwellMinutes ?? null,
-    tags: [], kind: null,
+    tags: [], kind: opts.kind ?? null,
   });
   await setCandidates(db, id, [{
     rank: 1, displayName: "夜福火锅, 渝中区, 重庆市", localName: "夜福火锅",
@@ -194,6 +198,65 @@ describe("trip review resolve", () => {
     const segs = await listSegments(db, 1);
     expect(segs[0]!.name).toBe("Ichiran Chongqing");
     expect(segs[0]!.localName).toBe("一兰拉面");
+  });
+
+  test("--rename re-runs the plausibility check against the mention's kind", async () => {
+    // Without this, --rename is a documented bypass: it re-geocodes, so it is
+    // exactly the path a wrong unique result can re-enter through, and every
+    // corrected mention would resolve on uniqueness alone.
+    const { db, id } = await queued("rename-recheck", { kind: "street" });
+    const HOTEL = {
+      geocode: async () => [{
+        displayName: "你好酒店(重庆解放碑步行街店), 渝中区, 重庆市",
+        localName: "你好酒店(重庆解放碑步行街店)",
+        latitude: 29.557, longitude: 106.577,
+        category: "tourism", type: "hotel", importance: 0.0001,
+        osmType: "node", osmId: 9, kmFromCentre: 2.1,
+      }],
+    };
+
+    const out = await runReviewCommand(
+      db, ["resolve", String(id), "--rename=Jiefangbei Pedestrian Street"],
+      false, HOTEL,
+    );
+
+    expect(out).toContain("type mismatch");
+    const m = (await getMention(db, 1, id))!;
+    expect(m.state).toBe("pending");
+    expect(m.reason).toBe("type mismatch: expected street, got tourism/hotel");
+    expect(m.segmentId).toBeNull();
+    // The video's own words survive; the correction lives in resolved_name.
+    expect(m.text).toBe("hot pot");
+    expect(m.resolvedName).toBe("Jiefangbei Pedestrian Street");
+    // And the candidate is still there to accept with --pick=1.
+    expect(m.candidates).toHaveLength(1);
+    expect(await listSegments(db, 1)).toEqual([]);
+  });
+
+  test("--rename against a malformed geocode result leaves the mention untouched", async () => {
+    // Deferred from M3 as honest but untested. parsePoiResponse throws on a
+    // result it cannot read, and this call site has no try/catch, so the
+    // command fails and the mention comes out exactly as it went in — old
+    // name, old candidates. That is the safe outcome, and now it is pinned.
+    const { db, id } = await queued("rename-malformed");
+    const BROKEN = {
+      geocode: async () => {
+        throw new Error("unusable geocode result (missing coordinates or name)");
+      },
+    };
+
+    await expect(runReviewCommand(
+      db, ["resolve", String(id), "--rename=Ramen Ichiban"], false, BROKEN,
+    )).rejects.toThrow("unusable geocode result");
+
+    const m = (await getMention(db, 1, id))!;
+    expect(m.text).toBe("hot pot");
+    expect(m.resolvedName).toBeNull();
+    expect(m.reason).toBe("1 candidate");
+    expect(m.state).toBe("pending");
+    // The OLD name's candidates, unreplaced.
+    expect(m.candidates).toHaveLength(1);
+    expect(m.candidates[0]!.localName).toBe("夜福火锅");
   });
 
   test("--rename that stays ambiguous returns to the queue with fresh candidates", async () => {

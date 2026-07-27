@@ -156,10 +156,11 @@ async function resolveCmd(
     // reader just saw.
     await setCandidates(db, id, candidates.map((c, i) => ({ ...c, rank: i + 1 })));
 
-    // NULL for now, which is exactly M3's behaviour on this path. The next
-    // commit passes the mention's own kind — until it does, --rename is a
-    // bypass, and its test is what proves the difference.
-    const verdict = classify(candidates, null);
+    // The mention's OWN kind, so a corrected name is held to the same standard
+    // as the original. `--rename` re-geocodes, which makes it exactly the path
+    // a wrong unique result can re-enter through; passing null here would make
+    // it a documented bypass.
+    const verdict = classify(candidates, mention.kind);
     if (verdict.kind === "queued") {
       await queueMention(db, id, verdict.reason);
       return json
