@@ -436,6 +436,50 @@ const MIGRATIONS: Migration[] = [
         ? []
         : [`ALTER TABLE mentions ADD COLUMN query TEXT`],
   },
+  {
+    version: 12,
+    // M8: a MEASURED walking leg between two points.
+    //
+    // No trip_id: a leg is a fact about two points in a city, shared by every
+    // trip that visits them. Keyed on COORDINATES rather than segment ids, so
+    // a segment moved by M7's --query or --rename MISSES and falls back to the
+    // model, instead of silently answering with a leg measured from where it
+    // used to be.
+    //
+    // DIRECTED. The recon measured Valhalla pedestrian at 23.4 min one way and
+    // 32.1 the other over the same 360 m -- it models grade, OSRM foot does
+    // not. One row per unordered pair would have made every uphill return leg
+    // wrong with nothing anywhere to notice it.
+    //
+    // One row PER SOURCE, never merged: the two routers disagree by a median
+    // 4.7 and a maximum 25.1 minutes, and that spread is a finding about the
+    // city. Storing a midpoint would erase it permanently.
+    statements: async (db) =>
+      (await hasColumn(db, "route_legs", "minutes"))
+        ? []
+        : [
+            `CREATE TABLE IF NOT EXISTS route_legs (
+               id         INTEGER PRIMARY KEY AUTOINCREMENT,
+               from_lat   REAL NOT NULL,
+               from_lon   REAL NOT NULL,
+               to_lat     REAL NOT NULL,
+               to_lon     REAL NOT NULL,
+               mode       TEXT NOT NULL,
+               -- Free TEXT, not a CHECK: a third router should be an INSERT,
+               -- not a migration.
+               source     TEXT NOT NULL,
+               -- REAL, not INTEGER. The routers return seconds and metres, and
+               -- rounding at write time would discard the very spread this
+               -- table exists to preserve. Rounding happens at the point of
+               -- use, where whole-minute travel times are still the rule.
+               minutes    REAL NOT NULL,
+               meters     REAL NOT NULL,
+               fetched_at TEXT NOT NULL
+             )`,
+            `CREATE UNIQUE INDEX IF NOT EXISTS route_legs_key
+               ON route_legs (from_lat, from_lon, to_lat, to_lon, mode, source)`,
+          ],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */
