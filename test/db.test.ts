@@ -457,17 +457,35 @@ describe("schema migrations", () => {
     const db = openDb(tmpDb("m13-idem"));
     await migrate(db);
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(13);
+    expect(await schemaVersion(db)).toBe(14);
     expect(await columnsOf(db, "trips")).not.toContain("lodging_tier");
   });
 
-  test("schema version is 13", async () => {
+  test("migration 14 is idempotent and both tables survive it", async () => {
+    const db = openDb(tmpDb("m14-idem"));
+    await migrate(db);
+    await migrate(db);
+    expect(await schemaVersion(db)).toBe(14);
+    expect(await columnsOf(db, "transit_stations")).toContain("destination_id");
+    expect(await columnsOf(db, "transit_edges")).toContain("line");
+  });
+
+  test("migration 14 keeps the network per destination, not global", async () => {
+    // The scoping is the whole reason this table differs from route_legs.
+    // A station's identity is its NAME, and a name is not globally unique, so
+    // a shared node between two cities would produce an edge between them.
+    const db = openDb(tmpDb("m14-scope"));
+    await migrate(db);
+    expect(await columnsOf(db, "transit_stations")).toContain("destination_id");
+  });
+
+  test("schema version is 14", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m13-version"));
+    const db = openDb(tmpDb("m14-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(13);
+    expect(await schemaVersion(db)).toBe(14);
   });
 
   test("migration 11 adds mentions.query, defaulting to NULL", async () => {

@@ -507,6 +507,69 @@ const MIGRATIONS: Migration[] = [
           ]
         : [],
   },
+  {
+    version: 14,
+    // M12: the urban rail network, as OSM has it.
+    //
+    // SCOPED BY DESTINATION, unlike route_legs, and the difference is
+    // load-bearing. A measured leg is keyed on COORDINATES, which are globally
+    // unique, so it needs no city. A station graph's node identity is a NAME —
+    // and "Central" is a station in a great many cities. Stored globally, two
+    // networks would share a node and the router would happily emit an edge
+    // between two continents. Scoping makes that impossible rather than
+    // unlikely.
+    //
+    // WHAT A STATION IS HERE: one NAME, at the centroid of every stop node
+    // carrying it. A route relation has one stop node per platform per
+    // direction, so Line 1 and Line 6 at one interchange are different nodes
+    // with the same name; grouping by name is what makes a transfer possible
+    // in the graph at all. The cost is that two GENUINELY DISTINCT stations
+    // sharing a name inside one city merge into a single node, and the graph
+    // would then offer a free transfer between places that are not connected.
+    // Nothing in the M12 recon checked for that. It is a known limitation,
+    // recorded rather than fixed.
+    //
+    // EDGES ARE DIRECTED, for a stronger reason than route_legs': a
+    // `route=subway` relation IS one direction of one line, so the ordering is
+    // the source's own rather than something inferred. `line` is the relation's
+    // `ref`, and a change of `ref` between consecutive edges is what a transfer
+    // IS in this model — without it there is nothing to charge a transfer on.
+    //
+    // NO TIME COLUMN, deliberately. The recon checked all 126 route relations
+    // across four cities at the tag level: zero `interval`, zero `headway`,
+    // zero `duration`. A minutes column here would have to be computed from
+    // assumed constants and would then be indistinguishable from a measured
+    // one forever after — the fabricated-denominator mistake migration 3 was
+    // written to avoid. Distance is what OSM supports; minutes are derived at
+    // the point of use, where the assumption is visible.
+    statements: async (db) =>
+      (await hasColumn(db, "transit_stations", "name"))
+        ? []
+        : [
+            `CREATE TABLE IF NOT EXISTS transit_stations (
+               destination_id INTEGER NOT NULL REFERENCES destinations(id),
+               name           TEXT NOT NULL,
+               latitude       REAL NOT NULL,
+               longitude      REAL NOT NULL,
+               PRIMARY KEY (destination_id, name)
+             )`,
+            `CREATE TABLE IF NOT EXISTS transit_edges (
+               destination_id INTEGER NOT NULL REFERENCES destinations(id),
+               from_name      TEXT NOT NULL,
+               to_name        TEXT NOT NULL,
+               -- The line's OSM ref. NOT NULL: an edge whose line is unknown
+               -- cannot be charged a transfer either way, and defaulting it to
+               -- '' would silently merge every unlabelled line into one.
+               line           TEXT NOT NULL,
+               -- Straight-line km between the two station centroids. The track
+               -- between them curves; this under-states it, and the model that
+               -- reads it says so rather than applying a detour factor nothing
+               -- measured.
+               km             REAL NOT NULL,
+               PRIMARY KEY (destination_id, from_name, to_name, line)
+             )`,
+          ],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */
