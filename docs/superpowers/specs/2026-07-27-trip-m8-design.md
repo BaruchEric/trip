@@ -213,8 +213,14 @@ overwrote every Chinese fixture.
 4. A hop with no leg renders `(estimated)` and schedules the model's number,
    unchanged from M7 — the control, and the assertion most likely to be skipped
    because it asserts that nothing happened.
-5. `--mode=transit` finds no legs and is bit-for-bit identical to M7's output.
-   D7 as an executable claim rather than a paragraph.
+5. `--mode=transit` finds no legs, so every transit hop uses the model's
+   number and renders `(estimated)`. D7 as an executable claim rather than a
+   paragraph.
+
+   Note what this does **not** say. A transit plan is not byte-identical to
+   M7's: every plan now carries hop lines, transit included, and
+   `-> N min transit (estimated)` is a line M7 never printed. The claim is
+   about the numbers and the absence of legs, not about the bytes.
 
 **Cross-command consistency**, as every milestone since M4: `trip route` and
 `trip plan` must not disagree about how many legs are known.

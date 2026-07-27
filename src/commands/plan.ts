@@ -322,12 +322,25 @@ async function doDay(db: Client, argv: string[], json: boolean): Promise<string>
   // the first day it covers, which is usually not this one.
   const pricing = await buildPricing(
     db, trip.id, trip.currency, days, placements, segments);
-  if (json) return planJson([day], placements, segments, dayUnplaced, pricing);
+  // F: `trip day` used to render no hop lines at all while `trip plan` showed
+  // them for the same stored placements -- two commands describing one
+  // database and disagreeing, which is the defect class M4's cross-command
+  // check exists for. It went unnoticed because every render test calls
+  // renderDay WITHOUT a travel model, exercising a path the CLI no longer
+  // takes.
+  //
+  // `trip.mode` and not a flag: `trip day` takes none, so the mode is
+  // whatever the plan was last compiled with.
+  const travel: PlanTravel = {
+    model: withLegs(await listLegs(db)),
+    mode: trip.mode as Mode,
+  };
+  if (json) return planJson([day], placements, segments, dayUnplaced, pricing, travel);
   // withBreakdown: `trip day` is the detail view, so it earns the
   // per-traveller rows that `trip plan` deliberately omits.
   return renderDay(
     day, placements, new Map(segments.map((s) => [s.id, s])), dayUnplaced,
-    pricing, true);
+    pricing, true, travel);
 }
 
 async function doPin(db: Client, argv: string[], json: boolean): Promise<string> {

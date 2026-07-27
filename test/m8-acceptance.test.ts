@@ -213,6 +213,33 @@ describe("M8 cross-command consistency", () => {
     expect(hops.every((h: { measured: boolean }) => h.measured)).toBe(true);
   });
 
+  test("trip plan and trip day describe the same hops", async () => {
+    // This is the one that was missing. `trip day` rendered no hop lines at
+    // all while `trip plan` rendered them for the same stored placements, and
+    // the consistency test only compared `trip route` against `trip plan`.
+    //
+    // It hid because every renderDay test calls the function WITHOUT a travel
+    // model, so the no-hop path stayed green while the CLI stopped using it.
+    const { db, path } = await realTrip("planvsday");
+    await runRouteCommand(db, [], true, {
+      osrm: replay("osrm"), valhalla: replay("valhalla"),
+      sleepFn: async () => {}, now: () => "2026-07-27T12:00:00Z",
+    });
+    const plan = (await run(["plan"], { dbPath: path })).stdout;
+    const day = (await run(["day", "1"], { dbPath: path })).stdout;
+
+    const hops = (s: string) => s.split("\n").filter((l) => l.includes("min walk"));
+    expect(hops(plan).length).toBe(2);
+    expect(hops(day)).toEqual(hops(plan));
+
+    // And under --json, where the agent actually reads it.
+    const planJ = JSON.parse((await run(["plan", "--json"], { dbPath: path })).stdout);
+    const dayJ = JSON.parse((await run(["day", "1", "--json"], { dbPath: path })).stdout);
+    const arrivals = (j: { days: { placements: { arriveBy: unknown }[] }[] }) =>
+      j.days[0]!.placements.map((p) => p.arriveBy);
+    expect(arrivals(dayJ)).toEqual(arrivals(planJ));
+  });
+
   test("the measured plan really is slower than the modelled one", async () => {
     // The end-to-end consequence, in minutes on the clock rather than in a
     // lookup table.
