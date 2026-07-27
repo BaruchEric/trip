@@ -159,3 +159,43 @@ describe("M6: a renamed mention shows both names", () => {
     expect(out).not.toMatch(/said/);
   });
 });
+
+describe("M7: the queue says what it searched", () => {
+  test("a mention with a query shows it", () => {
+    const out = renderReviewQueue([mention({
+      text: "Longmenhao Old Street", resolvedName: null,
+      query: "龙门浩老街", reason: "no match", candidates: [],
+    })], "Chongqing", 25);
+    expect(out).toContain("Longmenhao Old Street");
+    expect(out).toContain("龙门浩老街");
+    // `(searched: ` with the colon, NOT the bare word: the queue header has
+    // said "searched a 25 km box around Chongqing" since M3, so a loose
+    // match here passes on the wrong line -- the same trap M5's sweep caught
+    // with "+ 1 unknown".
+    expect(out).toContain("(searched: 龙门浩老街)");
+  });
+
+  test("no query means no extra text", () => {
+    const out = renderReviewQueue([mention({ query: null })], "Chongqing", 25);
+    expect(out).not.toContain("(searched:");
+  });
+
+  test("a query equal to the name adds nothing", () => {
+    const out = renderReviewQueue([mention({
+      text: "Shibati", resolvedName: null, query: "Shibati",
+    })], "Chongqing", 25);
+    expect(out).not.toContain("(searched:");
+  });
+
+  test("said, called and searched are three distinct facts, all shown", () => {
+    // The queue is the one place a reader can compare them.
+    const out = renderReviewQueue([mention({
+      text: "Longman how old street",
+      resolvedName: "Longmenhao Old Street",
+      query: "龙门浩老街", reason: "no match", candidates: [],
+    })], "Chongqing", 25);
+    expect(out).toContain("Longmenhao Old Street");
+    expect(out).toContain("Longman how old street");
+    expect(out).toContain("龙门浩老街");
+  });
+});

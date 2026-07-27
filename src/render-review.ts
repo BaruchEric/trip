@@ -31,8 +31,14 @@ export function renderReviewQueue(
     const said = m.resolvedName !== null && m.resolvedName !== m.text
       ? `  (said: "${m.text}")`
       : "";
+    // What it was looked up BY, when that differs from what it is called.
+    // A `no match` against a name that plainly exists is mysterious without
+    // this, in exactly the way a failed --rename was before M6.
+    const searched = m.query !== null && m.query !== m.name
+      ? `  (searched: ${m.query})`
+      : "";
     lines.push(
-      `#${m.id}  "${m.name}"${said}  (source ${m.sourceId}, ${at}) - ${m.reason ?? "pending"}`,
+      `#${m.id}  "${m.name}"${said}${searched}  (source ${m.sourceId}, ${at}) - ${m.reason ?? "pending"}`,
     );
     if (m.candidates.length === 0) {
       lines.push(
