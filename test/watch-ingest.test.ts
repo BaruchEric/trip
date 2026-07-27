@@ -2,7 +2,7 @@ import { expect, test, describe } from "bun:test";
 import {
   parseMentionsFile, classify, DEFAULT_DWELL_MINUTES, ingestMentions,
 } from "@/watch/ingest";
-import type { PoiCandidate } from "@/geo/poi";
+import { parsePoiResponse, type PoiCandidate } from "@/geo/poi";
 import { openDb, migrate } from "@/db";
 import { listMentions } from "@/mentions";
 import { listSegments } from "@/segments";
@@ -255,6 +255,39 @@ describe("ingestMentions", () => {
     const [m] = await listMentions(db, 1);
     expect(m!.reason).toBe("no match");
     expect(m!.candidates).toEqual([]);
+  });
+
+  test("an unusable result inside a two-result response cannot upgrade an ambiguous match to confident", async () => {
+    // Regression (M3 final review): parsePoiResponse used to silently drop a
+    // result missing coordinates or a name. A two-result response with one
+    // droppable entry then counted as ONE candidate, and classify() (this
+    // file) made a mention the confidence rule says must be QUEUED into a
+    // confident segment with no review and no mark. parsePoiResponse now
+    // throws instead of dropping (src/geo/poi.ts); ingestMentions's existing
+    // try/catch around the geocode call queues the mention with that message
+    // as its reason, so the mention below must stay PENDING, not resolved.
+    const db = await ingestDb("unusable-result");
+    const r = await ingestMentions(db, 1, 1,
+      [{ text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [] }],
+      CENTRE,
+      {
+        geocode: async (q, c) => parsePoiResponse([
+          {
+            lat: "29.5630", lon: "106.5670",
+            name: "夜福火锅", display_name: "夜福火锅, 北区路, 解放碑, 渝中区, 重庆市, 中国",
+          },
+          { lat: undefined, lon: undefined, name: "地下之城老火锅" },
+        ], c),
+        sleepFn: NO_SLEEP,
+      },
+    );
+    expect(r).toEqual({ total: 1, geocoded: 0, queued: 0, failed: 1 });
+    expect(await listSegments(db, 1)).toEqual([]);
+
+    const [m] = await listMentions(db, 1);
+    expect(m!.state).toBe("pending");
+    expect(m!.reason).toContain("geocode failed");
+    expect(m!.reason).toContain("unusable geocode result");
   });
 
   test("one failed lookup does not abort the others", async () => {

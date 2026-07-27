@@ -85,11 +85,16 @@ export function parsePoiResponse(json: unknown, centre: Centre): PoiCandidate[] 
   return (json as RawPoi[]).flatMap((r): PoiCandidate[] => {
     const latitude = num(r.lat);
     const longitude = num(r.lon);
-    // A result without coordinates is not a place we can schedule. Dropping it
-    // is honest; defaulting to 0,0 would put it in the Gulf of Guinea.
-    if (latitude === null || longitude === null) return [];
     const displayName = str(r.display_name) ?? str(r.name);
-    if (displayName === null) return [];
+    // A result we cannot read makes the RESULT COUNT untrustworthy, and the
+    // confidence rule is nothing but a count: silently dropping one turns a
+    // two-result response into a confident single match. Refuse to classify a
+    // response we cannot fully read — the caller queues the mention with this
+    // message as its reason, which is the honest outcome, because we genuinely
+    // do not know how many places matched.
+    if (latitude === null || longitude === null || displayName === null) {
+      throw new Error("unusable geocode result (missing coordinates or name)");
+    }
     return [{
       displayName,
       localName: str(r.name),

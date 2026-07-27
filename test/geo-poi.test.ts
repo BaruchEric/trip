@@ -76,9 +76,22 @@ describe("parsePoiResponse", () => {
     expect(cs[0]!.localName).toBe("夜福火锅");
   });
 
-  test("a result with no coordinates is dropped rather than stored at 0,0", () => {
-    const cs = parsePoiResponse([{ ...HONGYA[0], lat: undefined, lon: undefined }], CHONGQING);
-    expect(cs).toEqual([]);
+  test("an unusable result is refused rather than silently dropped", () => {
+    // Dropping it would be dishonest here in a way that matters beyond this
+    // one result: classify() (src/watch/ingest.ts) is nothing but a count of
+    // candidates, so silently dropping one result out of two would turn a
+    // two-result response the confidence rule says must be QUEUED into a
+    // false-confident single match. Throwing lets the caller queue the whole
+    // mention with an honest reason instead.
+    expect(() => parsePoiResponse(
+      [{ ...HONGYA[0], lat: undefined, lon: undefined }], CHONGQING,
+    )).toThrow("unusable geocode result");
+  });
+
+  test("a result missing both name fields is refused the same way", () => {
+    expect(() => parsePoiResponse(
+      [{ ...HONGYA[0], name: undefined, display_name: undefined }], CHONGQING,
+    )).toThrow("unusable geocode result");
   });
 
   test("an unnamed feature has a null local name, not an empty string", () => {
