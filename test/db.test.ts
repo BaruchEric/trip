@@ -104,6 +104,35 @@ async function columnsOf(db: Client, table: string): Promise<string[]> {
   return r.rows.map((row) => row.name as string).sort();
 }
 
+/** A database at exactly v5, recorded as such in `schema_version` rather than
+ *  inferred via `hasColumn` -- the shape of the live ~/.trip/trip.db before
+ *  migration 6. Every other migration-6 test below starts from an empty
+ *  database; this fixture lets one test prove the migration lands correctly
+ *  on a database that already has real data in it. */
+async function openV5Db(name: string): Promise<Client> {
+  const db = await openV4Db(name);
+  await db.execute(
+    `ALTER TABLE climate_months ADD COLUMN day_count INTEGER NOT NULL DEFAULT 0`,
+  );
+  await db.execute(
+    `ALTER TABLE climate_months ADD COLUMN expected_days INTEGER NOT NULL DEFAULT 0`,
+  );
+  await db.execute(`ALTER TABLE placements ADD COLUMN pin_start_minutes INTEGER`);
+  await db.execute(
+    `CREATE TABLE IF NOT EXISTS schema_version (
+       version INTEGER PRIMARY KEY,
+       applied_at TEXT NOT NULL
+     )`,
+  );
+  for (let v = 1; v <= 5; v++) {
+    await db.execute({
+      sql: `INSERT INTO schema_version (version, applied_at) VALUES (?, ?)`,
+      args: [v, "2026-01-01T00:00:00.000Z"],
+    });
+  }
+  return db;
+}
+
 describe("db", () => {
   test("migrate creates all M1 tables", async () => {
     const db = openDb(tmpDb("tables"));
@@ -399,5 +428,41 @@ describe("schema migrations", () => {
     const db = openDb(tmpDb("m6-version"));
     await migrate(db);
     expect(await schemaVersion(db)).toBe(6);
+  });
+
+  test("migration 6 backfills an existing segments row instead of erasing it", async () => {
+    // The live ~/.trip/trip.db is exactly this shape: recorded at version 5
+    // with real segments already in it. This is migration 6's analogue of
+    // the migration 5 test above ("...without disturbing existing placement
+    // rows") -- proving the ALTERs land on populated data, not just an
+    // empty database.
+    const db = await openV5Db("m6-backfill");
+    expect(await schemaVersion(db)).toBe(5);
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["lisbon", "2026-07-27"],
+    });
+    await db.execute({
+      sql: `INSERT INTO segments (trip_id, name, latitude, longitude, dwell_minutes)
+            VALUES (?, ?, ?, ?, ?)`,
+      args: [1, "Torre", 38.69, -9.21, 60],
+    });
+
+    await migrate(db);
+
+    expect(await schemaVersion(db)).toBe(6);
+    const row = await db.execute("SELECT * FROM segments WHERE id = 1");
+    expect(row.rows).toHaveLength(1);
+    const r = row.rows[0]!;
+    // The row predates M3 entirely, so it genuinely was never a defaulted
+    // dwell -- 0 is the true claim here, not a placeholder.
+    expect(Number(r.dwell_is_default)).toBe(0);
+    // Unknown provenance is NULL, never a value -- absence is loud.
+    expect(r.local_name).toBeNull();
+    expect(r.source_id).toBeNull();
+    expect(r.source_at_seconds).toBeNull();
+    // Untouched by the backfill.
+    expect(r.name).toBe("Torre");
+    expect(Number(r.dwell_minutes)).toBe(60);
   });
 });
