@@ -108,10 +108,33 @@ describe("mentions", () => {
       { ...CANDIDATE, rank: 2, displayName: "second" },
       { ...CANDIDATE, rank: 1, displayName: "first" },
     ]);
+    // Read before replacing: inserted 2-then-1, must come back 1-then-2.
+    const ranked = (await getMention(db, 1, id))!.candidates;
+    expect(ranked.map((c) => c.displayName)).toEqual(["first", "second"]);
+
     await setCandidates(db, id, [{ ...CANDIDATE, rank: 1, displayName: "only" }]);
     const m = (await getMention(db, 1, id))!;
     expect(m.candidates.length).toBe(1);
     expect(m.candidates[0]!.displayName).toBe("only");
+  });
+
+  test("rejection wins over a segment the mention once had", async () => {
+    const db = await freshDb("reject-after-resolve");
+    const id = await createMention(db, 1, 1, HOTPOT);
+    const segId = await addSegment(db, 1, {
+      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, cost: null,
+      tags: [], opensMin: null, closesMin: null, closedDays: [],
+    });
+    await resolveMention(db, id, segId);
+    await rejectMention(db, id, "2026-07-27T12:00:00Z");
+
+    const m = (await getMention(db, 1, id))!;
+    // Both facts are on the row. mentionState checks rejected_at FIRST, so the
+    // terminal decision wins over the earlier one. Swapping those two branches
+    // would report "resolved" here and no other test would notice.
+    expect(m.segmentId).toBe(segId);
+    expect(m.rejectedAt).not.toBeNull();
+    expect(m.state).toBe("rejected");
   });
 
   test("deleting a segment returns its mention to the queue", async () => {
@@ -151,9 +174,11 @@ describe("mentions", () => {
       opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, resolved, segId);
+    const rejected = await createMention(db, 1, 1, { ...HOTPOT, text: "noodles" });
+    await rejectMention(db, rejected, "2026-07-27T12:00:00Z");
 
     const removed = await deleteUnresolvedMentions(db, 1, 1);
-    expect(removed).toBe(1);
+    expect(removed).toBe(2);            // pending AND rejected, not just pending
     const left = await listMentions(db, 1);
     expect(left.length).toBe(1);
     expect(left[0]!.state).toBe("resolved");
