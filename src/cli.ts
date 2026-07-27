@@ -13,6 +13,7 @@ import { runWhoCommand } from "@/commands/who";
 import { runPassCommand } from "@/commands/passes";
 import { runCostsCommand } from "@/commands/costs";
 import { runRouteCommand, type RouteDeps } from "@/commands/route";
+import { runCalibrateCommand } from "@/commands/calibrate";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -41,6 +42,7 @@ Usage:
   trip unpin <seg>             Release a pinned segment
   trip move <seg> --to=day<n>  Move a segment to another day (pins it)
   trip route                   Measure real walking legs (network) [--refresh]
+  trip calibrate               How wrong the travel model is, here
   trip replan                  Rebuild the plan, respecting pins
 
   trip watch <url>             Fetch a video transcript [--refresh] [--whisper]
@@ -153,6 +155,10 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // in the route path reads one, and declaring a flag that is then silently
   // ignored is the exact anti-pattern this table exists to end.
   route: { bool: ["--refresh"] },
+  // Read-only and offline: it derives from legs `trip route` already stored.
+  // No flags of its own -- it reports on the trip's own mode, so a --mode
+  // here would let you ask about a mode the plan is not compiled with.
+  calibrate: {},
 
   plan: { value: ["--mode", "--pace"] },
   replan: { value: ["--mode", "--pace"] },
@@ -198,6 +204,25 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
  *  block, which is the honest default — a stub reading "no help available"
  *  would be worse than the real thing. */
 const SUBCOMMAND_HELP: Record<string, string> = {
+  calibrate: `trip calibrate
+
+  How wrong this project's own travel model is, in THIS city, measured
+  against the legs trip route already stored. Read-only and offline.
+
+  Reported per distance band, as model divided by measured:
+
+    below 100%  the model UNDER-estimates; a plan built on it runs late
+    above 100%  the model over-estimates; the plan runs early
+    -           no legs in that band, so it is UNKNOWN, not agreement
+
+  Which of the two happens depends on the CITY. Measured across four:
+  the model is optimistic in Chongqing and pessimistic in Bangkok, Lisbon
+  and Amsterdam. That is why no constant was retuned and why this command
+  reports rather than recommends.
+
+  This compares against the MIDPOINT of the two routers. The schedule reads
+  the SLOWER of them, so the two disagree on purpose.
+`,
   route: `trip route [--refresh]
 
   Measure real walking legs between every pair of placed segments, using two
@@ -549,6 +574,7 @@ async function route(
   if (cmd === "dates") return runDatesCommand(db, args, json);
   if (cmd === "seg") return runSegmentsCommand(db, args, json);
   if (cmd === "route") return runRouteCommand(db, args, json, deps.route);
+  if (cmd === "calibrate") return runCalibrateCommand(db, args, json);
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
   if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
