@@ -384,3 +384,91 @@ describe("M5: price survives the review queue", () => {
     expect((await readPriceRules(db, "segment", [seg!.id])).has(seg!.id)).toBe(false);
   });
 });
+
+describe("M7: review resolve --query", () => {
+  function found(localName: string) {
+    return [{
+      displayName: `${localName}, 渝中区, 重庆市, 中国`,
+      localName,
+      latitude: 29.56, longitude: 106.57,
+      category: "landuse", type: "commercial", importance: 0.2,
+      osmType: "way" as const, osmId: 1, kmFromCentre: 1.1,
+    }];
+  }
+
+  test("--query re-searches and leaves the name alone", async () => {
+    const { db, id } = await queued("m7-q-alone");
+    const asked: string[] = [];
+    await runReviewCommand(db, ["resolve", String(id), "--query=李子坝"], false, {
+      geocode: async (q) => { asked.push(q); return found("李子坝"); },
+    });
+    expect(asked).toEqual(["李子坝"]);
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.name).toBe("hot pot");
+    expect(seg!.localName).toBe("李子坝");
+  });
+
+  test("--rename and --query together set both, separately", async () => {
+    // THE case the milestone exists for.
+    const { db, id } = await queued("m7-q-both");
+    const asked: string[] = [];
+    await runReviewCommand(db,
+      ["resolve", String(id), "--rename=Longmenhao Old Street", "--query=龙门浩老街"],
+      false, { geocode: async (q) => { asked.push(q); return found("龙门浩老街"); } });
+    expect(asked).toEqual(["龙门浩老街"]);
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.name).toBe("Longmenhao Old Street");
+    expect(seg!.localName).toBe("龙门浩老街");
+    // The collapse M7 exists to prevent.
+    expect(seg!.name).not.toBe(seg!.localName);
+  });
+
+  test("a failed --query names the string it SEARCHED, not a rename", async () => {
+    // With --query alone there was no rename, so `renamed to "null"` would be
+    // both a lie and a broken string. Reporting a string other than the one
+    // searched is the defect M6 fixed in the queue line.
+    const { db, id } = await queued("m7-q-failmsg");
+    const out = await runReviewCommand(db,
+      ["resolve", String(id), "--query=东山咖啡"], false,
+      { geocode: async () => [] });
+    expect(out).toContain("东山咖啡");
+    expect(out).not.toContain("null");
+    expect(out).not.toMatch(/renamed to/);
+  });
+
+  test("--query with --pick is refused, not silently ignored", async () => {
+    const { db, id } = await queued("m7-q-pick");
+    await expect(runReviewCommand(db,
+      ["resolve", String(id), "--pick=1", "--query=李子坝"], false, {}))
+      .rejects.toThrow(/--query/);
+  });
+
+  test("--query with --reject is refused", async () => {
+    const { db, id } = await queued("m7-q-reject");
+    await expect(runReviewCommand(db,
+      ["resolve", String(id), "--reject", "--query=李子坝"], false, {}))
+      .rejects.toThrow(/--query/);
+  });
+
+  test("--query= empty is rejected", async () => {
+    const { db, id } = await queued("m7-q-empty");
+    await expect(runReviewCommand(db, ["resolve", String(id), "--query="], false, {}))
+      .rejects.toThrow(/query/);
+  });
+
+  test("no action at all names all four options", async () => {
+    const { db, id } = await queued("m7-q-none");
+    await expect(runReviewCommand(db, ["resolve", String(id)], false, {}))
+      .rejects.toThrow(/--query/);
+  });
+
+  test("--pick alone and --reject alone still work unchanged", async () => {
+    // The exclusion rule GREW; it must not have tightened on the old paths.
+    const a = await queued("m7-q-pickonly");
+    await runReviewCommand(a.db, ["resolve", String(a.id), "--pick=1"], false, {});
+    expect(await listSegments(a.db, 1)).toHaveLength(1);
+    const b = await queued("m7-q-rejectonly");
+    await runReviewCommand(b.db, ["resolve", String(b.id), "--reject"], false, {});
+    expect(await listSegments(b.db, 1)).toHaveLength(0);
+  });
+});

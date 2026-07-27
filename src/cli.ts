@@ -45,7 +45,7 @@ Usage:
   trip watch ingest            Geocode mentions --mentions=<file.json> [--replace]
   trip watch frames <id>       Extract frames for a window --from=19:25 --to=20:20
   trip review ls               Mentions awaiting a decision
-  trip review resolve <id>     --pick=<n> | --reject | --rename="Actual Name"
+  trip review resolve <id>     --pick=<n> | --reject | --rename="..." [--query="..."]
 
 Flags:
   --json                       Machine-readable output (accepted by every command)
@@ -181,9 +181,9 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
     value: ["--mentions", "--source"],
   },
 
-  review: { bool: ["--reject"], value: ["--source", "--pick", "--rename"] },
+  review: { bool: ["--reject"], value: ["--source", "--pick", "--rename", "--query"] },
   "review ls": { value: ["--source"] },
-  "review resolve": { bool: ["--reject"], value: ["--pick", "--rename"] },
+  "review resolve": { bool: ["--reject"], value: ["--pick", "--rename", "--query"] },
 };
 
 /** Per-subcommand usage. A key absent here falls back to the full USAGE
@@ -341,6 +341,17 @@ const SUBCOMMAND_HELP: Record<string, string> = {
   --reject  discard the mention, keeping the record that it was said
   --rename  re-geocode under a corrected name; the mention may resolve or
             return to the queue with fresh candidates
+  --query   re-run the lookup with a DIFFERENT string, without changing what
+            the place is called. Chinese names frequently geocode where
+            their English names do not: 龙门浩老街 returns a result and
+            "Longmenhao Old Street" returns nothing.
+
+            Combine with --rename to set both:
+              --rename="Longmenhao Old Street" --query="龙门浩老街"
+
+            Do not reach for it reflexively. 十八梯 returns five candidates
+            where Shibati returns two, so a local-script query can make a
+            place MORE ambiguous and more likely to stay queued.
 `,
 };
 

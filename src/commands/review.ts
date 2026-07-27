@@ -3,6 +3,7 @@ import { getActiveTrip } from "@/trips";
 import { getDestination } from "@/climate/cache";
 import {
   listMentions, getMention, resolveMention, rejectMention, renameMention,
+  setMentionQuery,
   queueMention, setCandidates, type Mention,
 } from "@/mentions";
 import { addSegment } from "@/segments";
@@ -15,7 +16,8 @@ import { renderReviewQueue } from "@/render-review";
 
 const USAGE =
   "usage: trip review ls [--source=<id>]\n" +
-  "       trip review resolve <id> --pick=<n> | --reject | --rename=\"Actual Name\"";
+  "       trip review resolve <id> --pick=<n> | --reject | " +
+  "--rename=\"Actual Name\" [--query=\"local name\"]";
 
 function flag(argv: string[], name: string): string | null {
   const hit = argv.find((a) => a.startsWith(`${name}=`));
@@ -104,15 +106,38 @@ async function resolveCmd(
 
   const pick = flag(argv, "--pick");
   const rename = flag(argv, "--rename");
+  const query = flag(argv, "--query");
   const reject = argv.includes("--reject");
-  const actions = [pick !== null, rename !== null, reject].filter(Boolean).length;
+
+  // THE RULE, grown by M7: exactly one of --pick, --reject, or (--rename
+  // and/or --query). The last two are ONE action because both re-geocode,
+  // and they compose -- --rename says what to CALL it, --query says what to
+  // FIND it by, and the whole milestone is that those are two facts.
+  const searches = rename !== null || query !== null;
+  const actions = [pick !== null, reject, searches].filter(Boolean).length;
   if (actions === 0) {
     throw new Error(
-      `one of --pick=<n>, --reject or --rename="Actual Name" is required`,
+      `one of --pick=<n>, --reject, --rename="Actual Name" or ` +
+      `--query="local name" is required`,
     );
   }
   if (actions > 1) {
-    throw new Error(`exactly one of --pick, --reject or --rename may be given`);
+    throw new Error(
+      `exactly one of --pick, --reject, or --rename/--query may be given`,
+    );
+  }
+  // Named separately from the count above so the message says WHY rather
+  // than restating the rule: picking a candidate performs no lookup, so a
+  // query beside it would be silently ignored -- the anti-pattern M4 built
+  // the flag validator for and M6 found again in the watch fallback key.
+  if (query !== null && (pick !== null || reject)) {
+    throw new Error(
+      `--query re-runs the lookup, so it cannot be combined with ` +
+      `${pick !== null ? "--pick" : "--reject"}, which looks nothing up`,
+    );
+  }
+  if (query !== null && query.trim() === "") {
+    throw new Error(`--query needs a string (omit it to search by the name)`);
   }
 
   const mention = await getMention(db, trip.id, id);
@@ -135,7 +160,7 @@ async function resolveCmd(
       : `rejected #${id} "${mention.text}"`;
   }
 
-  if (rename !== null) {
+  if (searches) {
     if (trip.destinationId === null) {
       throw new Error(`trip "${trip.name}" has no destination to geocode against`);
     }
@@ -150,9 +175,15 @@ async function resolveCmd(
     // prevent (a later --pick=N would silently mean a different place than
     // the list the reader last saw). Mirrors ingestMentions' geocode-then-
     // commit ordering in src/watch/ingest.ts.
-    const candidates = await geocode(rename, dest);
+    // What to FIND it by, and what to CALL it, are now two decisions.
+    // --query wins the lookup; --rename wins the name; either alone leaves
+    // the other as it was.
+    const lookup = query ?? rename ?? mention.name;
+    const displayAs = rename ?? mention.name;
+    const candidates = await geocode(lookup, dest);
 
-    await renameMention(db, id, rename);
+    if (rename !== null) await renameMention(db, id, rename);
+    if (query !== null) await setMentionQuery(db, id, query);
     // Replaces, never appends: leaving the old name's candidates alongside the
     // new name's would make --pick=2 mean a different place than the list the
     // reader just saw.
@@ -168,13 +199,18 @@ async function resolveCmd(
       return json
         ? JSON.stringify({ id, state: "pending", reason: verdict.reason,
                            candidates: candidates.length })
-        : `#${id} renamed to "${rename}" - still ${verdict.reason}. ` +
+        // Names the string ACTUALLY searched, not the one renamed to. With
+        // --query alone there was no rename, so "renamed to null" would be
+        // both a lie and a broken string; with both flags the QUERY is what
+        // missed. Reporting a string other than the one searched is the
+        // defect M6 fixed in the queue line, and it must not reappear here.
+        : `#${id} searched "${lookup}" - still ${verdict.reason}. ` +
           `run: trip review ls`;
     }
-    const segmentId = await createSegmentFrom(db, trip.id, mention, rename, verdict.candidate);
+    const segmentId = await createSegmentFrom(db, trip.id, mention, displayAs, verdict.candidate);
     return json
       ? JSON.stringify({ id, state: "resolved", segmentId })
-      : `resolved #${id} as "${rename}" -> segment #${segmentId} ` +
+      : `resolved #${id} as "${displayAs}" -> segment #${segmentId} ` +
         `(${verdict.candidate.localName ?? verdict.candidate.displayName})`;
   }
 
