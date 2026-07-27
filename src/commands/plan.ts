@@ -13,7 +13,7 @@ import { renderDay, renderPlan, type PlanPricing } from "@/render-plan";
 import { listTravellers } from "@/travellers";
 import { listPasses } from "@/passes";
 import { readPriceRules } from "@/prices";
-import { resolveParty } from "@/pricing/party";
+import { resolveParty, type PartyPrice } from "@/pricing/party";
 
 function flag(argv: string[], name: string): string | null {
   const hit = argv.find((a) => a.startsWith(`${name}=`));
@@ -117,9 +117,9 @@ async function doPlan(db: Client, argv: string[], json: boolean): Promise<string
   await savePlacements(db, trip.id, result.placements);
   const placements = reconcilePinned(result.placements, pins);
 
-  if (json) return planJson(days, placements, segments, result.unplaced);
   const pricing = await buildPricing(
     db, trip.id, trip.currency, days, placements, segments);
+  if (json) return planJson(days, placements, segments, result.unplaced, pricing);
   return renderPlan(days, placements, segments, result.unplaced, pricing);
 }
 
@@ -134,6 +134,26 @@ function byOrdinalThenClock(
   return a.ordinal - b.ordinal || a.startMin - b.startMin || a.segmentId - b.segmentId;
 }
 
+/** Known sum plus a count of the unknowns, as data rather than prose.
+ *
+ *  Mirrors `totalLine` in render-plan.ts field-for-field and deliberately
+ *  follows the SAME rules: a total is null only when something exists and
+ *  none of it is known, and nothing-to-price is 0 rather than unknown. The
+ *  consistency suite compares the two outputs, so a drift here fails. */
+function jsonTotal(
+  prices: (PartyPrice | undefined)[],
+): { total: number | null; unknown: number } {
+  const known = prices.filter(
+    (p): p is PartyPrice => p !== undefined && p.total !== null,
+  );
+  const unknown = prices.length - known.length;
+  if (prices.length === 0) return { total: 0, unknown: 0 };
+  return {
+    total: known.length === 0 ? null : known.reduce((a, p) => a + (p.total ?? 0), 0),
+    unknown,
+  };
+}
+
 // Exported (only) so tests can hand it a placement/segment mismatch that no
 // real DB state can produce -- readPlacements INNER JOINs against segments,
 // so the two are always consistent through every actual code path -- and
@@ -143,6 +163,10 @@ export function planJson(
   placements: { segmentId: number; day: number; ordinal: number; startMin: number; endMin: number; pinned: boolean }[],
   segments: Segment[],
   unplaced: { segmentId: number; reason: string }[],
+  // Absent means emit exactly what trip emitted before M5. M3's whole premise
+  // is that the agent drives this tool through --json, so a pricing milestone
+  // that left prices out of it would be write-only for its primary consumer.
+  pricing?: PlanPricing,
 ): string {
   const byId = new Map(segments.map((s) => [s.id, s]));
   return JSON.stringify({
@@ -184,14 +208,49 @@ export function planJson(
             // direction possible for the field M2-2 introduced to prevent
             // exactly this. A missing segment is never hoursKnown.
             hoursKnown: seg !== undefined && seg.opensMin !== null,
+            // null is UNKNOWN, and it is a different fact from 0, which is
+            // free. An agent must be able to tell them apart, which is the
+            // whole reason there is no NULL price in the schema.
+            ...(pricing === undefined ? {} : {
+              price: pricing.bySegment.get(p.segmentId)?.total ?? null,
+            }),
           };
         }),
+      ...(pricing === undefined ? {} : {
+        total: jsonTotal(
+          placements.filter((p) => p.day === d.day)
+            .map((p) => pricing.bySegment.get(p.segmentId)),
+        ),
+      }),
     })),
     unplaced: unplaced.map((u) => ({
       segmentId: u.segmentId,
       name: byId.get(u.segmentId)?.name ?? null,
       reason: u.reason,
     })),
+    ...(pricing === undefined ? {} : {
+      pricing: {
+        currency: pricing.currency,
+        // Empty means no prices can be computed at all. Stated as data so an
+        // agent does not have to notice the absence of a total.
+        travellers: pricing.travellers.map((t) => ({
+          id: t.id, label: t.label, birthDate: t.birthDate,
+        })),
+        admission: jsonTotal(
+          placements.map((p) => pricing.bySegment.get(p.segmentId)),
+        ),
+        passes: pricing.passes.map(({ pass, price }) => ({
+          id: pass.id, name: pass.name,
+          fromDay: pass.fromDay, toDay: pass.toDay,
+          total: price.total,
+        })),
+        passesTotal: jsonTotal(pricing.passes.map((x) => x.price)),
+        tripTotal: jsonTotal([
+          ...placements.map((p) => pricing.bySegment.get(p.segmentId)),
+          ...pricing.passes.map((x) => x.price),
+        ]),
+      },
+    }),
   });
 }
 
@@ -220,9 +279,11 @@ async function doDay(db: Client, argv: string[], json: boolean): Promise<string>
       reason: "not placed by the last plan - run `trip plan` to see why",
     }));
 
-  if (json) return planJson([day], placements, segments, dayUnplaced);
+  // The FULL day list, not just the one being shown: a pass resolves against
+  // the first day it covers, which is usually not this one.
   const pricing = await buildPricing(
-    db, trip.id, trip.currency, [day], placements, segments);
+    db, trip.id, trip.currency, days, placements, segments);
+  if (json) return planJson([day], placements, segments, dayUnplaced, pricing);
   // withBreakdown: `trip day` is the detail view, so it earns the
   // per-traveller rows that `trip plan` deliberately omits.
   return renderDay(
@@ -337,14 +398,26 @@ async function buildPricing(
   // A pass is counted once, not per day, so it resolves against the FIRST day
   // it covers. Ages could differ across a long pass's window; the first day is
   // the day you buy it, which is the day the fare is actually assessed.
-  const passes = passList.map((pass) => ({
-    pass,
-    price: resolveParty(
-      passRules.get(pass.id) ?? [],
-      party,
-      (dayById.get(pass.fromDay) ?? days[0])?.date ?? days[0]!.date,
-    ),
-  }));
+  const passes = passList.map((pass) => {
+    const start = dayById.get(pass.fromDay);
+    // `pass add` validates the range against the trip's length, but only AT
+    // ENTRY. A later `trip dates set` to a shorter range strands the pass
+    // pointing at days that no longer exist.
+    //
+    // Substituting day 1's date here would price the pass against the wrong
+    // day — a senior who crosses a threshold between day 1 and the pass's
+    // real start gets the wrong fare, while `pass ls` and the footer still
+    // show the old range, with nothing saying anything is amiss. A silent
+    // wrong number is exactly what the governing principle forbids, so the
+    // pass is UNKNOWN instead: a check that cannot be sure says nothing.
+    if (start === undefined) {
+      return { pass, price: { perTraveller: [], total: null } };
+    }
+    return {
+      pass,
+      price: resolveParty(passRules.get(pass.id) ?? [], party, start.date),
+    };
+  });
 
   return { currency, bySegment, passes, travellers: party };
 }

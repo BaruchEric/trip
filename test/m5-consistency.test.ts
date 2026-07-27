@@ -283,6 +283,79 @@ describe("M5 cross-command consistency", () => {
     expect(rows.reduce((a, b) => a + b, 0)).toBe(40);
   });
 
+  test("--json carries the same prices the human output prints", async () => {
+    // M3's whole premise is that the agent drives this tool through --json.
+    // A pricing milestone that left prices out of it would leave cost
+    // write-only for its primary consumer -- the exact defect this milestone
+    // exists to close, just moved to a different surface.
+    //
+    // Comparing the two outputs is strictly stronger than parsing prose: the
+    // JSON totals and the rendered totals are separate code paths over the
+    // same PlanPricing, and this is the only thing stopping them drifting.
+    const db = await fixture("json");
+    const human = await runPlanCommand(db, "plan", [], false);
+    const data = JSON.parse(await runPlanCommand(db, "plan", [], true));
+
+    expect(data.pricing.currency).toBe("CNY");
+    expect(data.pricing.travellers.map((t: { label: string }) => t.label))
+      .toEqual(["Mom", "Eric", "Kid"]);
+
+    const admission = readTotal(lineWith(human, "Admission"));
+    expect(data.pricing.admission.total).toBe(admission.total);
+    expect(data.pricing.admission.unknown).toBe(admission.unknown);
+
+    const trip = readTotal(lineWith(human, "Trip total"));
+    expect(data.pricing.tripTotal.total).toBe(trip.total);
+    expect(data.pricing.tripTotal.unknown).toBe(trip.unknown);
+
+    const day1 = readTotal(lineWith(human, "Day 1 total"));
+    expect(data.days[0].total.total).toBe(day1.total);
+    expect(data.days[0].total.unknown).toBe(day1.unknown);
+
+    // An unpriced segment is null, NOT 0. An agent must be able to tell
+    // unknown from free, which is why there is no NULL price in the schema.
+    const placements = data.days[0].placements as
+      { name: string; price: number | null }[];
+    expect(placements.find((p) => p.name === "Jiefangbei")!.price).toBeNull();
+    expect(placements.find((p) => p.name === "Luohan")!.price).toBe(10);
+
+    expect(data.pricing.passes[0].name).toBe("Metro");
+    expect(data.pricing.passes[0].total).toBe(90);
+  });
+
+  test("trip day --json carries prices too", async () => {
+    const db = await fixture("dayjson");
+    const data = JSON.parse(await runPlanCommand(db, "day", ["1"], true));
+    expect(data.pricing.currency).toBe("CNY");
+    expect(data.days[0].total.unknown).toBe(1);
+  });
+
+  test("a pass stranded by re-dating is UNKNOWN, not priced against day 1", async () => {
+    // pass add validates the day range at ENTRY only. Shortening the trip
+    // afterwards strands the range. Substituting day 1's date would price the
+    // pass against the wrong day -- a senior crossing a threshold between day
+    // 1 and the pass's real start gets the wrong fare, while pass ls and the
+    // footer still show the old range and nothing says anything is amiss.
+    const db = await fresh("stranded");
+    await runTripsCommand(db, ["new", "cq"], false);
+    await runDatesCommand(db, ["set", "2026-10-02..2026-10-06"], false);
+    await runTripsCommand(db, ["set", "--currency=CNY"], false);
+    await runWhoCommand(db, ["add", "Eric", "--born=1971-06-02"], false);
+    await runSegmentsCommand(db, ["add", "Museum", "--dur=60m", "--at=29.56,106.58",
+      "--price=30"], false);
+    await runPassCommand(db, ["add", "Metro", "--days=4-5", "--price=45"], false);
+    await runPlanCommand(db, "plan", [], false);
+
+    // Now shrink the trip so days 4 and 5 no longer exist.
+    await runDatesCommand(db, ["set", "2026-10-02..2026-10-03"], false);
+    const data = JSON.parse(await runPlanCommand(db, "plan", [], true));
+    expect(data.pricing.passes[0].total).toBeNull();
+    expect(data.pricing.passesTotal.unknown).toBe(1);
+
+    const human = await runPlanCommand(db, "plan", [], false);
+    expect(lineWith(human, "Metro")).toContain("?");
+  });
+
   test("a trip with no travellers computes nothing and names the fix", async () => {
     const db = await fresh("noparty");
     await runTripsCommand(db, ["new", "cq"], false);
