@@ -1,6 +1,8 @@
 import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
-import { upsertDestination, readMonths, writeMonths, getClimate } from "@/climate/cache";
+import {
+  upsertDestination, readMonths, writeMonths, getClimate, getDestination,
+} from "@/climate/cache";
 import type { GeoCandidate } from "@/geocode";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -39,6 +41,20 @@ describe("destinations", () => {
     const a = await upsertDestination(db, TOKYO);
     const b = await upsertDestination(db, TOKYO);
     expect(a).toBe(b);
+  });
+
+  test("getDestination reads back the stored name and coordinates", async () => {
+    const db = await freshDb("get-hit");
+    const id = await upsertDestination(db, TOKYO);
+    const d = await getDestination(db, id);
+    expect(d).toEqual({
+      id, name: "Tokyo", latitude: 35.68, longitude: 139.69,
+    });
+  });
+
+  test("getDestination returns null for an id that does not exist", async () => {
+    const db = await freshDb("get-miss");
+    expect(await getDestination(db, 999)).toBeNull();
   });
 });
 

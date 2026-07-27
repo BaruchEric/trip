@@ -1,6 +1,14 @@
 import { expect, test, describe } from "bun:test";
-import { parseMentionsFile, classify, DEFAULT_DWELL_MINUTES } from "@/watch/ingest";
+import {
+  parseMentionsFile, classify, DEFAULT_DWELL_MINUTES, ingestMentions,
+} from "@/watch/ingest";
 import type { PoiCandidate } from "@/geo/poi";
+import { openDb, migrate } from "@/db";
+import { listMentions } from "@/mentions";
+import { listSegments } from "@/segments";
+import { rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 function poi(name: string): PoiCandidate {
   return {
@@ -114,5 +122,161 @@ describe("classify", () => {
 describe("DEFAULT_DWELL_MINUTES", () => {
   test("is 60", () => {
     expect(DEFAULT_DWELL_MINUTES).toBe(60);
+  });
+});
+
+async function ingestDb(tag: string) {
+  const p = join(tmpdir(), `trip-ingest-${tag}-${process.pid}.db`);
+  rmSync(p, { force: true });
+  const db = openDb(p);
+  await migrate(db);
+  await db.execute({
+    sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+    args: ["chongqing", "2026-07-27"],
+  });
+  await db.execute({
+    sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+    args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+  });
+  return db;
+}
+
+const CENTRE = { latitude: 29.5630, longitude: 106.5516 };
+const NO_SLEEP = async () => {};
+
+describe("ingestMentions", () => {
+  test("a unique match becomes a segment carrying its provenance", async () => {
+    const db = await ingestDb("confident");
+    const r = await ingestMentions(db, 1, 1,
+      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"] }],
+      CENTRE,
+      { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
+    );
+    expect(r).toEqual({ total: 1, geocoded: 1, queued: 0, failed: 0 });
+
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.name).toBe("Hongya Cave");
+    expect(seg!.localName).toBe("洪崖洞");
+    expect(seg!.sourceId).toBe(1);
+    expect(seg!.sourceAtSeconds).toBe(272);
+    expect(seg!.dwellMinutes).toBe(90);
+    expect(seg!.dwellIsDefault).toBe(false);
+    expect(seg!.tags).toEqual(["sight"]);
+    // Hours, cost, and closed days are UNKNOWN, not invented. A geocoder does
+    // not know any of them, and a fabricated value here is worse than the NULL
+    // that says "nobody has answered this yet" (mutation sweep: both `cost`
+    // and `closedDays` were unchecked and a hardcoded value survived).
+    expect(seg!.opensMin).toBeNull();
+    expect(seg!.closesMin).toBeNull();
+    expect(seg!.cost).toBeNull();
+    expect(seg!.closedDays).toEqual([]);
+
+    const [m] = await listMentions(db, 1);
+    expect(m!.state).toBe("resolved");
+    expect(m!.segmentId).toBe(seg!.id);
+    // A resolved mention keeps its candidate on record too. `unlinkSegment`
+    // (src/mentions.ts) returns a mention to the queue if its segment is ever
+    // deleted, and a resolved mention with no stored candidates would come
+    // back to the queue with nothing for `--pick` to choose from.
+    expect(m!.candidates.length).toBe(1);
+    expect(m!.candidates[0]!.localName).toBe("洪崖洞");
+  });
+
+  test("localName carries OSM's own name, not its address string", async () => {
+    // Regression: poi()'s displayName and localName are equal in every other
+    // fixture in this file, so a bug swapping the two fields would pass every
+    // other assertion here silently (mutation sweep found this).
+    const db = await ingestDb("localname");
+    await ingestMentions(db, 1, 1,
+      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [] }],
+      CENTRE,
+      {
+        geocode: async () => [{
+          ...poi("洪崖洞"),
+          displayName: "Hongya Cave, Cangbai Rd, Yuzhong, Chongqing, China",
+        }],
+        sleepFn: NO_SLEEP,
+      },
+    );
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.localName).toBe("洪崖洞");
+  });
+
+  test("no proposed dwell yields 60 minutes, flagged as a default", async () => {
+    const db = await ingestDb("default-dwell");
+    await ingestMentions(db, 1, 1,
+      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [] }],
+      CENTRE, { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
+    );
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.dwellMinutes).toBe(DEFAULT_DWELL_MINUTES);
+    expect(seg!.dwellIsDefault).toBe(true);
+  });
+
+  test("an ambiguous match is queued with all its candidates and no segment", async () => {
+    const db = await ingestDb("ambiguous");
+    const r = await ingestMentions(db, 1, 1,
+      [{ text: "hot pot", atSeconds: 400, dwellMinutes: null, tags: [] }],
+      CENTRE,
+      { geocode: async () => [poi("a"), poi("b"), poi("c")], sleepFn: NO_SLEEP },
+    );
+    expect(r).toEqual({ total: 1, geocoded: 0, queued: 1, failed: 0 });
+    expect(await listSegments(db, 1)).toEqual([]);
+
+    const [m] = await listMentions(db, 1);
+    expect(m!.state).toBe("pending");
+    expect(m!.reason).toBe("3 candidates");
+    expect(m!.candidates.length).toBe(3);
+    expect(m!.candidates.map((c) => c.rank)).toEqual([1, 2, 3]);
+  });
+
+  test("no match is queued with a reason and no candidates", async () => {
+    const db = await ingestDb("nomatch");
+    const r = await ingestMentions(db, 1, 1,
+      [{ text: "that ramen spot", atSeconds: null, dwellMinutes: null, tags: [] }],
+      CENTRE, { geocode: async () => [], sleepFn: NO_SLEEP },
+    );
+    expect(r.queued).toBe(1);
+    const [m] = await listMentions(db, 1);
+    expect(m!.reason).toBe("no match");
+    expect(m!.candidates).toEqual([]);
+  });
+
+  test("one failed lookup does not abort the others", async () => {
+    const db = await ingestDb("resilient");
+    let call = 0;
+    const r = await ingestMentions(db, 1, 1, [
+      { text: "first", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "boom", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "third", atSeconds: null, dwellMinutes: null, tags: [] },
+    ], CENTRE, {
+      geocode: async () => {
+        call += 1;
+        if (call === 2) throw new Error("geocoding failed (HTTP 429)");
+        return [poi("ok")];
+      },
+      sleepFn: NO_SLEEP,
+    });
+    expect(r).toEqual({ total: 3, geocoded: 2, queued: 0, failed: 1 });
+    const failed = (await listMentions(db, 1)).find((m) => m.text === "boom");
+    expect(failed!.state).toBe("pending");
+    expect(failed!.reason).toContain("geocode failed");
+    expect(failed!.reason).toContain("429");
+  });
+
+  test("lookups are spaced to respect the 1 req/sec policy", async () => {
+    const db = await ingestDb("throttle");
+    const waits: number[] = [];
+    await ingestMentions(db, 1, 1, [
+      { text: "a", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "b", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "c", atSeconds: null, dwellMinutes: null, tags: [] },
+    ], CENTRE, {
+      geocode: async () => [],
+      sleepFn: async (ms) => { waits.push(ms); },
+    });
+    // Two gaps for three lookups: nothing is waited for before the first.
+    expect(waits.length).toBe(2);
+    expect(waits.every((w) => w >= 1000)).toBe(true);
   });
 });

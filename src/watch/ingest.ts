@@ -1,6 +1,13 @@
+import type { Client } from "@libsql/client";
 import { parseDuration } from "@/parse";
 import { parseStamp } from "@/watch/parse-report";
-import type { PoiCandidate } from "@/geo/poi";
+import {
+  createMention, setCandidates, resolveMention, queueMention,
+} from "@/mentions";
+import { addSegment } from "@/segments";
+import {
+  geocodePoi, NOMINATIM_MIN_INTERVAL_MS, type Centre, type PoiCandidate,
+} from "@/geo/poi";
 
 /** Applied when the extractor proposed no dwell. It is a guess, so every
  *  segment carrying it is flagged `dwellIsDefault` and rendered [default]. */
@@ -100,4 +107,98 @@ export function classify(candidates: PoiCandidate[]): Verdict {
     return { kind: "queued", reason: "no match" };
   }
   return { kind: "queued", reason: `${candidates.length} candidates` };
+}
+
+export interface IngestDeps {
+  geocode?: (query: string, centre: Centre) => Promise<PoiCandidate[]>;
+  sleepFn?: (ms: number) => Promise<void>;
+}
+
+export interface IngestResult {
+  total: number;
+  /** Became segments. */
+  geocoded: number;
+  /** Queued because the answer was ambiguous or absent. */
+  queued: number;
+  /** Queued because the lookup itself failed. Counted apart from `queued` so
+   *  a network outage does not read as a video full of vague places. */
+  failed: number;
+}
+
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
+/** Joins every pure piece Task 9 built to storage: geocode each mention,
+ *  record its candidates, and either create a real segment (confident) or
+ *  queue it for review (ambiguous, absent, or the lookup itself failed). */
+export async function ingestMentions(
+  db: Client,
+  tripId: number,
+  sourceId: number,
+  specs: MentionSpec[],
+  centre: Centre,
+  deps: IngestDeps = {},
+): Promise<IngestResult> {
+  const geocode = deps.geocode ?? ((q, c) => geocodePoi(q, c));
+  const sleepFn = deps.sleepFn ?? sleep;
+
+  const result: IngestResult = {
+    total: specs.length, geocoded: 0, queued: 0, failed: 0,
+  };
+
+  for (const [i, spec] of specs.entries()) {
+    const mentionId = await createMention(db, tripId, sourceId, spec);
+
+    // Spaced, not batched: Nominatim's policy is 1 request/second. The wait
+    // goes BEFORE each lookup except the first, so a single-mention ingest
+    // does not pay a second of latency for nothing.
+    if (i > 0) await sleepFn(NOMINATIM_MIN_INTERVAL_MS);
+
+    let candidates: PoiCandidate[];
+    try {
+      candidates = await geocode(spec.text, centre);
+    } catch (err) {
+      // One bad lookup queues one mention. Thirteen good mentions do not die
+      // because the sixth got a 429.
+      await queueMention(db, mentionId, `geocode failed: ${(err as Error).message}`);
+      result.failed += 1;
+      continue;
+    }
+
+    await setCandidates(db, mentionId, candidates.map((c, idx) => ({
+      ...c, rank: idx + 1,
+    })));
+
+    const verdict = classify(candidates);
+    if (verdict.kind === "queued") {
+      await queueMention(db, mentionId, verdict.reason);
+      result.queued += 1;
+      continue;
+    }
+
+    const c = verdict.candidate;
+    const segmentId = await addSegment(db, tripId, {
+      // The video's own words. `local_name` keeps OSM's, which comes back in
+      // local script and is the string to show a taxi driver.
+      name: spec.text,
+      localName: c.localName,
+      latitude: c.latitude,
+      longitude: c.longitude,
+      dwellMinutes: spec.dwellMinutes ?? DEFAULT_DWELL_MINUTES,
+      dwellIsDefault: spec.dwellMinutes === null,
+      cost: null,
+      tags: spec.tags,
+      // A geocoder does not know opening hours. NULL is UNKNOWN, and the
+      // scheduler already reports these with a "?" rather than assuming a
+      // window (M2-2).
+      opensMin: null,
+      closesMin: null,
+      closedDays: [],
+      sourceId,
+      sourceAtSeconds: spec.atSeconds,
+    });
+    await resolveMention(db, mentionId, segmentId);
+    result.geocoded += 1;
+  }
+
+  return result;
 }

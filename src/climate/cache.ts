@@ -4,6 +4,34 @@ import type { MonthStats } from "@/comfort";
 import { fetchDailyClimate } from "@/climate/api";
 import { aggregateToMonths, archiveWindow } from "@/climate/aggregate";
 
+export interface Destination {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
+/** The trip's city, with the coordinates M3's geocoding boxes itself around.
+ *  Read from storage rather than re-geocoded at ingest time: a live lookup
+ *  would give ingest a second network dependency whose failure kills the whole
+ *  run, unlike the per-mention failures that are deliberately survivable. */
+export async function getDestination(
+  db: Client,
+  id: number,
+): Promise<Destination | null> {
+  const r = await db.execute({
+    sql: `SELECT id, name, latitude, longitude FROM destinations WHERE id = ?`,
+    args: [id],
+  });
+  const row = r.rows[0];
+  return row === undefined ? null : {
+    id: Number(row.id),
+    name: String(row.name),
+    latitude: Number(row.latitude),
+    longitude: Number(row.longitude),
+  };
+}
+
 export async function upsertDestination(
   db: Client,
   c: GeoCandidate,
