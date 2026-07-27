@@ -155,9 +155,18 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // No --timeout here: nothing under src/watch reads one. Declaring it would
   // let it pass validation and then be silently ignored by runWatchCommand —
   // the exact anti-pattern this file exists to prevent, for a brand-new flag.
+  // NOT the union of the subcommands below, unlike `seg`. `trip watch <url>`
+  // is a REAL invocation that lands on this key -- there is no `"watch <url>"`
+  // key and none can exist -- so anything listed here is a flag the URL path
+  // ACCEPTS AND THEN IGNORES.
+  //
+  // It used to carry --replace/--mentions/--source for `ingest`, so
+  // `trip watch <url> --replace` passed validation and did nothing: the exact
+  // anti-pattern this file exists to prevent, sitting inside it. M6 widened it
+  // with four more before noticing. Now it lists only what the URL path reads;
+  // `watch ingest` and `watch frames` have their own keys and carry their own.
   watch: {
-    bool: ["--refresh", "--whisper", "--replace"],
-    value: ["--mentions", "--source", "--from", "--to", "--max", "--width"],
+    bool: ["--refresh", "--whisper"],
   },
   "watch frames": {
     bool: ["--refresh"],

@@ -1,0 +1,167 @@
+{
+  "capturedAt": "2026-07-27",
+  "video": "https://www.youtube.com/watch?v=KHHlcCUTwZA",
+  "note": "POST-rename state of the first real end-to-end run, plus the cost observations read off frame_0002.jpg of the 19:25-20:20 window and recorded through the shipped CLI. chongqing-real-run.json holds the PRE-rename state.",
+  "mentions": [
+    {
+      "id": 1,
+      "text": "Arat Temple",
+      "resolved_name": "Luohan Temple",
+      "kind": "temple",
+      "reason": null,
+      "segment_id": 2
+    },
+    {
+      "id": 2,
+      "text": "Longman how old street",
+      "resolved_name": "Longmenhao Old Street",
+      "kind": "street",
+      "reason": "no match",
+      "segment_id": null
+    },
+    {
+      "id": 3,
+      "text": "Wulong casts",
+      "resolved_name": "Wulong Karst",
+      "kind": "nature",
+      "reason": "no match",
+      "segment_id": null
+    },
+    {
+      "id": 4,
+      "text": "Tienfu Post House",
+      "resolved_name": "Tianfu Inn",
+      "kind": "landmark",
+      "reason": "no match",
+      "segment_id": null
+    },
+    {
+      "id": 5,
+      "text": "Fisher Gorge",
+      "resolved_name": "Longshuixia Fissure Gorge",
+      "kind": "nature",
+      "reason": "no match",
+      "segment_id": null
+    },
+    {
+      "id": 6,
+      "text": "Don Shan Cafe",
+      "resolved_name": "Dongshan Cafe",
+      "kind": "restaurant",
+      "reason": "no match",
+      "segment_id": null
+    },
+    {
+      "id": 7,
+      "text": "Shabbati",
+      "resolved_name": "Shibati",
+      "kind": "neighbourhood",
+      "reason": "2 candidates",
+      "segment_id": null
+    },
+    {
+      "id": 8,
+      "text": "Hongadong",
+      "resolved_name": "Hongya Cave",
+      "kind": "landmark",
+      "reason": null,
+      "segment_id": 3
+    },
+    {
+      "id": 9,
+      "text": "Test Bed Creative Park",
+      "resolved_name": "Testbed 2",
+      "kind": "neighbourhood",
+      "reason": null,
+      "segment_id": 4
+    },
+    {
+      "id": 10,
+      "text": "Ring Shopping Park",
+      "resolved_name": null,
+      "kind": "shop",
+      "reason": null,
+      "segment_id": 1
+    },
+    {
+      "id": 11,
+      "text": "Ji Fang Bay Pedestrian Street",
+      "resolved_name": "Jiefangbei Pedestrian Street",
+      "kind": "street",
+      "reason": "type mismatch: expected street, got tourism/hotel",
+      "segment_id": null
+    }
+  ],
+  "segments": [
+    {
+      "id": 1,
+      "name": "Ring Shopping Park",
+      "local_name": "光环购物中心",
+      "latitude": 29.6530663,
+      "longitude": 106.5259717
+    },
+    {
+      "id": 2,
+      "name": "Luohan Temple",
+      "local_name": "罗汉寺 1000 лет",
+      "latitude": 29.5625664,
+      "longitude": 106.5778425
+    },
+    {
+      "id": 3,
+      "name": "Hongya Cave",
+      "local_name": "洪崖洞",
+      "latitude": 29.5650738,
+      "longitude": 106.5753425
+    },
+    {
+      "id": 4,
+      "name": "Testbed 2",
+      "local_name": "贰厂文创园",
+      "latitude": 29.5537638,
+      "longitude": 106.5368476
+    }
+  ],
+  "costObservations": [
+    {
+      "id": 1,
+      "source_id": 1,
+      "at_seconds": 1169,
+      "label": "Transportation",
+      "amount": 40,
+      "currency": "USD",
+      "covers_days": 4,
+      "covers_people": 1
+    },
+    {
+      "id": 2,
+      "source_id": 1,
+      "at_seconds": 1169,
+      "label": "Accommodation",
+      "amount": 230,
+      "currency": "USD",
+      "covers_days": 4,
+      "covers_people": 1
+    },
+    {
+      "id": 3,
+      "source_id": 1,
+      "at_seconds": 1169,
+      "label": "Activities & food",
+      "amount": 131,
+      "currency": "USD",
+      "covers_days": 4,
+      "covers_people": 1
+    },
+    {
+      "id": 4,
+      "source_id": 1,
+      "at_seconds": 1169,
+      "label": "Total",
+      "amount": 401,
+      "currency": "USD",
+      "covers_days": 4,
+      "covers_people": 1
+    }
+  ]
+}

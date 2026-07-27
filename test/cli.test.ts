@@ -377,3 +377,35 @@ describe("cli: per-subcommand flag validation", () => {
     expect(r.stdout).toContain("trip replan");
   });
 });
+
+describe("M6: the watch fallback key is not a union", () => {
+  test("a URL watch rejects flags only its subcommands read", async () => {
+    // `trip watch <url>` lands on the bare `watch` key -- there is no
+    // "watch <url>" key and none can exist. So anything listed there is a
+    // flag the URL path ACCEPTS AND THEN IGNORES, which is the exact
+    // anti-pattern COMMAND_FLAGS exists to prevent, sitting inside it.
+    //
+    // --replace/--mentions/--source were there for `ingest` since M3 and were
+    // silently ignored on the URL path the whole time; M6 widened it with the
+    // frames flags before noticing.
+    for (const flag of ["--from=1:00", "--to=2:00", "--max=5", "--width=900",
+                        "--replace", "--mentions=x.json", "--source=1"]) {
+      const r = await run(["watch", "https://youtu.be/x", flag]);
+      expect(r.code).toBe(1);
+      expect(r.stderr).toContain("unknown flag for `trip watch`");
+    }
+  });
+
+  test("the subcommands still accept their own flags", async () => {
+    // The narrowing must not reach the keys that legitimately own these.
+    const ingest = await run(["watch", "ingest", "--mentions=/nope.json"]);
+    expect(ingest.stderr).not.toContain("unknown flag");
+    const frames = await run(["watch", "frames", "9", "--from=1:00", "--to=2:00"]);
+    expect(frames.stderr).not.toContain("unknown flag");
+  });
+
+  test("--refresh and --whisper still reach the URL path", async () => {
+    const r = await run(["watch", "https://youtu.be/x", "--refresh", "--whisper"]);
+    expect(r.stderr).not.toContain("unknown flag");
+  });
+});
