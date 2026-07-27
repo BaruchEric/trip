@@ -111,8 +111,13 @@ export async function runWatch(
   try {
     result = await runner(watchArgv(script, url, outDir, opts.whisper ?? false));
   } catch (err) {
-    // The work dir is KEPT on failure so a broken run can be inspected.
-    throw new Error(`watch.py could not be run: ${(err as Error).message}`);
+    // The work dir is KEPT on failure so a broken run can be inspected. The
+    // other two failure paths below say where; this one must too, or a
+    // spawn failure leaves a directory nobody can find.
+    throw new Error(
+      `watch.py could not be run: ${(err as Error).message}\n` +
+      `Working directory kept at ${outDir}`,
+    );
   }
 
   if (result.code !== 0) {
