@@ -1,5 +1,5 @@
 import { expect, test, describe } from "bun:test";
-import { parseWatchReport, parseStamp } from "@/watch/parse-report";
+import { parseWatchReport, parseStamp, formatStamp } from "@/watch/parse-report";
 
 const REPORT = `
 # watch: video report
@@ -62,6 +62,17 @@ describe("parseStamp", () => {
 
   test("rejects nonsense", () => {
     expect(() => parseStamp("banana")).toThrow(/timestamp/i);
+  });
+});
+
+describe("formatStamp", () => {
+  test("round-trips through parseStamp", () => {
+    expect(formatStamp(272)).toBe("04:32");
+    expect(parseStamp(formatStamp(6135))).toBe(6135);
+  });
+
+  test("keeps minutes unbounded rather than rolling into hours", () => {
+    expect(formatStamp(6135)).toBe("102:15");
   });
 });
 

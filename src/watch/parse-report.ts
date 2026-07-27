@@ -39,6 +39,29 @@ export function parseStamp(stamp: string): number {
     : nums[0]! * 60 + nums[1]!;
 }
 
+/** Inverse of parseStamp, in watch.py's own MM:SS form where minutes are
+ *  unbounded — 6135 seconds renders as 102:15, not 01:42:15. */
+export function formatStamp(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+/** The line grammar on its own, so a transcript read back out of the database
+ *  parses exactly as it did coming out of watch.py. */
+export function parseTranscriptLines(transcript: string): TranscriptLine[] {
+  const lines: TranscriptLine[] = [];
+  for (const raw of transcript.split("\n")) {
+    // A line without a leading stamp is a continuation or a blank; it has no
+    // timestamp of its own, and inventing one would put a mention at a minute
+    // mark nothing was said at.
+    const m = /^\[(\d+:\d{2}(?::\d{2})?)\]\s?(.*)$/.exec(raw);
+    if (!m) continue;
+    lines.push({ atSeconds: parseStamp(m[1]!), text: m[2]!.trim() });
+  }
+  return lines;
+}
+
 function field(report: string, label: string): string | null {
   const re = new RegExp(`^- \\*\\*${label}:\\*\\* (.+)$`, "m");
   const m = re.exec(report);
@@ -83,17 +106,7 @@ export function parseWatchReport(stdout: string): WatchReport {
     if (body !== undefined && body.trim() !== "") transcript = body.replace(/\n$/, "");
   }
 
-  const lines: TranscriptLine[] = [];
-  if (transcript !== null) {
-    for (const raw of transcript.split("\n")) {
-      const m = /^\[(\d+:\d{2}(?::\d{2})?)\]\s?(.*)$/.exec(raw);
-      // A line without a leading stamp is a continuation or a blank; it has no
-      // timestamp of its own, and inventing one would put a mention at a minute
-      // mark nothing was said at.
-      if (!m) continue;
-      lines.push({ atSeconds: parseStamp(m[1]!), text: m[2]!.trim() });
-    }
-  }
+  const lines: TranscriptLine[] = transcript === null ? [] : parseTranscriptLines(transcript);
 
   return {
     title,
