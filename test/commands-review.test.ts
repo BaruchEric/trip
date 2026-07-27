@@ -1,7 +1,10 @@
 import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import { runReviewCommand } from "@/commands/review";
-import { createMention, setCandidates, queueMention, rejectMention } from "@/mentions";
+import {
+  createMention, setCandidates, queueMention, rejectMention, resolveMention,
+} from "@/mentions";
+import { addSegment } from "@/segments";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -61,9 +64,21 @@ describe("trip review ls", () => {
     expect(out.searchRadiusKm).toBe(25);
   });
 
-  test("resolved and rejected mentions are not listed", async () => {
-    const { db, id } = await queued("ls-filter");
+  test("a rejected mention is not listed", async () => {
+    const { db, id } = await queued("ls-filter-rejected");
     await rejectMention(db, id, "2026-07-27T12:00:00Z");
+    const out = JSON.parse(await runReviewCommand(db, ["ls"], true));
+    expect(out.pending).toEqual([]);
+  });
+
+  test("a resolved mention is not listed", async () => {
+    const { db, id } = await queued("ls-filter-resolved");
+    const segId = await addSegment(db, 1, {
+      name: "Yuwei Hot Pot", latitude: 29.563, longitude: 106.567,
+      dwellMinutes: 60, cost: null, tags: [],
+      opensMin: null, closesMin: null, closedDays: [],
+    });
+    await resolveMention(db, id, segId);
     const out = JSON.parse(await runReviewCommand(db, ["ls"], true));
     expect(out.pending).toEqual([]);
   });
@@ -72,6 +87,12 @@ describe("trip review ls", () => {
     const { db } = await queued("ls-source");
     const out = JSON.parse(await runReviewCommand(db, ["ls", "--source=99"], true));
     expect(out.pending).toEqual([]);
+  });
+
+  test("--source keeps the queue for the video it names", async () => {
+    const { db, id } = await queued("ls-source-hit");
+    const out = JSON.parse(await runReviewCommand(db, ["ls", "--source=1"], true));
+    expect(out.pending.map((m: { id: number }) => m.id)).toEqual([id]);
   });
 
   test("an unknown subcommand is a usage error", async () => {
