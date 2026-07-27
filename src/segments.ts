@@ -194,10 +194,17 @@ export async function removeSegment(
   });
   if (owned.rows.length === 0) return false;
 
-  // A mention pointing at this segment would otherwise dangle at a row that
-  // no longer exists. It goes back on the queue instead: the video still said
-  // this place, and silently losing that is the failure mode this codebase
-  // exists to avoid.
+  // mentions.segment_id has an ENFORCED foreign key to segments(id) — the
+  // driver runs with PRAGMA foreign_keys = 1 — so without this the delete does
+  // not dangle, it FAILS, with an opaque constraint error naming neither the
+  // mention nor the video. Clearing the reference first turns that into the
+  // honest outcome: the video still said this place, so the mention goes back
+  // on the queue rather than being lost or blocking the delete.
+  //
+  // ORDER IS LOAD-BEARING: this runs AFTER the ownership check above.
+  // unlinkSegment matches on segment_id alone with no trip scoping, so moving
+  // it earlier would let a wrong-trip `seg rm` — which correctly returns false
+  // and deletes nothing — still un-resolve ANOTHER trip's mention.
   await unlinkSegment(db, id, "segment deleted");
 
   // Placements reference segments, so the derived row goes first to satisfy
