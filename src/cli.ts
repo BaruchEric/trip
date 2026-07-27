@@ -8,6 +8,7 @@ import { runSegmentsCommand } from "@/commands/segments";
 import { runPlanCommand } from "@/commands/plan";
 import { runWatchCommand, type WatchCommandDeps } from "@/commands/watch";
 import { runReviewCommand, type ReviewDeps } from "@/commands/review";
+import { runWhoCommand } from "@/commands/who";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -18,6 +19,8 @@ Usage:
   trip when <city>             Rank every month by dew-point comfort [--timeout=<seconds>]
 
   trip dates set <a>..<b>      Set trip dates [--arrive=HH:MM] [--depart=HH:MM]
+  trip who add <label>         Add a traveller --born=YYYY-MM-DD
+  trip who ls / rm <label>     List or remove travellers
   trip seg add <name>          Add a segment --dur=90m [--at=lat,lon] [--tag=food]
   trip seg ls                  List segments [--tag=food] [--unplaced] [--from=<source-id>]
   trip seg set <id> --dur=90m  Correct a segment's dwell time
@@ -100,6 +103,11 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   new: {}, use: {}, ls: {}, show: {},
   when: { bool: ["--refresh"], value: ["--timeout"] },
   dates: { value: ["--arrive", "--depart", "--day-window"] },
+  // Fallback for a bare `trip who`, and the union of the three below.
+  who: { value: ["--born"] },
+  "who add": { value: ["--born"] },
+  "who ls": {},
+  "who rm": {},
   // Fallback for a bare `trip seg`, and the union of the four below. It is
   // what a subcommand-less invocation validates against, before the command
   // itself fails for the right reason.
@@ -180,6 +188,21 @@ const SUBCOMMAND_HELP: Record<string, string> = {
   result that contradicts it is queued for review instead of becoming a
   segment. Declare the most precise kind you are confident in: a vaguer one
   is safe but buys less checking, and omitting it is checked least.
+`,
+  "who add": `trip who add <label> --born=YYYY-MM-DD
+
+  A birth date, not an age. An age is a claim about a date nobody recorded:
+  a 64 written while planning is a 65 by the time you travel, and the row
+  cannot tell you which.
+
+  Every concession price is computed from this against THE DAY THE PLAN
+  VISITS that place, so a birthday falling mid-trip prices correctly on
+  both sides of itself.
+`,
+  "who rm": `trip who rm <label>
+
+  Prices are derived at render time and stored nowhere, so this needs no
+  replan. Totals simply change on the next command.
 `,
   "review ls": `trip review ls [--source=<id>]
 
@@ -343,6 +366,7 @@ async function route(
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
   if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
+  if (cmd === "who") return runWhoCommand(db, args, json);
   return runTripsCommand(db, rest, json);
 }
 
