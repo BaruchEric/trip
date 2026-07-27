@@ -93,13 +93,21 @@ describe("trip calibrate", () => {
     expect(j.mode).toBe("walking");
   });
 
-  test("a transit trip finds no walking legs and says so", async () => {
+  test("a transit trip is refused specifically, not reported as unknown", async () => {
+    // This used to assert /unknown/i, which was the wrong word and hid the
+    // point. "Unknown" says nobody has measured it YET, and invited the
+    // reader to go and measure it. M12 established that transit cannot be
+    // calibrated at all: no free router covers it in these cities, OSM
+    // carries no timetable to derive one from, and the station graph's own
+    // output is not evidence about the station graph.
     const { db, path } = await tripDb("transit");
     await saveLeg(db, legFor(22.2, "osrm-foot"));
     await run(["set", "--mode=transit"], { dbPath: path });
     const r = await run(["calibrate"], { dbPath: path });
-    expect(r.stdout).toMatch(/unknown/i);
+    expect(r.stdout).toContain("CANNOT BE MEASURED");
     expect(r.stdout).toContain("transit");
+    // And it must not send them off to run the walking measurer.
+    expect(r.stdout).not.toContain("Measure them with: trip route");
   });
 });
 

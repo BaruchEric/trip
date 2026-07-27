@@ -22,9 +22,30 @@ import type { Mode, Point } from "@/plan/types";
  *  script". Real legs live in `route_legs` and are preferred over this by
  *  `@/plan/travel`. What remains here is the honest fallback.
  *
- *  The TRANSIT constants remain entirely unevidenced. Nothing in M8 measured
- *  transit, and no free GTFS ground truth for Chongqing was found. Nothing
- *  else in the compiler should encode a speed or a detour assumption. */
+ *  The TRANSIT constants are no longer merely unevidenced. M12 measured them,
+ *  and they are WRONG, in a known direction, in every city tried.
+ *
+ *  Against a station graph built from OSM's own rail relations in Chongqing,
+ *  Lisbon, Bangkok and Amsterdam, 18 km/h + 1.20 + 6 min UNDER-STATES
+ *  door-to-door transit time by a median of 8 to 24 minutes. Unlike the
+ *  walking result, which M9 found reverses sign between cities, this one does
+ *  not reverse — it held in all four cities across all twelve swept
+ *  combinations of the two constants OSM cannot supply. Under-stating is the
+ *  dangerous direction: a plan built on it runs late and cascades.
+ *
+ *  The worse defect is one no recalibration could fix. Having no idea where a
+ *  station is, this model recommends riding over walking in 36 to 42 of every
+ *  42 pairs, and measured walking actually wins 4 to 11 of them — by 70
+ *  minutes in the worst Bangkok case.
+ *
+ *  They are NOT recalibrated here, for two reasons. `@/transit/graph` replaces
+ *  them wherever a network has been fetched, so tuning the fallback would
+ *  improve only the case where nothing is known. And four cities is still four
+ *  cities: a global constant fitted to them is the overfitting M8 decision 6
+ *  refused and M9 vindicated.
+ *
+ *  See docs/superpowers/specs/2026-07-27-trip-m12-recon.md. Nothing else in
+ *  the compiler should encode a speed or a detour assumption. */
 
 const EARTH_RADIUS_KM = 6371;
 
@@ -32,8 +53,18 @@ interface ModeModel {
   kmh: number;
   /** Streets are not straight lines. */
   detour: number;
-  /** Fixed cost per hop: waiting, walking to the stop, buying a ticket. This
-   *  is what correctly makes transit lose to walking over short distances. */
+  /** Fixed cost per hop: waiting, walking to the stop, buying a ticket.
+   *
+   *  This comment used to end "this is what correctly makes transit lose to
+   *  walking over short distances". M12 measured that claim and it is FALSE.
+   *  Six minutes is nowhere near enough: across four cities, transit was
+   *  recommended over walking in 36 to 42 of every 42 pairs, and measured
+   *  walking really won 4 to 11 of them.
+   *
+   *  It could not have been true at any value, either. The term is a constant
+   *  added to a straight line, so it shifts every hop equally — while whether
+   *  the railway helps depends on where the stations happen to be. Only
+   *  `@/transit/graph`, which knows that, can make the call. */
   perHopMinutes: number;
 }
 
