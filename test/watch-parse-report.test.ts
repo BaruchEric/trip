@@ -46,6 +46,26 @@ const NO_TRANSCRIPT = `
 _No transcript available — proceed with frames only._
 `;
 
+// M3 Task 17 mutation sweep: `body.trim() !== ""` guards the WatchReport
+// contract that transcript "means NULL when absent, never ''" (the type's
+// own docstring). Real watch.py output never reaches this branch with a
+// blank fenced block — the heading and the fence are written together only
+// when there IS a transcript — but the guard is a real, load-bearing
+// defence of a documented invariant, not defence-in-depth for something
+// unreachable: without it, this exact fixture would set transcript to ""
+// instead of null. That distinction is real, so it gets a real test.
+const BLANK_FENCED_BLOCK = `
+# watch: video report
+
+- **Title:** Empty
+- **Transcript:** 0 segments (via captions)
+
+## Transcript
+
+\`\`\`
+\`\`\`
+`;
+
 describe("parseStamp", () => {
   test("parses MM:SS", () => {
     expect(parseStamp("04:32")).toBe(272);
@@ -113,6 +133,13 @@ describe("parseWatchReport", () => {
   test("duration comes from the parenthesised seconds, not the clock", () => {
     const r = parseWatchReport(NO_TRANSCRIPT);
     expect(r.durationSeconds).toBe(5);
+  });
+
+  test("a blank fenced block is no transcript, not an empty-string one", () => {
+    const r = parseWatchReport(BLANK_FENCED_BLOCK);
+    expect(r.transcript).toBeNull();
+    expect(r.transcriptSource).toBeNull();
+    expect(r.lines).toEqual([]);
   });
 
   test("reads a whisper source, whose own parens must not truncate the match", () => {

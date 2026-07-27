@@ -6,8 +6,8 @@ import { runWhenCommand } from "@/commands/when";
 import { runDatesCommand } from "@/commands/dates";
 import { runSegmentsCommand } from "@/commands/segments";
 import { runPlanCommand } from "@/commands/plan";
-import { runWatchCommand } from "@/commands/watch";
-import { runReviewCommand } from "@/commands/review";
+import { runWatchCommand, type WatchCommandDeps } from "@/commands/watch";
+import { runReviewCommand, type ReviewDeps } from "@/commands/review";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -46,6 +46,20 @@ export interface CliResult {
   stdout: string;
   stderr: string;
   code: number;
+}
+
+/** Injection point for the two commands that reach the network by default
+ *  (`watch`, which downloads a video, and `review resolve --rename`, which
+ *  re-geocodes). Nothing else needs one: every other command is pure CLI +
+ *  DB. Without this, a cross-command test driving the CLI through `run()`
+ *  end-to-end had no way to exercise `watch`/`review` without either hitting
+ *  Nominatim/yt-dlp for real or calling `runWatchCommand`/`runReviewCommand`
+ *  directly — which is exactly the module-level shortcut a *cross-command*
+ *  test exists to avoid. Additive and optional, mirroring `dbPath`: existing
+ *  callers of `run()` pass nothing and get today's behaviour unchanged. */
+export interface CliDeps {
+  watch?: WatchCommandDeps;
+  review?: ReviewDeps;
 }
 
 /** Flags every command accepts, bare, regardless of what it declares below. */
@@ -141,7 +155,7 @@ function fail(msg: string, json: boolean): CliResult {
  */
 export async function run(
   argv: string[],
-  opts: { dbPath?: string } = {},
+  opts: { dbPath?: string; deps?: CliDeps } = {},
 ): Promise<CliResult> {
   const json = argv.includes("--json");
 
@@ -185,7 +199,7 @@ export async function run(
     await migrate(db);
 
     const [, ...args] = rest;
-    const output = await route(db, cmd, args, rest, json);
+    const output = await route(db, cmd, args, rest, json, opts.deps ?? {});
     return { stdout: output, stderr: "", code: 0 };
   } catch (err) {
     return fail(err instanceof Error ? err.message : String(err), json);
@@ -196,13 +210,14 @@ const PLAN_COMMANDS = ["plan", "replan", "day", "pin", "unpin", "move"];
 
 async function route(
   db: Client, cmd: string, args: string[], rest: string[], json: boolean,
+  deps: CliDeps,
 ): Promise<string> {
   if (cmd === "when") return runWhenCommand(db, args, json);
   if (cmd === "dates") return runDatesCommand(db, args, json);
   if (cmd === "seg") return runSegmentsCommand(db, args, json);
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
-  if (cmd === "watch") return runWatchCommand(db, args, json);
-  if (cmd === "review") return runReviewCommand(db, args, json);
+  if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
+  if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
   return runTripsCommand(db, rest, json);
 }
 
