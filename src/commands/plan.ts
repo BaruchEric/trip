@@ -4,9 +4,16 @@ import { listSegments, type Segment } from "@/segments";
 import { readPins, readPlacements, savePlacements, setPinned, clearPin } from "@/placements";
 import { deriveDays, type DayWindow } from "@/days";
 import { compile } from "@/plan/compile";
-import { MODES, PACES, type Mode, type Pace, type Pin, type Unplaced } from "@/plan/types";
+import {
+  MODES, PACES,
+  type Mode, type Pace, type Pin, type Unplaced, type Placement,
+} from "@/plan/types";
 import { formatClock, parseClock } from "@/parse";
-import { renderDay, renderPlan } from "@/render-plan";
+import { renderDay, renderPlan, type PlanPricing } from "@/render-plan";
+import { listTravellers } from "@/travellers";
+import { listPasses } from "@/passes";
+import { readPriceRules } from "@/prices";
+import { resolveParty } from "@/pricing/party";
 
 function flag(argv: string[], name: string): string | null {
   const hit = argv.find((a) => a.startsWith(`${name}=`));
@@ -111,7 +118,9 @@ async function doPlan(db: Client, argv: string[], json: boolean): Promise<string
   const placements = reconcilePinned(result.placements, pins);
 
   if (json) return planJson(days, placements, segments, result.unplaced);
-  return renderPlan(days, placements, segments, result.unplaced);
+  const pricing = await buildPricing(
+    db, trip.id, trip.currency, days, placements, segments);
+  return renderPlan(days, placements, segments, result.unplaced, pricing);
 }
 
 /** (ordinal, startMin, segmentId): same tie-break `renderDay` uses, and for
@@ -212,7 +221,13 @@ async function doDay(db: Client, argv: string[], json: boolean): Promise<string>
     }));
 
   if (json) return planJson([day], placements, segments, dayUnplaced);
-  return renderDay(day, placements, new Map(segments.map((s) => [s.id, s])), dayUnplaced);
+  const pricing = await buildPricing(
+    db, trip.id, trip.currency, [day], placements, segments);
+  // withBreakdown: `trip day` is the detail view, so it earns the
+  // per-traveller rows that `trip plan` deliberately omits.
+  return renderDay(
+    day, placements, new Map(segments.map((s) => [s.id, s])), dayUnplaced,
+    pricing, true);
 }
 
 async function doPin(db: Client, argv: string[], json: boolean): Promise<string> {
@@ -272,4 +287,64 @@ async function doMove(db: Client, argv: string[], json: boolean): Promise<string
     ? JSON.stringify({ moved: segment.id, day })
     : `moved ${segment.name} to day ${day} (pinned to the day, time is the compiler's). ` +
       "Run `trip replan`.";
+}
+
+/** Resolve what the party pays, for every placed segment and every pass.
+ *
+ *  Lives HERE rather than in the renderer because this is where a segment and
+ *  its day are both in hand — the free-day override needs the day's weekday,
+ *  and the age rules need the day's date. Renderers stay pure string
+ *  formatters that do no arithmetic on ages.
+ *
+ *  A segment placed on no day cannot be priced and simply is not in the map,
+ *  which reads as unknown. That is correct: its price is not knowable until
+ *  it is placed (M5-8). */
+async function buildPricing(
+  db: Client,
+  tripId: number,
+  currency: string | null,
+  days: DayWindow[],
+  placements: Placement[],
+  segments: Segment[],
+): Promise<PlanPricing> {
+  const travellers = await listTravellers(db, tripId);
+  const party = travellers.map((t) => ({
+    id: t.id, label: t.label, birthDate: t.birthDate,
+  }));
+
+  const byId = new Map(segments.map((s) => [s.id, s]));
+  const dayById = new Map(days.map((d) => [d.day, d]));
+  const segRules = await readPriceRules(db, "segment", segments.map((s) => s.id));
+
+  const bySegment = new Map<number, ReturnType<typeof resolveParty>>();
+  for (const p of placements) {
+    const seg = byId.get(p.segmentId);
+    const day = dayById.get(p.day);
+    if (!seg || !day) continue;
+    bySegment.set(
+      p.segmentId,
+      resolveParty(
+        segRules.get(p.segmentId) ?? [],
+        party,
+        day.date,
+        seg.freeDays.includes(day.weekday),
+      ),
+    );
+  }
+
+  const passList = await listPasses(db, tripId);
+  const passRules = await readPriceRules(db, "pass", passList.map((x) => x.id));
+  // A pass is counted once, not per day, so it resolves against the FIRST day
+  // it covers. Ages could differ across a long pass's window; the first day is
+  // the day you buy it, which is the day the fare is actually assessed.
+  const passes = passList.map((pass) => ({
+    pass,
+    price: resolveParty(
+      passRules.get(pass.id) ?? [],
+      party,
+      (dayById.get(pass.fromDay) ?? days[0])?.date ?? days[0]!.date,
+    ),
+  }));
+
+  return { currency, bySegment, passes, travellers: party };
 }

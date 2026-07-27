@@ -142,9 +142,16 @@ async function lsCmd(
     segments = segments.filter((s) => !placed.has(s.id));
   }
 
-  if (json) return JSON.stringify({ segments });
+  const rules = await readPriceRules(db, "segment", segments.map((s) => s.id));
+  if (json) {
+    return JSON.stringify({
+      segments: segments.map((s) => ({ ...s, priceRules: rules.get(s.id) ?? [] })),
+    });
+  }
   if (segments.length === 0) return "no segments match.";
-  return renderSegmentList(segments);
+  // Rules, never a resolved price: an unplaced segment has no date, so no
+  // age, so no price (M5-8).
+  return renderSegmentList(segments, rules);
 }
 
 async function rmCmd(
