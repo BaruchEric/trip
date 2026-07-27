@@ -84,8 +84,6 @@ export async function runTripsCommand(
       `Dates:    ${t.startDate ?? "not set"} - ${t.endDate ?? "not set"}`,
       `Mode:     ${t.mode}`,
       `Pace:     ${t.pace}`,
-      `Lodging:  ${t.lodgingTier}`,
-      `Food:     ${t.foodTier}`,
     ];
     // Omitted entirely when unset. A "Currency: not set" line would be noise
     // on every trip that predates M5, and NULL already renders as bare

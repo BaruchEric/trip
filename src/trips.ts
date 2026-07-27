@@ -8,8 +8,6 @@ export interface Trip {
   endDate: string | null;
   mode: string;
   pace: string;
-  lodgingTier: string;
-  foodTier: string;
   /** null means unknown, so day 1 is treated as full (M2-3). */
   arrivalMin: number | null;
   departureMin: number | null;
@@ -32,8 +30,6 @@ function toTrip(row: Row): Trip {
     endDate: row.end_date === null ? null : String(row.end_date),
     mode: String(row.mode),
     pace: String(row.pace),
-    lodgingTier: String(row.lodging_tier),
-    foodTier: String(row.food_tier),
     arrivalMin: row.arrival_time === null ? null : Number(row.arrival_time),
     departureMin: row.departure_time === null ? null : Number(row.departure_time),
     dayStartMin: Number(row.day_start),
@@ -43,7 +39,7 @@ function toTrip(row: Row): Trip {
 }
 
 const SELECT = `SELECT id, name, destination_id, start_date, end_date,
-                       mode, pace, lodging_tier, food_tier,
+                       mode, pace,
                        arrival_time, departure_time, day_start, day_end,
                        currency
                 FROM trips`;

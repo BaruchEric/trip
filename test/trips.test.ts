@@ -22,8 +22,8 @@ describe("trips", () => {
     expect(t.name).toBe("tokyo-2027");
     expect(t.mode).toBe("walking");
     expect(t.pace).toBe("normal");
-    expect(t.lodgingTier).toBe("mid");
-    expect(t.foodTier).toBe("casual");
+    // lodgingTier/foodTier were removed in M11 (migration 13): displayed as
+    // settings since M2, settable by nothing, read by nothing.
   });
 
   test("duplicate trip names are rejected", async () => {

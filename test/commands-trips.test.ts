@@ -34,8 +34,9 @@ describe("runTripsCommand: new", () => {
     expect(parsed.name).toBe("tokyo-2027");
     expect(parsed.mode).toBe("walking");
     expect(parsed.pace).toBe("normal");
-    expect(parsed.lodgingTier).toBe("mid");
-    expect(parsed.foodTier).toBe("casual");
+    // Removed in M11 (migration 13) -- see test/db.test.ts for the drop.
+    expect(parsed.lodgingTier).toBeUndefined();
+    expect(parsed.foodTier).toBeUndefined();
     // Nulls, not zeros — an unset destination must not read as id 0.
     expect(parsed.destinationId).toBeNull();
     expect(parsed.startDate).toBeNull();
@@ -124,8 +125,14 @@ describe("runTripsCommand: show", () => {
     const db = await freshDb("show");
     await runTripsCommand(db, ["new", "tokyo-2027"], false);
     const out = await runTripsCommand(db, ["show"], false);
-    for (const label of ["Trip:", "Dates:", "Mode:", "Pace:", "Lodging:", "Food:"]) {
+    for (const label of ["Trip:", "Dates:", "Mode:", "Pace:"]) {
       expect(out).toContain(label);
+    }
+    // M11 dropped these. They were displayed as settings from M2 onwards while
+    // no command could set them and no computation read them, which made the
+    // display itself the defect.
+    for (const gone of ["Lodging:", "Food:"]) {
+      expect(out).not.toContain(gone);
     }
     expect(out).toContain("not set"); // dates are unset in M1
   });

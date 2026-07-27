@@ -424,13 +424,50 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 12", async () => {
+  test("migration 13 drops the dead tier columns and keeps the rows", async () => {
+    // The first DESTRUCTIVE migration in this project. Everything before it
+    // added; this one removes two columns from `trips`, the table everything
+    // else references.
+    //
+    // Started from the V1 schema WITH A REAL ROW IN IT, because that is the
+    // shape the drop will actually meet -- and because the M8 ledger had to
+    // correct a claim that migrations were verified against real rows when
+    // the live database has always been empty.
+    const db = await openLegacyDb("m13-drop");
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at, lodging_tier, food_tier)
+            VALUES (?, ?, ?, ?)`,
+      args: ["chongqing", "2026-07-27", "budget", "street"],
+    });
+    await migrate(db);
+
+    const cols = await columnsOf(db, "trips");
+    expect(cols).not.toContain("lodging_tier");
+    expect(cols).not.toContain("food_tier");
+    // Everything else survives, including the columns added since.
+    expect(cols).toContain("currency");
+    expect(cols).toContain("day_start");
+
+    const r = await db.execute(`SELECT id, name FROM trips`);
+    expect(r.rows).toHaveLength(1);
+    expect(r.rows[0]!.name).toBe("chongqing");
+  });
+
+  test("migration 13 is idempotent", async () => {
+    const db = openDb(tmpDb("m13-idem"));
+    await migrate(db);
+    await migrate(db);
+    expect(await schemaVersion(db)).toBe(13);
+    expect(await columnsOf(db, "trips")).not.toContain("lodging_tier");
+  });
+
+  test("schema version is 13", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m12-version"));
+    const db = openDb(tmpDb("m13-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(12);
+    expect(await schemaVersion(db)).toBe(13);
   });
 
   test("migration 11 adds mentions.query, defaulting to NULL", async () => {

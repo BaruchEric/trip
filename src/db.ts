@@ -480,6 +480,33 @@ const MIGRATIONS: Migration[] = [
                ON route_legs (from_lat, from_lon, to_lat, to_lon, mode, source)`,
           ],
   },
+  {
+    version: 13,
+    // M11: remove the two fields that have looked like settings since M2.
+    //
+    // `lodging_tier` and `food_tier` have been in BASE_SCHEMA since M2 with
+    // defaults 'mid' and 'casual'. `trip show` printed them under "Lodging:"
+    // and "Food:". No command could set them. No computation read them. They
+    // were the placeholder for `cost_bands`, which M11 formally decided not
+    // to build -- there is no free keyless structured source for it, and the
+    // value is already reachable through cost_observations.
+    //
+    // Shown as configuration, changeable by nothing, affecting nothing. The
+    // schema keeping a dead column is untidy; the tool DISPLAYING it as a
+    // setting is a small lie, and this is the milestone that ends it.
+    //
+    // BASE_SCHEMA stays frozen and still creates both, so a version-0
+    // database creates-then-drops. That is ordinary migration history.
+    // ALTER TABLE trips DROP COLUMN was verified against a real v12 database
+    // carrying trip and segment rows: it succeeds and the rows survive.
+    statements: async (db) =>
+      (await hasColumn(db, "trips", "lodging_tier"))
+        ? [
+            `ALTER TABLE trips DROP COLUMN lodging_tier`,
+            `ALTER TABLE trips DROP COLUMN food_tier`,
+          ]
+        : [],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */
