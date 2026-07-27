@@ -81,7 +81,7 @@ describe("trip review ls", () => {
     const { db, id } = await queued("ls-filter-resolved");
     const segId = await addSegment(db, 1, {
       name: "Yuwei Hot Pot", latitude: 29.563, longitude: 106.567,
-      dwellMinutes: 60, cost: null, tags: [],
+      dwellMinutes: 60, freeDays: [], tags: [],
       opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, id, segId);

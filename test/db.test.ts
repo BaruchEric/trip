@@ -1,5 +1,5 @@
 import { expect, test, describe } from "bun:test";
-import { openDb, migrate, schemaVersion, SCHEMA_VERSION } from "@/db";
+import { openDb, migrate, migrateTo, schemaVersion, SCHEMA_VERSION } from "@/db";
 import { readMonths } from "@/climate/cache";
 import type { Client } from "@libsql/client";
 import { rmSync } from "node:fs";
@@ -424,13 +424,13 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 7", async () => {
+  test("schema version is 8", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m7-version"));
+    const db = openDb(tmpDb("m8-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(7);
+    expect(await schemaVersion(db)).toBe(8);
   });
 
   test("migration 6 backfills an existing segments row instead of erasing it", async () => {
@@ -485,5 +485,101 @@ describe("schema migrations", () => {
     // run must not throw and must not change the version.
     await migrate(db);
     expect(await schemaVersion(db)).toBe(SCHEMA_VERSION);
+  });
+
+  // -------------------------------------------------------------------------
+  // Migration 8 — M5. These stand at v7 first, via migrateTo, because the
+  // whole job of migration 8 is moving data out of a column that only a v7
+  // database has. Migrating a fresh database straight to 8 would exercise the
+  // guard and none of the work.
+  // -------------------------------------------------------------------------
+
+  async function atV7(name: string): Promise<Client> {
+    const db = openDb(tmpDb(name));
+    await migrateTo(db, 7);
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["t", "2026-07-27"],
+    });
+    return db;
+  }
+
+  test("migration 8 retires segments.cost into price_rules", async () => {
+    const db = await atV7("m8-cost");
+    await db.execute(
+      `INSERT INTO segments (trip_id, name, dwell_minutes, cost)
+       VALUES (1, 'Museum', 60, 25)`,
+    );
+
+    await migrate(db);
+
+    const cols = await db.execute(`PRAGMA table_info(segments)`);
+    expect(cols.rows.map((r) => String(r.name))).not.toContain("cost");
+
+    const rules = await db.execute(
+      `SELECT owner_kind, owner_id, min_age, max_age, price FROM price_rules`,
+    );
+    expect(rules.rows.length).toBe(1);
+    expect(String(rules.rows[0]!.owner_kind)).toBe("segment");
+    expect(Number(rules.rows[0]!.owner_id)).toBe(1);
+    expect(Number(rules.rows[0]!.price)).toBe(25);
+    // Both NULL: the migrated cost is the UNBOUNDED base rule, applying to
+    // every age, which is exactly what a single un-banded price meant.
+    expect(rules.rows[0]!.min_age).toBeNull();
+    expect(rules.rows[0]!.max_age).toBeNull();
+  });
+
+  test("a NULL cost migrates to no rule at all, not to a zero rule", async () => {
+    // Absence is loud. An unpriced segment must stay unpriced; a 0 rule here
+    // would silently declare every old segment free, and nothing downstream
+    // could tell that apart from a place that really costs nothing.
+    const db = await atV7("m8-null");
+    await db.execute(
+      `INSERT INTO segments (trip_id, name, dwell_minutes) VALUES (1, 'Free-ish', 60)`,
+    );
+    await migrate(db);
+    const rules = await db.execute(`SELECT COUNT(*) AS n FROM price_rules`);
+    expect(Number(rules.rows[0]!.n)).toBe(0);
+  });
+
+  test("migration 8 is a no-op on a second run", async () => {
+    const db = openDb(tmpDb("m8-idempotent"));
+    await migrate(db);
+    await migrate(db);
+    expect(await schemaVersion(db)).toBe(SCHEMA_VERSION);
+    const rules = await db.execute(`SELECT COUNT(*) AS n FROM price_rules`);
+    expect(Number(rules.rows[0]!.n)).toBe(0);
+  });
+
+  test("migration 8 leaves existing segment rows otherwise untouched", async () => {
+    // A DROP COLUMN is a table rewrite under the hood. Everything else on the
+    // row has to survive it, including the columns migration 6 bolted on.
+    const db = await atV7("m8-intact");
+    await db.execute(
+      `INSERT INTO segments (trip_id, name, local_name, latitude, longitude,
+                             dwell_minutes, dwell_is_default, cost, tags,
+                             opens_minutes, closes_minutes, closed_days)
+       VALUES (1, 'Hongya Cave', '洪崖洞', 29.56, 106.57, 90, 0, 30,
+               'sight', 600, 1320, 'mon')`,
+    );
+    await migrate(db);
+    const r = await db.execute(`SELECT * FROM segments WHERE id = 1`);
+    const row = r.rows[0]!;
+    expect(String(row.name)).toBe("Hongya Cave");
+    expect(String(row.local_name)).toBe("洪崖洞");
+    expect(Number(row.latitude)).toBeCloseTo(29.56);
+    expect(Number(row.dwell_minutes)).toBe(90);
+    expect(String(row.tags)).toBe("sight");
+    expect(Number(row.opens_minutes)).toBe(600);
+    expect(String(row.closed_days)).toBe("mon");
+    // The new column defaults to '', which splitList reads as [] — no free
+    // day is KNOWN, which is not the same as "never free".
+    expect(String(row.free_days)).toBe("");
+  });
+
+  test("migrateTo refuses to go backwards", async () => {
+    const db = openDb(tmpDb("m8-backwards"));
+    await migrate(db);
+    await expect(migrateTo(db, 7)).rejects.toThrow(/cannot migrate down/);
   });
 });

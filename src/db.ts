@@ -289,6 +289,80 @@ const MIGRATIONS: Migration[] = [
         ? []
         : [`ALTER TABLE mentions ADD COLUMN kind TEXT`],
   },
+  {
+    version: 8,
+    // M5: the traveller profile and concession pricing.
+    //
+    // `segments.cost` is DROPPED rather than kept alongside price_rules. Two
+    // sources of truth for one number is how they come to disagree, and the
+    // whole milestone exists because `cost` was write-only anyway -- stored
+    // since M2, rendered by NOTHING. A user could type --cost=25 and no
+    // command would ever show it back except --json.
+    //
+    // ALTER TABLE ... DROP COLUMN was verified against this project's
+    // installed @libsql/client before this migration was written; SQLite only
+    // gained it in 3.35. If a downgrade ever breaks it, the fallback is the
+    // twelve-step table rebuild, which is a materially larger change.
+    statements: async (db) => {
+      if (await hasColumn(db, "trips", "currency")) return [];
+      const stmts = [
+        `CREATE TABLE IF NOT EXISTS travellers (
+           id         INTEGER PRIMARY KEY AUTOINCREMENT,
+           trip_id    INTEGER NOT NULL REFERENCES trips(id),
+           label      TEXT NOT NULL,
+           -- YYYY-MM-DD. NOT NULL: a nullable birth date would have to mean
+           -- "adult" at match time, and that is a guess wearing the costume
+           -- of a fact -- the same shape as the zero-filled climate month.
+           birth_date TEXT NOT NULL,
+           UNIQUE (trip_id, label)
+         )`,
+        `CREATE TABLE IF NOT EXISTS passes (
+           id       INTEGER PRIMARY KEY AUTOINCREMENT,
+           trip_id  INTEGER NOT NULL REFERENCES trips(id),
+           name     TEXT NOT NULL,
+           -- 1-based day numbers, matching DayWindow.day and pin --day=.
+           from_day INTEGER NOT NULL,
+           to_day   INTEGER NOT NULL
+         )`,
+        `CREATE TABLE IF NOT EXISTS price_rules (
+           id         INTEGER PRIMARY KEY AUTOINCREMENT,
+           -- One table, two owners: a pass is a priced thing with age rules
+           -- and a validity window, differing from a segment in what owns it
+           -- and when it is counted, not in how it is priced.
+           owner_kind TEXT NOT NULL CHECK (owner_kind IN ('segment','pass')),
+           owner_id   INTEGER NOT NULL,
+           -- NULL is unbounded on that side; both NULL is the base rule,
+           -- which is a FALLBACK rather than a peer.
+           min_age    INTEGER,
+           max_age    INTEGER,
+           -- NOT NULL. 0 is a real price meaning free. UNKNOWN is the ABSENCE
+           -- OF A ROW; there is deliberately no NULL price, because a NULL
+           -- price would be a row asserting a price exists while refusing to
+           -- say what it is.
+           price      REAL NOT NULL
+         )`,
+        `CREATE INDEX IF NOT EXISTS price_rules_owner
+           ON price_rules (owner_kind, owner_id)`,
+        `ALTER TABLE trips ADD COLUMN currency TEXT`,
+      ];
+      if (!(await hasColumn(db, "segments", "free_days"))) {
+        stmts.push(
+          `ALTER TABLE segments ADD COLUMN free_days TEXT NOT NULL DEFAULT ''`,
+        );
+      }
+      if (await hasColumn(db, "segments", "cost")) {
+        stmts.push(
+          // A NULL cost migrates to NO ROW, not to a zero rule: an unpriced
+          // segment must stay unpriced rather than quietly become free.
+          `INSERT INTO price_rules (owner_kind, owner_id, min_age, max_age, price)
+             SELECT 'segment', id, NULL, NULL, cost
+             FROM segments WHERE cost IS NOT NULL`,
+          `ALTER TABLE segments DROP COLUMN cost`,
+        );
+      }
+      return stmts;
+    },
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */
@@ -304,22 +378,25 @@ export async function schemaVersion(db: Client): Promise<number> {
   return Number(r.rows[0]?.v ?? 0);
 }
 
-export async function migrate(db: Client): Promise<void> {
+/** Apply migrations up to and including `target`, and no further.
+ *
+ *  Exists so a test can build a database as some OLDER build of trip left it
+ *  and then migrate it forward for real — which is the only way to exercise a
+ *  migration against the shape it will actually meet in the wild. Migration 8
+ *  needs this: its whole job is moving data out of a column that a v7 database
+ *  has and a fresh one would too, so there is no way to test it without first
+ *  standing at v7. */
+export async function migrateTo(db: Client, target: number): Promise<void> {
   await db.execute(VERSION_TABLE);
   const current = await schemaVersion(db);
-
-  // A database written by a NEWER build of trip. Migrating down is not a thing
-  // this can do, and running an old build against a new schema would write
-  // rows that silently omit whatever the newer version added. Refuse.
-  if (current > SCHEMA_VERSION) {
+  if (current > target) {
     throw new Error(
-      `database is at schema version ${current} but this build of trip only ` +
-      `knows version ${SCHEMA_VERSION}. Upgrade trip, or point --db elsewhere.`,
+      `database is at schema version ${current}, cannot migrate down to ${target}`,
     );
   }
 
   for (const m of MIGRATIONS) {
-    if (m.version <= current) continue;
+    if (m.version <= current || m.version > target) continue;
     const stmts = await m.statements(db);
     // One batch, so the DDL and the version record commit together. A crash
     // mid-migration must not leave a database that claims a version it does
@@ -335,4 +412,25 @@ export async function migrate(db: Client): Promise<void> {
       "write",
     );
   }
+}
+
+export async function migrate(db: Client): Promise<void> {
+  await db.execute(VERSION_TABLE);
+  const current = await schemaVersion(db);
+
+  // A database written by a NEWER build of trip. Migrating down is not a thing
+  // this can do, and running an old build against a new schema would write
+  // rows that silently omit whatever the newer version added. Refuse.
+  //
+  // Checked HERE rather than in migrateTo, whose contract is "stop at target"
+  // — a caller asking for 7 on a v8 database is making a different mistake and
+  // gets a different message.
+  if (current > SCHEMA_VERSION) {
+    throw new Error(
+      `database is at schema version ${current} but this build of trip only ` +
+      `knows version ${SCHEMA_VERSION}. Upgrade trip, or point --db elsewhere.`,
+    );
+  }
+
+  await migrateTo(db, SCHEMA_VERSION);
 }

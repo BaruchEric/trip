@@ -248,7 +248,7 @@ export async function ingestMentions(
         longitude: c.longitude,
         dwellMinutes: spec.dwellMinutes ?? DEFAULT_DWELL_MINUTES,
         dwellIsDefault: spec.dwellMinutes === null,
-        cost: null,
+        freeDays: [],
         tags: spec.tags,
         // A geocoder does not know opening hours. NULL is UNKNOWN, and the
         // scheduler already reports these with a "?" rather than assuming a

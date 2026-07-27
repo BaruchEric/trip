@@ -71,7 +71,7 @@ describe("plan types", () => {
   test("isPlannable rejects a segment with no coordinates", () => {
     const base: Segment = {
       id: 1, tripId: 1, name: "x", localName: null, latitude: null, longitude: null,
-      dwellMinutes: 30, dwellIsDefault: false, cost: null, tags: [], opensMin: null,
+      dwellMinutes: 30, dwellIsDefault: false, freeDays: [], tags: [], opensMin: null,
       closesMin: null, closedDays: [], status: "confirmed",
       sourceId: null, sourceAtSeconds: null,
     };

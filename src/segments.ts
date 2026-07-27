@@ -18,12 +18,15 @@ export interface Segment {
    *  The number is a guess, so it is rendered with a [default] marker rather
    *  than passing as a measured value. */
   dwellIsDefault: boolean;
-  cost: number | null;
   tags: string[];
   /** NULL means hours are UNKNOWN, never "open all day". See M2-2. */
   opensMin: number | null;
   closesMin: number | null;
   closedDays: string[];
+  /** Weekdays this place is free, as 3-letter codes — the same vocabulary and
+   *  the same storage shape as `closedDays`. Empty means no free day is
+   *  KNOWN, which is not the same as "never free" (M5-6). */
+  freeDays: string[];
   status: string;
   /** The video this came from, and the second mark it was said at. Both NULL
    *  for a hand-added segment. */
@@ -124,18 +127,19 @@ export async function addSegment(
   validate(input);
   const tags = joinList(input.tags, "tag");
   const closedDays = joinList(input.closedDays.map(normalizeWeekday), "closed day");
+  const freeDays = joinList(input.freeDays.map(normalizeWeekday), "free day");
 
   const r = await db.execute({
     sql: `INSERT INTO segments
             (trip_id, name, local_name, latitude, longitude, dwell_minutes,
-             dwell_is_default, cost, tags, opens_minutes, closes_minutes,
-             closed_days, source_id, source_at_seconds)
+             dwell_is_default, tags, opens_minutes, closes_minutes,
+             closed_days, free_days, source_id, source_at_seconds)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           RETURNING id`,
     args: [tripId, input.name.trim(), input.localName ?? null,
            input.latitude, input.longitude, input.dwellMinutes,
-           input.dwellIsDefault ? 1 : 0, input.cost, tags,
-           input.opensMin, input.closesMin, closedDays,
+           input.dwellIsDefault ? 1 : 0, tags,
+           input.opensMin, input.closesMin, closedDays, freeDays,
            input.sourceId ?? null, input.sourceAtSeconds ?? null],
   });
   return Number(r.rows[0]!.id);
@@ -148,9 +152,9 @@ export async function listSegments(
 ): Promise<Segment[]> {
   const args: number[] = [tripId];
   let sql = `SELECT id, trip_id, name, local_name, latitude, longitude,
-                    dwell_minutes, dwell_is_default, cost, tags,
-                    opens_minutes, closes_minutes, closed_days, status,
-                    source_id, source_at_seconds
+                    dwell_minutes, dwell_is_default, tags,
+                    opens_minutes, closes_minutes, closed_days, free_days,
+                    status, source_id, source_at_seconds
              FROM segments WHERE trip_id = ?`;
   if (opts.sourceId !== undefined) {
     sql += ` AND source_id = ?`;
@@ -167,11 +171,11 @@ export async function listSegments(
     longitude: numOrNull(row.longitude),
     dwellMinutes: Number(row.dwell_minutes),
     dwellIsDefault: Number(row.dwell_is_default) === 1,
-    cost: numOrNull(row.cost),
     tags: splitList(row.tags),
     opensMin: numOrNull(row.opens_minutes),
     closesMin: numOrNull(row.closes_minutes),
     closedDays: splitList(row.closed_days),
+    freeDays: splitList(row.free_days),
     status: String(row.status),
     sourceId: numOrNull(row.source_id),
     sourceAtSeconds: numOrNull(row.source_at_seconds),

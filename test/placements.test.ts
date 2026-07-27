@@ -24,7 +24,7 @@ async function freshDb(tag: string) {
 
 async function addTwo(db: Awaited<ReturnType<typeof freshDb>>, tripId = 1) {
   const base = {
-    latitude: 38.71, longitude: -9.13, dwellMinutes: 60, cost: null,
+    latitude: 38.71, longitude: -9.13, dwellMinutes: 60, freeDays: [],
     tags: [], opensMin: null, closesMin: null, closedDays: [],
   };
   return [

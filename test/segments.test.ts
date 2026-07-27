@@ -21,7 +21,7 @@ async function freshDb(tag: string) {
 const FULL = {
   name: "Time Out Market",
   latitude: 38.707, longitude: -9.145,
-  dwellMinutes: 90, cost: 25,
+  dwellMinutes: 90, freeDays: [],
   tags: ["food", "indoor"],
   opensMin: 600, closesMin: 1440,
   closedDays: ["mon"],
@@ -49,16 +49,19 @@ describe("segments", () => {
     const db = await freshDb("nulls");
     await addSegment(db, 1, {
       name: "Some Viewpoint", latitude: null, longitude: null,
-      dwellMinutes: 30, cost: null, tags: [],
+      dwellMinutes: 30, freeDays: [], tags: [],
       opensMin: null, closesMin: null, closedDays: [],
     });
     const [seg] = await listSegments(db, 1);
     expect(seg!.opensMin).toBeNull();
     expect(seg!.closesMin).toBeNull();
     expect(seg!.latitude).toBeNull();
-    expect(seg!.cost).toBeNull();
     expect(seg!.tags).toEqual([]);
     expect(seg!.closedDays).toEqual([]);
+    // M5: no free day is KNOWN, which is not the same as "never free". The
+    // cost assertion that used to sit here moved out with the column -- price
+    // is now the ABSENCE of a price_rules row, asserted in test/prices.test.ts.
+    expect(seg!.freeDays).toEqual([]);
   });
 
   test("segments are scoped to their trip", async () => {

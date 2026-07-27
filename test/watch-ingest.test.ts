@@ -6,6 +6,7 @@ import { parsePoiResponse, type PoiCandidate } from "@/geo/poi";
 import { openDb, migrate } from "@/db";
 import { listMentions } from "@/mentions";
 import { listSegments } from "@/segments";
+import { readPriceRules } from "@/prices";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -299,14 +300,18 @@ describe("ingestMentions", () => {
     expect(seg!.dwellMinutes).toBe(90);
     expect(seg!.dwellIsDefault).toBe(false);
     expect(seg!.tags).toEqual(["sight"]);
-    // Hours, cost, and closed days are UNKNOWN, not invented. A geocoder does
+    // Hours, price, and closed days are UNKNOWN, not invented. A geocoder does
     // not know any of them, and a fabricated value here is worse than the NULL
     // that says "nobody has answered this yet" (mutation sweep: both `cost`
     // and `closedDays` were unchecked and a hardcoded value survived).
     expect(seg!.opensMin).toBeNull();
     expect(seg!.closesMin).toBeNull();
-    expect(seg!.cost).toBeNull();
     expect(seg!.closedDays).toEqual([]);
+    expect(seg!.freeDays).toEqual([]);
+    // M5: price is the ABSENCE of a rule row, not a null column. Asserting the
+    // owner is absent from the map is the same fact the `cost` assertion used
+    // to carry, and it is stronger -- a zero rule would now be visible here.
+    expect((await readPriceRules(db, "segment", [seg!.id])).has(seg!.id)).toBe(false);
 
     const [m] = await listMentions(db, 1);
     expect(m!.state).toBe("resolved");

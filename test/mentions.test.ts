@@ -80,7 +80,7 @@ describe("mentions", () => {
     await queueMention(db, id, "5 candidates");
     const segId = await addSegment(db, 1, {
       name: "Yuwei Hot Pot", latitude: 29.54, longitude: 106.56,
-      dwellMinutes: 60, cost: null, tags: [],
+      dwellMinutes: 60, freeDays: [], tags: [],
       opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, id, segId);
@@ -94,7 +94,7 @@ describe("mentions", () => {
     const db = await freshDb("invariant");
     const id = await createMention(db, 1, 1, HOTPOT);
     const segId = await addSegment(db, 1, {
-      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, cost: null,
+      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, freeDays: [],
       tags: [], opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, id, segId);
@@ -143,7 +143,7 @@ describe("mentions", () => {
     const db = await freshDb("reject-after-resolve");
     const id = await createMention(db, 1, 1, HOTPOT);
     const segId = await addSegment(db, 1, {
-      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, cost: null,
+      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, freeDays: [],
       tags: [], opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, id, segId);
@@ -162,7 +162,7 @@ describe("mentions", () => {
     const db = await freshDb("unlink");
     const id = await createMention(db, 1, 1, HOTPOT);
     const segId = await addSegment(db, 1, {
-      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, cost: null,
+      name: "x", latitude: 1, longitude: 1, dwellMinutes: 30, freeDays: [],
       tags: [], opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, id, segId);
@@ -191,7 +191,7 @@ describe("mentions", () => {
     const resolved = await createMention(db, 1, 1, { ...HOTPOT, text: "Hongya Cave" });
     const segId = await addSegment(db, 1, {
       name: "Hongya Cave", latitude: 29.565, longitude: 106.575,
-      dwellMinutes: 90, cost: null, tags: [],
+      dwellMinutes: 90, freeDays: [], tags: [],
       opensMin: null, closesMin: null, closedDays: [],
     });
     await resolveMention(db, resolved, segId);

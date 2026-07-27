@@ -208,7 +208,7 @@ async function createSegmentFrom(
     longitude: candidate.longitude,
     dwellMinutes: mention.dwellMinutes ?? DEFAULT_DWELL_MINUTES,
     dwellIsDefault: mention.dwellMinutes === null,
-    cost: null,
+    freeDays: [],
     tags: mention.tags,
     opensMin: null,
     closesMin: null,
