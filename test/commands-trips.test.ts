@@ -1,6 +1,7 @@
 import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import { runTripsCommand } from "@/commands/trips";
+import { runWhoCommand } from "@/commands/who";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -139,5 +140,101 @@ describe("runTripsCommand: unknown", () => {
   test("no subcommand at all also throws", async () => {
     const db = await freshDb("nosub");
     await expect(runTripsCommand(db, [], false)).rejects.toThrow(/unknown command/);
+  });
+});
+
+describe("trip set and trip show", () => {
+  test("currency starts NULL and renders nothing, exactly as before M5", async () => {
+    // A "Currency: not set" line would be noise on every pre-M5 trip, and
+    // NULL already renders as bare numbers wherever a price appears.
+    const db = await freshDb("nocurrency");
+    await runTripsCommand(db, ["new", "x"], false);
+    expect(await runTripsCommand(db, ["show"], false)).not.toContain("Currency");
+  });
+
+  test("trip set --currency is shown by trip show", async () => {
+    const db = await freshDb("currency");
+    await runTripsCommand(db, ["new", "x"], false);
+    await runTripsCommand(db, ["set", "--currency=CNY"], false);
+    expect(await runTripsCommand(db, ["show"], false)).toContain("CNY");
+  });
+
+  test("trip set --mode and --pace write the columns plan reads as fallbacks", async () => {
+    // These two have been read by `plan` since M2 with nothing able to write
+    // them -- defaults nobody could change.
+    const db = await freshDb("modepace");
+    await runTripsCommand(db, ["new", "x"], false);
+    await runTripsCommand(db, ["set", "--mode=transit", "--pace=easy"], false);
+    const out = await runTripsCommand(db, ["show"], false);
+    expect(out).toContain("transit");
+    expect(out).toContain("easy");
+  });
+
+  test("setting one field does not reset the others", async () => {
+    const db = await freshDb("partial");
+    await runTripsCommand(db, ["new", "x"], false);
+    await runTripsCommand(db, ["set", "--mode=transit", "--currency=CNY"], false);
+    await runTripsCommand(db, ["set", "--pace=easy"], false);
+    const out = await runTripsCommand(db, ["show"], false);
+    expect(out).toContain("transit");
+    expect(out).toContain("CNY");
+    expect(out).toContain("easy");
+  });
+
+  test("an unknown mode is rejected against the same list plan uses", async () => {
+    // Storing a mode the compiler cannot resolve would leave the trip unable
+    // to plan, with the bad value invisible until the next `trip plan`.
+    const db = await freshDb("badmode");
+    await runTripsCommand(db, ["new", "x"], false);
+    await expect(runTripsCommand(db, ["set", "--mode=teleport"], false))
+      .rejects.toThrow(/teleport/);
+    await expect(runTripsCommand(db, ["set", "--pace=frantic"], false))
+      .rejects.toThrow(/frantic/);
+  });
+
+  test("an empty --currency is rejected rather than stored as blank", async () => {
+    const db = await freshDb("emptycurrency");
+    await runTripsCommand(db, ["new", "x"], false);
+    await expect(runTripsCommand(db, ["set", "--currency="], false))
+      .rejects.toThrow(/may not be empty/);
+  });
+
+  test("trip set with no flags is an error, not a silent no-op", async () => {
+    const db = await freshDb("setnothing");
+    await runTripsCommand(db, ["new", "x"], false);
+    await expect(runTripsCommand(db, ["set"], false)).rejects.toThrow(/nothing to set/);
+  });
+
+  test("trip set with no active trip says so", async () => {
+    const db = await freshDb("setnotrip");
+    await expect(runTripsCommand(db, ["set", "--currency=CNY"], false))
+      .rejects.toThrow(/no active trip/);
+  });
+
+  test("trip show lists travellers with their birth dates", async () => {
+    const db = await freshDb("showwho");
+    await runTripsCommand(db, ["new", "x"], false);
+    await runWhoCommand(db, ["add", "Mom", "--born=1949-03-14"], false);
+    const out = await runTripsCommand(db, ["show"], false);
+    expect(out).toContain("Mom");
+    expect(out).toContain("1949-03-14");
+  });
+
+  test("trip show says 'none' rather than omitting the travellers line", async () => {
+    // A trip with no travellers can compute no prices at all. Worth stating
+    // here rather than leaving it to be discovered at `trip plan`.
+    const db = await freshDb("shownowho");
+    await runTripsCommand(db, ["new", "x"], false);
+    expect(await runTripsCommand(db, ["show"], false)).toMatch(/Travellers:\s+none/);
+  });
+
+  test("show --json carries currency and travellers", async () => {
+    const db = await freshDb("showjson");
+    await runTripsCommand(db, ["new", "x"], false);
+    await runTripsCommand(db, ["set", "--currency=CNY"], false);
+    await runWhoCommand(db, ["add", "Mom", "--born=1949-03-14"], false);
+    const parsed = JSON.parse(await runTripsCommand(db, ["show"], true));
+    expect(parsed.currency).toBe("CNY");
+    expect(parsed.travellers[0].label).toBe("Mom");
   });
 });

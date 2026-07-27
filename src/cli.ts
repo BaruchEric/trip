@@ -17,6 +17,7 @@ Usage:
   trip new <name>              Create a trip and make it active
   trip use <name>              Switch the active trip
   trip ls / trip show          List trips / show the active one
+  trip set --currency=CNY      Set trip currency [--mode=] [--pace=]
   trip when <city>             Rank every month by dew-point comfort [--timeout=<seconds>]
 
   trip dates set <a>..<b>      Set trip dates [--arrive=HH:MM] [--depart=HH:MM]
@@ -105,6 +106,7 @@ interface CommandFlags {
 
 const COMMAND_FLAGS: Record<string, CommandFlags> = {
   new: {}, use: {}, ls: {}, show: {},
+  set: { value: ["--currency", "--mode", "--pace"] },
   when: { bool: ["--refresh"], value: ["--timeout"] },
   dates: { value: ["--arrive", "--depart", "--day-window"] },
   // Fallback for a bare `trip who`, and the union of the three below.

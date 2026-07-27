@@ -15,6 +15,10 @@ export interface Trip {
   departureMin: number | null;
   dayStartMin: number;
   dayEndMin: number;
+  /** NULL means the currency is UNKNOWN, and every price renders as a bare
+   *  number exactly as it did before M5. Never defaulted to a guess — a
+   *  trip total in the wrong currency is worse than one with no symbol. */
+  currency: string | null;
 }
 
 const ACTIVE_KEY = "active_trip";
@@ -34,12 +38,14 @@ function toTrip(row: Row): Trip {
     departureMin: row.departure_time === null ? null : Number(row.departure_time),
     dayStartMin: Number(row.day_start),
     dayEndMin: Number(row.day_end),
+    currency: row.currency === null ? null : String(row.currency),
   };
 }
 
 const SELECT = `SELECT id, name, destination_id, start_date, end_date,
                        mode, pace, lodging_tier, food_tier,
-                       arrival_time, departure_time, day_start, day_end
+                       arrival_time, departure_time, day_start, day_end,
+                       currency
                 FROM trips`;
 
 export async function createTrip(
@@ -114,4 +120,25 @@ export async function setTripDestination(
     sql: `UPDATE trips SET destination_id = ? WHERE id = ?`,
     args: [destinationId, tripId],
   });
+}
+
+/** Trip-level settings that were previously write-once defaults.
+ *
+ *  `mode` and `pace` have been read by `plan` as fallbacks since M2 with
+ *  nothing able to write them — defaults nobody could change. `currency` is
+ *  new in M5. Only the named fields are touched, so setting one does not
+ *  quietly reset the others. */
+export async function setTripSettings(
+  db: Client,
+  tripId: number,
+  s: { currency?: string; mode?: string; pace?: string },
+): Promise<void> {
+  const sets: string[] = [];
+  const args: (string | number)[] = [];
+  if (s.currency !== undefined) { sets.push("currency = ?"); args.push(s.currency); }
+  if (s.mode !== undefined) { sets.push("mode = ?"); args.push(s.mode); }
+  if (s.pace !== undefined) { sets.push("pace = ?"); args.push(s.pace); }
+  if (sets.length === 0) return;
+  args.push(tripId);
+  await db.execute({ sql: `UPDATE trips SET ${sets.join(", ")} WHERE id = ?`, args });
 }
