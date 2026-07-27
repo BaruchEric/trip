@@ -19,6 +19,13 @@ export interface FetchOptions {
   /** Nominatim's usage policy requires a genuine User-Agent and rejects
    *  requests without one. Open-Meteo needs none, so this stays optional. */
   headers?: Record<string, string>;
+  /** M8: Valhalla takes its whole request as a JSON POST body. Routed through
+   *  here rather than through a second client because both reasons this file
+   *  exists — one timeout, one error-handling order — apply identically to a
+   *  POST, and the drift described above is exactly what a second client
+   *  would reintroduce. */
+  method?: "GET" | "POST";
+  body?: string;
 }
 
 /** Open-Meteo reports failures as `{"error": true, "reason": "..."}` on both
@@ -41,6 +48,8 @@ export async function fetchJson(
   try {
     res = await fetchFn(url, {
       signal: AbortSignal.timeout(timeoutMs),
+      ...(opts.method ? { method: opts.method } : {}),
+      ...(opts.body === undefined ? {} : { body: opts.body }),
       ...(opts.headers ? { headers: opts.headers } : {}),
     });
   } catch (err) {

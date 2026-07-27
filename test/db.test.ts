@@ -424,13 +424,13 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 11", async () => {
+  test("schema version is 12", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m11-version"));
+    const db = openDb(tmpDb("m12-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(11);
+    expect(await schemaVersion(db)).toBe(12);
   });
 
   test("migration 11 adds mentions.query, defaulting to NULL", async () => {
