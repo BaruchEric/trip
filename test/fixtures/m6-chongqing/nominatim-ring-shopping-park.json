@@ -1,0 +1,36 @@
+[
+  {
+    "place_id": 242021870,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1295738129,
+    "lat": "29.6530663",
+    "lon": "106.5259717",
+    "category": "shop",
+    "type": "mall",
+    "place_rank": 30,
+    "importance": 0.00005483558403901759,
+    "addresstype": "shop",
+    "name": "光环购物中心",
+    "display_name": "光环购物中心, 湖彩路, 金华社区, 鸳鸯街道, 两江新区, 重庆市, 401121, 中国",
+    "address": {
+      "shop": "光环购物中心",
+      "road": "湖彩路",
+      "quarter": "金华社区",
+      "suburb": "鸳鸯街道",
+      "city": "两江新区",
+      "district": "两江新区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "401121",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.6518802",
+      "29.6542728",
+      "106.5244174",
+      "106.5266417"
+    ]
+  }
+]

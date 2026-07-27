@@ -1,0 +1,35 @@
+[
+  {
+    "place_id": 421989939,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 939578294,
+    "lat": "29.5650738",
+    "lon": "106.5753425",
+    "category": "building",
+    "type": "yes",
+    "place_rank": 30,
+    "importance": 0.34081317763107843,
+    "addresstype": "building",
+    "name": "洪崖洞",
+    "display_name": "洪崖洞, 书院巷, 解放碑, 解放碑街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "building": "洪崖洞",
+      "road": "书院巷",
+      "quarter": "解放碑",
+      "city_district": "解放碑街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5645217",
+      "29.5656251",
+      "106.5742671",
+      "106.5763244"
+    ]
+  }
+]

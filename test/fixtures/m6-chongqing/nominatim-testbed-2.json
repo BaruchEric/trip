@@ -1,0 +1,32 @@
+[
+  {
+    "place_id": 240739708,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1031052812,
+    "lat": "29.5537638",
+    "lon": "106.5368476",
+    "category": "landuse",
+    "type": "commercial",
+    "place_rank": 24,
+    "importance": 0.08005829327840082,
+    "addresstype": "commercial",
+    "name": "贰厂文创园",
+    "display_name": "贰厂文创园, 两路口街道, 渝中区, 重庆市, 中国",
+    "address": {
+      "commercial": "贰厂文创园",
+      "city_district": "两路口街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5529025",
+      "29.5546282",
+      "106.5345527",
+      "106.5378023"
+    ]
+  }
+]
