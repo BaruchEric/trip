@@ -93,7 +93,14 @@ export async function runWatchCommand(
     durationSeconds: report.durationSeconds,
     transcript: keptTranscript ? cached!.transcript : report.transcript,
     transcriptSource: keptTranscript ? cached!.transcriptSource : report.transcriptSource,
-    fetchedAt: fromCache ? cached!.fetchedAt : now(),
+    // A fetch that yielded nothing is not a fetch: `keptTranscript` must keep
+    // `cached!.fetchedAt` exactly as the cache-hit path does. Advancing it
+    // here (as this line only checked `fromCache`, which is FALSE on this
+    // branch) let `latestSource`'s `ORDER BY fetched_at DESC` treat a failed
+    // refresh as the newest source in the trip — so `ingest` without
+    // `--source` would silently attach a DIFFERENT video's mentions to this
+    // one's row.
+    fetchedAt: (fromCache || keptTranscript) ? cached!.fetchedAt : now(),
   });
 
   // Report the refresh honestly: the metadata is new, the transcript is the old

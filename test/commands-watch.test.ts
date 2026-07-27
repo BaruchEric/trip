@@ -117,13 +117,14 @@ describe("trip watch", () => {
   test("a failed --refresh keeps the transcript it already had", async () => {
     const db = await db1("refresh-no-transcript");
     await runWatchCommand(db, [URL], false, deps);
+    const original = await getSourceByUrl(db, 1, URL);
     const empty: WatchReport = {
       ...REPORT, transcript: null, transcriptSource: null, lines: [],
     };
     // The refresh fails loudly...
     await expect(
       runWatchCommand(db, [URL, "--refresh"], false, {
-        ...deps, watchFn: async () => empty,
+        ...deps, watchFn: async () => empty, now: () => "2026-07-27T12:00:00Z",
       }),
     ).rejects.toThrow(/kept/i);
     // ...but the cached transcript survives, rather than being overwritten with
@@ -131,6 +132,11 @@ describe("trip watch", () => {
     const s = await getSourceByUrl(db, 1, URL);
     expect(s!.transcript).toContain("welcome to Chongqing");
     expect(s!.transcriptSource).toBe("captions");
+    // fetched_at must not advance either. A fetch that yielded nothing is not
+    // a fetch, and `latestSource` orders by fetched_at DESC — advancing it
+    // here is what let a failed refresh silently re-point which source
+    // `ingest` attaches to.
+    expect(s!.fetchedAt).toBe(original!.fetchedAt);
   });
 
   test("a second plain watch of a no-transcript video does not re-download", async () => {

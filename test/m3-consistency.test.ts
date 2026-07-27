@@ -3,6 +3,7 @@ import type { Client } from "@libsql/client";
 import { openDb, migrate } from "@/db";
 import { run } from "@/cli";
 import { listMentions, getMention } from "@/mentions";
+import { latestSource } from "@/sources";
 import { MODES, PACES } from "@/plan/types";
 import type { PoiCandidate } from "@/geo/poi";
 import { rmSync, writeFileSync } from "node:fs";
@@ -16,6 +17,7 @@ import { join } from "node:path";
  *  M2's three worst bugs were exactly that shape. */
 
 const URL = "https://www.youtube.com/watch?v=KHHlcCUTwZA";
+const URL_B = "https://www.youtube.com/watch?v=zzzzzzzzzzz";
 
 const REPORT = {
   title: "4 Days in Chongqing",
@@ -84,6 +86,17 @@ async function watchVideo(dbPath: string): Promise<number> {
   const out = await run(["watch", URL, "--json"], {
     dbPath,
     deps: { watch: { watchFn: async () => REPORT, now: () => "2027-04-10T09:00:00Z" } },
+  });
+  expect(out.code).toBe(0);
+  return JSON.parse(out.stdout).sourceId;
+}
+
+/** Same as watchVideo, but for an arbitrary url/fetchedAt - needed to build
+ *  a two-source timeline for the failed-refresh seam test below. */
+async function watchVideoAt(dbPath: string, url: string, now: string): Promise<number> {
+  const out = await run(["watch", url, "--json"], {
+    dbPath,
+    deps: { watch: { watchFn: async () => REPORT, now: () => now } },
   });
   expect(out.code).toBe(0);
   return JSON.parse(out.stdout).sourceId;
@@ -378,5 +391,27 @@ describe("m3 consistency: the mention lifecycle", () => {
     const day1 = await run(["day", "1"], { dbPath });
     expect(day1.stdout).toContain("[default]");
     expect(day1.stdout).not.toContain("60m?");
+  });
+
+  test("8. a failed --refresh of an OLDER source does not re-point ingest's default", async () => {
+    const { dbPath, tripId } = await tripFixture("refreshsource");
+    const sourceA = await watchVideoAt(dbPath, URL, "2027-04-10T09:00:00Z");
+    const sourceB = await watchVideoAt(dbPath, URL_B, "2027-04-10T10:00:00Z");
+    expect(sourceA).not.toBe(sourceB);
+
+    // A --refresh of A that comes back with no transcript must fail loudly
+    // and must NOT touch which source is "latest" - if it did, an `ingest`
+    // with no --source would attach B's mentions to A's row.
+    const empty = { ...REPORT, transcript: null, transcriptSource: null, lines: [] };
+    const failedRefresh = await run(["watch", URL, "--refresh"], {
+      dbPath,
+      deps: { watch: { watchFn: async () => empty, now: () => "2027-04-10T11:00:00Z" } },
+    });
+    expect(failedRefresh.code).toBe(1);
+
+    const db = openDb(dbPath);
+    await migrate(db);
+    const latest = await latestSource(db, tripId);
+    expect(latest!.id).toBe(sourceB);
   });
 });
