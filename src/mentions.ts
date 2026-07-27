@@ -41,6 +41,12 @@ export interface Mention {
    *  `segments.tags` and is read by the planner. This is a geocode
    *  verification input, consumed by `classify` and never rendered. */
   kind: Kind | null;
+  /** The price rules the video stated, as the raw grammar strings. Empty means
+   *  the extractor said nothing about price, which is UNKNOWN — never free.
+   *
+   *  Raw strings rather than parsed rules because these belong to the mention,
+   *  which has no segment to own price_rules rows until it resolves. */
+  price: string[];
   reason: string | null;
   segmentId: number | null;
   rejectedAt: string | null;
@@ -63,6 +69,9 @@ export interface MentionInput {
    *  forget it and silently store NULL, disabling the plausibility check for
    *  that path with no signal. The compiler names every writer instead. */
   kind: Kind | null;
+  /** Required for the same reason `kind` is: an optional field lets a future
+   *  writer forget it and silently store nothing, with no signal. */
+  price: string[];
 }
 
 function strOrNull(v: unknown): string | null {
@@ -107,7 +116,8 @@ function toCandidate(row: Row): MentionCandidate {
 }
 
 const SELECT = `SELECT id, trip_id, source_id, text, resolved_name, at_seconds,
-                       dwell_minutes, tags, kind, reason, segment_id, rejected_at
+                       dwell_minutes, tags, kind, price, reason, segment_id,
+                       rejected_at
                 FROM mentions`;
 
 function toMention(row: Row, candidates: MentionCandidate[]): Mention {
@@ -127,6 +137,7 @@ function toMention(row: Row, candidates: MentionCandidate[]): Mention {
     // level, and the mentions-file parser rejects anything outside the closed
     // vocabulary before it can be stored.
     kind: strOrNull(row.kind) as Kind | null,
+    price: splitList(row.price),
     reason: strOrNull(row.reason),
     segmentId: numOrNull(row.segment_id),
     rejectedAt: strOrNull(row.rejected_at),
@@ -147,13 +158,17 @@ export async function createMention(
   // them into @/validate precisely so both storage modules can share them
   // without depending on each other.
   const tags = joinList(input.tags, "tag");
+  // The grammar never produces a comma, which is exactly why the guard is
+  // cheap: it costs nothing today and catches the day someone widens it.
+  const price = joinList(input.price, "price rule");
   const r = await db.execute({
     sql: `INSERT INTO mentions
-            (trip_id, source_id, text, at_seconds, dwell_minutes, tags, kind)
-          VALUES (?, ?, ?, ?, ?, ?, ?)
+            (trip_id, source_id, text, at_seconds, dwell_minutes, tags, kind,
+             price)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
           RETURNING id`,
     args: [tripId, sourceId, input.text.trim(), input.atSeconds,
-           input.dwellMinutes, tags, input.kind],
+           input.dwellMinutes, tags, input.kind, price],
   });
   return Number(r.rows[0]!.id);
 }

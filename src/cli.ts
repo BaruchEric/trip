@@ -212,12 +212,15 @@ const SUBCOMMAND_HELP: Record<string, string> = {
 `,
   "watch ingest": `trip watch ingest --mentions=<file.json> [--source=<id>] [--replace]
 
-  The file is a JSON array. One required field, four optional:
+  The file is a JSON array. One required field, five optional:
 
     text   required, the name as the video said it
     at     MM:SS or HH:MM:SS, minutes unbounded (102:15 is valid)
     dwell  same grammar as --dur; absent means 60m, flagged [default]
     tags   array of strings
+    price  array of rule strings, same grammar as --price:
+           ["30", "65+:0"]. Absent means the video said nothing about
+           price, which is UNKNOWN -- never free.
     kind   one of: street, temple, park, museum, station, restaurant,
            market, shop, hotel, viewpoint, nature, neighbourhood, landmark
 

@@ -1,5 +1,7 @@
 import type { Client } from "@libsql/client";
 import { parseDuration } from "@/parse";
+import { parsePriceRule, validateRuleSet } from "@/pricing/rules";
+import { setPriceRules } from "@/prices";
 import { parseStamp } from "@/watch/parse-report";
 import {
   createMention, setCandidates, resolveMention, queueMention,
@@ -24,6 +26,9 @@ export interface MentionSpec {
   /** What the extractor says this place is, for the plausibility check.
    *  NULL means it declared none — the denylist applies instead. */
   kind: Kind | null;
+  /** The price rules the video stated, as raw grammar strings. Empty means
+   *  the extractor said nothing about price, which is UNKNOWN — never free. */
+  price: string[];
 }
 
 export interface ParsedMentions {
@@ -69,6 +74,29 @@ function readKind(raw: unknown, index: number): Kind | null {
   return raw;
 }
 
+function readPrice(raw: unknown, index: number): string[] {
+  if (raw === undefined || raw === null) return [];
+  if (!Array.isArray(raw)) {
+    throw new Error(`[${index}] price must be an array of rule strings`);
+  }
+  const rules = raw.map((r) => {
+    if (typeof r !== "string" || r.trim() === "") {
+      throw new Error(`[${index}] price rules must be non-empty strings`);
+    }
+    return r.trim();
+  });
+  // Parsed and validated HERE, at parse time, so a bad rule skips its own
+  // entry like any other malformed one -- rather than parsing clean and
+  // throwing deep inside setPriceRules mid-ingest, which would abort every
+  // mention after it in the same batch. Same reasoning as readTags above.
+  try {
+    validateRuleSet(rules.map(parsePriceRule));
+  } catch (err) {
+    throw new Error(`[${index}] ${(err as Error).message}`);
+  }
+  return rules;
+}
+
 /** Parse the agent's mentions file.
  *
  *  A malformed ENTRY is reported and skipped; the rest of the file still
@@ -111,6 +139,7 @@ export function parseMentionsFile(raw: string): ParsedMentions {
         text, atSeconds, dwellMinutes,
         tags: readTags(e.tags, i),
         kind: readKind(e.kind, i),
+        price: readPrice(e.price, i),
       });
     } catch (err) {
       const msg = (err as Error).message;
@@ -259,6 +288,12 @@ export async function ingestMentions(
         sourceId,
         sourceAtSeconds: spec.atSeconds,
       });
+      // The video's stated prices become the segment's rules, now that a
+      // segment exists to own them. Empty stays empty, which is UNKNOWN.
+      if (spec.price.length > 0) {
+        await setPriceRules(
+          db, "segment", segmentId, spec.price.map(parsePriceRule));
+      }
       await resolveMention(db, mentionId, segmentId);
       result.geocoded += 1;
     } catch (err) {

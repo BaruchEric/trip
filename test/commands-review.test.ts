@@ -6,6 +6,7 @@ import {
   getMention,
 } from "@/mentions";
 import { addSegment, listSegments } from "@/segments";
+import { readPriceRules } from "@/prices";
 import type { Kind } from "@/geo/plausibility";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -13,7 +14,7 @@ import { join } from "node:path";
 
 async function queued(
   tag: string,
-  opts: { dwellMinutes?: number | null; kind?: Kind | null } = {},
+  opts: { dwellMinutes?: number | null; kind?: Kind | null; price?: string[] } = {},
 ) {
   const p = join(tmpdir(), `trip-review-${tag}-${process.pid}.db`);
   rmSync(p, { force: true });
@@ -41,7 +42,7 @@ async function queued(
   });
   const id = await createMention(db, 1, 1, {
     text: "hot pot", atSeconds: 272, dwellMinutes: opts.dwellMinutes ?? null,
-    tags: [], kind: opts.kind ?? null,
+    tags: [], kind: opts.kind ?? null, price: opts.price ?? [],
   });
   await setCandidates(db, id, [{
     rank: 1, displayName: "夜福火锅, 渝中区, 重庆市", localName: "夜福火锅",
@@ -359,5 +360,27 @@ describe("trip review resolve", () => {
     await expect(
       runReviewCommand(db, ["resolve", "999", "--reject"], false),
     ).rejects.toThrow(/999/);
+  });
+});
+
+describe("M5: price survives the review queue", () => {
+  test("a queued mention's price lands on the segment --pick creates", async () => {
+    // ingest and review resolve are DIFFERENT write paths to the same
+    // segment. Without this, a place that had to be reviewed would silently
+    // lose the price the video gave it, while an identical place that
+    // resolved confidently kept it -- two paths disagreeing about what is
+    // known, which is the exact shape of M2's and M3's worst bugs.
+    const { db, id } = await queued("pick-price", { price: ["30", "65+:0"] });
+    await runReviewCommand(db, ["resolve", String(id), "--pick=1"], false);
+    const [seg] = await listSegments(db, 1);
+    expect((await readPriceRules(db, "segment", [seg!.id])).get(seg!.id)!
+      .map((r) => r.price)).toEqual([30, 0]);
+  });
+
+  test("a queued mention with no price still yields no rules", async () => {
+    const { db, id } = await queued("pick-noprice");
+    await runReviewCommand(db, ["resolve", String(id), "--pick=1"], false);
+    const [seg] = await listSegments(db, 1);
+    expect((await readPriceRules(db, "segment", [seg!.id])).has(seg!.id)).toBe(false);
   });
 });

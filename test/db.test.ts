@@ -424,13 +424,13 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 8", async () => {
+  test("schema version is 9", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m8-version"));
+    const db = openDb(tmpDb("m9-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(8);
+    expect(await schemaVersion(db)).toBe(9);
   });
 
   test("migration 6 backfills an existing segments row instead of erasing it", async () => {
@@ -575,6 +575,23 @@ describe("schema migrations", () => {
     // The new column defaults to '', which splitList reads as [] — no free
     // day is KNOWN, which is not the same as "never free".
     expect(String(row.free_days)).toBe("");
+  });
+
+  test("migration 9 adds mentions.price, defaulting existing rows to empty", async () => {
+    // A mention is a record of what the VIDEO said. Its rules have no owner
+    // until it resolves to a segment, and price_rules.owner_id is NOT NULL,
+    // so the raw strings live here until then.
+    const db = await atV7("m9-price");
+    await db.execute(
+      `INSERT INTO sources (trip_id, url, fetched_at)
+       VALUES (1, 'https://youtu.be/x', '2026-07-27T00:00:00Z')`,
+    );
+    await db.execute(
+      `INSERT INTO mentions (trip_id, source_id, text) VALUES (1, 1, 'Hongya Cave')`,
+    );
+    await migrate(db);
+    const r = await db.execute(`SELECT price FROM mentions WHERE id = 1`);
+    expect(String(r.rows[0]!.price)).toBe("");
   });
 
   test("migrateTo refuses to go backwards", async () => {

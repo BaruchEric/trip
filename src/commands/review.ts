@@ -6,6 +6,8 @@ import {
   queueMention, setCandidates, type Mention,
 } from "@/mentions";
 import { addSegment } from "@/segments";
+import { parsePriceRule } from "@/pricing/rules";
+import { setPriceRules } from "@/prices";
 import { classify, DEFAULT_DWELL_MINUTES } from "@/watch/ingest";
 import { SEARCH_RADIUS_KM, geocodePoi } from "@/geo/poi";
 import { getSource } from "@/sources";
@@ -216,6 +218,14 @@ async function createSegmentFrom(
     sourceId: mention.sourceId,
     sourceAtSeconds: mention.atSeconds,
   });
+  // The video's stated prices follow the mention through the queue. Without
+  // this, a place that had to be reviewed would silently lose the price the
+  // video gave it, while an identical place that resolved confidently kept
+  // it -- two paths to the same segment disagreeing about what is known.
+  if (mention.price.length > 0) {
+    await setPriceRules(
+      db, "segment", segmentId, mention.price.map(parsePriceRule));
+  }
   await resolveMention(db, mention.id, segmentId);
   return segmentId;
 }

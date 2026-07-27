@@ -363,6 +363,24 @@ const MIGRATIONS: Migration[] = [
       return stmts;
     },
   },
+  {
+    version: 9,
+    // M5: the agent contract gains `price`.
+    //
+    // Stored on the MENTION as the raw rule strings, comma-joined like `tags`,
+    // rather than as price_rules rows. A mention is a record of what the VIDEO
+    // said; its rules have no owner until the mention resolves to a segment,
+    // and price_rules.owner_id is NOT NULL. A queued mention has no segment to
+    // own them.
+    //
+    // Separate from migration 8 because Task 9 lands after 8 is committed, and
+    // editing an applied migration is precisely what this file's header
+    // comment forbids.
+    statements: async (db) =>
+      (await hasColumn(db, "mentions", "price"))
+        ? []
+        : [`ALTER TABLE mentions ADD COLUMN price TEXT NOT NULL DEFAULT ''`],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */

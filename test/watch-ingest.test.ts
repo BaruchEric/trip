@@ -28,7 +28,7 @@ describe("parseMentionsFile", () => {
     expect(errors).toEqual([]);
     expect(specs[0]).toEqual({
       text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"],
-      kind: null,
+      kind: null, price: [],
     });
   });
 
@@ -38,7 +38,7 @@ describe("parseMentionsFile", () => {
     // creation and flagged there, so "nobody said" survives in the mention.
     expect(specs[0]).toEqual({
       text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [],
-      kind: null,
+      kind: null, price: [],
     });
   });
 
@@ -75,7 +75,7 @@ describe("parseMentionsFile", () => {
     expect(errors).toEqual([]);
     expect(specs[0]).toEqual({
       text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [],
-      kind: null,
+      kind: null, price: [],
     });
   });
 
@@ -110,7 +110,7 @@ describe("parseMentionsFile", () => {
 
   test("kind is read when present and NULL when absent", () => {
     const { specs, errors } = parseMentionsFile(JSON.stringify([
-      { text: "Jiefangbei Pedestrian Street", kind: "street" },
+      { text: "Jiefangbei Pedestrian Street", kind: "street", price: [] },
       { text: "hot pot" },
     ]));
     expect(errors).toEqual([]);
@@ -121,9 +121,9 @@ describe("parseMentionsFile", () => {
   test("an unrecognised kind is rejected with its index; neighbours still ingest", () => {
     // Silently ignoring it would let one typo disable the check with no signal.
     const { specs, errors } = parseMentionsFile(JSON.stringify([
-      { text: "Luohan Temple", kind: "temple" },
-      { text: "Hongya Cave", kind: "cave" },
-      { text: "Liziba Station", kind: "station" },
+      { text: "Luohan Temple", kind: "temple", price: [] },
+      { text: "Hongya Cave", kind: "cave", price: [] },
+      { text: "Liziba Station", kind: "station", price: [] },
     ]));
     expect(specs).toHaveLength(2);
     expect(specs.map((s) => s.text)).toEqual(["Luohan Temple", "Liziba Station"]);
@@ -148,7 +148,7 @@ describe("parseMentionsFile", () => {
     expect(errors).toEqual([]);
     expect(specs[0]).toEqual({
       text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90,
-      tags: ["sight"], kind: null,
+      tags: ["sight"], kind: null, price: [],
     });
   });
 });
@@ -236,7 +236,7 @@ describe("ingestMentions, demotion", () => {
     const result = await ingestMentions(
       db, 1, 1,
       [{ text: "Jiefangbei Pedestrian Street", atSeconds: 272,
-         dwellMinutes: null, tags: [], kind: "street" }],
+         dwellMinutes: null, tags: [], kind: "street", price: [] }],
       CENTRE,
       { geocode: async () => [hotel], sleepFn: NO_SLEEP },
     );
@@ -286,7 +286,7 @@ describe("ingestMentions", () => {
   test("a unique match becomes a segment carrying its provenance", async () => {
     const db = await ingestDb("confident");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"], kind: null }],
+      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"], kind: null, price: [] }],
       CENTRE,
       { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
     );
@@ -330,7 +330,7 @@ describe("ingestMentions", () => {
     // other assertion here silently (mutation sweep found this).
     const db = await ingestDb("localname");
     await ingestMentions(db, 1, 1,
-      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
+      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] }],
       CENTRE,
       {
         geocode: async () => [{
@@ -347,7 +347,7 @@ describe("ingestMentions", () => {
   test("no proposed dwell yields 60 minutes, flagged as a default", async () => {
     const db = await ingestDb("default-dwell");
     await ingestMentions(db, 1, 1,
-      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
+      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] }],
       CENTRE, { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
     );
     const [seg] = await listSegments(db, 1);
@@ -358,7 +358,7 @@ describe("ingestMentions", () => {
   test("an ambiguous match is queued with all its candidates and no segment", async () => {
     const db = await ingestDb("ambiguous");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "hot pot", atSeconds: 400, dwellMinutes: null, tags: [], kind: null }],
+      [{ text: "hot pot", atSeconds: 400, dwellMinutes: null, tags: [], kind: null, price: [] }],
       CENTRE,
       { geocode: async () => [poi("a"), poi("b"), poi("c")], sleepFn: NO_SLEEP },
     );
@@ -375,7 +375,7 @@ describe("ingestMentions", () => {
   test("no match is queued with a reason and no candidates", async () => {
     const db = await ingestDb("nomatch");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "that ramen spot", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
+      [{ text: "that ramen spot", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] }],
       CENTRE, { geocode: async () => [], sleepFn: NO_SLEEP },
     );
     expect(r.queued).toBe(1);
@@ -395,7 +395,7 @@ describe("ingestMentions", () => {
     // as its reason, so the mention below must stay PENDING, not resolved.
     const db = await ingestDb("unusable-result");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
+      [{ text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] }],
       CENTRE,
       {
         geocode: async (q, c) => parsePoiResponse([
@@ -421,9 +421,9 @@ describe("ingestMentions", () => {
     const db = await ingestDb("resilient");
     let call = 0;
     const r = await ingestMentions(db, 1, 1, [
-      { text: "first", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
-      { text: "boom", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
-      { text: "third", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "first", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
+      { text: "boom", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
+      { text: "third", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
     ], CENTRE, {
       geocode: async () => {
         call += 1;
@@ -447,8 +447,8 @@ describe("ingestMentions", () => {
     // the whole batch after any earlier mentions had already been written.
     const db = await ingestDb("segment-fail");
     const r = await ingestMentions(db, 1, 1, [
-      { text: "bad coords", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
-      { text: "good spot", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "bad coords", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
+      { text: "good spot", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
     ], CENTRE, {
       geocode: async (q) => q === "bad coords"
         ? [{ ...poi("x"), latitude: 999 }]
@@ -475,9 +475,9 @@ describe("ingestMentions", () => {
     const db = await ingestDb("throttle");
     const waits: number[] = [];
     await ingestMentions(db, 1, 1, [
-      { text: "a", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
-      { text: "b", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
-      { text: "c", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "a", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
+      { text: "b", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
+      { text: "c", atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [] },
     ], CENTRE, {
       geocode: async () => [],
       sleepFn: async (ms) => { waits.push(ms); },
@@ -485,5 +485,101 @@ describe("ingestMentions", () => {
     // Two gaps for three lookups: nothing is waited for before the first.
     expect(waits.length).toBe(2);
     expect(waits.every((w) => w >= 1000)).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// M5 — the agent contract carries `price`.
+// ---------------------------------------------------------------------------
+
+describe("the price field on the agent contract", () => {
+  test("absent price parses to no rules, which is UNKNOWN not free", () => {
+    const { specs, errors } = parseMentionsFile(
+      JSON.stringify([{ text: "Hongya Cave" }]));
+    expect(errors).toEqual([]);
+    expect(specs[0]!.price).toEqual([]);
+  });
+
+  test("price rules parse as raw strings, validated at parse time", () => {
+    const { specs, errors } = parseMentionsFile(
+      JSON.stringify([{ text: "Hongya Cave", price: ["30", "65+:0"] }]));
+    expect(errors).toEqual([]);
+    expect(specs[0]!.price).toEqual(["30", "65+:0"]);
+  });
+
+  test("a malformed price rejects that entry alone, naming its index", () => {
+    // Same contract as dwell and kind: losing thirteen good mentions to one
+    // bad one is the wrong trade.
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "Good", price: ["30"] },
+      { text: "Bad", price: ["sixty"] },
+    ]));
+    expect(specs.map((s) => s.text)).toEqual(["Good"]);
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toContain("[1]");
+    expect(errors[0]).toMatch(/sixty/);
+  });
+
+  test("overlapping rules from a video reject that mention, not the file", () => {
+    // Validated HERE rather than deep inside setPriceRules mid-ingest, which
+    // would abort every mention after it in the same batch.
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "Good", price: ["30"] },
+      { text: "Bad", price: ["60-70:5", "65+:0"] },
+    ]));
+    expect(specs.map((s) => s.text)).toEqual(["Good"]);
+    expect(errors[0]).toMatch(/overlapping/);
+  });
+
+  test("a non-array price is rejected", () => {
+    const { errors } = parseMentionsFile(
+      JSON.stringify([{ text: "X", price: "30" }]));
+    expect(errors[0]).toMatch(/must be an array/);
+  });
+
+  test("an empty rule string is rejected", () => {
+    const { errors } = parseMentionsFile(
+      JSON.stringify([{ text: "X", price: ["30", ""] }]));
+    expect(errors[0]).toMatch(/non-empty/);
+  });
+
+  test("a confidently ingested mention's price becomes the segment's rules", async () => {
+    const db = await ingestDb("price-confident");
+    await ingestMentions(db, 1, 1,
+      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: [],
+         kind: null, price: ["30", "65+:0"] }],
+      CENTRE,
+      { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
+    );
+    const [seg] = await listSegments(db, 1);
+    expect((await readPriceRules(db, "segment", [seg!.id])).get(seg!.id)!
+      .map((r) => r.price)).toEqual([30, 0]);
+  });
+
+  test("a mention with no price produces NO rules, not a zero rule", async () => {
+    const db = await ingestDb("price-absent");
+    await ingestMentions(db, 1, 1,
+      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: [],
+         kind: null, price: [] }],
+      CENTRE,
+      { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
+    );
+    const [seg] = await listSegments(db, 1);
+    expect((await readPriceRules(db, "segment", [seg!.id])).has(seg!.id)).toBe(false);
+  });
+
+  test("price round-trips on the mention row itself, for the queued path", async () => {
+    // A queued mention has no segment to own price_rules, so the rules live
+    // on the mention until it resolves.
+    const db = await ingestDb("price-queued");
+    await ingestMentions(db, 1, 1,
+      [{ text: "somewhere vague", atSeconds: null, dwellMinutes: null, tags: [],
+         kind: null, price: ["30"] }],
+      CENTRE,
+      { geocode: async () => [], sleepFn: NO_SLEEP },
+    );
+    const [m] = await listMentions(db, 1);
+    expect(m!.state).toBe("pending");
+    expect(m!.price).toEqual(["30"]);
   });
 });

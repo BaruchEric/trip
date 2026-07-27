@@ -28,7 +28,7 @@ async function freshDb(tag: string) {
 
 const HOTPOT = {
   text: "hot pot", atSeconds: 272, dwellMinutes: null, tags: ["food"],
-  kind: null,
+  kind: null, price: [],
 };
 
 const CANDIDATE = {
@@ -44,11 +44,11 @@ describe("mentions", () => {
 
     const withKind = await createMention(db, 1, 1, {
       text: "Jiefangbei Pedestrian Street",
-      atSeconds: 272, dwellMinutes: null, tags: [], kind: "street",
+      atSeconds: 272, dwellMinutes: null, tags: [], kind: "street", price: [],
     });
     const without = await createMention(db, 1, 1, {
       text: "that ramen spot",
-      atSeconds: null, dwellMinutes: null, tags: [], kind: null,
+      atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [],
     });
 
     expect((await getMention(db, 1, withKind))!.kind).toBe("street");

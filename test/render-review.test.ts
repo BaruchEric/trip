@@ -6,7 +6,7 @@ function mention(over: Partial<Mention> = {}): Mention {
   return {
     id: 4, tripId: 1, sourceId: 1,
     text: "hot pot", resolvedName: null,
-    atSeconds: 272, dwellMinutes: null, tags: [], kind: null,
+    atSeconds: 272, dwellMinutes: null, tags: [], kind: null, price: [],
     reason: "2 candidates", segmentId: null, rejectedAt: null,
     state: "pending", name: "hot pot",
     candidates: [

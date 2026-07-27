@@ -48,9 +48,9 @@ describe("M4 acceptance, against captured Nominatim responses", () => {
   // `street` because it is known to be the failure case would prove only that
   // the table flags what it was written for.
   const MENTIONS = [
-    { text: "Luohan Temple", atSeconds: 100, dwellMinutes: null, tags: [], kind: "temple" as const },
-    { text: "Hongya Cave", atSeconds: 272, dwellMinutes: null, tags: [], kind: "landmark" as const },
-    { text: "Jiefangbei Pedestrian Street", atSeconds: 400, dwellMinutes: null, tags: [], kind: "street" as const },
+    { text: "Luohan Temple", atSeconds: 100, dwellMinutes: null, tags: [], kind: "temple" as const, price: [] },
+    { text: "Hongya Cave", atSeconds: 272, dwellMinutes: null, tags: [], kind: "landmark" as const, price: [] },
+    { text: "Jiefangbei Pedestrian Street", atSeconds: 400, dwellMinutes: null, tags: [], kind: "street" as const, price: [] },
   ];
 
   const RESPONSES: Record<string, unknown> = {
@@ -107,7 +107,7 @@ describe("M4 acceptance, against captured Nominatim responses", () => {
     const result = await ingestMentions(
       db, 1, 1,
       [{ text: "Jiefangbei Pedestrian Street", atSeconds: 400,
-         dwellMinutes: null, tags: [], kind: "street" }],
+         dwellMinutes: null, tags: [], kind: "street", price: [] }],
       CHONGQING,
       { geocode: async () => [hotel()], sleepFn: NO_SLEEP },
     );
@@ -130,7 +130,7 @@ describe("M4 acceptance, against captured Nominatim responses", () => {
     await ingestMentions(
       db, 1, 1,
       [{ text: "Jiefangbei Pedestrian Street", atSeconds: 400,
-         dwellMinutes: null, tags: [], kind: "street" }],
+         dwellMinutes: null, tags: [], kind: "street", price: [] }],
       CHONGQING,
       { geocode: async () => [hotel()], sleepFn: NO_SLEEP },
     );
