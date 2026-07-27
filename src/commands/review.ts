@@ -1,8 +1,13 @@
 import type { Client } from "@libsql/client";
 import { getActiveTrip } from "@/trips";
 import { getDestination } from "@/climate/cache";
-import { listMentions } from "@/mentions";
-import { SEARCH_RADIUS_KM } from "@/geo/poi";
+import {
+  listMentions, getMention, resolveMention, rejectMention, renameMention,
+  queueMention, setCandidates, type Mention,
+} from "@/mentions";
+import { addSegment } from "@/segments";
+import { classify, DEFAULT_DWELL_MINUTES } from "@/watch/ingest";
+import { SEARCH_RADIUS_KM, geocodePoi } from "@/geo/poi";
 import { renderReviewQueue } from "@/render-review";
 
 const USAGE =
@@ -66,17 +71,131 @@ async function lsCmd(
   return renderReviewQueue(pending, where, SEARCH_RADIUS_KM);
 }
 
-// Task 14 implements `trip review resolve`. This stub exists only so `ls`'s
-// suite can be green in isolation — do not test against it; a test asserting
-// this throws USAGE would have to be deleted by whoever implements it, with
-// no way to tell whether that assertion was a placeholder or a real
-// requirement.
 async function resolveCmd(
-  _db: Client,
-  _trip: { id: number; name: string; destinationId: number | null },
-  _argv: string[],
-  _json: boolean,
-  _deps: ReviewDeps,
+  db: Client,
+  trip: { id: number; name: string; destinationId: number | null },
+  argv: string[],
+  json: boolean,
+  deps: ReviewDeps,
 ): Promise<string> {
-  throw new Error(USAGE);
+  const idRaw = argv.find((a) => !a.startsWith("--"));
+  const id = Number(idRaw);
+  if (idRaw === undefined || !Number.isInteger(id)) {
+    throw new Error(`invalid mention id "${idRaw ?? ""}"`);
+  }
+
+  const pick = flag(argv, "--pick");
+  const rename = flag(argv, "--rename");
+  const reject = argv.includes("--reject");
+  const actions = [pick !== null, rename !== null, reject].filter(Boolean).length;
+  if (actions === 0) {
+    throw new Error(
+      `one of --pick=<n>, --reject or --rename="Actual Name" is required`,
+    );
+  }
+  if (actions > 1) {
+    throw new Error(`exactly one of --pick, --reject or --rename may be given`);
+  }
+
+  const mention = await getMention(db, trip.id, id);
+  if (mention === null) throw new Error(`no mention #${id} in this trip`);
+  // A second resolve is an error naming the state, never a silent second
+  // segment. The queue is drained once per mention.
+  if (mention.state !== "pending") {
+    throw new Error(
+      `mention #${id} is already ${mention.state}` +
+      (mention.segmentId === null ? "" : ` (segment #${mention.segmentId})`),
+    );
+  }
+
+  const now = deps.now ?? (() => new Date().toISOString());
+
+  if (reject) {
+    await rejectMention(db, id, now());
+    return json
+      ? JSON.stringify({ id, state: "rejected" })
+      : `rejected #${id} "${mention.text}"`;
+  }
+
+  if (rename !== null) {
+    if (trip.destinationId === null) {
+      throw new Error(`trip "${trip.name}" has no destination to geocode against`);
+    }
+    const dest = await getDestination(db, trip.destinationId);
+    if (!dest) throw new Error(`destination #${trip.destinationId} is missing`);
+
+    const geocode = deps.geocode ?? ((q, c) => geocodePoi(q, c));
+    // Geocode BEFORE writing anything. If the lookup throws, the mention must
+    // come out of this exactly as it went in — old name, old candidates —
+    // rather than landing with the new name written but the OLD name's
+    // candidates still beside it: the exact mismatch --rename exists to
+    // prevent (a later --pick=N would silently mean a different place than
+    // the list the reader last saw). Mirrors ingestMentions' geocode-then-
+    // commit ordering in src/watch/ingest.ts.
+    const candidates = await geocode(rename, dest);
+
+    await renameMention(db, id, rename);
+    // Replaces, never appends: leaving the old name's candidates alongside the
+    // new name's would make --pick=2 mean a different place than the list the
+    // reader just saw.
+    await setCandidates(db, id, candidates.map((c, i) => ({ ...c, rank: i + 1 })));
+
+    const verdict = classify(candidates);
+    if (verdict.kind === "queued") {
+      await queueMention(db, id, verdict.reason);
+      return json
+        ? JSON.stringify({ id, state: "pending", reason: verdict.reason,
+                           candidates: candidates.length })
+        : `#${id} renamed to "${rename}" - still ${verdict.reason}. ` +
+          `run: trip review ls`;
+    }
+    const segmentId = await createSegmentFrom(db, trip.id, mention, rename, verdict.candidate);
+    return json
+      ? JSON.stringify({ id, state: "resolved", segmentId })
+      : `resolved #${id} as "${rename}" -> segment #${segmentId} ` +
+        `(${verdict.candidate.localName ?? verdict.candidate.displayName})`;
+  }
+
+  const n = Number(pick);
+  if (!Number.isInteger(n) || n < 1 || n > mention.candidates.length) {
+    throw new Error(
+      mention.candidates.length === 0
+        ? `mention #${id} has no candidates - use --rename or --reject`
+        : `--pick=${pick} is out of range (1..${mention.candidates.length})`,
+    );
+  }
+  const chosen = mention.candidates[n - 1]!;
+  const segmentId = await createSegmentFrom(db, trip.id, mention, mention.name, chosen);
+  return json
+    ? JSON.stringify({ id, state: "resolved", segmentId })
+    : `resolved #${id} -> segment #${segmentId} ` +
+      `(${chosen.localName ?? chosen.displayName})`;
+}
+
+/** One place that turns a chosen candidate into a segment, so --pick and
+ *  --rename cannot drift on what a resolved mention produces. */
+async function createSegmentFrom(
+  db: Client,
+  tripId: number,
+  mention: Mention,
+  name: string,
+  candidate: { localName: string | null; latitude: number; longitude: number },
+): Promise<number> {
+  const segmentId = await addSegment(db, tripId, {
+    name,
+    localName: candidate.localName,
+    latitude: candidate.latitude,
+    longitude: candidate.longitude,
+    dwellMinutes: mention.dwellMinutes ?? DEFAULT_DWELL_MINUTES,
+    dwellIsDefault: mention.dwellMinutes === null,
+    cost: null,
+    tags: mention.tags,
+    opensMin: null,
+    closesMin: null,
+    closedDays: [],
+    sourceId: mention.sourceId,
+    sourceAtSeconds: mention.atSeconds,
+  });
+  await resolveMention(db, mention.id, segmentId);
+  return segmentId;
 }

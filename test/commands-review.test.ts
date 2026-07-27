@@ -3,13 +3,14 @@ import { openDb, migrate } from "@/db";
 import { runReviewCommand } from "@/commands/review";
 import {
   createMention, setCandidates, queueMention, rejectMention, resolveMention,
+  getMention,
 } from "@/mentions";
-import { addSegment } from "@/segments";
+import { addSegment, listSegments } from "@/segments";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-async function queued(tag: string) {
+async function queued(tag: string, opts: { dwellMinutes?: number | null } = {}) {
   const p = join(tmpdir(), `trip-review-${tag}-${process.pid}.db`);
   rmSync(p, { force: true });
   const db = openDb(p);
@@ -35,7 +36,7 @@ async function queued(tag: string) {
     args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
   });
   const id = await createMention(db, 1, 1, {
-    text: "hot pot", atSeconds: 272, dwellMinutes: null, tags: [],
+    text: "hot pot", atSeconds: 272, dwellMinutes: opts.dwellMinutes ?? null, tags: [],
   });
   await setCandidates(db, id, [{
     rank: 1, displayName: "夜福火锅, 渝中区, 重庆市", localName: "夜福火锅",
@@ -98,5 +99,177 @@ describe("trip review ls", () => {
   test("an unknown subcommand is a usage error", async () => {
     const { db } = await queued("ls-bad");
     await expect(runReviewCommand(db, ["frobnicate"], false)).rejects.toThrow(/usage/i);
+  });
+});
+
+const RENAME_HIT = {
+  geocode: async () => [{
+    displayName: "一兰拉面, 渝中区, 重庆市", localName: "一兰拉面",
+    latitude: 29.561, longitude: 106.577,
+    category: "amenity", type: "restaurant", importance: 0.0001,
+    osmType: "node", osmId: 7, kmFromCentre: 2.5,
+  }],
+};
+
+describe("trip review resolve", () => {
+  test("--pick creates the segment and resolves the mention", async () => {
+    const { db, id } = await queued("pick");
+    const out = await runReviewCommand(db, ["resolve", String(id), "--pick=1"], false);
+    expect(out).toContain("夜福火锅");
+
+    const segs = await listSegments(db, 1);
+    expect(segs.length).toBe(1);
+    // The video's own words stay the name; OSM's is kept beside it.
+    expect(segs[0]!.name).toBe("hot pot");
+    expect(segs[0]!.localName).toBe("夜福火锅");
+    expect(segs[0]!.sourceAtSeconds).toBe(272);
+    expect(segs[0]!.dwellIsDefault).toBe(true);
+
+    const m = (await getMention(db, 1, id))!;
+    expect(m.state).toBe("resolved");
+    expect(m.reason).toBeNull();
+  });
+
+  test("--pick out of range names the range instead of throwing an index error", async () => {
+    const { db, id } = await queued("pick-range");
+    await expect(
+      runReviewCommand(db, ["resolve", String(id), "--pick=9"], false),
+    ).rejects.toThrow(/1\.\.1/);
+  });
+
+  // A far out-of-range pick and an off-by-one pick both land past the last
+  // candidate, but a bound relaxed by one (e.g. `n > length + 1`) would still
+  // reject --pick=9 while silently accepting --pick=2 against a 1-candidate
+  // list. Only a value exactly one past the end tells the two apart.
+  test("--pick one past the end also names the range, not just far out-of-range", async () => {
+    const { db, id } = await queued("pick-range-boundary");
+    await expect(
+      runReviewCommand(db, ["resolve", String(id), "--pick=2"], false),
+    ).rejects.toThrow(/1\.\.1/);
+  });
+
+  test("--reject marks it rejected and creates nothing", async () => {
+    const { db, id } = await queued("reject");
+    await runReviewCommand(db, ["resolve", String(id), "--reject"], false,
+      { now: () => "2026-07-27T12:00:00Z" });
+    expect((await getMention(db, 1, id))!.state).toBe("rejected");
+    expect(await listSegments(db, 1)).toEqual([]);
+  });
+
+  test("--rename re-geocodes and keeps the video's original words", async () => {
+    const { db, id } = await queued("rename");
+    await runReviewCommand(db,
+      ["resolve", String(id), "--rename=Ichiran Chongqing"], false, RENAME_HIT);
+
+    const m = (await getMention(db, 1, id))!;
+    expect(m.text).toBe("hot pot");
+    expect(m.resolvedName).toBe("Ichiran Chongqing");
+    expect(m.state).toBe("resolved");
+
+    const segs = await listSegments(db, 1);
+    expect(segs[0]!.name).toBe("Ichiran Chongqing");
+    expect(segs[0]!.localName).toBe("一兰拉面");
+  });
+
+  test("--rename that stays ambiguous returns to the queue with fresh candidates", async () => {
+    const { db, id } = await queued("rename-ambiguous");
+    // Two results -> still queued, with the NEW name's candidates.
+    const AMBIG = {
+      geocode: async () => [1, 2].map((n) => ({
+        displayName: `option ${n}`, localName: `option ${n}`,
+        latitude: 29.56, longitude: 106.55,
+        category: "amenity", type: "restaurant", importance: 0.0001,
+        osmType: "node", osmId: n, kmFromCentre: 1,
+      })),
+    };
+    await runReviewCommand(db, ["resolve", String(id), "--rename=noodles"], false, AMBIG);
+
+    const m = (await getMention(db, 1, id))!;
+    expect(m.state).toBe("pending");
+    expect(m.reason).toBe("2 candidates");
+    expect(m.candidates.length).toBe(2);
+    expect(m.candidates[0]!.displayName).toBe("option 1");
+    expect(await listSegments(db, 1)).toEqual([]);
+  });
+
+  // The fixture never renames, so mention.name and mention.text are identical
+  // there and cannot tell a --pick that reads the wrong field from one that
+  // reads the right one. Renaming into ambiguity first, then picking from the
+  // fresh list, is the only way to make the two fields differ.
+  test("--pick after an ambiguous --rename uses the renamed name, not the video's words", async () => {
+    const { db, id } = await queued("pick-after-rename");
+    const AMBIG = {
+      geocode: async () => [1, 2].map((n) => ({
+        displayName: `option ${n}`, localName: `option ${n}`,
+        latitude: 29.56, longitude: 106.55,
+        category: "amenity", type: "restaurant", importance: 0.0001,
+        osmType: "node", osmId: n, kmFromCentre: 1,
+      })),
+    };
+    await runReviewCommand(db, ["resolve", String(id), "--rename=noodles"], false, AMBIG);
+    await runReviewCommand(db, ["resolve", String(id), "--pick=1"], false);
+
+    const segs = await listSegments(db, 1);
+    expect(segs[0]!.name).toBe("noodles");
+
+    const m = (await getMention(db, 1, id))!;
+    expect(m.text).toBe("hot pot");
+    expect(m.state).toBe("resolved");
+  });
+
+  // The fixture's default dwellMinutes is null, so a mutant that always applies
+  // DEFAULT_DWELL_MINUTES instead of the mention's own value would be invisible
+  // without a fixture that actually carries an explicit dwell.
+  test("--pick preserves an explicit dwell instead of applying the default", async () => {
+    const { db, id } = await queued("pick-dwell", { dwellMinutes: 90 });
+    await runReviewCommand(db, ["resolve", String(id), "--pick=1"], false);
+    const segs = await listSegments(db, 1);
+    expect(segs[0]!.dwellMinutes).toBe(90);
+    expect(segs[0]!.dwellIsDefault).toBe(false);
+  });
+
+  // If the geocode lookup throws AFTER the new name is already written, the
+  // mention is left with the new name beside the OLD name's candidate list —
+  // exactly the mismatch --rename exists to prevent (a later --pick=N would
+  // mean a different place than the list the reader last saw). The lookup
+  // must run, and succeed, before anything is written.
+  test("a failing geocode during --rename leaves the mention and its candidates untouched", async () => {
+    const { db, id } = await queued("rename-geocode-fails");
+    const FAILING = { geocode: async () => { throw new Error("429"); } };
+    await expect(
+      runReviewCommand(db, ["resolve", String(id), "--rename=noodles"], false, FAILING),
+    ).rejects.toThrow(/429/);
+
+    const m = (await getMention(db, 1, id))!;
+    expect(m.resolvedName).toBeNull();
+    expect(m.state).toBe("pending");
+    expect(m.candidates.length).toBe(1);
+    expect(m.candidates[0]!.displayName).toBe("夜福火锅, 渝中区, 重庆市");
+  });
+
+  test("resolving an already-resolved mention errors and does not double-create", async () => {
+    const { db, id } = await queued("double");
+    await runReviewCommand(db, ["resolve", String(id), "--pick=1"], false);
+    await expect(
+      runReviewCommand(db, ["resolve", String(id), "--pick=1"], false),
+    ).rejects.toThrow(/already resolved/i);
+    expect((await listSegments(db, 1)).length).toBe(1);
+  });
+
+  test("exactly one action is required", async () => {
+    const { db, id } = await queued("one-action");
+    await expect(
+      runReviewCommand(db, ["resolve", String(id)], false),
+    ).rejects.toThrow(/--pick/);
+    await expect(
+      runReviewCommand(db, ["resolve", String(id), "--pick=1", "--reject"], false),
+    ).rejects.toThrow(/exactly one/i);
+  });
+
+  test("an unknown mention id says so", async () => {
+    const { db } = await queued("missing");
+    await expect(
+      runReviewCommand(db, ["resolve", "999", "--reject"], false),
+    ).rejects.toThrow(/999/);
   });
 });
