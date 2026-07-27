@@ -29,6 +29,8 @@ export interface MentionSpec {
   /** The price rules the video stated, as raw grammar strings. Empty means
    *  the extractor said nothing about price, which is UNKNOWN — never free. */
   price: string[];
+  /** The string to look this place up by. NULL means use `text`. */
+  query: string | null;
 }
 
 export interface ParsedMentions {
@@ -140,6 +142,7 @@ export function parseMentionsFile(raw: string): ParsedMentions {
         tags: readTags(e.tags, i),
         kind: readKind(e.kind, i),
         price: readPrice(e.price, i),
+        query: null,
       });
     } catch (err) {
       const msg = (err as Error).message;

@@ -424,13 +424,34 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 10", async () => {
+  test("schema version is 11", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m10-version"));
+    const db = openDb(tmpDb("m11-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(10);
+    expect(await schemaVersion(db)).toBe(11);
+  });
+
+  test("migration 11 adds mentions.query, defaulting to NULL", async () => {
+    // NULL, not ''. An absent query means "search by the name"; an empty
+    // string would mean "search for nothing" and return whatever the viewbox
+    // happens to contain, so the column must never be able to hold it.
+    const db = openDb(tmpDb("m11"));
+    await migrate(db);
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["t", "2026-07-27"],
+    });
+    await db.execute(
+      `INSERT INTO sources (trip_id, url, fetched_at)
+       VALUES (1, 'https://youtu.be/x', '2026-07-27T00:00:00Z')`,
+    );
+    await db.execute(
+      `INSERT INTO mentions (trip_id, source_id, text) VALUES (1, 1, 'Hongya Cave')`,
+    );
+    const r = await db.execute(`SELECT query FROM mentions WHERE id = 1`);
+    expect(r.rows[0]!.query).toBeNull();
   });
 
   test("migration 10 adds cost_observations", async () => {

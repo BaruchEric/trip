@@ -42,7 +42,7 @@ async function queued(
   });
   const id = await createMention(db, 1, 1, {
     text: "hot pot", atSeconds: 272, dwellMinutes: opts.dwellMinutes ?? null,
-    tags: [], kind: opts.kind ?? null, price: opts.price ?? [],
+    tags: [], kind: opts.kind ?? null, price: opts.price ?? [], query: null,
   });
   await setCandidates(db, id, [{
     rank: 1, displayName: "夜福火锅, 渝中区, 重庆市", localName: "夜福火锅",

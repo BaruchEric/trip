@@ -1,7 +1,7 @@
 import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import {
-  createMention, setCandidates, listMentions, getMention,
+  createMention, setMentionQuery, setCandidates, listMentions, getMention,
   resolveMention, queueMention, rejectMention, renameMention,
   unlinkSegment, deleteUnresolvedMentions,
 } from "@/mentions";
@@ -28,7 +28,7 @@ async function freshDb(tag: string) {
 
 const HOTPOT = {
   text: "hot pot", atSeconds: 272, dwellMinutes: null, tags: ["food"],
-  kind: null, price: [],
+  kind: null, price: [], query: null,
 };
 
 const CANDIDATE = {
@@ -44,11 +44,11 @@ describe("mentions", () => {
 
     const withKind = await createMention(db, 1, 1, {
       text: "Jiefangbei Pedestrian Street",
-      atSeconds: 272, dwellMinutes: null, tags: [], kind: "street", price: [],
+      atSeconds: 272, dwellMinutes: null, tags: [], kind: "street", price: [], query: null,
     });
     const without = await createMention(db, 1, 1, {
       text: "that ramen spot",
-      atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [],
+      atSeconds: null, dwellMinutes: null, tags: [], kind: null, price: [], query: null,
     });
 
     expect((await getMention(db, 1, withKind))!.kind).toBe("street");
@@ -205,5 +205,54 @@ describe("mentions", () => {
     expect(left[0]!.state).toBe("resolved");
     const orphans = await db.execute(`SELECT COUNT(*) AS n FROM mention_candidates`);
     expect(Number(orphans.rows[0]!.n)).toBe(0);
+  });
+});
+
+describe("M7: the string a mention is looked up by", () => {
+  test("query round-trips, and NULL means search by the name", async () => {
+    const db = await freshDb("query-roundtrip");
+    const withQuery = await createMention(db, 1, 1, {
+      text: "Longmenhao Old Street", atSeconds: 178, dwellMinutes: null,
+      tags: [], kind: "street", price: [], query: "龙门浩老街",
+    });
+    const without = await createMention(db, 1, 1, {
+      text: "Hongya Cave", atSeconds: null, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: null,
+    });
+    const all = await listMentions(db, 1);
+    expect(all.find((m) => m.id === withQuery)!.query).toBe("龙门浩老街");
+    expect(all.find((m) => m.id === without)!.query).toBeNull();
+  });
+
+  test("an empty query is rejected at the store, never written as ''", async () => {
+    // '' would search for nothing and return whatever the viewbox contains.
+    const db = await freshDb("query-empty");
+    await expect(createMention(db, 1, 1, {
+      text: "X", atSeconds: null, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: "   ",
+    })).rejects.toThrow(/query/);
+  });
+
+  test("setMentionQuery updates it without touching the name", async () => {
+    // The whole milestone: two facts that used to share one field.
+    const db = await freshDb("query-set");
+    const id = await createMention(db, 1, 1, {
+      text: "the skywalk", atSeconds: null, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: null,
+    });
+    await setMentionQuery(db, id, "李子坝");
+    const m = (await getMention(db, 1, id))!;
+    expect(m.query).toBe("李子坝");
+    expect(m.text).toBe("the skywalk");
+    expect(m.name).toBe("the skywalk");
+  });
+
+  test("setMentionQuery refuses a blank string", async () => {
+    const db = await freshDb("query-setblank");
+    const id = await createMention(db, 1, 1, {
+      text: "X", atSeconds: null, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: null,
+    });
+    await expect(setMentionQuery(db, id, "  ")).rejects.toThrow(/query/);
   });
 });

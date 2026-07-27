@@ -418,6 +418,24 @@ const MIGRATIONS: Migration[] = [
                ON cost_observations (trip_id)`,
           ],
   },
+  {
+    version: 11,
+    // M7: the string to look a place up BY, when it differs from what you
+    // call it. 龙门浩老街 geocodes where "Longmenhao Old Street" returns
+    // nothing -- and renaming to the Chinese to make the lookup work used to
+    // destroy the name the traveller can read, because `name` and
+    // `local_name` then held the same string and displayName only shows the
+    // local one when it DIFFERS.
+    //
+    // NULL means "search by the name", which is what every existing row
+    // means. No DEFAULT '': an empty query would search for the empty string
+    // and return whatever the viewbox happens to contain, so that is a value
+    // this column must never be able to hold.
+    statements: async (db) =>
+      (await hasColumn(db, "mentions", "query"))
+        ? []
+        : [`ALTER TABLE mentions ADD COLUMN query TEXT`],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */

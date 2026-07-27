@@ -41,6 +41,15 @@ export interface Mention {
    *  `segments.tags` and is read by the planner. This is a geocode
    *  verification input, consumed by `classify` and never rendered. */
   kind: Kind | null;
+  /** The string to look this place up BY, when that differs from what it is
+   *  called. NULL means search by the name.
+   *
+   *  Separate from `text` and `resolvedName` because a search key and a
+   *  display name are two facts that merely happened to be EQUAL for six
+   *  milestones. `龙门浩老街` geocodes where `Longmenhao Old Street` returns
+   *  nothing, and collapsing the two into one field traded the name the
+   *  traveller can read for the name OSM can find. */
+  query: string | null;
   /** The price rules the video stated, as the raw grammar strings. Empty means
    *  the extractor said nothing about price, which is UNKNOWN — never free.
    *
@@ -72,6 +81,8 @@ export interface MentionInput {
   /** Required for the same reason `kind` is: an optional field lets a future
    *  writer forget it and silently store nothing, with no signal. */
   price: string[];
+  /** Required, same reason. NULL means "search by the name". */
+  query: string | null;
 }
 
 function strOrNull(v: unknown): string | null {
@@ -116,8 +127,8 @@ function toCandidate(row: Row): MentionCandidate {
 }
 
 const SELECT = `SELECT id, trip_id, source_id, text, resolved_name, at_seconds,
-                       dwell_minutes, tags, kind, price, reason, segment_id,
-                       rejected_at
+                       dwell_minutes, tags, kind, price, query, reason,
+                       segment_id, rejected_at
                 FROM mentions`;
 
 function toMention(row: Row, candidates: MentionCandidate[]): Mention {
@@ -138,6 +149,7 @@ function toMention(row: Row, candidates: MentionCandidate[]): Mention {
     // vocabulary before it can be stored.
     kind: strOrNull(row.kind) as Kind | null,
     price: splitList(row.price),
+    query: strOrNull(row.query),
     reason: strOrNull(row.reason),
     segmentId: numOrNull(row.segment_id),
     rejectedAt: strOrNull(row.rejected_at),
@@ -161,14 +173,20 @@ export async function createMention(
   // The grammar never produces a comma, which is exactly why the guard is
   // cheap: it costs nothing today and catches the day someone widens it.
   const price = joinList(input.price, "price rule");
+  // NULL or a real string, never ''. An empty query searches for nothing and
+  // returns whatever the viewbox happens to contain.
+  const query = input.query === null ? null : input.query.trim();
+  if (query !== null && query === "") {
+    throw new Error("query may not be blank (omit it to search by the name)");
+  }
   const r = await db.execute({
     sql: `INSERT INTO mentions
             (trip_id, source_id, text, at_seconds, dwell_minutes, tags, kind,
-             price)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+             price, query)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
           RETURNING id`,
     args: [tripId, sourceId, input.text.trim(), input.atSeconds,
-           input.dwellMinutes, tags, input.kind, price],
+           input.dwellMinutes, tags, input.kind, price, query],
   });
   return Number(r.rows[0]!.id);
 }
@@ -292,6 +310,23 @@ export async function renameMention(
   await db.execute({
     sql: `UPDATE mentions SET resolved_name = ? WHERE id = ?`,
     args: [name.trim(), mentionId],
+  });
+}
+
+/** Set the string this mention is looked up by, leaving its name alone.
+ *
+ *  Deliberately NOT part of `renameMention`: renaming corrects what a place
+ *  is CALLED, this corrects what it is FOUND by, and doing both through one
+ *  function is exactly the collapse M7 exists to undo. */
+export async function setMentionQuery(
+  db: Client, mentionId: number, query: string,
+): Promise<void> {
+  if (query.trim() === "") {
+    throw new Error("--query needs a string (omit it to search by the name)");
+  }
+  await db.execute({
+    sql: `UPDATE mentions SET query = ? WHERE id = ?`,
+    args: [query.trim(), mentionId],
   });
 }
 

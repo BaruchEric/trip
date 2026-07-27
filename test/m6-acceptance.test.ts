@@ -60,7 +60,7 @@ function specs(which: "raw" | "corrected"): MentionSpec[] {
     dwellMinutes: null,
     tags: [],
     kind,
-    price: [],
+    price: [], query: null,
   }));
 }
 
