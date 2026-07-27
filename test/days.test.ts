@@ -90,6 +90,30 @@ describe("deriveDays", () => {
     );
   });
 
+  // F4: an unparseable date produces Invalid Date, and `start > end` is FALSE
+  // when either side is NaN -- the backwards-range guard silently does not
+  // fire. Verified before the fix: this returned [] with no error at all.
+  test("an unparseable start date throws instead of silently returning no days", () => {
+    expect(() => deriveDays({ ...base, startDate: "2027-13-45" })).toThrow(
+      /invalid trip start date "2027-13-45"/,
+    );
+  });
+
+  test("an unparseable end date throws instead of silently returning no days", () => {
+    expect(() => deriveDays({ ...base, endDate: "2027-13-45" })).toThrow(
+      /invalid trip end date "2027-13-45"/,
+    );
+  });
+
+  test("an unparseable start date throws even with an arrival time set", () => {
+    // Verified before the fix: this threw "undefined is not an object"
+    // instead (days[0]! on the empty array), naming neither the bug's cause
+    // nor the bad date.
+    expect(() => deriveDays({ ...base, startDate: "2027-13-45", arrivalMin: 930 })).toThrow(
+      /invalid trip start date "2027-13-45"/,
+    );
+  });
+
   test("backwards date range throws even without arrival or departure", () => {
     expect(() => deriveDays({
       ...base, startDate: "2027-05-10", endDate: "2027-05-08",

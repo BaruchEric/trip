@@ -68,6 +68,15 @@ describe("trip seg add", () => {
     expect((await listSegments(db, 1))[0]!.name).toBe("Museu Nacional do Azulejo");
   });
 
+  test("--cost= (empty) is rejected rather than stored as 0", async () => {
+    // F5: Number("") is 0, not NaN, so this used to pass Number.isFinite and
+    // silently store a real $0 cost instead of throwing -- the same trap
+    // parseCoords already guards against for --at=.
+    const db = await freshDb("costempty");
+    await expect(runSegmentsCommand(db, ["add", "Thing", "--dur=30m", "--cost="], false))
+      .rejects.toThrow(/cost/i);
+  });
+
   test("--dur is required", async () => {
     const db = await freshDb("nodur");
     await expect(runSegmentsCommand(db, ["add", "Thing"], false))

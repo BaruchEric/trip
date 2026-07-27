@@ -90,5 +90,12 @@ export async function runDatesCommand(
       "Use --depart if you fly out mid-day.",
     );
   }
+  // F3: every sibling command that invalidates the plan (pin, unpin, move)
+  // says so; `dates set` invalidates the MOST -- new days, a new day count,
+  // possibly placements sitting on days that no longer exist -- and used to
+  // say nothing. Always printed, unconditionally: unlike the arrival/
+  // departure notes above, there is no case where `dates set` does NOT
+  // invalidate the plan.
+  lines.push("", "This changes the trip's days - run `trip replan` to rebuild the itinerary.");
   return lines.join("\n");
 }

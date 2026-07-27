@@ -50,6 +50,11 @@ async function addCmd(
   const dwellMinutes = parseDuration(durRaw);
 
   const costRaw = flag(argv, "--cost");
+  // F5: Number("") is 0, not NaN, so `--cost=` (empty) would silently store a
+  // real 0 instead of the NULL "unknown" absence means -- the identical trap
+  // already fixed in parseCoords for `--at=`. Reject it explicitly before
+  // the conversion, same as every other value flag here.
+  if (costRaw === "") throw new Error(`invalid --cost "${costRaw}"`);
   const cost = costRaw === null ? null : Number(costRaw);
   if (cost !== null && !Number.isFinite(cost)) {
     throw new Error(`invalid --cost "${costRaw}"`);

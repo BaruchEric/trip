@@ -33,6 +33,22 @@ export function deriveDays(schedule: TripSchedule): DayWindow[] {
   const start = new Date(`${schedule.startDate}T00:00:00Z`);
   const end = new Date(`${schedule.endDate}T00:00:00Z`);
 
+  // F4: an unparseable date yields Invalid Date, and `start > end` is FALSE
+  // under NaN on either side -- the backwards-range guard below never fires,
+  // the loop below never runs (NaN <= NaN is also false), and the function
+  // returns [] silently rather than naming the bad date. `days[0]!` then
+  // blows up with an unhelpful "undefined is not an object" wherever the
+  // caller assumes at least one day, or worse, is invisibly [] where a
+  // caller only checks length. Named separately from the backwards-range
+  // guard below so the message points at the actual malformed date rather
+  // than a nonsensical "ends before it starts".
+  if (Number.isNaN(start.getTime())) {
+    throw new Error(`invalid trip start date "${schedule.startDate}"`);
+  }
+  if (Number.isNaN(end.getTime())) {
+    throw new Error(`invalid trip end date "${schedule.endDate}"`);
+  }
+
   // Guard against backwards date range. Absence of output is an easy-to-miss
   // failure shape; throw early with both dates to make it visible.
   if (start > end) {

@@ -124,7 +124,13 @@ export function compile(
     const room = Math.max(0, ceiling - pinnedCount - locked.length);
     const taken = fromCluster.slice(0, room);
     for (const s of fromCluster.slice(room)) {
-      unplaced.push({ segmentId: s.id, reason: "no day had room" });
+      // F8: this cluster was already committed to THIS day by stage 3 — the
+      // overflow here is never re-offered to another day, so "no day had
+      // room" (plural, implying every day was tried) misdescribes what
+      // happened. Only this one day was ever considered, and it ran out of
+      // room specifically because pinned/locked segments already sharing it
+      // ate into the pace ceiling.
+      unplaced.push({ segmentId: s.id, reason: `day ${day.day} had no room left; not tried on another day` });
     }
 
     const result = orderDay(

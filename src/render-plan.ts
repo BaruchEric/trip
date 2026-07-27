@@ -14,7 +14,14 @@ export function renderSegmentList(segments: Segment[]): string {
     // A bare "?" is how unknown hours stay visible without pretending to a
     // value (M2-2).
     if (s.opensMin === null) marks.push("?");
-    else marks.push(`${formatClock(s.opensMin)}-${formatClock(s.closesMin ?? 1439)}`);
+    // F7: `closesMin ?? 1439` printed "10:00-23:59" for a genuinely UNKNOWN
+    // closing time — a fabricated window, indistinguishable from a segment
+    // that really is open until midnight. Unreachable in M2 (`--hours`
+    // requires both ends), but closesMin is independently nullable in the
+    // schema and M3's partial-hours ingestion will produce this shape for
+    // real. Mark the unknown side, same convention as the opensMin case
+    // right above.
+    else marks.push(`${formatClock(s.opensMin)}-${s.closesMin === null ? "?" : formatClock(s.closesMin)}`);
     if (s.closedDays.length > 0) marks.push(`closed ${s.closedDays.join(",")}`);
     if (s.tags.length > 0) marks.push(`[${s.tags.join(",")}]`);
     lines.push(`  ${String(s.id).padStart(2)} ${dur}   ${s.name}  ${marks.join("  ")}`);
@@ -51,15 +58,24 @@ export function renderDay(
   } else {
     for (const p of onDay) {
       const s = segments.get(p.segmentId);
-      if (!s) continue;
+      // F6: this used to `continue` here, silently DROPPING the placement
+      // from the day entirely — the exact false-confidence direction M2-2
+      // exists to prevent (a day that looked shorter than it really was,
+      // with no sign anything was omitted). The unplaced trailer below
+      // already degrades honestly to `#<id>` for a segment it can't name;
+      // match that instead of vanishing the line.
+      const name = s?.name ?? `#${p.segmentId}`;
+      const dwell = s?.dwellMinutes ?? p.endMin - p.startMin;
       const marks: string[] = [];
       // Unknown hours are marked, never hidden. This is the visible half of
-      // M2-2 — the plan says which segments it placed blind.
-      if (s.opensMin === null) marks.push("?");
+      // M2-2 — the plan says which segments it placed blind. Whether hours
+      // are known is itself unknowable for a segment lookup failed, so no
+      // mark is added rather than guessing either way.
+      if (s && s.opensMin === null) marks.push("?");
       if (p.pinned) marks.push("pinned");
       lines.push(
-        `  ${formatClock(p.startMin)} ${s.name.padEnd(28)}` +
-        `${String(s.dwellMinutes).padStart(4)}m  ${marks.join(" ")}`.trimEnd(),
+        `  ${formatClock(p.startMin)} ${name.padEnd(28)}` +
+        `${String(dwell).padStart(4)}m  ${marks.join(" ")}`.trimEnd(),
       );
     }
   }
@@ -86,7 +102,15 @@ export function renderPlan(
   const byId = new Map(segments.map((s) => [s.id, s]));
   const parts = days.map((d) => renderDay(d, placements, byId));
 
-  const blind = placements.filter((p) => byId.get(p.segmentId)?.opensMin === null);
+  // F6: `byId.get(...)?.opensMin === null` is FALSE for a segment the map
+  // can't find (undefined?.opensMin is undefined, not null), which UNDER-
+  // counts the exact thing this warning exists to catch — placed blind, no
+  // sign of it. A segment we cannot even look up is the least-known case of
+  // all, so it counts as blind rather than silently not counting.
+  const blind = placements.filter((p) => {
+    const s = byId.get(p.segmentId);
+    return s === undefined || s.opensMin === null;
+  });
   if (blind.length > 0) {
     parts.push(
       "",

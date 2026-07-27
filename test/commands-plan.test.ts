@@ -3,7 +3,7 @@ import { openDb, migrate } from "@/db";
 import { createTrip, setActiveTrip } from "@/trips";
 import { runDatesCommand } from "@/commands/dates";
 import { runSegmentsCommand } from "@/commands/segments";
-import { runPlanCommand } from "@/commands/plan";
+import { runPlanCommand, planJson } from "@/commands/plan";
 import { readPlacements, readPins, savePlacements } from "@/placements";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -74,6 +74,52 @@ describe("trip plan", () => {
     const out = await runPlanCommand(db, "plan", [], false);
     expect(out).toContain("Nowhere");
     expect(out.toLowerCase()).toContain("coordinates");
+  });
+
+  // F6: readPlacements INNER JOINs against segments, so this mismatch can
+  // never arise through any real DB state or CLI sequence — pure defensive
+  // code, tested by calling planJson directly with an inconsistent pair.
+  test("planJson never reports hoursKnown true for a placement whose segment is missing", () => {
+    const DAY = { day: 1, date: "2027-05-08", weekday: "sat", startMin: 540, endMin: 1140 };
+    const orphan = { segmentId: 99, day: 1, ordinal: 0, startMin: 600, endMin: 660, pinned: false };
+    const json = JSON.parse(planJson([DAY], [orphan], [], [])) as {
+      days: { placements: { segmentId: number; hoursKnown: boolean; name: string | null }[] }[];
+    };
+    const p = json.days[0]!.placements[0]!;
+    // Before the fix: `byId.get(...)?.opensMin !== null` reads TRUE when the
+    // segment can't be found (undefined?.opensMin is undefined, and
+    // undefined !== null) — the worst direction for a field M2-2 introduced
+    // specifically so an agent never has to guess.
+    expect(p.hoursKnown).toBe(false);
+    expect(p.name).toBeNull();
+  });
+
+  // F9: a timed pin's dwell can cross midnight (23:00 + 120m = endMin 1500).
+  // formatClock has no day concept and used to emit "25:00" -- not a real
+  // clock time and not something an agent's HH:MM parser expects. Decided
+  // representation: a real wrapped HH:MM plus an explicit endsNextDay flag,
+  // rather than wrapping silently (which would make endTime read as earlier
+  // than startTime) or keeping the extended-hour notation (which a naive
+  // parser chokes on).
+  test("a timed pin whose dwell crosses midnight reports a real clock time, not '25:00'", async () => {
+    const db = await setup("midnight-pin", { segs: false });
+    await runSegmentsCommand(db, ["add", "Late", "--dur=120m", "--at=38.71,-9.13"], false);
+    await runPlanCommand(db, "pin", ["Late", "--day=1", "--at=23:00"], false);
+    const json = JSON.parse(await runPlanCommand(db, "plan", [], true)) as {
+      days: { day: number; placements: { endTime: string; endsNextDay: boolean }[] }[];
+    };
+    const p = json.days[0]!.placements[0]!;
+    expect(p.endTime).toBe("01:00");
+    expect(p.endTime).toMatch(/^\d{2}:\d{2}$/);
+    expect(p.endsNextDay).toBe(true);
+  });
+
+  test("an ordinary placement (no midnight crossing) reports endsNextDay: false", async () => {
+    const db = await setup("nomidnight");
+    const json = JSON.parse(await runPlanCommand(db, "plan", [], true)) as {
+      days: { placements: { endsNextDay: boolean }[] }[];
+    };
+    for (const d of json.days) for (const p of d.placements) expect(p.endsNextDay).toBe(false);
   });
 
   test("json output carries days, placements, and the unplaced list", async () => {
@@ -150,6 +196,33 @@ describe("pin, unpin, move", () => {
     const torre = (await readPlacements(db, 1)).find((p) => p.segmentId === 4)!;
     expect(torre.day).toBe(1);
     expect(torre.pinned).toBe(true);
+  });
+
+  // F2: compile() only marks a TIMED pin `pinned: true`; a day-locked pin
+  // (what `move` produces) runs through the ordinary layout path and comes
+  // back `pinned: false` from compile() itself. `trip day` was already
+  // truthful (it re-reads the DB's `pinned` column via readPlacements, which
+  // setPinned/clearPin alone control), but `doPlan` hands compile()'s
+  // in-memory result straight to `planJson`/`renderPlan` without ever
+  // consulting the DB -- so `trip plan`/`trip replan`'s OWN return value,
+  // in both --json and human form, lied about a constraint `trip move` exists
+  // specifically to create.
+  test("replan's own output marks a day-locked (moved) segment pinned, not just a later `trip day`", async () => {
+    const db = await setup("moved-pinned-in-plan-output");
+    await runPlanCommand(db, "plan", [], false);
+    await runPlanCommand(db, "move", ["Torre", "--to=day1"], false);
+    const replanned = await runPlanCommand(db, "replan", [], false);
+    const json = JSON.parse(await runPlanCommand(db, "plan", [], true)) as {
+      days: { day: number; placements: { segmentId: number; pinned: boolean }[] }[];
+    };
+    const torreJson = json.days
+      .flatMap((d) => d.placements)
+      .find((p) => p.segmentId === 4)!;
+    expect(torreJson.pinned).toBe(true);
+
+    // The human renderer, fed the same reconciled placements, marks it too.
+    const torreLine = replanned.split("\n").find((l) => l.includes("Torre"))!;
+    expect(torreLine).toContain("pinned");
   });
 
   test("unpin releases a segment back to the compiler", async () => {
@@ -261,28 +334,30 @@ describe("pin, unpin, move", () => {
   // correct key must sort by clock time next and puts the pinned segment
   // first instead.
   //
-  // Constructed directly via savePlacements/setPinned rather than through
-  // `plan`, so this does not depend on how clusterSegments happens to
-  // divide these segments across days (that's frozen compiler geography,
-  // not something a sort-order test should be coupled to) -- and, since the
-  // fix round below makes readPlacements skip NULL start_minutes rows, a
-  // genuinely never-compiled fresh pin would no longer surface here at all;
-  // both rows in this test carry real, non-null compiled times.
-  test("day render breaks a pin-created ordinal tie deterministically, without a replan", async () => {
+  // F1 note: a bare `pin`/`move` can no longer produce this shape by itself
+  // -- setPinned now also clears the stale start_minutes it used to leave
+  // behind, so the freshly pinned row has no real time until the next
+  // replan, and readPlacements filters it out entirely rather than
+  // rendering it at a stale ordinal. The defensive (ordinal, startMin,
+  // segmentId) sort key stays in the code regardless (two ordinal-0 rows are
+  // still possible from any direct savePlacements write, e.g. a future
+  // caller), so this test now constructs that shape directly: pin first
+  // (seeds the pinned row), then hand savePlacements an array that assigns
+  // both segments ordinal 0 on the same day -- exactly what the OLD
+  // setPinned bug used to produce, just built explicitly instead of via the
+  // no-longer-reachable race window.
+  test("day render breaks an ordinal tie deterministically by (ordinal, startMin, segmentId)", async () => {
     const db = await setup("tiewindow");
+    // Day-lock Torre (#4) onto day 1 first, so its row is pinned in the DB.
+    await runPlanCommand(db, "pin", ["4", "--day=1"], false);
+
     // Se (#1, lower id) is day 1's ordinal-0 resident with a REAL, LATE
-    // clock time (15:30). Torre (#4, higher id) starts on day 3 with a
-    // REAL, EARLY time (09:00) -- both as if from a completed plan.
+    // clock time (15:30). Torre (#4, higher id, pinned) gets a REAL, EARLY
+    // time (09:00) at the SAME ordinal -- the tie this defense exists for.
     await savePlacements(db, 1, [
       { segmentId: 1, day: 1, ordinal: 0, startMin: 930, endMin: 990, pinned: false },
-      { segmentId: 4, day: 3, ordinal: 0, startMin: 540, endMin: 585, pinned: false },
+      { segmentId: 4, day: 1, ordinal: 0, startMin: 540, endMin: 585, pinned: false },
     ]);
-
-    // Torre is now pinned onto day 1 without a replan. setPinned resets ITS
-    // OWN row's ordinal to 0 unconditionally -- a genuine tie with Se's
-    // ordinal 0 -- but leaves start_minutes untouched (only savePlacements
-    // writes that column), so Torre's stale, EARLIER time (540) survives.
-    await runPlanCommand(db, "pin", ["Torre", "--day=1"], false);
 
     const placements = (await readPlacements(db, 1)).filter((p) => p.day === 1);
     const resident = placements.find((p) => p.segmentId === 1)!;

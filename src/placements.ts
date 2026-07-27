@@ -17,7 +17,11 @@ import type { Pin, Placement } from "@/plan/types";
  *  row on the `segment_id` primary key the moment a day-locked pin got
  *  replanned. Splitting the columns and upserting fixes it: only
  *  `setPinned`/`clearPin` ever write `pinned` or `pin_start_minutes`; only
- *  `savePlacements` ever writes `start_minutes`, `day_number`, `ordinal`.
+ *  `savePlacements` ever writes `day_number`/`ordinal` for an UNPINNED
+ *  segment. `start_minutes` is written by both — `savePlacements` on every
+ *  compile, and `setPinned` clears it back to NULL on every re-pin (F1),
+ *  since a stale compiled time from before the re-pin belongs to neither the
+ *  old day nor the new assertion.
  *
  *  Fix round 1 (team-lead review): a pinned row this compile did NOT place
  *  (its asserted slot no longer fits — e.g. another pin now blocks it) used
@@ -166,7 +170,17 @@ export async function setPinned(
             -- stale position. The next replan assigns a real one.
             ordinal = 0,
             pin_start_minutes = excluded.pin_start_minutes,
-            pinned = 1`,
+            pinned = 1,
+            -- F1: also reset, not preserved. start_minutes is the COMPILED
+            -- result for the segment's OLD day; re-asserting the pin can move
+            -- it to a new day (or a new time) without any compile running in
+            -- between, and the old row's clock time has no business
+            -- surviving that. Leaving it would render the segment at its
+            -- previous plan's time on what is now the wrong day. NULL here
+            -- reads as "pinned but not yet compiled" (readPlacements skips
+            -- it, same as fix round 1 above) until the next replan gives it
+            -- a real time.
+            start_minutes = NULL`,
     args: [segmentId, day, startMin],
   });
 }

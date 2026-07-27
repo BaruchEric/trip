@@ -117,14 +117,46 @@ describe("placements", () => {
     // Pinning it afterward must not leave that ordinal sitting there —
     // ordinal belongs to savePlacements/compile(), and a fresh pin has no
     // opinion on it until the next plan assigns a real one.
+    //
+    // F1: setPinned now also clears the stale COMPILED start_minutes, so this
+    // row no longer has a real time and readPlacements (which skips NULL
+    // start_minutes rows — they are "pinned but not yet compiled") won't
+    // return it. Read the raw row instead; the ordinal reset is what this
+    // test is actually about.
     const db = await freshDb("repin-ordinal");
     const [a, b] = await addTwo(db);
     await savePlacements(db, 1, [place(b!, 1, 0, 540), place(a!, 1, 1, 600)]);
     await setPinned(db, a!, 2, 700);
 
-    const placed = await readPlacements(db, 1);
-    const row = placed.find((p) => p.segmentId === a!)!;
-    expect(row.ordinal).toBe(0);
+    const row = await db.execute({
+      sql: `SELECT ordinal FROM placements WHERE segment_id = ?`,
+      args: [a!],
+    });
+    expect(Number(row.rows[0]!.ordinal)).toBe(0);
+  });
+
+  test("re-pinning a segment clears its stale compiled start_minutes (F1)", async () => {
+    // Reported bug: `a` is placed by an earlier plan at day 2, 09:00. It is
+    // then re-pinned onto day 1 -- setPinned wrote the new day_number but
+    // left the OLD compiled start_minutes untouched, so `trip day 1` showed
+    // it at 09:00 (day 2's clock time) before day 1 had even started, and a
+    // second re-pin onto a different day+time still showed the FIRST plan's
+    // 09:00 rather than the newly asserted time.
+    const db = await freshDb("repin-clears-start");
+    const [a] = await addTwo(db);
+    await savePlacements(db, 1, [place(a!, 2, 0, 540)]); // day 2, 09:00
+    await setPinned(db, a!, 1, null); // move to day 1, day-locked
+
+    const row = await db.execute({
+      sql: `SELECT start_minutes, day_number FROM placements WHERE segment_id = ?`,
+      args: [a!],
+    });
+    expect(row.rows[0]!.start_minutes).toBeNull();
+    expect(Number(row.rows[0]!.day_number)).toBe(1);
+    // readPlacements must not surface the stale time either -- a NULL
+    // start_minutes means "not currently placed", so the row disappears from
+    // the itinerary entirely until a replan gives it a real one.
+    expect((await readPlacements(db, 1)).find((p) => p.segmentId === a!)).toBeUndefined();
   });
 
   test("clearPin reports whether it removed anything", async () => {

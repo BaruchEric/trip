@@ -76,6 +76,25 @@ describe("trip dates set", () => {
     expect(out.toLowerCase()).not.toMatch(/assum|full/);
   });
 
+  // F3: every sibling command that touches the plan (pin, unpin, move) tells
+  // the user to run `trip replan`; `dates set` invalidates the most -- a new
+  // day count, placements that may now sit on days that no longer exist --
+  // and used to say nothing at all. Checked across all three
+  // arrival/departure branches so the advisory can't accidentally live only
+  // inside one of those conditionals.
+  test("always advises running trip replan, regardless of arrival/departure", async () => {
+    const db = await freshDb("replanadvisory");
+    for (const argv of [
+      ["set", "2027-05-08..05-10"],
+      ["set", "2027-05-08..05-10", "--arrive=15:30"],
+      ["set", "2027-05-08..05-10", "--depart=11:00"],
+      ["set", "2027-05-08..05-10", "--arrive=15:30", "--depart=11:00"],
+    ]) {
+      const out = await runDatesCommand(db, argv, false);
+      expect(out).toContain("trip replan");
+    }
+  });
+
   test("--day-window overrides the default", async () => {
     const db = await freshDb("window");
     await runDatesCommand(db, ["set", "2027-05-08..05-09", "--day-window=08:00-22:00"], false);

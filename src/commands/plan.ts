@@ -4,7 +4,7 @@ import { listSegments, type Segment } from "@/segments";
 import { readPins, readPlacements, savePlacements, setPinned, clearPin } from "@/placements";
 import { deriveDays, type DayWindow } from "@/days";
 import { compile } from "@/plan/compile";
-import { MODES, PACES, type Mode, type Pace, type Unplaced } from "@/plan/types";
+import { MODES, PACES, type Mode, type Pace, type Pin, type Unplaced } from "@/plan/types";
 import { formatClock, parseClock } from "@/parse";
 import { renderDay, renderPlan } from "@/render-plan";
 
@@ -64,6 +64,30 @@ export async function runPlanCommand(
   throw new Error(`unknown plan command "${command}"`);
 }
 
+/** F2: compile() only marks a TIMED pin `pinned: true` at Stage 1 -- a
+ *  day-locked pin (`trip move`, or `trip pin` without `--at`) runs through
+ *  the ordinary layout path (orderDay -> layoutDay) and comes back
+ *  `pinned: false`, same as a free segment, because layoutDay has no idea
+ *  which inputs were locked. That is a FALSE field: it tells an agent the
+ *  constraint `trip move` exists to create does not exist. The DB's own
+ *  `pinned` column is truthful (setPinned/clearPin are its only writers, and
+ *  savePlacements's upsert never touches it), which is why `trip day` --
+ *  sourced from readPlacements -- was never actually wrong; only `doPlan`,
+ *  which hands compile()'s in-memory result straight to the renderers
+ *  without ever consulting the DB, was. Re-joining against the pins already
+ *  loaded for compile() fixes it without weakening compile()'s purity. Only
+ *  ever promotes false -> true: a placement compile() marked pinned (a timed
+ *  pin) is never un-marked. */
+function reconcilePinned<T extends { segmentId: number; pinned: boolean }>(
+  placements: T[],
+  pins: Pin[],
+): T[] {
+  const pinnedIds = new Set(pins.map((p) => p.segmentId));
+  return placements.map((p) =>
+    p.pinned || !pinnedIds.has(p.segmentId) ? p : { ...p, pinned: true },
+  );
+}
+
 async function doPlan(db: Client, argv: string[], json: boolean): Promise<string> {
   const { trip, days, segments } = await loadContext(db);
   if (segments.length === 0) {
@@ -81,13 +105,13 @@ async function doPlan(db: Client, argv: string[], json: boolean): Promise<string
     throw new Error(`invalid --pace "${paceRaw}" (expected ${PACES.join(", ")})`);
   }
 
-  const result = compile(segments, days, {
-    mode: modeRaw as Mode, pace: paceRaw as Pace, pins: await readPins(db, trip.id),
-  });
+  const pins = await readPins(db, trip.id);
+  const result = compile(segments, days, { mode: modeRaw as Mode, pace: paceRaw as Pace, pins });
   await savePlacements(db, trip.id, result.placements);
+  const placements = reconcilePinned(result.placements, pins);
 
-  if (json) return planJson(days, result.placements, segments, result.unplaced);
-  return renderPlan(days, result.placements, segments, result.unplaced);
+  if (json) return planJson(days, placements, segments, result.unplaced);
+  return renderPlan(days, placements, segments, result.unplaced);
 }
 
 /** (ordinal, startMin, segmentId): same tie-break `renderDay` uses, and for
@@ -101,7 +125,11 @@ function byOrdinalThenClock(
   return a.ordinal - b.ordinal || a.startMin - b.startMin || a.segmentId - b.segmentId;
 }
 
-function planJson(
+// Exported (only) so tests can hand it a placement/segment mismatch that no
+// real DB state can produce -- readPlacements INNER JOINs against segments,
+// so the two are always consistent through every actual code path -- and
+// exercise the F6 defensive check below directly.
+export function planJson(
   days: DayWindow[],
   placements: { segmentId: number; day: number; ordinal: number; startMin: number; endMin: number; pinned: boolean }[],
   segments: Segment[],
@@ -115,16 +143,40 @@ function planJson(
       placements: placements
         .filter((p) => p.day === d.day)
         .sort(byOrdinalThenClock)
-        .map((p) => ({
-          segmentId: p.segmentId,
-          name: byId.get(p.segmentId)?.name ?? null,
-          startTime: formatClock(p.startMin),
-          endTime: formatClock(p.endMin),
-          pinned: p.pinned,
-          // Explicit, so an agent never has to infer that a missing field
-          // means "we guessed" (M2-2).
-          hoursKnown: byId.get(p.segmentId)?.opensMin !== null,
-        })),
+        .map((p) => {
+          const seg = byId.get(p.segmentId);
+          // F9: a TIMED pin (Stage 1 of compile()) is placed at exactly the
+          // user's asserted minute with no bound check against the day
+          // window — that is correct, the assertion is absolute — but its
+          // dwell can run p.endMin past 1440 (23:00 + a 120m segment = 1500).
+          // formatClock has no notion of "day", so it used to emit "25:00":
+          // not a real clock time, and an agent naively parsing HH:MM (e.g.
+          // `new Date("...T25:00")`) gets Invalid Date. Wrapping silently to
+          // "01:00" would be worse — a fabricated time that reads as BEFORE
+          // startTime, the same class of lie M2-2 exists to prevent. The
+          // honest fix states the fact explicitly instead of encoding it in
+          // a notation the consumer has to know to decode: a real HH:MM, plus
+          // a boolean saying it belongs to the day after.
+          const overflowed = p.endMin >= 1440;
+          return {
+            segmentId: p.segmentId,
+            name: seg?.name ?? null,
+            startTime: formatClock(p.startMin),
+            endTime: formatClock(overflowed ? p.endMin % 1440 : p.endMin),
+            endsNextDay: overflowed,
+            pinned: p.pinned,
+            // Explicit, so an agent never has to infer that a missing field
+            // means "we guessed" (M2-2).
+            //
+            // F6: the old `byId.get(...)?.opensMin !== null` reads TRUE for a
+            // segment this map cannot find at all (undefined?.opensMin is
+            // undefined, and undefined !== null) — asserting "hours known"
+            // for a segment whose hours are not even loadable is the worst
+            // direction possible for the field M2-2 introduced to prevent
+            // exactly this. A missing segment is never hoursKnown.
+            hoursKnown: seg !== undefined && seg.opensMin !== null,
+          };
+        }),
     })),
     unplaced: unplaced.map((u) => ({
       segmentId: u.segmentId,

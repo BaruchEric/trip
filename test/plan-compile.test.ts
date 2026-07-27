@@ -189,6 +189,26 @@ describe("compile", () => {
     }
   });
 
+  // F8: the "pace ceiling caps a day" test above hits stage 2's overflow
+  // (clusterSegments itself has nowhere else to put the excess, with only
+  // one day/cluster in play) -- that message is already accurate, every
+  // other cluster genuinely was tried. This constructs the OTHER site: a
+  // cluster that fits clusterSegments' own capacity gets committed whole to
+  // a day by stage 3, and only THEN does the per-day ceiling trim it because
+  // a day-locked pin sharing that day already ate into the room. That
+  // segment was never offered to any other day.
+  test("a segment trimmed by the per-day ceiling names the day and says it was not tried elsewhere", () => {
+    const locked = [seg(1, 38.712, -9.128)]; // day-locked pin, eats 1 of 3 easy-pace slots
+    const freeCluster = [seg(2, 38.6916, -9.216), seg(3, 38.692, -9.2155), seg(4, 38.691, -9.2165)];
+    const pins = [{ segmentId: 1, day: 1, startMin: null }];
+    const r = compile([...locked, ...freeCluster], days(1), { mode: "walking", pace: "easy", pins });
+
+    expect(r.unplaced).toHaveLength(1);
+    expect(r.unplaced[0]!.reason).toMatch(/room/i);
+    expect(r.unplaced[0]!.reason).toContain("day 1");
+    expect(r.unplaced[0]!.reason.toLowerCase()).toContain("not tried on another day");
+  });
+
   test("a pin to a day outside the trip is unplaced, not clamped", () => {
     // Silently moving it to the last day would be a lie about what was asked.
     const r = compile(ALFAMA, days(2), {
