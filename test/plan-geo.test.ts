@@ -70,9 +70,10 @@ describe("plan types", () => {
 
   test("isPlannable rejects a segment with no coordinates", () => {
     const base: Segment = {
-      id: 1, tripId: 1, name: "x", latitude: null, longitude: null,
-      dwellMinutes: 30, cost: null, tags: [], opensMin: null,
+      id: 1, tripId: 1, name: "x", localName: null, latitude: null, longitude: null,
+      dwellMinutes: 30, dwellIsDefault: false, cost: null, tags: [], opensMin: null,
       closesMin: null, closedDays: [], status: "confirmed",
+      sourceId: null, sourceAtSeconds: null,
     };
     expect(isPlannable(base)).toBe(false);
     expect(isPlannable({ ...base, latitude: 38.7, longitude: -9.1 })).toBe(true);

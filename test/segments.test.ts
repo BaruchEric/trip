@@ -161,4 +161,53 @@ describe("segments", () => {
       addSegment(db, 1, { ...FULL, latitude: 38.7, longitude: null }),
     ).rejects.toThrow(/both/i);
   });
+
+  test("a padded name is stored trimmed", async () => {
+    const db = await freshDb("trim-name");
+    await addSegment(db, 1, { ...FULL, name: "  Museum  " });
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.name).toBe("Museum");
+  });
+
+  test("a hand-added segment has no provenance and no defaulted dwell", async () => {
+    const db = await freshDb("no-provenance");
+    await addSegment(db, 1, FULL);
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.localName).toBeNull();
+    expect(seg!.sourceId).toBeNull();
+    expect(seg!.sourceAtSeconds).toBeNull();
+    expect(seg!.dwellIsDefault).toBe(false);
+  });
+
+  test("provenance round-trips", async () => {
+    const db = await freshDb("provenance");
+    await db.execute({
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+    });
+    await addSegment(db, 1, {
+      ...FULL, name: "Hongya Cave", localName: "洪崖洞",
+      sourceId: 1, sourceAtSeconds: 272, dwellIsDefault: true,
+    });
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.name).toBe("Hongya Cave");
+    expect(seg!.localName).toBe("洪崖洞");
+    expect(seg!.sourceId).toBe(1);
+    expect(seg!.sourceAtSeconds).toBe(272);
+    expect(seg!.dwellIsDefault).toBe(true);
+  });
+
+  test("listSegments can filter to one source", async () => {
+    const db = await freshDb("by-source");
+    await db.execute({
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+    });
+    await addSegment(db, 1, FULL);
+    await addSegment(db, 1, { ...FULL, name: "From video", sourceId: 1 });
+    expect((await listSegments(db, 1)).length).toBe(2);
+    const fromVideo = await listSegments(db, 1, { sourceId: 1 });
+    expect(fromVideo.length).toBe(1);
+    expect(fromVideo[0]!.name).toBe("From video");
+  });
 });

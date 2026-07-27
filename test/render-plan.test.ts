@@ -6,9 +6,10 @@ import type { Placement } from "@/plan/types";
 
 function seg(id: number, o: Partial<Segment> = {}): Segment {
   return {
-    id, tripId: 1, name: `s${id}`, latitude: 38.7, longitude: -9.1,
-    dwellMinutes: 60, cost: null, tags: [], opensMin: null,
-    closesMin: null, closedDays: [], status: "confirmed", ...o,
+    id, tripId: 1, name: `s${id}`, localName: null, latitude: 38.7, longitude: -9.1,
+    dwellMinutes: 60, dwellIsDefault: false, cost: null, tags: [], opensMin: null,
+    closesMin: null, closedDays: [], status: "confirmed",
+    sourceId: null, sourceAtSeconds: null, ...o,
   };
 }
 

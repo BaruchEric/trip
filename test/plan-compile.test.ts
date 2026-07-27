@@ -8,9 +8,10 @@ function seg(
   o: Partial<Segment> = {},
 ): Segment {
   return {
-    id, tripId: 1, name: `s${id}`, latitude, longitude,
-    dwellMinutes: 60, cost: null, tags: [], opensMin: null,
-    closesMin: null, closedDays: [], status: "confirmed", ...o,
+    id, tripId: 1, name: `s${id}`, localName: null, latitude, longitude,
+    dwellMinutes: 60, dwellIsDefault: false, cost: null, tags: [], opensMin: null,
+    closesMin: null, closedDays: [], status: "confirmed",
+    sourceId: null, sourceAtSeconds: null, ...o,
   };
 }
 

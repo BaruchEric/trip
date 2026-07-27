@@ -5,10 +5,18 @@ export interface Segment {
   id: number;
   tripId: number;
   name: string;
+  /** OSM's own name, in local script (洪崖洞), when this segment came from a
+   *  geocoded mention. NULL when unknown — the rendering shows it in
+   *  parentheses beside `name`, which stays the words the video used. */
+  localName: string | null;
   /** NULL when unknown. Never 0 — that is a real place in the Gulf of Guinea. */
   latitude: number | null;
   longitude: number | null;
   dwellMinutes: number;
+  /** True when nobody supplied a dwell and the 60-minute default was applied.
+   *  The number is a guess, so it is rendered with a [default] marker rather
+   *  than passing as a measured value. */
+  dwellIsDefault: boolean;
   cost: number | null;
   tags: string[];
   /** NULL means hours are UNKNOWN, never "open all day". See M2-2. */
@@ -16,9 +24,19 @@ export interface Segment {
   closesMin: number | null;
   closedDays: string[];
   status: string;
+  /** The video this came from, and the second mark it was said at. Both NULL
+   *  for a hand-added segment. */
+  sourceId: number | null;
+  sourceAtSeconds: number | null;
 }
 
-export type SegmentInput = Omit<Segment, "id" | "tripId" | "status">;
+/** Provenance is optional on the way IN: a hand-added segment genuinely has
+ *  none, and every existing caller constructs one without it. */
+export type SegmentInput =
+  Omit<Segment,
+    "id" | "tripId" | "status" | "localName" | "sourceId" | "sourceAtSeconds" | "dwellIsDefault">
+  & Partial<Pick<Segment,
+    "localName" | "sourceId" | "sourceAtSeconds" | "dwellIsDefault">>;
 
 function splitList(raw: unknown): string[] {
   const s = typeof raw === "string" ? raw : "";
@@ -97,37 +115,54 @@ export async function addSegment(
 
   const r = await db.execute({
     sql: `INSERT INTO segments
-            (trip_id, name, latitude, longitude, dwell_minutes, cost,
-             tags, opens_minutes, closes_minutes, closed_days)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (trip_id, name, local_name, latitude, longitude, dwell_minutes,
+             dwell_is_default, cost, tags, opens_minutes, closes_minutes,
+             closed_days, source_id, source_at_seconds)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           RETURNING id`,
-    args: [tripId, input.name, input.latitude, input.longitude,
-           input.dwellMinutes, input.cost, tags,
-           input.opensMin, input.closesMin, closedDays],
+    args: [tripId, input.name.trim(), input.localName ?? null,
+           input.latitude, input.longitude, input.dwellMinutes,
+           input.dwellIsDefault ? 1 : 0, input.cost, tags,
+           input.opensMin, input.closesMin, closedDays,
+           input.sourceId ?? null, input.sourceAtSeconds ?? null],
   });
   return Number(r.rows[0]!.id);
 }
 
-export async function listSegments(db: Client, tripId: number): Promise<Segment[]> {
-  const r = await db.execute({
-    sql: `SELECT id, trip_id, name, latitude, longitude, dwell_minutes, cost,
-                 tags, opens_minutes, closes_minutes, closed_days, status
-          FROM segments WHERE trip_id = ? ORDER BY id`,
-    args: [tripId],
-  });
+export async function listSegments(
+  db: Client,
+  tripId: number,
+  opts: { sourceId?: number } = {},
+): Promise<Segment[]> {
+  const args: number[] = [tripId];
+  let sql = `SELECT id, trip_id, name, local_name, latitude, longitude,
+                    dwell_minutes, dwell_is_default, cost, tags,
+                    opens_minutes, closes_minutes, closed_days, status,
+                    source_id, source_at_seconds
+             FROM segments WHERE trip_id = ?`;
+  if (opts.sourceId !== undefined) {
+    sql += ` AND source_id = ?`;
+    args.push(opts.sourceId);
+  }
+  sql += ` ORDER BY id`;
+  const r = await db.execute({ sql, args });
   return r.rows.map((row) => ({
     id: Number(row.id),
     tripId: Number(row.trip_id),
     name: String(row.name),
+    localName: row.local_name === null ? null : String(row.local_name),
     latitude: numOrNull(row.latitude),
     longitude: numOrNull(row.longitude),
     dwellMinutes: Number(row.dwell_minutes),
+    dwellIsDefault: Number(row.dwell_is_default) === 1,
     cost: numOrNull(row.cost),
     tags: splitList(row.tags),
     opensMin: numOrNull(row.opens_minutes),
     closesMin: numOrNull(row.closes_minutes),
     closedDays: splitList(row.closed_days),
     status: String(row.status),
+    sourceId: numOrNull(row.source_id),
+    sourceAtSeconds: numOrNull(row.source_at_seconds),
   }));
 }
 

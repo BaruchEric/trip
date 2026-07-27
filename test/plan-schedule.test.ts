@@ -8,11 +8,11 @@ function seg(
   o: Partial<PlannableSegment> = {},
 ): PlannableSegment {
   return {
-    id, tripId: 1, name: `s${id}`,
+    id, tripId: 1, name: `s${id}`, localName: null,
     latitude: 38.71, longitude: -9.13,
-    dwellMinutes: 60, cost: null, tags: [],
+    dwellMinutes: 60, dwellIsDefault: false, cost: null, tags: [],
     opensMin: null, closesMin: null, closedDays: [],
-    status: "confirmed", ...o,
+    status: "confirmed", sourceId: null, sourceAtSeconds: null, ...o,
   };
 }
 
