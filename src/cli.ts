@@ -12,6 +12,7 @@ import { runReviewCommand, type ReviewDeps } from "@/commands/review";
 import { runWhoCommand } from "@/commands/who";
 import { runPassCommand } from "@/commands/passes";
 import { runCostsCommand } from "@/commands/costs";
+import { runRouteCommand, type RouteDeps } from "@/commands/route";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -39,6 +40,7 @@ Usage:
   trip pin <seg> --day=<n>     Fix a segment in place [--at=HH:MM]
   trip unpin <seg>             Release a pinned segment
   trip move <seg> --to=day<n>  Move a segment to another day (pins it)
+  trip route                   Measure real walking legs (network) [--refresh]
   trip replan                  Rebuild the plan, respecting pins
 
   trip watch <url>             Fetch a video transcript [--refresh] [--whisper]
@@ -90,6 +92,7 @@ export interface CliResult {
 export interface CliDeps {
   watch?: WatchCommandDeps;
   review?: ReviewDeps;
+  route?: RouteDeps;
 }
 
 /** Flags every command accepts, bare, regardless of what it declares below. */
@@ -146,6 +149,11 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   "seg rm": {},
   "seg set": { value: ["--dur"] },
 
+  // Networked, and the only planning command that is. No --timeout: nothing
+  // in the route path reads one, and declaring a flag that is then silently
+  // ignored is the exact anti-pattern this table exists to end.
+  route: { bool: ["--refresh"] },
+
   plan: { value: ["--mode", "--pace"] },
   replan: { value: ["--mode", "--pace"] },
   day: {},
@@ -190,6 +198,28 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
  *  block, which is the honest default — a stub reading "no help available"
  *  would be worse than the real thing. */
 const SUBCOMMAND_HELP: Record<string, string> = {
+  route: `trip route [--refresh]
+
+  Measure real walking legs between every pair of placed segments, using two
+  free pedestrian routers, and store them. This is the ONLY planning command
+  that uses the network -- trip plan stays offline and reads what this wrote.
+
+  Legs are DIRECTED: the uphill return is a different number, because one of
+  the two routers models grade and the other does not. Both routers are
+  stored and neither is averaged away; where they disagree, the schedule
+  reads the slower.
+
+  Measured legs feed the ORDERING as well as the clock, so running this can
+  reshuffle a plan. That is the point of running it.
+
+  Segments without coordinates are skipped. A router that fails stores
+  nothing for that leg -- there is no fallback value and no zero.
+
+  Walking only. Nothing here measures transit, and a transit plan is exactly
+  as unevidenced after this command as before it.
+
+  --refresh  refetch legs already stored
+`,
   "seg add": `trip seg add <name...> [--dur=90m] [--price=30] [--tag=food]
                     [--at=<lat,lon>] [--hours=10:00-24:00] [--closed=mon,tue]
                     [--free-days=tue]
@@ -518,6 +548,7 @@ async function route(
   if (cmd === "when") return runWhenCommand(db, args, json);
   if (cmd === "dates") return runDatesCommand(db, args, json);
   if (cmd === "seg") return runSegmentsCommand(db, args, json);
+  if (cmd === "route") return runRouteCommand(db, args, json, deps.route);
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
   if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
