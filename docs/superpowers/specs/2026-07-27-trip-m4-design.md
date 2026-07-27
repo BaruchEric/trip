@@ -82,11 +82,13 @@ It also makes `building/yes` structural rather than special. It is not on an exe
 | `worship` | `amenity/place_of_worship`, `historic/wayside_shrine` |
 | `transport` | `railway/station`, `railway/halt`, `railway/subway_entrance`, `amenity/bus_station`, `amenity/ferry_terminal`, `aeroway/aerodrome`, every `public_transport/*` |
 | `greenspace` | `leisure/park`, `leisure/garden`, `leisure/nature_reserve` |
-| `culture` | `tourism/museum`, `tourism/gallery`, `tourism/artwork`, `tourism/attraction`, `historic/monument`, `historic/memorial`, `historic/castle`, `amenity/theatre`, `amenity/arts_centre` |
+| `culture` | `tourism/museum`, `tourism/gallery`, `tourism/artwork`, `historic/monument`, `historic/memorial`, `historic/castle`, `amenity/theatre`, `amenity/arts_centre` |
 | `road` | every `highway/*`, `place/square` |
 | `water` | `natural/water`, `natural/bay`, `waterway/river` |
 | `natural` | `natural/peak`, `natural/cave_entrance`, `natural/cliff`, `natural/beach`, `natural/volcano` |
 | `civic` | `amenity/university`, `amenity/hospital`, `amenity/townhall`, `amenity/library` |
+
+**`tourism/attraction` is deliberately absent from that map.** It is the same trap as `building/yes` wearing a more specific-looking name: it records *that* a place draws visitors, not *what kind* of place it is. OSM applies it to scenic areas, pedestrian streets, temples and stations alike — Liziba Station, from M3's own evidence, is exactly the sort of place tagged this way. Filed under `culture` it would contradict `park`, `street`, `station`, `nature`, `viewpoint` and `neighbourhood`, flagging correct matches in six of thirteen kinds. Unmapped, it contradicts nothing. Any OSM type whose meaning is "notable" rather than "of this type" belongs outside the map for the same reason.
 
 **The kind vocabulary is closed**, so the compatibility table is finite and fully testable:
 
@@ -108,6 +110,10 @@ It also makes `building/yes` structural rather than special. It is not on an exe
 
 `landmark` is the deliberate escape hatch for a place whose type the extractor cannot name — the Hongya Cave case. It excludes exactly the three commercial families, because those are where a lone name-containment match is most often wrong. Note that it would have caught Jiefangbei too: had the extractor said `landmark` rather than `street`, `lodging` is still excluded. The check does not depend on the agent choosing the single most precise kind.
 
+**A precise kind is checked more strictly than a vague one, and that is the intended asymmetry.** `park` accepts two families; `landmark` accepts eight. So an extractor that declared `landmark` for everything would weaken the check toward silence. This is accepted rather than engineered around, for the same reason the family map defaults to permissive: a precise declaration is a stronger claim, and a stronger claim can be contradicted by more evidence. Under-declaring costs coverage, never correctness.
+
+Two things bound the downside. Omitting `kind` altogether is **not** the cheaper dodge — the denylist then covers `lodging` and `retail` anyway, so `landmark` is in fact *stricter* than silence, catching `food` on top. And the extractor is a cooperating agent reading a transcript in good faith, not an adversary optimising to avoid the queue. The contract therefore asks for the most precise kind the extractor is confident in, and says plainly that a vaguer one is safe but buys less.
+
 **An unrecognised `kind` is a malformed entry**, rejected with its index and reason while the rest of the file ingests, exactly as the contract already handles a bad `at` or `dwell`. Silently ignoring it would let one typo disable the check with no signal — against "absence is loud".
 
 ### 4. The denylist fires only when no `kind` was declared.
@@ -123,6 +129,8 @@ The list is `lodging` and `retail` only. `food` is excluded deliberately: a trav
 The demoted result is written to `mention_candidates` as rank 1, exactly as an ambiguous mention's candidates are. `trip review resolve <id> --pick=1` accepts it and creates the segment.
 
 This is not a detail. A check with a false-positive rate above zero — which this one has, by construction — must leave the human a one-command path to say "no, that is right". Without it, every false positive costs a `--rename` and a re-geocode, and the check becomes a tax rather than a safeguard.
+
+**The renderer already handles this and needs no change — verified, not assumed.** M4 creates a mention state M3 never produced: a `reason` *and* a candidate. In M3 those were disjoint, candidates meaning ambiguous and a reason meaning no match, so a renderer that branched on `reason` would print the reason and hide the candidate, leaving `--pick=1` technically available and invisible. `src/render-review.ts:27` branches on `candidates.length`, so a demoted mention renders its reason on the header line and its rank-1 candidate with the `--pick=1` hint beneath. Recorded here so the plan does not add a task for work that is already correct — and covered by a test below, since nothing currently forces it to stay that way.
 
 The reason strings state which gate fired:
 
@@ -163,7 +171,7 @@ It also closes a real defect. `plan/schedule.ts:53` rejects a placement when `st
 ALTER TABLE mentions ADD COLUMN kind TEXT;
 ```
 
-One column. `BASE_SCHEMA` is frozen; this is migration 7, appended to `MIGRATIONS` and guarded by a `hasColumn` check like 4, 5 and 6.
+One column. `BASE_SCHEMA` is frozen; this is migration 7, appended to `MIGRATIONS` and guarded by a `hasColumn` check like 4, 5 and 6. **Eric's live DB is at v6; back it up before running**, as M3 said of v5.
 
 **`kind` is not `tags`.** `tags` is user-facing categorisation that flows into `segments.tags` and is read by the planner. `kind` is a geocode-verification input: consumed by the classifier, never rendered, never copied to a segment. Two fields, two consumers, no overlap. They are adjacent enough in the contract that this is stated here rather than left for a reviewer to work out.
 
@@ -201,6 +209,7 @@ Every fix carries a regression test that fails when the fix is reverted. M3 held
 
 **Unit**
 - Family map, one test per gate: an unmapped type passes (`building/yes`, the Hongya Cave case); a compatible family passes (`amenity/place_of_worship` against `temple`); an incompatible informative family contradicts (`tourism/hotel` against `street`).
+- `tourism/attraction` passes against `park`, `street` and `station`. It is unmapped for a stated reason, and a later contributor who "completes" the map by filing it under `culture` reintroduces false positives in six kinds — this test is what stops them.
 - The check does not run at n == 0 or n >= 2 — asserted, not assumed.
 - `landmark` accepts every family except `lodging`, `food`, `retail`.
 - Denylist precedence: `kind: "hotel"` + `tourism/hotel` stays confident; no kind + `tourism/hotel` queues. This is the one requirement in this spec that could be read two ways, so it is tested rather than commented.
@@ -208,7 +217,7 @@ Every fix carries a regression test that fails when the fix is reverted. M3 held
 - Midnight: `--hours=10:00-24:00` stores 1440, renders `10:00-24:00`, and permits a placement ending at 1440.
 
 **Cross-command consistency** — the tests that actually find seam bugs, per the M2 and M3 lessons
-- A demoted mention appears in `review ls` with its reason, and `review resolve --pick=1` on it produces exactly one segment. The false-positive escape hatch is load-bearing (decision 5) and gets a cross-command test, not a unit test.
+- A demoted mention appears in `review ls` with its reason **and its rank-1 candidate on a visible line**, and `review resolve --pick=1` on it produces exactly one segment. The false-positive escape hatch is load-bearing (decision 5) and gets a cross-command test, not a unit test. Asserting the candidate is rendered is the point: a reason-first renderer would leave `--pick=1` working and unreachable, and that combination is one M3 could not produce.
 - `--rename` on a mention with a `kind` re-runs the plausibility check: a corrected name whose result still contradicts returns to the queue rather than resolving.
 - The M3 accounting identity still holds after a demotion: `seg ls --from` + `review ls` + rejected = mention count.
 - `trip review ls --reject` now errors.
@@ -216,6 +225,8 @@ Every fix carries a regression test that fails when the fix is reverted. M3 held
 **Acceptance, and its fixtures**
 
 The three reproducible Chongqing queries are captured as real Nominatim responses **committed to the tree**, and the acceptance assertion is that Jiefangbei queues while Luohan Temple and Hongya Cave do not. M3's acceptance run recorded its results in prose only, which is why one of its four data points cannot be replayed today; capturing them is a direct correction of that.
+
+**The kinds must be assigned before any geocode result is consulted, and that ordering is part of the test.** M3's acceptance run predates `kind`, so every kind in this milestone's fixtures is assigned now, after the fact. Labelling Jiefangbei `street` *because it is known to be the failure case* would prove only that a table flags the case it was written for. The honest procedure is to assign kinds to all thirteen mentions from the transcript alone, record them, and only then run the geocoder. Anything less makes the fixture decoration rather than evidence — which is the same failure as M3's sixth wrong-reason test, where a passing assertion covered the one input size at which the bug could not appear.
 
 `Ring Shopping Park` is recorded as unreproducible rather than restated as evidence.
 
