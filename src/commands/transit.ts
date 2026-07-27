@@ -58,6 +58,19 @@ export async function runTransitCommand(
     if (json) {
       return JSON.stringify({
         fetched: false,
+        // THE SAME KEYS AS THE FETCHED PATH, with null where this path cannot
+        // know. Returning a narrower object would make the shape depend on
+        // whether a fetch happened, and a MISSING `modes` reads as "no modes"
+        // rather than "not re-derived" -- the same conflation as the
+        // measured-versus-basis one M12 just fixed in the export layer.
+        //
+        // They are null rather than recomputed because they are genuinely not
+        // recoverable: `transit_edges` stores a line ref, not the OSM route
+        // mode it came from, and no bbox was drawn because nothing was
+        // fetched.
+        bbox: null,
+        relations: null,
+        modes: null,
         stations: stored.stations.length,
         edges: stored.edges.length,
         ...reachJson(stored, placed),
@@ -120,6 +133,15 @@ interface Net { stations: { name: string; latitude: number; longitude: number }[
 function reach(net: Net, placed: { latitude: number; longitude: number }[]): number {
   if (net.stations.length === 0) return 0;
   const g = buildGraph(net.stations, net.edges);
+  // A SELF-ROUTE is how proximity is asked here: `route` returns null when
+  // either endpoint has no station inside MAX_ACCESS_KM, and returns a
+  // zero-stop route when both ends land on the same one. So a point routed to
+  // itself is non-null exactly when a station is in reach.
+  //
+  // It reads as a routing query and is a proximity query, and it DEPENDS on
+  // the same-station branch returning non-null. If that branch ever starts
+  // rejecting identical endpoints, this silently reports zero segments in
+  // range -- which would read as "this city's network is useless to you".
   return placed.filter((s) =>
     g.route({ latitude: s.latitude, longitude: s.longitude },
             { latitude: s.latitude, longitude: s.longitude }) !== null).length;

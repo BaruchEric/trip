@@ -2,7 +2,7 @@ import { test, expect, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import { runTransitCommand } from "@/commands/transit";
 import { loadNetwork } from "@/transit/store";
-import { overpassQuery } from "@/transit/fetch";
+import { overpassQuery, overpassNodesQuery } from "@/transit/fetch";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { rmSync, readFileSync } from "node:fs";
@@ -150,11 +150,40 @@ describe("trip transit", () => {
     expect(out).toContain("straight-line constant");
   });
 
-  test("overpassQuery is what the command actually sends", async () => {
+  test("BOTH exported queries are what the command actually sends", async () => {
+    // Verbatim, per M6: evidence gathered with a query that differs from the
+    // production query is evidence about a different question.
+    //
+    // The nodes query is checked too, and that is not redundant. fakeOverpass
+    // picks its fixture by testing for "node(r)", so a nodes query that had
+    // drifted in any OTHER respect -- a changed mode set, a wrong bbox --
+    // would still be handed the right body and every other test would pass.
     const { db } = await tripDb("verbatim");
     const calls: string[] = [];
     const out = await runTransitCommand(db, [], true, { overpass: fakeOverpass(calls) });
     const j = JSON.parse(out);
+    expect(calls).toHaveLength(2);
     expect(calls[0]).toBe(overpassQuery(j.bbox));
+    expect(calls[1]).toBe(overpassNodesQuery(j.bbox));
+  });
+
+  test("the cached --json shape has the SAME KEYS as the fetched one", async () => {
+    // A shape that depends on whether a fetch happened makes an agent branch
+    // on presence, and a missing `modes` reads as "no modes" rather than "not
+    // re-derived".
+    const { db } = await tripDb("shape");
+    const fetched = JSON.parse(
+      await runTransitCommand(db, [], true, { overpass: fakeOverpass() }));
+    const cached = JSON.parse(
+      await runTransitCommand(db, [], true, { overpass: fakeOverpass() }));
+    expect(cached.fetched).toBe(false);
+    expect(Object.keys(cached).sort()).toEqual(Object.keys(fetched).sort());
+    // null is UNKNOWN, never an empty answer.
+    expect(cached.modes).toBeNull();
+    expect(cached.bbox).toBeNull();
+    expect(cached.relations).toBeNull();
+    // What the cached path DOES know, it still reports.
+    expect(cached.stations).toBe(fetched.stations);
+    expect(cached.segmentsInReach).toBe(fetched.segmentsInReach);
   });
 });
