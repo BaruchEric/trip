@@ -5,6 +5,17 @@ import type { Placement, Unplaced } from "@/plan/types";
 import type { PartyPrice } from "@/pricing/party";
 import { formatRule, type PriceRule } from "@/pricing/rules";
 import type { Pass } from "@/passes";
+import type { Mode } from "@/plan/types";
+import type { TravelModel } from "@/plan/travel";
+
+/** How to get between two consecutive stops, and whether anyone measured it.
+ *
+ *  Optional everywhere below, on the same terms as `PlanPricing`: absent means
+ *  render exactly as trip did before M8, byte for byte. */
+export interface PlanTravel {
+  model: TravelModel;
+  mode: Mode;
+}
 
 /** Everything the renderers need to talk about money, resolved by the command
  *  layer. Renderers stay pure string-formatters — they do no arithmetic on
@@ -122,6 +133,8 @@ export function renderDay(
   // `trip plan` shows the party totals only; `trip day` earns its name by
   // also breaking them down per traveller.
   withBreakdown = false,
+  // Absent means no hop lines at all, exactly as before M8.
+  travel?: PlanTravel,
 ): string {
   const lines = [
     `Day ${day.day}  ${day.date} ${day.weekday}  ` +
@@ -140,6 +153,7 @@ export function renderDay(
   if (onDay.length === 0) {
     lines.push("  (nothing planned)");
   } else {
+    let previous: Segment | undefined;
     for (const p of onDay) {
       const s = segments.get(p.segmentId);
       // F6: this used to `continue` here, silently DROPPING the placement
@@ -161,6 +175,19 @@ export function renderDay(
       const price = pricing === undefined
         ? ""
         : `  ${money(pricing.bySegment.get(p.segmentId)?.total ?? null, pricing.currency).padStart(9)}`;
+      // The hop that got you here. Printed BEFORE the stop it leads to, so a
+      // reader scanning down the day sees travel and arrival in the order they
+      // happen.
+      //
+      // "(estimated)" is a LOUD ABSENCE, not a hedge on a measured number: it
+      // says no leg exists for this directed hop, so the figure came from a
+      // straight line times a constant. M8 measured that model at 27%
+      // optimistic on hops under 2 km -- which is most of a day -- so a reader
+      // deserves to know which of the two kinds of number they are looking at.
+      const hop = travel === undefined ? null : hopLine(previous, s, travel);
+      if (hop !== null) lines.push(hop);
+      previous = s;
+
       lines.push(
         `  ${formatClock(p.startMin)} ${name.padEnd(28)}` +
         `${String(dwell).padStart(4)}m${price}  ${marks.join(" ")}`.trimEnd(),
@@ -231,15 +258,38 @@ export function renderDay(
   return lines.join("\n");
 }
 
+/** null when there is no hop to describe: the first stop of a day, a segment
+ *  the renderer could not resolve, or one with no coordinates. A hop that
+ *  cannot be computed says nothing rather than printing a zero. */
+function hopLine(
+  from: Segment | undefined,
+  to: Segment | undefined,
+  travel: PlanTravel,
+): string | null {
+  if (!from || !to) return null;
+  if (from.latitude === null || from.longitude === null) return null;
+  if (to.latitude === null || to.longitude === null) return null;
+  const est = travel.model.estimate(
+    { latitude: from.latitude, longitude: from.longitude },
+    { latitude: to.latitude, longitude: to.longitude },
+    travel.mode,
+  );
+  const word = travel.mode === "walking" ? "walk" : "transit";
+  return `       -> ${est.minutes} min ${word} ` +
+         `(${est.measured ? "measured" : "estimated"})`;
+}
+
 export function renderPlan(
   days: DayWindow[],
   placements: Placement[],
   segments: Segment[],
   unplaced: Unplaced[],
   pricing?: PlanPricing,
+  travel?: PlanTravel,
 ): string {
   const byId = new Map(segments.map((s) => [s.id, s]));
-  const parts = days.map((d) => renderDay(d, placements, byId, [], pricing));
+  const parts = days.map((d) =>
+    renderDay(d, placements, byId, [], pricing, false, travel));
 
   if (pricing !== undefined) {
     if (pricing.travellers.length === 0) {

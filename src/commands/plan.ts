@@ -4,12 +4,14 @@ import { listSegments, type Segment } from "@/segments";
 import { readPins, readPlacements, savePlacements, setPinned, clearPin } from "@/placements";
 import { deriveDays, type DayWindow } from "@/days";
 import { compile } from "@/plan/compile";
+import { withLegs } from "@/plan/travel";
+import { listLegs } from "@/legs";
 import {
   MODES, PACES,
   type Mode, type Pace, type Pin, type Unplaced, type Placement,
 } from "@/plan/types";
 import { formatClock, parseClock } from "@/parse";
-import { renderDay, renderPlan, type PlanPricing } from "@/render-plan";
+import { renderDay, renderPlan, type PlanPricing, type PlanTravel } from "@/render-plan";
 import { listTravellers } from "@/travellers";
 import { listPasses } from "@/passes";
 import { readPriceRules } from "@/prices";
@@ -113,14 +115,22 @@ async function doPlan(db: Client, argv: string[], json: boolean): Promise<string
   }
 
   const pins = await readPins(db, trip.id);
-  const result = compile(segments, days, { mode: modeRaw as Mode, pace: paceRaw as Pace, pins });
+  // The one step that makes measured legs available. `trip route` does the
+  // fetching; this only READS what it wrote, so `trip plan` keeps the promise
+  // compile() has carried since M2 -- no DB, no network, no clock, no RNG --
+  // by receiving the legs as data rather than looking them up mid-compile.
+  const travelModel = withLegs(await listLegs(db));
+  const travel: PlanTravel = { model: travelModel, mode: modeRaw as Mode };
+  const result = compile(segments, days, {
+    mode: modeRaw as Mode, pace: paceRaw as Pace, pins, travel: travelModel,
+  });
   await savePlacements(db, trip.id, result.placements);
   const placements = reconcilePinned(result.placements, pins);
 
   const pricing = await buildPricing(
     db, trip.id, trip.currency, days, placements, segments);
-  if (json) return planJson(days, placements, segments, result.unplaced, pricing);
-  return renderPlan(days, placements, segments, result.unplaced, pricing);
+  if (json) return planJson(days, placements, segments, result.unplaced, pricing, travel);
+  return renderPlan(days, placements, segments, result.unplaced, pricing, travel);
 }
 
 /** (ordinal, startMin, segmentId): same tie-break `renderDay` uses, and for
@@ -158,6 +168,23 @@ function jsonTotal(
 // real DB state can produce -- readPlacements INNER JOINs against segments,
 // so the two are always consistent through every actual code path -- and
 // exercise the F6 defensive check below directly.
+/** null when there is no hop to describe. See the note at the call site. */
+function hopJson(
+  from: Segment | undefined,
+  to: Segment | undefined,
+  travel: PlanTravel,
+): { minutes: number; measured: boolean; mode: string } | null {
+  if (!from || !to) return null;
+  if (from.latitude === null || from.longitude === null) return null;
+  if (to.latitude === null || to.longitude === null) return null;
+  const est = travel.model.estimate(
+    { latitude: from.latitude, longitude: from.longitude },
+    { latitude: to.latitude, longitude: to.longitude },
+    travel.mode,
+  );
+  return { minutes: est.minutes, measured: est.measured, mode: travel.mode };
+}
+
 export function planJson(
   days: DayWindow[],
   placements: { segmentId: number; day: number; ordinal: number; startMin: number; endMin: number; pinned: boolean }[],
@@ -167,6 +194,8 @@ export function planJson(
   // is that the agent drives this tool through --json, so a pricing milestone
   // that left prices out of it would be write-only for its primary consumer.
   pricing?: PlanPricing,
+  // Same terms, for M8. A measurement the agent cannot read is write-only.
+  travel?: PlanTravel,
 ): string {
   const byId = new Map(segments.map((s) => [s.id, s]));
   return JSON.stringify({
@@ -176,8 +205,9 @@ export function planJson(
       placements: placements
         .filter((p) => p.day === d.day)
         .sort(byOrdinalThenClock)
-        .map((p) => {
+        .map((p, i, ordered) => {
           const seg = byId.get(p.segmentId);
+          const from = i === 0 ? undefined : byId.get(ordered[i - 1]!.segmentId);
           // F9: a TIMED pin (Stage 1 of compile()) is placed at exactly the
           // user's asserted minute with no bound check against the day
           // window — that is correct, the assertion is absolute — but its
@@ -214,6 +244,15 @@ export function planJson(
             ...(pricing === undefined ? {} : {
               price: pricing.bySegment.get(p.segmentId)?.total ?? null,
             }),
+            // The hop that got you here. null for the first stop of a day and
+            // for any hop that cannot be computed -- a segment with no
+            // coordinates has no travel time, which is a different fact from
+            // zero travel time.
+            //
+            // `measured` is a BOOLEAN, never a string: false means no leg
+            // exists for this directed hop, and an agent must be able to tell
+            // that from a measured number without parsing prose.
+            ...(travel === undefined ? {} : { arriveBy: hopJson(from, seg, travel) }),
           };
         }),
       ...(pricing === undefined ? {} : {
