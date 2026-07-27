@@ -232,6 +232,13 @@ Resolving a mention that is **already resolved or rejected** is an error that na
 
 Malformed entries are rejected individually with their index and reason; the rest of the file still ingests. A file that is not a JSON array at all is a hard error.
 
+**Corrected 2026-07-27 by M7.** `text` is described above as "the name as the video said it", and decision 4 repeats that. Two milestones have since changed what it holds:
+
+- **M6** told the extractor to correct ASR errors before ingesting, because ten of eleven caption names in the measured video were wrong. `text` has held the *corrected* name ever since.
+- **M7** adds `query` for the string to look a place up by, so `text` is now unambiguously **the display name** — what you want to read in the plan — and nothing else.
+
+The video's literal words are still recoverable: `text` is written once and never updated, and a rename lands in `resolved_name` beside it. What changed is which of the two `text` is.
+
 **Added 2026-07-27 by M6, both measured against the real Chongqing video:**
 
 - **Auto-captions corrupt proper nouns, and correcting them is the extractor's job.** Ten of the eleven place names in that video's captions were wrong — `Arat Temple` for Luohan Temple, `Hongadong` for Hongya Cave, `Ji Fang Bay` for Jiefangbei. Ingesting them as spoken geocoded **1 of 11**; correcting them first geocoded **4 of 11**. Nothing in this contract had ever said to, and the cost of the omission is the difference between 9% and 36%.

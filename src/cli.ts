@@ -235,12 +235,21 @@ const SUBCOMMAND_HELP: Record<string, string> = {
 `,
   "watch ingest": `trip watch ingest --mentions=<file.json> [--source=<id>] [--replace]
 
-  The file is a JSON array. One required field, five optional:
+  The file is a JSON array. One required field, six optional:
 
     text   required, the name as the video said it
     at     MM:SS or HH:MM:SS, minutes unbounded (102:15 is valid)
     dwell  same grammar as --dur; absent means 60m, flagged [default]
     tags   array of strings
+    query  the string to look the place up BY, when that differs from
+           what you want to call it. Chinese place names frequently
+           geocode where their English names do not: 龙门浩老街 returns a
+           result, "Longmenhao Old Street" returns nothing. Absent means
+           look it up by its name.
+
+           Do not reach for it reflexively -- 十八梯 returns five
+           candidates where Shibati returns two, so a local-script query
+           can make a place MORE ambiguous and more likely to queue.
     price  array of rule strings, same grammar as --price:
            ["30", "65+:0"]. Absent means the video said nothing about
            price, which is UNKNOWN -- never free.
