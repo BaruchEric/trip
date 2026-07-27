@@ -1,8 +1,13 @@
 import { expect, test, describe } from "bun:test";
+import { modelOnly } from "@/plan/travel";
 import { orderDay, EXACT_LIMIT } from "@/plan/order";
 import { travelMinutes } from "@/plan/geo";
 import type { PlannableSegment } from "@/plan/types";
 import type { DayWindow } from "@/days";
+
+/** M8 threaded a TravelModel through orderDay. These tests predate measured
+ *  legs and assert the model's own behaviour, so they pass the model alone. */
+const MODEL = modelOnly();
 
 function seg(
   id: number, latitude: number, longitude: number,
@@ -26,7 +31,7 @@ describe("orderDay", () => {
     const a = seg(1, 38.70, -9.10);
     const b = seg(2, 38.71, -9.10);
     const c = seg(3, 38.72, -9.10);
-    const zigzag = orderDay([a, c, b], DAY, "walking", []);
+    const zigzag = orderDay([a, c, b], DAY, "walking", [], MODEL);
     const ids = zigzag.placements.map((p) => p.segmentId);
     expect(ids === undefined).toBe(false);
     // Either sweep direction is optimal; both are monotone.
@@ -37,7 +42,7 @@ describe("orderDay", () => {
     const a = seg(1, 38.70, -9.10);
     const b = seg(2, 38.71, -9.10);
     const c = seg(3, 38.72, -9.10);
-    const ordered = orderDay([a, c, b], DAY, "walking", []);
+    const ordered = orderDay([a, c, b], DAY, "walking", [], MODEL);
     // Input order a -> c -> b (39 + 19 = 58 min under the current geo model)
     // detours twice; the sweep (19 + 19 = 38 min) walks the span once. Bound
     // it against the naive route's own cost rather than a fixed number: the
@@ -54,8 +59,8 @@ describe("orderDay", () => {
       seg(1, 38.700, -9.100), seg(2, 38.705, -9.110), seg(3, 38.710, -9.120),
       seg(4, 38.715, -9.130), seg(5, 38.720, -9.140),
     ];
-    const forward = orderDay(pts, DAY, "walking", []);
-    const backward = orderDay([...pts].reverse(), DAY, "walking", []);
+    const forward = orderDay(pts, DAY, "walking", [], MODEL);
+    const backward = orderDay([...pts].reverse(), DAY, "walking", [], MODEL);
     expect(backward.placements.map((p) => p.segmentId))
       .toEqual(forward.placements.map((p) => p.segmentId));
   });
@@ -66,7 +71,7 @@ describe("orderDay", () => {
     const early = seg(1, 38.75, -9.20, { closesMin: 600, dwellMinutes: 30 });
     const anytime1 = seg(2, 38.70, -9.10);
     const anytime2 = seg(3, 38.70, -9.10);
-    const r = orderDay([anytime1, anytime2, early], DAY, "walking", []);
+    const r = orderDay([anytime1, anytime2, early], DAY, "walking", [], MODEL);
     expect(r.unplaced).toHaveLength(0);
     expect(r.placements[0]!.segmentId).toBe(1);
   });
@@ -83,7 +88,7 @@ describe("orderDay", () => {
     });
     const filler1 = seg(2, 38.71, -9.13, { dwellMinutes: 300 });
     const filler2 = seg(3, 38.71, -9.13, { dwellMinutes: 300 });
-    const r = orderDay([filler1, filler2, food], DAY, "walking", []);
+    const r = orderDay([filler1, filler2, food], DAY, "walking", [], MODEL);
     expect(r.unplaced).toHaveLength(0);
     expect(r.placements[0]!.segmentId).toBe(1);
     // Placed first (09:00-09:30) is nowhere near either meal window, so this
@@ -95,7 +100,7 @@ describe("orderDay", () => {
     // Same coordinates so transit cannot decide it — only the meal pull can.
     const morning = seg(1, 38.71, -9.13, { dwellMinutes: 180 });
     const food = seg(2, 38.71, -9.13, { dwellMinutes: 60, tags: ["food"] });
-    const r = orderDay([food, morning], DAY, "walking", []);
+    const r = orderDay([food, morning], DAY, "walking", [], MODEL);
     // Placing the 3h segment first lands lunch at 12:00-13:00, centred on
     // 12:30. Food first would put it at 09:00.
     expect(r.placements.map((p) => p.segmentId)).toEqual([1, 2]);
@@ -117,13 +122,13 @@ describe("orderDay", () => {
     // mealDeviation can make [block, food] win.
     const food = seg(1, 38.71, -9.13, { tags: ["food"], dwellMinutes: 60 });
     const block = seg(2, 38.71, -9.13, { dwellMinutes: 180 });
-    const r = orderDay([food, block], DAY, "walking", []);
+    const r = orderDay([food, block], DAY, "walking", [], MODEL);
     expect(r.placements.map((p) => p.segmentId)).toEqual([2, 1]);
     expect(r.mealDeviation).toBe(0);
   });
 
   test("no food segments means no meal influence", () => {
-    const r = orderDay([seg(1, 38.71, -9.13), seg(2, 38.71, -9.13)], DAY, "walking", []);
+    const r = orderDay([seg(1, 38.71, -9.13), seg(2, 38.71, -9.13)], DAY, "walking", [], MODEL);
     expect(r.mealDeviation).toBe(0);
     expect(r.placements).toHaveLength(2);
   });
@@ -135,7 +140,7 @@ describe("orderDay", () => {
     const eight = Array.from({ length: EXACT_LIMIT }, (_, i) =>
       seg(i + 1, 38.70 + i * 0.002, -9.10));
     const started = performance.now();
-    const r = orderDay(eight, DAY, "walking", []);
+    const r = orderDay(eight, DAY, "walking", [], MODEL);
     const elapsedMs = performance.now() - started;
     expect(r.placements).toHaveLength(EXACT_LIMIT);
     expect(elapsedMs).toBeLessThan(2000);
@@ -159,7 +164,7 @@ describe("orderDay", () => {
       [38.8430, -8.9660],
     ];
     const segs = coords.map(([lat, lon], i) => seg(i + 1, lat!, lon!));
-    const r = orderDay(segs, DAY, "walking", []);
+    const r = orderDay(segs, DAY, "walking", [], MODEL);
     expect(r.placements).toHaveLength(5);
     expect(r.transitMinutes).toBeLessThan(505);
   });
@@ -169,7 +174,7 @@ describe("orderDay", () => {
     // complete, valid day rather than degrading into a partial one.
     const many = Array.from({ length: EXACT_LIMIT + 4 }, (_, i) =>
       seg(i + 1, 38.70 + i * 0.002, -9.10));
-    const r = orderDay(many, DAY, "walking", []);
+    const r = orderDay(many, DAY, "walking", [], MODEL);
     expect(r.placements).toHaveLength(many.length);
     expect(new Set(r.placements.map((p) => p.segmentId)).size).toBe(many.length);
   });
@@ -196,7 +201,7 @@ describe("orderDay", () => {
     ];
     const segs = coords.map(([lat, lon], i) =>
       seg(i + 1, lat!, lon!, { dwellMinutes: 10 }));
-    const r = orderDay(segs, fullDay, "walking", []);
+    const r = orderDay(segs, fullDay, "walking", [], MODEL);
     expect(r.unplaced).toHaveLength(0);
     expect(r.transitMinutes).toBeLessThan(660);
   });
@@ -204,8 +209,8 @@ describe("orderDay", () => {
   test("the heuristic path is deterministic too", () => {
     const many = Array.from({ length: EXACT_LIMIT + 4 }, (_, i) =>
       seg(i + 1, 38.70 + i * 0.002, -9.10));
-    const a = orderDay(many, DAY, "walking", []);
-    const b = orderDay([...many].reverse(), DAY, "walking", []);
+    const a = orderDay(many, DAY, "walking", [], MODEL);
+    const b = orderDay([...many].reverse(), DAY, "walking", [], MODEL);
     expect(b.placements.map((p) => p.segmentId))
       .toEqual(a.placements.map((p) => p.segmentId));
   });
@@ -219,12 +224,12 @@ describe("orderDay", () => {
     // strictly-less-than tie-break must return [1, 2, 3] — a `<=` compare
     // would keep overwriting through every tie and return [3, 2, 1] instead.
     const segs = [seg(1, 38.71, -9.13), seg(2, 38.71, -9.13), seg(3, 38.71, -9.13)];
-    const r = orderDay(segs, DAY, "walking", []);
+    const r = orderDay(segs, DAY, "walking", [], MODEL);
     expect(r.placements.map((p) => p.segmentId)).toEqual([1, 2, 3]);
   });
 
   test("empty and single-segment days are valid", () => {
-    expect(orderDay([], DAY, "walking", []).placements).toHaveLength(0);
-    expect(orderDay([seg(1, 38.7, -9.1)], DAY, "walking", []).placements).toHaveLength(1);
+    expect(orderDay([], DAY, "walking", [], MODEL).placements).toHaveLength(0);
+    expect(orderDay([seg(1, 38.7, -9.1)], DAY, "walking", [], MODEL).placements).toHaveLength(1);
   });
 });

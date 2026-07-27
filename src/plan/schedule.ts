@@ -1,6 +1,6 @@
-import { travelMinutes } from "@/plan/geo";
 import { MEAL_WINDOWS } from "@/plan/types";
 import type { Mode, Placement, PlannableSegment, Unplaced } from "@/plan/types";
+import type { TravelModel } from "@/plan/travel";
 import type { DayWindow } from "@/days";
 
 /** Lay a FIXED order onto the clock. Ordering is Task 7's job; this file only
@@ -24,6 +24,10 @@ export function layoutDay(
   day: DayWindow,
   mode: Mode,
   blocked: Blocked[],
+  /** Measured legs where they exist, the M2 model where they do not. Passed in
+   *  rather than imported so this file stays free of the database and the
+   *  compiler stays a pure function. */
+  travel: TravelModel,
 ): LayoutResult {
   const placements: Placement[] = [];
   const unplaced: Unplaced[] = [];
@@ -38,8 +42,10 @@ export function layoutDay(
       continue;
     }
 
-    const travel = previous === null ? 0 : travelMinutes(previous, s, mode);
-    let start = cursor + travel;
+    // `hop`, not `travel`: the model now owns that name, and shadowing it here
+    // would make the next edit to this loop silently unreachable.
+    const hop = previous === null ? 0 : travel.minutes(previous, s, mode);
+    let start = cursor + hop;
 
     // Arriving before opening means waiting, not skipping. A NULL opensMin is
     // unknown hours and imposes nothing (M2-2).
@@ -60,7 +66,7 @@ export function layoutDay(
 
     // Only charge transit for a hop that actually happened. A skipped segment
     // must not leave phantom travel time in the score.
-    transitMinutes += travel;
+    transitMinutes += hop;
     const end = start + s.dwellMinutes;
     placements.push({
       segmentId: s.id,

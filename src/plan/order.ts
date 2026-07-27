@@ -1,6 +1,6 @@
 import { layoutDay, type Blocked, type LayoutResult } from "@/plan/schedule";
-import { travelMinutes } from "@/plan/geo";
 import type { Mode, PlannableSegment } from "@/plan/types";
+import type { TravelModel } from "@/plan/travel";
 import type { DayWindow } from "@/days";
 
 /** Search orderings for a single day.
@@ -35,19 +35,20 @@ export function orderDay(
   day: DayWindow,
   mode: Mode,
   blocked: Blocked[],
+  travel: TravelModel,
 ): LayoutResult {
   // Canonical input order: the search must depend on the SET, not the order
   // it arrived in.
   const pool = [...segments].sort((a, b) => a.id - b.id);
-  if (pool.length === 0) return layoutDay([], day, mode, blocked);
+  if (pool.length === 0) return layoutDay([], day, mode, blocked, travel);
 
   const candidates =
-    pool.length <= EXACT_LIMIT ? permutations(pool) : heuristicOrders(pool, mode);
+    pool.length <= EXACT_LIMIT ? permutations(pool) : heuristicOrders(pool, mode, travel);
 
   let best: LayoutResult | null = null;
   let bestScore = Infinity;
   for (const order of candidates) {
-    const result = layoutDay(order, day, mode, blocked);
+    const result = layoutDay(order, day, mode, blocked, travel);
     const score = scoreOf(result);
     // Strictly less-than: the first candidate wins ties, and candidates are
     // generated in a deterministic order, so the result is reproducible.
@@ -75,14 +76,17 @@ function* permutations(items: PlannableSegment[]): Generator<PlannableSegment[]>
 function heuristicOrders(
   pool: PlannableSegment[],
   mode: Mode,
+  travel: TravelModel,
 ): PlannableSegment[][] {
-  return pool.map((start) => twoOpt(nearestNeighbour(pool, start, mode), mode));
+  return pool.map((start) =>
+    twoOpt(nearestNeighbour(pool, start, mode, travel), mode, travel));
 }
 
 function nearestNeighbour(
   pool: PlannableSegment[],
   start: PlannableSegment,
   mode: Mode,
+  travel: TravelModel,
 ): PlannableSegment[] {
   const remaining = pool.filter((s) => s.id !== start.id);
   const route = [start];
@@ -92,7 +96,7 @@ function nearestNeighbour(
     let bestIdx = 0;
     let bestCost = Infinity;
     for (let i = 0; i < remaining.length; i++) {
-      const cost = travelMinutes(current, remaining[i]!, mode);
+      const cost = travel.minutes(current, remaining[i]!, mode);
       if (cost < bestCost) {
         bestCost = cost;
         bestIdx = i;
@@ -104,17 +108,21 @@ function nearestNeighbour(
   return route;
 }
 
-function routeCost(route: PlannableSegment[], mode: Mode): number {
+function routeCost(
+  route: PlannableSegment[], mode: Mode, travel: TravelModel,
+): number {
   let total = 0;
   for (let i = 1; i < route.length; i++) {
-    total += travelMinutes(route[i - 1]!, route[i]!, mode);
+    total += travel.minutes(route[i - 1]!, route[i]!, mode);
   }
   return total;
 }
 
-function twoOpt(route: PlannableSegment[], mode: Mode): PlannableSegment[] {
+function twoOpt(
+  route: PlannableSegment[], mode: Mode, travel: TravelModel,
+): PlannableSegment[] {
   let best = [...route];
-  let bestCost = routeCost(best, mode);
+  let bestCost = routeCost(best, mode, travel);
   let improved = true;
 
   while (improved) {
@@ -126,7 +134,7 @@ function twoOpt(route: PlannableSegment[], mode: Mode): PlannableSegment[] {
           ...best.slice(i, j + 1).reverse(),
           ...best.slice(j + 1),
         ];
-        const cost = routeCost(candidate, mode);
+        const cost = routeCost(candidate, mode, travel);
         if (cost < bestCost) {
           best = candidate;
           bestCost = cost;

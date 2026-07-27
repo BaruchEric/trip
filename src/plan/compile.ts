@@ -1,10 +1,12 @@
 import { clusterSegments } from "@/plan/cluster";
 import { orderDay } from "@/plan/order";
+import { modelOnly } from "@/plan/travel";
 import { PACE_CEILING, isPlannable } from "@/plan/types";
 import type {
   CompileResult, Mode, Pace, Pin, Placement, PlannableSegment, Unplaced,
 } from "@/plan/types";
 import type { Blocked } from "@/plan/schedule";
+import type { TravelModel } from "@/plan/travel";
 import type { Segment } from "@/segments";
 import type { DayWindow } from "@/days";
 
@@ -12,6 +14,13 @@ export interface CompileOpts {
   mode: Mode;
   pace: Pace;
   pins: Pin[];
+  /** Measured legs where they exist, the M2 model where they do not.
+   *
+   *  OPTIONAL so that every caller predating M8 keeps compiling and keeps its
+   *  exact previous behaviour — omitted means `modelOnly()`, which is that
+   *  behaviour bit for bit. It is DATA passed in, not a lookup performed here,
+   *  which is what keeps the promise in the comment below intact. */
+  travel?: TravelModel;
 }
 
 /** The day compiler. A pure function: no DB, no network, no clock, no RNG.
@@ -31,6 +40,7 @@ export function compile(
   const placements: Placement[] = [];
   const unplaced: Unplaced[] = [];
   const ceiling = PACE_CEILING[opts.pace];
+  const travel = opts.travel ?? modelOnly();
 
   // Canonical order so the result depends on the input SET alone.
   const pool = [...segments].sort((a, b) => a.id - b.id);
@@ -135,7 +145,7 @@ export function compile(
 
     const result = orderDay(
       [...locked, ...taken].sort((a, b) => a.id - b.id),
-      day, opts.mode, blockedByDay.get(day.day) ?? [],
+      day, opts.mode, blockedByDay.get(day.day) ?? [], travel,
     );
     placements.push(...result.placements);
     unplaced.push(...result.unplaced);
