@@ -8,7 +8,9 @@ import { addSegment } from "@/segments";
 import {
   geocodePoi, NOMINATIM_MIN_INTERVAL_MS, type Centre, type PoiCandidate,
 } from "@/geo/poi";
-import { isKind, KINDS, type Kind } from "@/geo/plausibility";
+import {
+  isKind, KINDS, plausibilityReason, type Kind,
+} from "@/geo/plausibility";
 
 /** Applied when the extractor proposed no dwell. It is a guess, so every
  *  segment carrying it is flagged `dwellIsDefault` and rendered [default]. */
@@ -132,10 +134,25 @@ export type Verdict =
  *  floor would queue every food segment and the queue would become the whole
  *  video. Name similarity is out for the same kind of reason: OSM answers
  *  "Hongya Cave" with 洪崖洞, so cross-script similarity is ~0 and would queue
- *  a correct match. */
-export function classify(candidates: PoiCandidate[]): Verdict {
+ *  a correct match.
+ *
+ *  M4 adds the plausibility gate, and adds it ONLY on the single-result path.
+ *  Zero and two-plus are already queued by uniqueness, so a contradiction
+ *  there would change no outcome; confining it here keeps the new logic to
+ *  the one case that can produce a wrong segment, and leaves M3's measured
+ *  behaviour intact everywhere else.
+ *
+ *  `declaredKind` is the MENTION's kind. It is NOT `Verdict.kind`, which
+ *  discriminates confident from queued — hence the longer name. */
+export function classify(
+  candidates: PoiCandidate[],
+  declaredKind: Kind | null,
+): Verdict {
   if (candidates.length === 1) {
-    return { kind: "confident", candidate: candidates[0]! };
+    const candidate = candidates[0]!;
+    const reason = plausibilityReason(declaredKind, candidate);
+    if (reason !== null) return { kind: "queued", reason };
+    return { kind: "confident", candidate };
   }
   if (candidates.length === 0) {
     return { kind: "queued", reason: "no match" };
@@ -212,7 +229,9 @@ export async function ingestMentions(
         ...c, rank: idx + 1,
       })));
 
-      const verdict = classify(candidates);
+      // `setCandidates` above already stored the result, so a demotion here
+      // leaves a rank-1 candidate the reviewer can accept with --pick=1.
+      const verdict = classify(candidates, spec.kind);
       if (verdict.kind === "queued") {
         await queueMention(db, mentionId, verdict.reason);
         result.queued += 1;

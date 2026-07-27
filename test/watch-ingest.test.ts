@@ -154,17 +154,17 @@ describe("parseMentionsFile", () => {
 
 describe("classify", () => {
   test("exactly one result is confident", () => {
-    const v = classify([poi("洪崖洞")]);
+    const v = classify([poi("洪崖洞")], null);
     expect(v.kind).toBe("confident");
   });
 
   test("no results are queued with a reason that says so", () => {
-    const v = classify([]);
+    const v = classify([], null);
     expect(v).toEqual({ kind: "queued", reason: "no match" });
   });
 
   test("several results are queued with the count", () => {
-    const v = classify([poi("a"), poi("b"), poi("c"), poi("d"), poi("e")]);
+    const v = classify([poi("a"), poi("b"), poi("c"), poi("d"), poi("e")], null);
     expect(v).toEqual({ kind: "queued", reason: "5 candidates" });
   });
 
@@ -173,11 +173,86 @@ describe("classify", () => {
     // Hongya Cave at 0.34. Thresholding on it would queue every food segment,
     // so uniqueness is the whole rule.
     const strong = { ...poi("famous"), importance: 0.9 };
-    expect(classify([strong, poi("other")]).kind).toBe("queued");
+    expect(classify([strong, poi("other")], null).kind).toBe("queued");
   });
 
   test("low importance never demotes a unique match", () => {
-    expect(classify([{ ...poi("obscure"), importance: 0.0001 }]).kind).toBe("confident");
+    expect(classify([{ ...poi("obscure"), importance: 0.0001 }], null).kind).toBe("confident");
+  });
+
+  test("a lone result contradicting its declared kind is demoted to queued", () => {
+    // Jiefangbei Pedestrian Street: one result, a hotel whose name merely
+    // CONTAINS the street's. The single wrong confident match M3 measured,
+    // and the reason this milestone exists.
+    const hotel = { ...poi("你好酒店"), category: "tourism", type: "hotel" };
+    const v = classify([hotel], "street");
+    expect(v.kind).toBe("queued");
+    expect(v.kind === "queued" && v.reason)
+      .toBe("type mismatch: expected street, got tourism/hotel");
+  });
+
+  test("a lone result with an uninformative type stays confident", () => {
+    // Hongya Cave. The naive form of this check would have queued it.
+    const cave = { ...poi("洪崖洞"), category: "building", type: "yes" };
+    expect(classify([cave], "landmark").kind).toBe("confident");
+    expect(classify([cave], "park").kind).toBe("confident");
+  });
+
+  test("a lone compatible result stays confident", () => {
+    const temple = { ...poi("罗汉寺"), category: "amenity", type: "place_of_worship" };
+    expect(classify([temple], "temple").kind).toBe("confident");
+  });
+
+  test("the check does not run at zero or two-plus results", () => {
+    // Uniqueness already queues those, so a contradiction there changes no
+    // outcome. Asserted rather than assumed: the reasons must stay M3's.
+    const hotel = { ...poi("h"), category: "tourism", type: "hotel" };
+    const v0 = classify([], "street");
+    expect(v0.kind === "queued" && v0.reason).toBe("no match");
+    const v2 = classify([hotel, hotel], "street");
+    expect(v2.kind === "queued" && v2.reason).toBe("2 candidates");
+  });
+
+  test("with no declared kind, a lone hotel queues and a lone restaurant does not", () => {
+    const hotel = { ...poi("h"), category: "tourism", type: "hotel" };
+    const food = { ...poi("f"), category: "amenity", type: "restaurant" };
+    expect(classify([hotel], null).kind).toBe("queued");
+    expect(classify([food], null).kind).toBe("confident");
+  });
+
+  test("a declared compatible kind beats the denylist", () => {
+    // A video that genuinely recommends a hotel.
+    const hotel = { ...poi("h"), category: "tourism", type: "hotel" };
+    expect(classify([hotel], "hotel").kind).toBe("confident");
+  });
+});
+
+describe("ingestMentions, demotion", () => {
+  test("a demoted mention is queued WITH its candidate, so --pick=1 can accept it", async () => {
+    const db = await ingestDb("demote");
+    const hotel = { ...poi("你好酒店"), category: "tourism", type: "hotel" };
+
+    const result = await ingestMentions(
+      db, 1, 1,
+      [{ text: "Jiefangbei Pedestrian Street", atSeconds: 272,
+         dwellMinutes: null, tags: [], kind: "street" }],
+      CENTRE,
+      { geocode: async () => [hotel], sleepFn: NO_SLEEP },
+    );
+
+    expect(result.geocoded).toBe(0);
+    expect(result.queued).toBe(1);
+
+    // The escape hatch is load-bearing: a check with a non-zero
+    // false-positive rate must leave a one-command path to say "no, that is
+    // right". Without the candidate there is no --pick to run.
+    const [m] = await listMentions(db, 1);
+    expect(m!.reason).toContain("type mismatch");
+    expect(m!.segmentId).toBeNull();
+    expect(m!.candidates).toHaveLength(1);
+    expect(m!.candidates[0]!.rank).toBe(1);
+    // No segment was created for it.
+    expect(await listSegments(db, 1)).toHaveLength(0);
   });
 });
 
