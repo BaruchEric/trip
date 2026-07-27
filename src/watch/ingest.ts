@@ -8,6 +8,7 @@ import { addSegment } from "@/segments";
 import {
   geocodePoi, NOMINATIM_MIN_INTERVAL_MS, type Centre, type PoiCandidate,
 } from "@/geo/poi";
+import { isKind, KINDS, type Kind } from "@/geo/plausibility";
 
 /** Applied when the extractor proposed no dwell. It is a guess, so every
  *  segment carrying it is flagged `dwellIsDefault` and rendered [default]. */
@@ -18,6 +19,9 @@ export interface MentionSpec {
   atSeconds: number | null;
   dwellMinutes: number | null;
   tags: string[];
+  /** What the extractor says this place is, for the plausibility check.
+   *  NULL means it declared none — the denylist applies instead. */
+  kind: Kind | null;
 }
 
 export interface ParsedMentions {
@@ -43,6 +47,24 @@ function readTags(raw: unknown, index: number): string[] {
     }
     return t.trim();
   });
+}
+
+function readKind(raw: unknown, index: number): Kind | null {
+  if (raw === undefined || raw === null) return null;
+  if (typeof raw !== "string" || !isKind(raw)) {
+    // Rejected, not ignored: a typo that silently disabled the plausibility
+    // check would be a NULL standing in for a value, which is what "absence
+    // is loud" forbids. Skipped like any other malformed entry, so its
+    // neighbours in the same file still ingest.
+    // Names the offending value, not just the allowed set: the reader wrote
+    // it, and "cave is not a kind" is a fixable message where "kind must be
+    // one of ..." leaves them diffing thirteen strings by eye.
+    throw new Error(
+      `[${index}] unknown kind ${JSON.stringify(raw)}` +
+      ` (one of: ${KINDS.join(", ")})`,
+    );
+  }
+  return raw;
 }
 
 /** Parse the agent's mentions file.
@@ -83,7 +105,11 @@ export function parseMentionsFile(raw: string): ParsedMentions {
         ? null
         : parseDuration(String(e.dwell));
 
-      specs.push({ text, atSeconds, dwellMinutes, tags: readTags(e.tags, i) });
+      specs.push({
+        text, atSeconds, dwellMinutes,
+        tags: readTags(e.tags, i),
+        kind: readKind(e.kind, i),
+      });
     } catch (err) {
       const msg = (err as Error).message;
       errors.push(msg.startsWith("[") ? msg : `[${i}] ${msg}`);
@@ -154,12 +180,7 @@ export async function ingestMentions(
   };
 
   for (const [i, spec] of specs.entries()) {
-    // `kind` reaches MentionSpec with the contract change in the next commit.
-    // Until then every ingested mention declares none, which is exactly M3's
-    // behaviour — the column exists but nothing writes a value to it yet.
-    const mentionId = await createMention(
-      db, tripId, sourceId, { ...spec, kind: null },
-    );
+    const mentionId = await createMention(db, tripId, sourceId, spec);
 
     // Spaced, not batched: Nominatim's policy is 1 request/second. The wait
     // goes BEFORE each lookup except the first, so a single-mention ingest

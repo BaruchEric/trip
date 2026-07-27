@@ -27,6 +27,7 @@ describe("parseMentionsFile", () => {
     expect(errors).toEqual([]);
     expect(specs[0]).toEqual({
       text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"],
+      kind: null,
     });
   });
 
@@ -36,6 +37,7 @@ describe("parseMentionsFile", () => {
     // creation and flagged there, so "nobody said" survives in the mention.
     expect(specs[0]).toEqual({
       text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [],
+      kind: null,
     });
   });
 
@@ -72,6 +74,7 @@ describe("parseMentionsFile", () => {
     expect(errors).toEqual([]);
     expect(specs[0]).toEqual({
       text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [],
+      kind: null,
     });
   });
 
@@ -102,6 +105,50 @@ describe("parseMentionsFile", () => {
 
   test("invalid JSON is a hard error naming the problem", () => {
     expect(() => parseMentionsFile("{not json")).toThrow(/JSON/i);
+  });
+
+  test("kind is read when present and NULL when absent", () => {
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "Jiefangbei Pedestrian Street", kind: "street" },
+      { text: "hot pot" },
+    ]));
+    expect(errors).toEqual([]);
+    expect(specs[0]!.kind).toBe("street");
+    expect(specs[1]!.kind).toBeNull();
+  });
+
+  test("an unrecognised kind is rejected with its index; neighbours still ingest", () => {
+    // Silently ignoring it would let one typo disable the check with no signal.
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "Luohan Temple", kind: "temple" },
+      { text: "Hongya Cave", kind: "cave" },
+      { text: "Liziba Station", kind: "station" },
+    ]));
+    expect(specs).toHaveLength(2);
+    expect(specs.map((s) => s.text)).toEqual(["Luohan Temple", "Liziba Station"]);
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toContain("[1]");
+    expect(errors[0]).toContain("cave");
+  });
+
+  test("every M3-era mentions file still PARSES unchanged", () => {
+    // Backward compatibility at the parse boundary, asserted rather than
+    // assumed: `kind` is additive and optional, so a file written before M4
+    // existed produces exactly the specs it always did, with kind NULL.
+    //
+    // Deliberately scoped to parsing. At INGEST, a no-kind file does not
+    // always behave as it did in M3: the denylist queues a lone lodging or
+    // retail match that M3 would have made a confident segment. That is the
+    // milestone working, not a compatibility break — do not "fix" the
+    // denylist to make this sentence true of ingest too.
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "Hongya Cave", at: "04:32", dwell: "90m", tags: ["sight"] },
+    ]));
+    expect(errors).toEqual([]);
+    expect(specs[0]).toEqual({
+      text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90,
+      tags: ["sight"], kind: null,
+    });
   });
 });
 
@@ -163,7 +210,7 @@ describe("ingestMentions", () => {
   test("a unique match becomes a segment carrying its provenance", async () => {
     const db = await ingestDb("confident");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"] }],
+      [{ text: "Hongya Cave", atSeconds: 272, dwellMinutes: 90, tags: ["sight"], kind: null }],
       CENTRE,
       { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
     );
@@ -203,7 +250,7 @@ describe("ingestMentions", () => {
     // other assertion here silently (mutation sweep found this).
     const db = await ingestDb("localname");
     await ingestMentions(db, 1, 1,
-      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [] }],
+      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
       CENTRE,
       {
         geocode: async () => [{
@@ -220,7 +267,7 @@ describe("ingestMentions", () => {
   test("no proposed dwell yields 60 minutes, flagged as a default", async () => {
     const db = await ingestDb("default-dwell");
     await ingestMentions(db, 1, 1,
-      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [] }],
+      [{ text: "Hongya Cave", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
       CENTRE, { geocode: async () => [poi("洪崖洞")], sleepFn: NO_SLEEP },
     );
     const [seg] = await listSegments(db, 1);
@@ -231,7 +278,7 @@ describe("ingestMentions", () => {
   test("an ambiguous match is queued with all its candidates and no segment", async () => {
     const db = await ingestDb("ambiguous");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "hot pot", atSeconds: 400, dwellMinutes: null, tags: [] }],
+      [{ text: "hot pot", atSeconds: 400, dwellMinutes: null, tags: [], kind: null }],
       CENTRE,
       { geocode: async () => [poi("a"), poi("b"), poi("c")], sleepFn: NO_SLEEP },
     );
@@ -248,7 +295,7 @@ describe("ingestMentions", () => {
   test("no match is queued with a reason and no candidates", async () => {
     const db = await ingestDb("nomatch");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "that ramen spot", atSeconds: null, dwellMinutes: null, tags: [] }],
+      [{ text: "that ramen spot", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
       CENTRE, { geocode: async () => [], sleepFn: NO_SLEEP },
     );
     expect(r.queued).toBe(1);
@@ -268,7 +315,7 @@ describe("ingestMentions", () => {
     // as its reason, so the mention below must stay PENDING, not resolved.
     const db = await ingestDb("unusable-result");
     const r = await ingestMentions(db, 1, 1,
-      [{ text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [] }],
+      [{ text: "hot pot", atSeconds: null, dwellMinutes: null, tags: [], kind: null }],
       CENTRE,
       {
         geocode: async (q, c) => parsePoiResponse([
@@ -294,9 +341,9 @@ describe("ingestMentions", () => {
     const db = await ingestDb("resilient");
     let call = 0;
     const r = await ingestMentions(db, 1, 1, [
-      { text: "first", atSeconds: null, dwellMinutes: null, tags: [] },
-      { text: "boom", atSeconds: null, dwellMinutes: null, tags: [] },
-      { text: "third", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "first", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "boom", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "third", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
     ], CENTRE, {
       geocode: async () => {
         call += 1;
@@ -320,8 +367,8 @@ describe("ingestMentions", () => {
     // the whole batch after any earlier mentions had already been written.
     const db = await ingestDb("segment-fail");
     const r = await ingestMentions(db, 1, 1, [
-      { text: "bad coords", atSeconds: null, dwellMinutes: null, tags: [] },
-      { text: "good spot", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "bad coords", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "good spot", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
     ], CENTRE, {
       geocode: async (q) => q === "bad coords"
         ? [{ ...poi("x"), latitude: 999 }]
@@ -348,9 +395,9 @@ describe("ingestMentions", () => {
     const db = await ingestDb("throttle");
     const waits: number[] = [];
     await ingestMentions(db, 1, 1, [
-      { text: "a", atSeconds: null, dwellMinutes: null, tags: [] },
-      { text: "b", atSeconds: null, dwellMinutes: null, tags: [] },
-      { text: "c", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "a", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "b", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
+      { text: "c", atSeconds: null, dwellMinutes: null, tags: [], kind: null },
     ], CENTRE, {
       geocode: async () => [],
       sleepFn: async (ms) => { waits.push(ms); },
