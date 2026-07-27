@@ -99,6 +99,14 @@ function readPrice(raw: unknown, index: number): string[] {
   return rules;
 }
 
+function readQuery(raw: unknown, index: number): string | null {
+  if (raw === undefined || raw === null) return null;
+  if (typeof raw !== "string" || raw.trim() === "") {
+    throw new Error(`[${index}] query must be a non-empty string`);
+  }
+  return raw.trim();
+}
+
 /** Parse the agent's mentions file.
  *
  *  A malformed ENTRY is reported and skipped; the rest of the file still
@@ -142,7 +150,7 @@ export function parseMentionsFile(raw: string): ParsedMentions {
         tags: readTags(e.tags, i),
         kind: readKind(e.kind, i),
         price: readPrice(e.price, i),
-        query: null,
+        query: readQuery(e.query, i),
       });
     } catch (err) {
       const msg = (err as Error).message;
@@ -238,7 +246,11 @@ export async function ingestMentions(
 
     let candidates: PoiCandidate[];
     try {
-      candidates = await geocode(spec.text, centre);
+      // `query ?? text` is the ONLY place this decision is made. 龙门浩老街
+      // geocodes where "Longmenhao Old Street" returns nothing, and the
+      // segment below is still named from `spec.text` -- so the lookup key
+      // and the display name never collapse into one string again.
+      candidates = await geocode(spec.query ?? spec.text, centre);
     } catch (err) {
       // One bad lookup queues one mention. Thirteen good mentions do not die
       // because the sixth got a 429.

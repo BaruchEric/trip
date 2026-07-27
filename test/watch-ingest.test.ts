@@ -583,3 +583,77 @@ describe("the price field on the agent contract", () => {
     expect(m!.price).toEqual(["30"]);
   });
 });
+
+describe("M7: the query field on the agent contract", () => {
+  test("absent query parses to null -- search by the name", () => {
+    const { specs, errors } = parseMentionsFile(
+      JSON.stringify([{ text: "Hongya Cave" }]));
+    expect(errors).toEqual([]);
+    expect(specs[0]!.query).toBeNull();
+  });
+
+  test("a query parses through, beside the name", () => {
+    const { specs } = parseMentionsFile(JSON.stringify([
+      { text: "Longmenhao Old Street", query: "龙门浩老街" },
+    ]));
+    expect(specs[0]!.query).toBe("龙门浩老街");
+    expect(specs[0]!.text).toBe("Longmenhao Old Street");
+  });
+
+  test("a non-string or empty query rejects that entry alone", () => {
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "Good", query: "龙门浩老街" },
+      { text: "Bad", query: "" },
+      { text: "Worse", query: 7 },
+    ]));
+    expect(specs.map((s) => s.text)).toEqual(["Good"]);
+    expect(errors).toHaveLength(2);
+    expect(errors[0]).toContain("[1]");
+    expect(errors[1]).toContain("[2]");
+  });
+
+  test("THE GEOCODE USES THE QUERY, and the segment keeps the name", async () => {
+    // The whole milestone in one assertion.
+    const db = await ingestDb("m7-query-geocode");
+    const asked: string[] = [];
+    await ingestMentions(db, 1, 1, [{
+      text: "Longmenhao Old Street", atSeconds: 178, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: "龙门浩老街",
+    }], CENTRE, {
+      geocode: async (q) => { asked.push(q); return [poi("龙门浩老街")]; },
+      sleepFn: NO_SLEEP,
+    });
+    expect(asked).toEqual(["龙门浩老街"]);
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.name).toBe("Longmenhao Old Street");
+    expect(seg!.localName).toBe("龙门浩老街");
+    // The collapse this milestone exists to prevent.
+    expect(seg!.name).not.toBe(seg!.localName);
+  });
+
+  test("without a query the geocode still uses the text", async () => {
+    // Decision 2: purely additive. This is the assertion that proves M6's
+    // numbers cannot have moved.
+    const db = await ingestDb("m7-query-absent");
+    const asked: string[] = [];
+    await ingestMentions(db, 1, 1, [{
+      text: "Hongya Cave", atSeconds: null, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: null,
+    }], CENTRE, {
+      geocode: async (q) => { asked.push(q); return [poi("洪崖洞")]; },
+      sleepFn: NO_SLEEP,
+    });
+    expect(asked).toEqual(["Hongya Cave"]);
+  });
+
+  test("the query survives on the mention row for the queued case", async () => {
+    const db = await ingestDb("m7-query-queued");
+    await ingestMentions(db, 1, 1, [{
+      text: "Dongshan Cafe", atSeconds: null, dwellMinutes: null,
+      tags: [], kind: null, price: [], query: "东山咖啡",
+    }], CENTRE, { geocode: async () => [], sleepFn: NO_SLEEP });
+    const [m] = await listMentions(db, 1);
+    expect(m!.state).toBe("pending");
+    expect(m!.query).toBe("东山咖啡");
+  });
+});
