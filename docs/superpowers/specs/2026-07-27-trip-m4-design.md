@@ -24,7 +24,7 @@ Re-queried 2026-07-27 while scoping this milestone (full output in the appendix)
 |---|---|---|
 | `Luohan Temple` | `amenity/place_of_worship` | correct |
 | `Hongya Cave` | `building/yes` — **see the correction below** | correct |
-| `Ring Shopping Park` | **0 results** | recorded correct; does not reproduce |
+| `Ring Shopping Park` | **0 results** | ~~recorded correct; does not reproduce~~ — **wrong, see the appendix correction** |
 | `Jiefangbei Pedestrian Street` | `tourism/hotel` | **wrong** |
 
 **Correction, made during implementation.** That scoping query omitted `addressdetails=1`, which `geocodePoi` sends. With it, Nominatim reports **the same OSM object** — `way/939578294` — as **`tourism/attraction`**, not `building/yes`. Verified both ways against the live API and captured in `test/fixtures/nominatim-hongya-cave.json`.
@@ -35,7 +35,9 @@ Two things follow, and both shaped the design.
 
 **The obvious mechanism is a false-positive machine.** The M3 appendix sketched M4's answer as "a query naming a street, park or temple that matches `tourism=hotel` is a type mismatch." Read as *expect the category to match the noun*, that rule queues **Hongya Cave** — `building/yes` is OSM's catch-all for "a building is here and we know nothing more", and no cave-shaped expectation matches it. One of the three correct results would have been flagged. The rule had to be rebuilt around positive contradiction only, and that is decision 3 below.
 
-**The evidence base is three points, not four.** `Ring Shopping Park` appears nowhere in this repository but one sentence of M3 prose — no fixture, no ledger entry, no captured response — and returns nothing today. M3's testing section states that fixtures are captured real output; the acceptance run's per-query responses were never among them. That gap is closed in this milestone's testing section. The remaining evidence is thin and is *stated as thin*: one true failure out of three reproducible points is enough to justify a conservative check and not enough to justify a clever one.
+**The evidence base is three points, not four.** *(Corrected 2026-07-27 by M6: it is four. The paragraph below is left standing because being wrong in a recorded way is the point. See the appendix.)*
+
+ `Ring Shopping Park` appears nowhere in this repository but one sentence of M3 prose — no fixture, no ledger entry, no captured response — and returns nothing today. M3's testing section states that fixtures are captured real output; the acceptance run's per-query responses were never among them. That gap is closed in this milestone's testing section. The remaining evidence is thin and is *stated as thin*: one true failure out of three reproducible points is enough to justify a conservative check and not enough to justify a clever one.
 
 ## Decisions
 
@@ -267,5 +269,24 @@ Nominatim, `viewbox=106.35,29.65,106.65,29.45&bounded=1&limit=5&format=jsonv2`, 
 Same object, different reported primary tag. The lesson generalises past this one place: **evidence gathered with a query that differs from the production query is evidence about a different question.** M3's acceptance appendix has the same shape of gap — results recorded in prose rather than captured — and M4's fixtures are captured through `parsePoiResponse` for exactly this reason.
 
 Two findings recorded at the top of this document come from exactly this output: `building/yes` on a correct match, which killed the naive form of the check, and `Ring Shopping Park` returning nothing, which reduced M3's four-point evidence base to three.
+
+### Corrected 2026-07-27 by M6
+
+**This appendix has a SECOND query discrepancy, and it is the one that produced the "three of four reproduce" conclusion above.**
+
+`Ring Shopping Park`, re-run four ways:
+
+| viewbox | `addressdetails` | result |
+|---|---|---|
+| the box above | off | n=0 |
+| the box above | on | n=0 |
+| `viewbox(centre, 25)` | off | **n=1**, `shop/mall` way/1295738129 光环购物中心 |
+| `viewbox(centre, 25)` | on | **n=1**, same object |
+
+So it is not `addressdetails`. It is the **viewbox**. The box hand-typed above spans roughly 11.1 km of latitude and 14.5 km of longitude in half-width; `viewbox(centre, 25)` computes 25 km on both axes. The mall lies between the two.
+
+**All four of M3's points reproduce** through the query the code actually makes. The place is real, it is in the video at 17:20, and M6's first end-to-end run geocoded it on the first attempt with no rename.
+
+The lesson this appendix drew is right and was applied too narrowly. Corrected: **one fixed parameter is not the same as a query that matches production.** Checking `addressdetails` and leaving the viewbox hand-written reproduced the very error the paragraph above was written to warn about.
 
 Both `Luohan Temple` and `Jiefangbei Pedestrian Street` score `importance` 0.0001 — one correct, one wrong. A further reminder, if one were needed, that decision 3 of M3 was right to refuse an importance threshold.
