@@ -2,3 +2,4 @@ node_modules/
 *.db
 *.db-*
 dist/
+.DS_Store
