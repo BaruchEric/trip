@@ -232,6 +232,11 @@ Resolving a mention that is **already resolved or rejected** is an error that na
 
 Malformed entries are rejected individually with their index and reason; the rest of the file still ingests. A file that is not a JSON array at all is a hard error.
 
+**Added 2026-07-27 by M6, both measured against the real Chongqing video:**
+
+- **Auto-captions corrupt proper nouns, and correcting them is the extractor's job.** Ten of the eleven place names in that video's captions were wrong — `Arat Temple` for Luohan Temple, `Hongadong` for Hongya Cave, `Ji Fang Bay` for Jiefangbei. Ingesting them as spoken geocoded **1 of 11**; correcting them first geocoded **4 of 11**. Nothing in this contract had ever said to, and the cost of the omission is the difference between 9% and 36%.
+- **Rolling captions repeat.** Each line carries the tail of the one before it, so every sentence appears roughly twice in the stored transcript. An extractor that does not expect this reads the video twice over.
+
 ## `watch.py` integration
 
 Resolved at runtime by globbing `~/.claude/plugins/cache/claude-video/watch/*/scripts/watch.py` and taking the highest version. Never hardcoded — `0.1.2` is today's.

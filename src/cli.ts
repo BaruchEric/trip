@@ -238,6 +238,15 @@ const SUBCOMMAND_HELP: Record<string, string> = {
     kind   one of: street, temple, park, museum, station, restaurant,
            market, shop, hotel, viewpoint, nature, neighbourhood, landmark
 
+  BEFORE YOU INGEST, FIX THE NAMES. Auto-captions mangle proper nouns
+  badly: in the measured Chongqing run, TEN OF ELEVEN place names were
+  wrong -- "Arat Temple" for Luohan Temple, "Hongadong" for Hongya Cave,
+  "Ji Fang Bay" for Jiefangbei. Ingesting them raw geocoded 9% of mentions;
+  correcting them first geocoded 36%.
+
+  Rolling captions also repeat: each line carries the tail of the one
+  before it, so every sentence appears roughly twice in the transcript.
+
   kind is compared against the geocoder's own classification, so a lone
   result that contradicts it is queued for review instead of becoming a
   segment. Declare the most precise kind you are confident in: a vaguer one
