@@ -79,4 +79,17 @@ describe("fetchJson", () => {
     expect(DEFAULT_TIMEOUT_MS).toBeGreaterThan(0);
     expect(DEFAULT_TIMEOUT_MS).toBeLessThanOrEqual(30_000);
   });
+
+  test("custom headers are sent", async () => {
+    let seen: Record<string, string> | undefined;
+    const fetchFn = (async (_url: string, init?: RequestInit) => {
+      seen = init?.headers as Record<string, string>;
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }) as unknown as typeof fetch;
+
+    await fetchJson("https://example.test", "test", {
+      fetchFn, headers: { "User-Agent": "trip/0.1" },
+    });
+    expect(seen!["User-Agent"]).toBe("trip/0.1");
+  });
 });

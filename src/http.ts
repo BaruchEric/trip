@@ -16,6 +16,9 @@ export const DEFAULT_TIMEOUT_MS = 15_000;
 export interface FetchOptions {
   fetchFn?: typeof fetch;
   timeoutMs?: number;
+  /** Nominatim's usage policy requires a genuine User-Agent and rejects
+   *  requests without one. Open-Meteo needs none, so this stays optional. */
+  headers?: Record<string, string>;
 }
 
 /** Open-Meteo reports failures as `{"error": true, "reason": "..."}` on both
@@ -36,7 +39,10 @@ export async function fetchJson(
 
   let res: Response;
   try {
-    res = await fetchFn(url, { signal: AbortSignal.timeout(timeoutMs) });
+    res = await fetchFn(url, {
+      signal: AbortSignal.timeout(timeoutMs),
+      ...(opts.headers ? { headers: opts.headers } : {}),
+    });
   } catch (err) {
     const name = (err as { name?: string })?.name;
     if (name === "TimeoutError" || name === "AbortError") {
