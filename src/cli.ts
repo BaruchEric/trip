@@ -13,6 +13,7 @@ import { runWhoCommand } from "@/commands/who";
 import { runPassCommand } from "@/commands/passes";
 import { runCostsCommand } from "@/commands/costs";
 import { runRouteCommand, type RouteDeps } from "@/commands/route";
+import { runTransitCommand, type TransitDeps } from "@/commands/transit";
 import { runCalibrateCommand } from "@/commands/calibrate";
 import { runExportCommand, type ExportDeps } from "@/commands/export";
 import { runBudgetCommand } from "@/commands/budget";
@@ -44,6 +45,7 @@ Usage:
   trip unpin <seg>             Release a pinned segment
   trip move <seg> --to=day<n>  Move a segment to another day (pins it)
   trip route                   Measure real walking legs (network) [--refresh]
+  trip transit                 Fetch this city's rail network (network) [--refresh]
   trip calibrate               How wrong the travel model is, here
   trip export --format=ics     Write the plan out [--out=<path>] [--force]
   trip budget                  What it costs and what is unknown [--limit=] [--daily=]
@@ -99,6 +101,7 @@ export interface CliDeps {
   watch?: WatchCommandDeps;
   review?: ReviewDeps;
   route?: RouteDeps;
+  transit?: TransitDeps;
   export?: ExportDeps;
 }
 
@@ -160,6 +163,12 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // in the route path reads one, and declaring a flag that is then silently
   // ignored is the exact anti-pattern this table exists to end.
   route: { bool: ["--refresh"] },
+  // Networked, like `route`, and the second planning command that is. Only
+  // --refresh: nothing in the transit path reads a --timeout or a --mode, and
+  // a --mode here would let you fetch a network for a mode the graph does not
+  // model. Declaring a flag that is then silently ignored is the exact
+  // anti-pattern this table exists to end.
+  transit: { bool: ["--refresh"] },
   // Read-only and offline: it derives from legs `trip route` already stored.
   // No flags of its own -- it reports on the trip's own mode, so a --mode
   // here would let you ask about a mode the plan is not compiled with.
@@ -628,6 +637,7 @@ async function route(
   if (cmd === "dates") return runDatesCommand(db, args, json);
   if (cmd === "seg") return runSegmentsCommand(db, args, json);
   if (cmd === "route") return runRouteCommand(db, args, json, deps.route);
+  if (cmd === "transit") return runTransitCommand(db, args, json, deps.transit);
   if (cmd === "calibrate") return runCalibrateCommand(db, args, json);
   if (cmd === "export") return runExportCommand(db, args, json, deps.export);
   if (cmd === "budget") return runBudgetCommand(db, args, json);

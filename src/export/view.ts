@@ -2,7 +2,8 @@ import type { Client } from "@libsql/client";
 import { loadContext, buildPricing, reconcilePinned } from "@/commands/plan";
 import { readPins, readPlacements } from "@/placements";
 import { listLegs } from "@/legs";
-import { withLegs, type TravelBasis, type TransitDetail } from "@/plan/travel";
+import { type TravelBasis, type TransitDetail, type TravelModel } from "@/plan/travel";
+import { loadTravelModel } from "@/transit/load";
 import { calibrate, type Calibration } from "@/calibrate";
 import { MODES, type Mode } from "@/plan/types";
 import type { Segment } from "@/segments";
@@ -115,7 +116,7 @@ export async function buildExportView(db: Client): Promise<ExportView> {
     db, trip.id, trip.currency, days, reconciled, segments);
 
   const mode: Mode = MODES.includes(trip.mode as Mode) ? (trip.mode as Mode) : "walking";
-  const travel = withLegs(await listLegs(db));
+  const travel = await loadTravelModel(db, trip.destinationId);
   const byId = new Map<number, Segment>(segments.map((s) => [s.id, s]));
 
   const exportDays: ExportDay[] = days.map((d) => {
@@ -198,7 +199,7 @@ export async function buildExportView(db: Client): Promise<ExportView> {
 function hopOf(
   from: Segment | undefined,
   to: Segment | undefined,
-  travel: ReturnType<typeof withLegs>,
+  travel: TravelModel,
   mode: Mode,
 ): ExportHop | null {
   if (!from || !to) return null;

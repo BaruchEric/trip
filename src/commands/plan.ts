@@ -4,7 +4,7 @@ import { listSegments, type Segment } from "@/segments";
 import { readPins, readPlacements, savePlacements, setPinned, clearPin } from "@/placements";
 import { deriveDays, type DayWindow } from "@/days";
 import { compile } from "@/plan/compile";
-import { withLegs } from "@/plan/travel";
+import { loadTravelModel } from "@/transit/load";
 import { listLegs } from "@/legs";
 import {
   MODES, PACES,
@@ -119,7 +119,7 @@ async function doPlan(db: Client, argv: string[], json: boolean): Promise<string
   // fetching; this only READS what it wrote, so `trip plan` keeps the promise
   // compile() has carried since M2 -- no DB, no network, no clock, no RNG --
   // by receiving the legs as data rather than looking them up mid-compile.
-  const travelModel = withLegs(await listLegs(db));
+  const travelModel = await loadTravelModel(db, trip.destinationId);
   const travel: PlanTravel = { model: travelModel, mode: modeRaw as Mode };
   const result = compile(segments, days, {
     mode: modeRaw as Mode, pace: paceRaw as Pace, pins, travel: travelModel,
@@ -332,7 +332,7 @@ async function doDay(db: Client, argv: string[], json: boolean): Promise<string>
   // `trip.mode` and not a flag: `trip day` takes none, so the mode is
   // whatever the plan was last compiled with.
   const travel: PlanTravel = {
-    model: withLegs(await listLegs(db)),
+    model: await loadTravelModel(db, trip.destinationId),
     mode: trip.mode as Mode,
   };
   if (json) return planJson([day], placements, segments, dayUnplaced, pricing, travel);
