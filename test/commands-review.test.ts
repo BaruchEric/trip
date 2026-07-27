@@ -436,18 +436,23 @@ describe("M7: review resolve --query", () => {
     expect(out).not.toMatch(/renamed to/);
   });
 
-  test("--query with --pick is refused, not silently ignored", async () => {
+  test("--query with --pick is refused, SAYING WHY", async () => {
+    // Asserted on the reason, not just on the flag name. The general
+    // exclusion rule also rejects this combination and its message also
+    // contains "--query", so a loose assertion here passes whether or not
+    // the specific check exists -- found by the mutation sweep, which
+    // deleted that check and killed nothing.
     const { db, id } = await queued("m7-q-pick");
     await expect(runReviewCommand(db,
       ["resolve", String(id), "--pick=1", "--query=李子坝"], false, {}))
-      .rejects.toThrow(/--query/);
+      .rejects.toThrow(/looks nothing up/);
   });
 
-  test("--query with --reject is refused", async () => {
+  test("--query with --reject is refused, saying why", async () => {
     const { db, id } = await queued("m7-q-reject");
     await expect(runReviewCommand(db,
       ["resolve", String(id), "--reject", "--query=李子坝"], false, {}))
-      .rejects.toThrow(/--query/);
+      .rejects.toThrow(/looks nothing up/);
   });
 
   test("--query= empty is rejected", async () => {

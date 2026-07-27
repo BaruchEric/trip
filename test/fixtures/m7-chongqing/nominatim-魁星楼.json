@@ -1,0 +1,33 @@
+[
+  {
+    "place_id": 382345926,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 20594996,
+    "lat": "29.5632550",
+    "lon": "106.5699015",
+    "category": "place",
+    "type": "square",
+    "place_rank": 25,
+    "importance": 0.06672495994506751,
+    "addresstype": "square",
+    "name": "大唐广场",
+    "display_name": "大唐广场, 解放碑, 解放碑街道, 渝中区, 重庆市, 中国",
+    "address": {
+      "square": "大唐广场",
+      "quarter": "解放碑",
+      "city_district": "解放碑街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5627463",
+      "29.5637606",
+      "106.5693644",
+      "106.5704199"
+    ]
+  }
+]

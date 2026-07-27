@@ -1,0 +1,163 @@
+[
+  {
+    "place_id": 241206219,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 312090247,
+    "lat": "29.5541255",
+    "lon": "106.5689590",
+    "category": "highway",
+    "type": "pedestrian",
+    "place_rank": 26,
+    "importance": 0.053391626611734154,
+    "addresstype": "road",
+    "name": "十八梯",
+    "display_name": "十八梯, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "road": "十八梯",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5534542",
+      "29.5548305",
+      "106.5685831",
+      "106.5692660"
+    ]
+  },
+  {
+    "place_id": 241414947,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 312090245,
+    "lat": "29.5553088",
+    "lon": "106.5696443",
+    "category": "highway",
+    "type": "steps",
+    "place_rank": 27,
+    "importance": 0.040058293278400846,
+    "addresstype": "road",
+    "name": "十八梯",
+    "display_name": "十八梯, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "road": "十八梯",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5548305",
+      "29.5555106",
+      "106.5692660",
+      "106.5700972"
+    ]
+  },
+  {
+    "place_id": 241321631,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 13363084413,
+    "lat": "29.5518854",
+    "lon": "106.5688874",
+    "category": "railway",
+    "type": "construction",
+    "place_rank": 30,
+    "importance": 0.00005405279621571706,
+    "addresstype": "railway",
+    "name": "十八梯",
+    "display_name": "十八梯, 解放西路, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "railway": "十八梯",
+      "road": "解放西路",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5518354",
+      "29.5519354",
+      "106.5688374",
+      "106.5689374"
+    ]
+  },
+  {
+    "place_id": 239017489,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 13363084411,
+    "lat": "29.5519570",
+    "lon": "106.5688862",
+    "category": "railway",
+    "type": "stop",
+    "place_rank": 30,
+    "importance": 0.00005405279621571706,
+    "addresstype": "railway",
+    "name": "十八梯",
+    "display_name": "十八梯, 解放西路, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "railway": "十八梯",
+      "road": "解放西路",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5519070",
+      "29.5520070",
+      "106.5688362",
+      "106.5689362"
+    ]
+  },
+  {
+    "place_id": 241207742,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1374937020,
+    "lat": "29.5550268",
+    "lon": "106.5681066",
+    "category": "landuse",
+    "type": "construction",
+    "place_rank": 24,
+    "importance": 0.08005829327840082,
+    "addresstype": "construction",
+    "name": "H3-2地块_十八梯北地块小学（在建）",
+    "display_name": "H3-2地块_十八梯北地块小学（在建）, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 中国",
+    "address": {
+      "construction": "H3-2地块_十八梯北地块小学（在建）",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5545626",
+      "29.5554626",
+      "106.5671833",
+      "106.5689322"
+    ]
+  }
+]

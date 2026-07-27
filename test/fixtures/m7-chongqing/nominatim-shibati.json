@@ -1,0 +1,66 @@
+[
+  {
+    "place_id": 240964563,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 312090249,
+    "lat": "29.5537658",
+    "lon": "106.5696236",
+    "category": "landuse",
+    "type": "retail",
+    "place_rank": 24,
+    "importance": 0.33861775862348764,
+    "addresstype": "retail",
+    "name": "重庆十八梯传统风貌区",
+    "display_name": "重庆十八梯传统风貌区, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 中国",
+    "address": {
+      "retail": "重庆十八梯传统风貌区",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5519349",
+      "29.5556202",
+      "106.5678862",
+      "106.5712705"
+    ]
+  },
+  {
+    "place_id": 241152448,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 312090245,
+    "lat": "29.5553088",
+    "lon": "106.5696443",
+    "category": "highway",
+    "type": "steps",
+    "place_rank": 27,
+    "importance": 0.040058293278400846,
+    "addresstype": "road",
+    "name": "十八梯",
+    "display_name": "十八梯, 重庆十八梯传统风貌区, 响水桥社区, 南纪门街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "road": "十八梯",
+      "retail": "重庆十八梯传统风貌区",
+      "quarter": "响水桥社区",
+      "city_district": "南纪门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5548305",
+      "29.5555106",
+      "106.5692660",
+      "106.5700972"
+    ]
+  }
+]

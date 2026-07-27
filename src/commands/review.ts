@@ -114,6 +114,22 @@ async function resolveCmd(
   // and they compose -- --rename says what to CALL it, --query says what to
   // FIND it by, and the whole milestone is that those are two facts.
   const searches = rename !== null || query !== null;
+  // BEFORE the count below, or it is dead code: --pick with --query already
+  // makes `actions` 2, so the general "exactly one of" message would fire
+  // first and this more useful one would never be reachable. Found by the
+  // mutation sweep -- deleting this block killed nothing, because nothing
+  // ever ran it.
+  //
+  // It says WHY rather than restating the rule: picking a candidate performs
+  // no lookup, so a query beside it would be silently ignored -- the
+  // anti-pattern M4 built the flag validator for and M6 found again in the
+  // watch fallback key.
+  if (query !== null && (pick !== null || reject)) {
+    throw new Error(
+      `--query re-runs the lookup, so it cannot be combined with ` +
+      `${pick !== null ? "--pick" : "--reject"}, which looks nothing up`,
+    );
+  }
   const actions = [pick !== null, reject, searches].filter(Boolean).length;
   if (actions === 0) {
     throw new Error(
@@ -124,16 +140,6 @@ async function resolveCmd(
   if (actions > 1) {
     throw new Error(
       `exactly one of --pick, --reject, or --rename/--query may be given`,
-    );
-  }
-  // Named separately from the count above so the message says WHY rather
-  // than restating the rule: picking a candidate performs no lookup, so a
-  // query beside it would be silently ignored -- the anti-pattern M4 built
-  // the flag validator for and M6 found again in the watch fallback key.
-  if (query !== null && (pick !== null || reject)) {
-    throw new Error(
-      `--query re-runs the lookup, so it cannot be combined with ` +
-      `${pick !== null ? "--pick" : "--reject"}, which looks nothing up`,
     );
   }
   if (query !== null && query.trim() === "") {

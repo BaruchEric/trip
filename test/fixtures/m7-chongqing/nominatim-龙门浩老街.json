@@ -1,0 +1,34 @@
+[
+  {
+    "place_id": 241081455,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1488704546,
+    "lat": "29.5588249",
+    "lon": "106.5912051",
+    "category": "landuse",
+    "type": "commercial",
+    "place_rank": 24,
+    "importance": 0.08005405279621573,
+    "addresstype": "commercial",
+    "name": "龙门浩老街",
+    "display_name": "龙门浩老街, 一天门社区, 龙门浩街道, 联合村, 南岸区, 重庆市, 中国",
+    "address": {
+      "commercial": "龙门浩老街",
+      "quarter": "一天门社区",
+      "suburb": "龙门浩街道",
+      "village": "联合村",
+      "city": "南岸区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5580444",
+      "29.5595702",
+      "106.5901159",
+      "106.5922321"
+    ]
+  }
+]

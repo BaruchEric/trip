@@ -1,0 +1,98 @@
+[
+  {
+    "place_id": 241870995,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 661048844,
+    "lat": "29.5556826",
+    "lon": "106.5338753",
+    "category": "railway",
+    "type": "stop",
+    "place_rank": 30,
+    "importance": 0.30723887866744215,
+    "addresstype": "railway",
+    "name": "李子坝",
+    "display_name": "李子坝, 李子坝正街, 上清寺街道, 渝中区, 重庆市, 400015, 中国",
+    "address": {
+      "railway": "李子坝",
+      "road": "李子坝正街",
+      "city_district": "上清寺街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400015",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5556326",
+      "29.5557326",
+      "106.5338253",
+      "106.5339253"
+    ]
+  },
+  {
+    "place_id": 241690529,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 9351362643,
+    "lat": "29.5556616",
+    "lon": "106.5339223",
+    "category": "railway",
+    "type": "station",
+    "place_rank": 30,
+    "importance": 0.30723887866744215,
+    "addresstype": "railway",
+    "name": "李子坝",
+    "display_name": "李子坝, 桂花园路, 上清寺街道, 渝中区, 重庆市, 400015, 中国",
+    "address": {
+      "railway": "李子坝",
+      "road": "桂花园路",
+      "city_district": "上清寺街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400015",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5506616",
+      "29.5606616",
+      "106.5289223",
+      "106.5389223"
+    ]
+  },
+  {
+    "place_id": 241741755,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 9351362644,
+    "lat": "29.5556506",
+    "lon": "106.5339155",
+    "category": "railway",
+    "type": "stop",
+    "place_rank": 30,
+    "importance": 0.000058293278400809,
+    "addresstype": "railway",
+    "name": "李子坝",
+    "display_name": "李子坝, 桂花园路, 上清寺街道, 渝中区, 重庆市, 400015, 中国",
+    "address": {
+      "railway": "李子坝",
+      "road": "桂花园路",
+      "city_district": "上清寺街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400015",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5556006",
+      "29.5557006",
+      "106.5338655",
+      "106.5339655"
+    ]
+  }
+]
