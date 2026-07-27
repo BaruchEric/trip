@@ -1,4 +1,5 @@
 import type { Client } from "@libsql/client";
+import { joinList, normalizeWeekday } from "@/validate";
 
 export interface Segment {
   id: number;
@@ -19,18 +20,6 @@ export interface Segment {
 
 export type SegmentInput = Omit<Segment, "id" | "tripId" | "status">;
 
-/** Tags and closed days share one column each, comma separated. A tag holding
- *  a comma would silently become two tags on read, so it is rejected here
- *  rather than corrupting the row. */
-function joinList(values: string[], field: string): string {
-  for (const v of values) {
-    if (v.includes(",")) {
-      throw new Error(`${field} value "${v}" may not contain a comma`);
-    }
-  }
-  return values.join(",");
-}
-
 function splitList(raw: unknown): string[] {
   const s = typeof raw === "string" ? raw : "";
   return s === "" ? [] : s.split(",");
@@ -40,13 +29,60 @@ function numOrNull(v: unknown): number | null {
   return v === null || v === undefined ? null : Number(v);
 }
 
+/** Every check that must hold no matter which caller wrote the row. The CLI
+ *  parsers already enforce most of these, which is exactly why they were
+ *  unreachable defects until M3 started writing segments directly. */
+function validate(input: SegmentInput): void {
+  if (input.name.trim() === "") {
+    throw new Error("segment name may not be blank");
+  }
+  if (!Number.isInteger(input.dwellMinutes) || input.dwellMinutes <= 0) {
+    throw new Error(
+      `invalid dwell ${input.dwellMinutes} (expected a positive whole number of minutes)`,
+    );
+  }
+  // Empty and comma-bearing tags are rejected by joinList, called below.
+  // Coordinates are a PAIR. One without the other is not a location, and
+  // storing the half we have would make `latitude !== null` — the test the
+  // compiler uses for placeability — true for a segment that cannot be placed.
+  if ((input.latitude === null) !== (input.longitude === null)) {
+    throw new Error("latitude and longitude must both be set, or both be null");
+  }
+  if (input.latitude !== null && Math.abs(input.latitude) > 90) {
+    throw new Error(`invalid latitude ${input.latitude}`);
+  }
+  if (input.longitude !== null && Math.abs(input.longitude) > 180) {
+    throw new Error(`invalid longitude ${input.longitude}`);
+  }
+  // opensMin is a clock time (0..1439). closesMin may be 1440, the end of the
+  // day: `--hours=10:00-24:00` stores 1439 at the CLI, but callers and the
+  // existing suite pass 1440 directly, and both mean "closes at midnight".
+  if (input.opensMin !== null && (input.opensMin < 0 || input.opensMin > 1439)) {
+    throw new Error(`invalid opening time ${input.opensMin}`);
+  }
+  if (input.closesMin !== null && (input.closesMin < 1 || input.closesMin > 1440)) {
+    throw new Error(`invalid closing time ${input.closesMin}`);
+  }
+  // Cross-midnight (opens 20:00, closes 02:00) is rejected rather than stored:
+  // the scheduler compares `start + dwell > closesMin` on a single day's
+  // minutes (src/plan/schedule.ts:53), so a wrapped window would read as a
+  // window that closes before it opens and silently reject every placement.
+  if (
+    input.opensMin !== null && input.closesMin !== null &&
+    input.closesMin <= input.opensMin
+  ) {
+    throw new Error("opening hours must close after they open");
+  }
+}
+
 export async function addSegment(
   db: Client,
   tripId: number,
   input: SegmentInput,
 ): Promise<number> {
+  validate(input);
   const tags = joinList(input.tags, "tag");
-  const closedDays = joinList(input.closedDays, "closed day");
+  const closedDays = joinList(input.closedDays.map(normalizeWeekday), "closed day");
 
   const r = await db.execute({
     sql: `INSERT INTO segments

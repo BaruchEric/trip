@@ -95,4 +95,63 @@ describe("segments", () => {
       addSegment(db, 1, { ...FULL, tags: ["street,food"] }),
     ).rejects.toThrow(/comma/i);
   });
+
+  test("a blank name is rejected", async () => {
+    const db = await freshDb("blank-name");
+    await expect(addSegment(db, 1, { ...FULL, name: "   " })).rejects.toThrow(/name/i);
+  });
+
+  test("a non-positive dwell is rejected", async () => {
+    const db = await freshDb("bad-dwell");
+    await expect(addSegment(db, 1, { ...FULL, dwellMinutes: 0 })).rejects.toThrow(/dwell/i);
+  });
+
+  test("a fractional dwell is rejected", async () => {
+    const db = await freshDb("frac-dwell");
+    await expect(addSegment(db, 1, { ...FULL, dwellMinutes: 90.5 })).rejects.toThrow(/dwell/i);
+  });
+
+  test("an empty tag is rejected rather than stored as a phantom tag", async () => {
+    const db = await freshDb("empty-tag");
+    await expect(addSegment(db, 1, { ...FULL, tags: ["food", ""] })).rejects.toThrow(/tag/i);
+  });
+
+  test("closed days are normalised to lowercase 3-letter codes", async () => {
+    const db = await freshDb("closed-case");
+    await addSegment(db, 1, { ...FULL, closedDays: ["MON", "Tuesday"] });
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.closedDays).toEqual(["mon", "tue"]);
+  });
+
+  test("an invalid closed day is rejected", async () => {
+    const db = await freshDb("closed-bad");
+    await expect(addSegment(db, 1, { ...FULL, closedDays: ["monkey"] })).rejects.toThrow(/weekday/i);
+  });
+
+  test("cross-midnight hours are rejected at the storage boundary", async () => {
+    const db = await freshDb("cross-midnight");
+    await expect(
+      addSegment(db, 1, { ...FULL, opensMin: 1200, closesMin: 120 }),
+    ).rejects.toThrow(/close after/i);
+  });
+
+  test("midnight close (1440) is accepted", async () => {
+    const db = await freshDb("midnight-close");
+    const id = await addSegment(db, 1, { ...FULL, opensMin: 600, closesMin: 1440 });
+    expect(id).toBeGreaterThan(0);
+  });
+
+  test("out-of-range coordinates are rejected", async () => {
+    const db = await freshDb("bad-coords");
+    await expect(
+      addSegment(db, 1, { ...FULL, latitude: 91, longitude: 0 }),
+    ).rejects.toThrow(/latitude/i);
+  });
+
+  test("a latitude without a longitude is rejected", async () => {
+    const db = await freshDb("half-coords");
+    await expect(
+      addSegment(db, 1, { ...FULL, latitude: 38.7, longitude: null }),
+    ).rejects.toThrow(/both/i);
+  });
 });
