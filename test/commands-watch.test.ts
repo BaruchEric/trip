@@ -2,8 +2,11 @@ import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import { runWatchCommand } from "@/commands/watch";
 import { getSourceByUrl } from "@/sources";
+import { listMentions } from "@/mentions";
+import { listSegments } from "@/segments";
+import { SEARCH_RADIUS_KM } from "@/geo/poi";
 import type { WatchReport } from "@/watch/parse-report";
-import { rmSync } from "node:fs";
+import { rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -173,5 +176,194 @@ describe("trip watch", () => {
     await migrate(db);
     await expect(runWatchCommand(db, [URL], false, deps))
       .rejects.toThrow(/active trip/i);
+  });
+});
+
+const URL2 = "https://www.youtube.com/watch?v=AAAAAAAAAAA";
+
+function mentionsFile(tag: string, entries: unknown[]): string {
+  const p = join(tmpdir(), `trip-mentions-${tag}-${process.pid}.json`);
+  writeFileSync(p, JSON.stringify(entries));
+  return p;
+}
+
+const ONE_HIT = {
+  ingestDeps: {
+    geocode: async () => [{
+      displayName: "洪崖洞, 渝中区, 重庆市, 中国", localName: "洪崖洞",
+      latitude: 29.565, longitude: 106.575,
+      category: "building", type: "yes", importance: 0.3408,
+      osmType: "way", osmId: 1, kmFromCentre: 2.3,
+    }],
+    sleepFn: async () => {},
+  },
+};
+
+async function watched(tag: string) {
+  const db = await db1(tag);
+  await runWatchCommand(db, [URL], false, deps);
+  return db;
+}
+
+describe("trip watch ingest", () => {
+  test("reports counts and creates the segments", async () => {
+    const db = await watched("ingest-basic");
+    const file = mentionsFile("basic", [
+      { text: "Hongya Cave", at: "04:32", dwell: "90m" },
+    ]);
+    const out = await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT);
+    expect(out).toContain("1 mention");
+    expect(out).toContain("1 geocoded");
+    expect((await listSegments(db, 1)).length).toBe(1);
+  });
+
+  test("json output is the same counts an agent can branch on", async () => {
+    const db = await watched("ingest-json");
+    const file = mentionsFile("json", [{ text: "Hongya Cave" }]);
+    const out = JSON.parse(
+      await runWatchCommand(db, ["ingest", `--mentions=${file}`], true, ONE_HIT),
+    );
+    expect(out).toMatchObject({ sourceId: 1, total: 1, geocoded: 1, queued: 0, failed: 0 });
+  });
+
+  test("without --source it attaches to the trip's most recent video", async () => {
+    const db = await watched("ingest-latest");
+    const file = mentionsFile("latest", [{ text: "Hongya Cave" }]);
+    await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT);
+    expect((await listMentions(db, 1))[0]!.sourceId).toBe(1);
+  });
+
+  // A single-source trip cannot tell "latest" from "first" apart - both name
+  // the same row. Watching two videos is the only way a mutation from
+  // latestSource to "first source" would show up as a failing test.
+  test("with two videos watched, it attaches to the one fetched most recently, not the first", async () => {
+    const db = await db1("ingest-latest-vs-first");
+    await runWatchCommand(db, [URL], false, deps);
+    await runWatchCommand(db, [URL2], false, deps);
+    const file = mentionsFile("latestvsfirst", [{ text: "Hongya Cave" }]);
+    await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT);
+    expect((await listMentions(db, 1))[0]!.sourceId).toBe(2);
+  });
+
+  test("a trip with no source at all says so plainly", async () => {
+    const db = await db1("ingest-nosource");
+    const file = mentionsFile("nosource", [{ text: "x" }]);
+    await expect(
+      runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT),
+    ).rejects.toThrow(/no video/i);
+  });
+
+  test("an unknown --source is named, not a generic crash", async () => {
+    const db = await watched("ingest-badsource");
+    const file = mentionsFile("badsource", [{ text: "Hongya Cave" }]);
+    await expect(
+      runWatchCommand(db, ["ingest", `--mentions=${file}`, "--source=999"], false, ONE_HIT),
+    ).rejects.toThrow(/source #999/);
+  });
+
+  test("malformed entries are reported and the good ones still land", async () => {
+    const db = await watched("ingest-partial");
+    const file = mentionsFile("partial", [
+      { text: "Hongya Cave" },
+      { text: "bad", at: "banana" },
+    ]);
+    const out = await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT);
+    expect(out).toContain("1 entry skipped");
+    expect(out).toContain("[1]");
+    expect((await listMentions(db, 1)).length).toBe(1);
+  });
+
+  test("a second ingest refuses and names --replace", async () => {
+    const db = await watched("ingest-twice");
+    const file = mentionsFile("twice", [{ text: "Hongya Cave" }]);
+    await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT);
+    await expect(
+      runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT),
+    ).rejects.toThrow(/--replace/);
+    expect((await listMentions(db, 1)).length).toBe(1);
+  });
+
+  // Same guard as above, but isolated from the "resolved" guard: the prior
+  // test's first ingest fully resolves (ONE_HIT), so its rejection message
+  // happens to come from the *resolved* branch, which also happens to mention
+  // "--replace" - a mutation that no-ops the plain "already has mentions"
+  // check would slip through THAT test undetected. Using NO_HIT here means
+  // the existing mention is pending, not resolved, so only the plain refusal
+  // guard can be what throws.
+  test("a second ingest refuses even when nothing is resolved yet", async () => {
+    const db = await watched("ingest-twice-pending");
+    const file = mentionsFile("twice-pending", [{ text: "hot pot" }]);
+    const NO_HIT = { ingestDeps: { geocode: async () => [], sleepFn: async () => {} } };
+    await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, NO_HIT);
+    expect((await listMentions(db, 1))[0]!.state).toBe("pending");
+    await expect(
+      runWatchCommand(db, ["ingest", `--mentions=${file}`], false, NO_HIT),
+    ).rejects.toThrow(/--replace/);
+    expect((await listMentions(db, 1)).length).toBe(1);
+  });
+
+  test("--replace refuses while a mention is resolved, naming it", async () => {
+    const db = await watched("ingest-replace-resolved");
+    const file = mentionsFile("rr", [{ text: "Hongya Cave" }]);
+    await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, ONE_HIT);
+    await expect(
+      runWatchCommand(db, ["ingest", `--mentions=${file}`, "--replace"], false, ONE_HIT),
+    ).rejects.toThrow(/resolved/i);
+  });
+
+  test("--replace clears pending mentions and ingests fresh", async () => {
+    const db = await watched("ingest-replace-pending");
+    const file = mentionsFile("rp", [{ text: "hot pot" }]);
+    const NO_HIT = { ingestDeps: { geocode: async () => [], sleepFn: async () => {} } };
+    await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, NO_HIT);
+    expect((await listMentions(db, 1)).length).toBe(1);
+
+    const file2 = mentionsFile("rp2", [{ text: "hot pot" }, { text: "noodles" }]);
+    await runWatchCommand(db, ["ingest", `--mentions=${file2}`, "--replace"], false, NO_HIT);
+    expect((await listMentions(db, 1)).length).toBe(2);
+  });
+
+  test("--mentions is required", async () => {
+    const db = await watched("ingest-nofile");
+    await expect(runWatchCommand(db, ["ingest"], false, ONE_HIT)).rejects.toThrow(/--mentions/);
+  });
+
+  test("a missing mentions file names the path", async () => {
+    const db = await watched("ingest-missing");
+    await expect(
+      runWatchCommand(db, ["ingest", "--mentions=/nope/nope.json"], false, ONE_HIT),
+    ).rejects.toThrow(/\/nope\/nope\.json/);
+  });
+
+  // A network outage must not read as "a video full of vague places" - `failed`
+  // (the lookup itself broke) has to stay visibly apart from `queued`
+  // (the lookup answered, just not confidently). Every other test here uses
+  // ONE_HIT or a no-match NO_HIT, so failed is 0 everywhere else and a mutation
+  // merging the two counts would pass unnoticed without this test.
+  const FAILING = {
+    ingestDeps: {
+      geocode: async () => { throw new Error("network down"); },
+      sleepFn: async () => {},
+    },
+  };
+
+  test("a lookup failure is counted apart from queued, and the search box is named", async () => {
+    const db = await watched("ingest-failed-text");
+    const file = mentionsFile("failed-text", [{ text: "Hongya Cave" }]);
+    const out = await runWatchCommand(db, ["ingest", `--mentions=${file}`], false, FAILING);
+    expect(out).toContain("1 lookup failure");
+    expect(out).toContain("0 geocoded");
+    expect(out).toContain("0 queued");
+    expect(out).toContain(`${SEARCH_RADIUS_KM} km`);
+  });
+
+  test("json separates failed lookups from queued", async () => {
+    const db = await watched("ingest-failed-json");
+    const file = mentionsFile("failed-json", [{ text: "Hongya Cave" }]);
+    const out = JSON.parse(
+      await runWatchCommand(db, ["ingest", `--mentions=${file}`], true, FAILING),
+    );
+    expect(out).toMatchObject({ geocoded: 0, queued: 0, failed: 1 });
+    expect(out.searchRadiusKm).toBe(SEARCH_RADIUS_KM);
   });
 });
