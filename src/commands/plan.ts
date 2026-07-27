@@ -44,7 +44,7 @@ function resolveSegment(segments: Segment[], token: string): Segment {
   return hits[0]!;
 }
 
-async function loadContext(db: Client) {
+export async function loadContext(db: Client) {
   const trip = await getActiveTrip(db);
   if (!trip) throw new Error("no active trip - run `trip use <name>` first");
   if (trip.startDate === null || trip.endDate === null) {
@@ -87,7 +87,7 @@ export async function runPlanCommand(
  *  loaded for compile() fixes it without weakening compile()'s purity. Only
  *  ever promotes false -> true: a placement compile() marked pinned (a timed
  *  pin) is never un-marked. */
-function reconcilePinned<T extends { segmentId: number; pinned: boolean }>(
+export function reconcilePinned<T extends { segmentId: number; pinned: boolean }>(
   placements: T[],
   pins: Pin[],
 ): T[] {
@@ -412,7 +412,7 @@ async function doMove(db: Client, argv: string[], json: boolean): Promise<string
  *  A segment placed on no day cannot be priced and simply is not in the map,
  *  which reads as unknown. That is correct: its price is not knowable until
  *  it is placed (M5-8). */
-async function buildPricing(
+export async function buildPricing(
   db: Client,
   tripId: number,
   currency: string | null,
