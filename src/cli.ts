@@ -6,6 +6,8 @@ import { runWhenCommand } from "@/commands/when";
 import { runDatesCommand } from "@/commands/dates";
 import { runSegmentsCommand } from "@/commands/segments";
 import { runPlanCommand } from "@/commands/plan";
+import { runWatchCommand } from "@/commands/watch";
+import { runReviewCommand } from "@/commands/review";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -13,11 +15,12 @@ Usage:
   trip new <name>              Create a trip and make it active
   trip use <name>              Switch the active trip
   trip ls / trip show          List trips / show the active one
-  trip when <city>             Rank every month by dew-point comfort
+  trip when <city>             Rank every month by dew-point comfort [--timeout=<seconds>]
 
   trip dates set <a>..<b>      Set trip dates [--arrive=HH:MM] [--depart=HH:MM]
   trip seg add <name>          Add a segment --dur=90m [--at=lat,lon] [--tag=food]
-  trip seg ls                  List segments [--tag=food] [--unplaced]
+  trip seg ls                  List segments [--tag=food] [--unplaced] [--from=<source-id>]
+  trip seg set <id> --dur=90m  Correct a segment's dwell time
   trip seg rm <id>             Remove a segment
   trip plan                    Compile a day-by-day itinerary [--pace=] [--mode=]
   trip day <n>                 Show one day
@@ -26,9 +29,17 @@ Usage:
   trip move <seg> --to=day<n>  Move a segment to another day (pins it)
   trip replan                  Rebuild the plan, respecting pins
 
+  trip watch <url>             Fetch a video transcript [--refresh] [--whisper]
+  trip watch ingest            Geocode mentions --mentions=<file.json> [--replace]
+  trip review ls               Mentions awaiting a decision
+  trip review resolve <id>     --pick=<n> | --reject | --rename="Actual Name"
+
 Flags:
-  --json                       Machine-readable output
-  --timeout=<seconds>          Network timeout per request (default 15)
+  --json                       Machine-readable output (accepted by every command)
+
+Every command validates its own flags: one it does not own, or a value flag
+given space-separated instead of --name=value, is rejected rather than
+silently ignored.
 `;
 
 export interface CliResult {
@@ -37,31 +48,83 @@ export interface CliResult {
   code: number;
 }
 
-/**
- * Flags the CLI accepts. Anything else is rejected rather than ignored:
- * `trip when Tokyo --refres` used to serve the cache and exit 0, so an agent
- * asking for fresh data got stale data with a success code.
- */
-const KNOWN_FLAGS = new Set(["--json", "--refresh", "--help", "--unplaced"]);
+/** Flags every command accepts, bare, regardless of what it declares below. */
+const GLOBAL_BOOL_FLAGS = new Set(["--json", "--help"]);
 
-/** Flags that carry a value as `--name=<value>`. The value itself is validated
- *  by the command that owns the flag, not here. A space-separated form is
- *  deliberately not accepted: `trip when New York --timeout 30` would leave the
- *  30 among the positionals, which `when` joins into the city name. Same class
- *  of bug `trip pin "Time Out" --day 2` would hit, which is why every M2 value
- *  flag below is `--name=value` only. */
-const KNOWN_VALUE_FLAGS = [
-  "--timeout",
-  "--arrive", "--depart", "--day-window",
-  "--dur", "--cost", "--tag", "--at", "--hours", "--closed",
-  "--mode", "--pace", "--day", "--to",
-];
+/** Per command, because a global allowlist accepted `trip plan --day=2` and
+ *  silently ignored it — the exact failure this file's policy comment used
+ *  to warn about while not actually preventing it once a flag belonged to
+ *  the wrong command.
+ *
+ *  `bool` flags are valid only bare; `value` flags only as `--name=value`.
+ *  That split is load-bearing: `trip when New York --timeout 30` leaves the
+ *  30 among the positionals, where `when` joins it into the city name. That
+ *  is the bug that once made `trip when New York` answer about Patna, India. */
+interface CommandFlags {
+  bool?: string[];
+  value?: string[];
+}
 
-function isKnownFlag(arg: string): boolean {
-  return (
-    KNOWN_FLAGS.has(arg) ||
-    KNOWN_VALUE_FLAGS.some((f) => arg === f || arg.startsWith(`${f}=`))
-  );
+const COMMAND_FLAGS: Record<string, CommandFlags> = {
+  new: {}, use: {}, ls: {}, show: {},
+  when: { bool: ["--refresh"], value: ["--timeout"] },
+  dates: { value: ["--arrive", "--depart", "--day-window"] },
+  seg: {
+    bool: ["--unplaced"],
+    value: ["--dur", "--cost", "--tag", "--at", "--hours", "--closed", "--from"],
+  },
+  plan: { value: ["--mode", "--pace"] },
+  replan: { value: ["--mode", "--pace"] },
+  day: {},
+  pin: { value: ["--day", "--at"] },
+  unpin: {},
+  move: { value: ["--to"] },
+  // No --timeout here: nothing under src/watch reads one. Declaring it would
+  // let it pass validation and then be silently ignored by runWatchCommand —
+  // the exact anti-pattern this file exists to prevent, for a brand-new flag.
+  watch: {
+    bool: ["--refresh", "--whisper", "--replace"],
+    value: ["--mentions", "--source"],
+  },
+  review: { bool: ["--reject"], value: ["--source", "--pick", "--rename"] },
+};
+
+interface FlagIssues {
+  /** Wrong command, a typo, or a value flag given bare (the Patna case). */
+  unknown: string[];
+  /** A value flag given as `--name=` with nothing after the `=`. Kept apart
+   *  from `unknown`: the flag IS the command's own, so "unknown flag" would
+   *  be a lie. `Number("")` is `0`, which let `seg ls --from=` silently mean
+   *  source id 0 instead of failing loudly — the same trap already fixed for
+   *  `--cost=` in `seg add`, closed here at the CLI layer for every command's
+   *  value flags at once. */
+  empty: string[];
+}
+
+function flagIssues(cmd: string, argv: string[]): FlagIssues {
+  const spec = COMMAND_FLAGS[cmd] ?? {};
+  const bools = new Set(spec.bool ?? []);
+  const values = new Set(spec.value ?? []);
+  const unknown: string[] = [];
+  const empty: string[] = [];
+
+  for (const a of argv) {
+    if (!a.startsWith("--")) continue;
+    const eq = a.indexOf("=");
+    const name = eq === -1 ? a : a.slice(0, eq);
+
+    if (GLOBAL_BOOL_FLAGS.has(name)) {
+      if (eq !== -1) unknown.push(name);
+      continue;
+    }
+    if (eq === -1) {
+      if (!bools.has(name)) unknown.push(name);
+      continue;
+    }
+    if (!values.has(name)) unknown.push(name);
+    else if (a.slice(eq + 1) === "") empty.push(name);
+  }
+  return { unknown, empty };
 }
 
 function fail(msg: string, json: boolean): CliResult {
@@ -82,9 +145,6 @@ export async function run(
 ): Promise<CliResult> {
   const json = argv.includes("--json");
 
-  const unknown = argv.filter((a) => a.startsWith("--") && !isKnownFlag(a));
-  if (unknown.length > 0) return fail(`unknown flag: ${unknown.join(", ")}`, json);
-
   const rest = argv.filter((a) => a !== "--json");
 
   if (rest.length === 0 || rest[0] === "help" || rest[0] === "--help") {
@@ -96,6 +156,27 @@ export async function run(
       : { stdout: USAGE, stderr: "", code: 0 };
   }
 
+  // Checked here, not before the command is known: which flags are valid
+  // depends entirely on which command owns them (`--day` means one thing to
+  // `pin` and nothing to `plan`), so there is no correct answer before `cmd`
+  // is resolved.
+  const cmd = rest[0]!;
+  const { unknown, empty } = flagIssues(cmd, argv);
+  if (unknown.length > 0) {
+    return fail(
+      `unknown flag for \`trip ${cmd}\`: ${unknown.join(", ")}` +
+      ` (values are --name=value, never space-separated)`,
+      json,
+    );
+  }
+  if (empty.length > 0) {
+    return fail(
+      `${empty.join(", ")} needs a value (e.g. ${empty[0]}=<value>); ` +
+      `an empty value is not the same as zero`,
+      json,
+    );
+  }
+
   // openDb/migrate live INSIDE the try. Previously a database failure
   // (unwritable ~/.trip, corrupt file) escaped as an unhandled rejection:
   // a stack trace on stderr and no {"error": ...} envelope even under --json.
@@ -103,8 +184,8 @@ export async function run(
     const db = openDb(opts.dbPath);
     await migrate(db);
 
-    const [cmd, ...args] = rest;
-    const output = await route(db, cmd!, args, rest, json);
+    const [, ...args] = rest;
+    const output = await route(db, cmd, args, rest, json);
     return { stdout: output, stderr: "", code: 0 };
   } catch (err) {
     return fail(err instanceof Error ? err.message : String(err), json);
@@ -120,6 +201,8 @@ async function route(
   if (cmd === "dates") return runDatesCommand(db, args, json);
   if (cmd === "seg") return runSegmentsCommand(db, args, json);
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
+  if (cmd === "watch") return runWatchCommand(db, args, json);
+  if (cmd === "review") return runReviewCommand(db, args, json);
   return runTripsCommand(db, rest, json);
 }
 

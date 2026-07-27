@@ -188,3 +188,109 @@ describe("cli: M2 routing", () => {
     }
   });
 });
+
+describe("cli: per-command flag validation (M3)", () => {
+  test("a flag belonging to another command is rejected, not silently ignored", async () => {
+    const r = await run(["plan", "--day=2"], { dbPath: dbPath("flag-plan") });
+    expect(r.code).toBe(1);
+    expect(r.stderr).toContain("--day");
+  });
+
+  test("a value flag given space-separated is still rejected", async () => {
+    // This is the Patna bug: "30" would land among the positionals. Asserting
+    // only `code === 1` here is not enough: if the space-separated check were
+    // removed, `when`'s own --timeout parser would ALSO throw (it requires a
+    // "=" and finds none), giving code 1 for the wrong reason. Pinning the
+    // validator's own wording is what actually catches that mutation.
+    const r = await run(["when", "New", "York", "--timeout", "30"], { dbPath: dbPath("flag-space") });
+    expect(r.code).toBe(1);
+    expect(r.stderr).toContain("never space-separated");
+    expect(r.stderr).toContain("--timeout");
+  });
+
+  test("a boolean flag used with a value is rejected", async () => {
+    const p = dbPath("flag-bool");
+    // A trip exists so `seg ls` would otherwise succeed -- without this the
+    // "no active trip" error would also yield code 1, masking a validator
+    // that stopped checking bool-vs-value.
+    await run(["new", "x"], { dbPath: p });
+    const r = await run(["seg", "ls", "--unplaced=yes"], { dbPath: p });
+    expect(r.code).toBe(1);
+    expect(r.stderr).toContain("unknown flag");
+    expect(r.stderr).toContain("--unplaced");
+  });
+
+  test("an empty value for a value flag is rejected, not treated as zero", async () => {
+    // The gap carried from M3's segments task: Number("") is 0, so
+    // `seg ls --from=` used to silently mean source id 0.
+    const p = dbPath("flag-empty");
+    await run(["new", "x"], { dbPath: p });
+    const r = await run(["seg", "ls", "--from="], { dbPath: p });
+    expect(r.code).toBe(1);
+    expect(r.stderr).toContain("--from");
+    expect(r.stderr).toContain("needs a value");
+  });
+
+  test("an unknown command still runs the validator, not a blanket accept", async () => {
+    // Under the "unknown command accepts everything" mutation, this would
+    // fall through to "unknown command: trip bogus" instead of naming the
+    // flag -- code 1 either way, so the message is what discriminates.
+    const r = await run(["bogus", "--anything"], { dbPath: dbPath("flag-unknown-cmd") });
+    expect(r.code).toBe(1);
+    expect(r.stderr).toContain("unknown flag");
+    expect(r.stderr).toContain("--anything");
+  });
+
+  test("--json is accepted everywhere", async () => {
+    const r = await run(["ls", "--json"], { dbPath: dbPath("flag-json") });
+    expect(r.code).toBe(0);
+  });
+
+  test("M3 value and boolean flags pass their commands' gates", async () => {
+    const p = dbPath("m3flags");
+    await run(["new", "lisbon"], { dbPath: p });
+
+    // seg set: reaches setCmd's own "no segment" error, not the validator.
+    const segSet = await run(["seg", "set", "999", "--dur=45m", "--json"], { dbPath: p });
+    expect(JSON.parse(segSet.stdout).error).not.toContain("unknown flag");
+    expect(JSON.parse(segSet.stdout).error).toContain("no segment #999");
+
+    // watch: --refresh and --whisper reach runWatchCommand's own "no
+    // destination" error, not the validator.
+    const watch = await run(
+      ["watch", "https://youtu.be/x", "--refresh", "--whisper", "--json"], { dbPath: p },
+    );
+    expect(JSON.parse(watch.stdout).error).not.toContain("unknown flag");
+    expect(JSON.parse(watch.stdout).error).toContain("no destination");
+
+    // watch ingest: --mentions, --source and --replace reach ingestCmd's own
+    // "no destination" error (checked before the file is even read).
+    const ingest = await run(
+      ["watch", "ingest", "--mentions=x.json", "--source=1", "--replace", "--json"],
+      { dbPath: p },
+    );
+    expect(JSON.parse(ingest.stdout).error).not.toContain("unknown flag");
+    expect(JSON.parse(ingest.stdout).error).toContain("no destination");
+
+    // review resolve: --reject reaches resolveCmd's own "no mention" error.
+    const review = await run(["review", "resolve", "1", "--reject", "--json"], { dbPath: p });
+    expect(JSON.parse(review.stdout).error).not.toContain("unknown flag");
+    expect(JSON.parse(review.stdout).error).toContain("no mention #1");
+  });
+
+  test("watch and review are routed", async () => {
+    const p = dbPath("route");
+    // No active trip: the command must be REACHED and report that, rather
+    // than falling through to the trips command.
+    const watch = await run(["watch", "https://youtu.be/x"], { dbPath: p });
+    expect(watch.stderr).toContain("no active trip");
+    const review = await run(["review", "ls"], { dbPath: p });
+    expect(review.stderr).toContain("no active trip");
+  });
+
+  test("the usage block mentions the new commands", async () => {
+    const r = await run([], { dbPath: dbPath("usage") });
+    expect(r.stdout).toContain("trip watch");
+    expect(r.stdout).toContain("trip review");
+  });
+});
