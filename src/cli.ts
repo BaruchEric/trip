@@ -15,6 +15,7 @@ import { runCostsCommand } from "@/commands/costs";
 import { runRouteCommand, type RouteDeps } from "@/commands/route";
 import { runCalibrateCommand } from "@/commands/calibrate";
 import { runExportCommand, type ExportDeps } from "@/commands/export";
+import { runBudgetCommand } from "@/commands/budget";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -45,6 +46,7 @@ Usage:
   trip route                   Measure real walking legs (network) [--refresh]
   trip calibrate               How wrong the travel model is, here
   trip export --format=ics     Write the plan out [--out=<path>] [--force]
+  trip budget                  What it costs and what is unknown [--limit=] [--daily=]
   trip replan                  Rebuild the plan, respecting pins
 
   trip watch <url>             Fetch a video transcript [--refresh] [--whisper]
@@ -165,6 +167,10 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // --format is required and has no default: a default would silently pick
   // one of three files the user asked for by name. --force is bool-only.
   export: { bool: ["--force"], value: ["--format", "--out"] },
+  // No --currency: a limit is in the TRIP's currency, and accepting another
+  // would imply this tool can convert. It cannot, and never will without a
+  // rate source and a timestamp on it.
+  budget: { value: ["--limit", "--daily"] },
 
   plan: { value: ["--mode", "--pace"] },
   replan: { value: ["--mode", "--pace"] },
@@ -210,6 +216,25 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
  *  block, which is the honest default — a stub reading "no help available"
  *  would be worse than the real thing. */
 const SUBCOMMAND_HELP: Record<string, string> = {
+  budget: `trip budget [--limit=<amount>] [--daily=<observation-id>]
+
+  What the trip costs, from what is actually KNOWN, and a specific reason
+  for everything it cannot tell you.
+
+  Admissions come from your plan. Lodging, food and local transport do not
+  exist in the plan at all, so they come from a cost observation you choose
+  by id -- this tool never picks one for you. A source that states three
+  components AND a total describes the same money twice, so they are never
+  added together and never guessed between.
+
+  --limit is in the TRIP's currency. If the observation you chose is in a
+  different one, the two are reported side by side and NEVER added: no
+  exchange rate is a fact this tool has, and a stale rate is worse than
+  none.
+
+  A projection from an observation is one source's claim about a different
+  trip. It is not a rate, and the output says so.
+`,
   export: `trip export --format=ics|md|geojson [--out=<path>] [--force]
 
   Write the plan out. Exports the STORED itinerary - the one trip plan last
@@ -605,6 +630,7 @@ async function route(
   if (cmd === "route") return runRouteCommand(db, args, json, deps.route);
   if (cmd === "calibrate") return runCalibrateCommand(db, args, json);
   if (cmd === "export") return runExportCommand(db, args, json, deps.export);
+  if (cmd === "budget") return runBudgetCommand(db, args, json);
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
   if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
