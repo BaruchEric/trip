@@ -1,0 +1,13 @@
+[
+  {"text": "Arat Temple", "at": "01:17", "kind": "temple"},
+  {"text": "Longman how old street", "at": "02:58", "kind": "street"},
+  {"text": "Wulong casts", "at": "06:28", "kind": "nature"},
+  {"text": "Tienfu Post House", "at": "09:24", "kind": "landmark"},
+  {"text": "Fisher Gorge", "at": "10:41", "kind": "nature"},
+  {"text": "Don Shan Cafe", "at": "11:52", "kind": "restaurant"},
+  {"text": "Shabbati", "at": "12:46", "kind": "neighbourhood"},
+  {"text": "Hongadong", "at": "14:37", "kind": "landmark"},
+  {"text": "Test Bed Creative Park", "at": "15:57", "kind": "neighbourhood"},
+  {"text": "Ring Shopping Park", "at": "17:20", "kind": "shop"},
+  {"text": "Ji Fang Bay Pedestrian Street", "at": "18:43", "kind": "street"}
+]
