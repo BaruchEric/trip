@@ -48,10 +48,21 @@ function validate(input: SegmentInput): void {
   if ((input.latitude === null) !== (input.longitude === null)) {
     throw new Error("latitude and longitude must both be set, or both be null");
   }
-  if (input.latitude !== null && Math.abs(input.latitude) > 90) {
+  // Number("") is 0 and Number("abc") is NaN — a geocoder response with a
+  // missing or malformed field reaches here as NaN, which passes every
+  // comparison silently (Math.abs(NaN) > 90 is false). Left unchecked, the
+  // segment would be stored at an uncomparable coordinate that clustering
+  // treats as neither near nor far from anything.
+  if (
+    input.latitude !== null &&
+    (!Number.isFinite(input.latitude) || Math.abs(input.latitude) > 90)
+  ) {
     throw new Error(`invalid latitude ${input.latitude}`);
   }
-  if (input.longitude !== null && Math.abs(input.longitude) > 180) {
+  if (
+    input.longitude !== null &&
+    (!Number.isFinite(input.longitude) || Math.abs(input.longitude) > 180)
+  ) {
     throw new Error(`invalid longitude ${input.longitude}`);
   }
   // opensMin is a clock time (0..1439). closesMin may be 1440, the end of the

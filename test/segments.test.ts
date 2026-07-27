@@ -148,6 +148,13 @@ describe("segments", () => {
     ).rejects.toThrow(/latitude/i);
   });
 
+  test("non-finite coordinates are rejected", async () => {
+    const db = await freshDb("nan-coords");
+    await expect(
+      addSegment(db, 1, { ...FULL, latitude: NaN, longitude: NaN }),
+    ).rejects.toThrow(/latitude/i);
+  });
+
   test("a latitude without a longitude is rejected", async () => {
     const db = await freshDb("half-coords");
     await expect(
