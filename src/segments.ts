@@ -102,6 +102,17 @@ function validate(input: SegmentInput): void {
   ) {
     throw new Error("opening hours must close after they open");
   }
+  // Provenance is only useful if it is true. A NaN here would render as a
+  // garbage minute mark in the review queue — a corrupt value presented as a
+  // fact, which is worse than the NULL that means "the extractor gave no
+  // timestamp". Guarded here rather than upstream for the same reason as the
+  // coordinate checks: the CLI parser is not the only caller.
+  if (
+    input.sourceAtSeconds !== undefined && input.sourceAtSeconds !== null &&
+    (!Number.isInteger(input.sourceAtSeconds) || input.sourceAtSeconds < 0)
+  ) {
+    throw new Error(`invalid source timestamp ${input.sourceAtSeconds}`);
+  }
 }
 
 export async function addSegment(

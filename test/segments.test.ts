@@ -169,6 +169,16 @@ describe("segments", () => {
     expect(seg!.name).toBe("Museum");
   });
 
+  test("a non-finite or negative source timestamp is rejected", async () => {
+    const db = await freshDb("bad-source-ts");
+    await expect(
+      addSegment(db, 1, { ...FULL, sourceAtSeconds: NaN }),
+    ).rejects.toThrow(/source timestamp/i);
+    await expect(
+      addSegment(db, 1, { ...FULL, sourceAtSeconds: -1 }),
+    ).rejects.toThrow(/source timestamp/i);
+  });
+
   test("a hand-added segment has no provenance and no defaulted dwell", async () => {
     const db = await freshDb("no-provenance");
     await addSegment(db, 1, FULL);
@@ -205,6 +215,15 @@ describe("segments", () => {
     });
     await addSegment(db, 1, FULL);
     await addSegment(db, 1, { ...FULL, name: "From video", sourceId: 1 });
+
+    // A second trip with a segment carrying the SAME source id. A query that
+    // filtered on source_id alone would return this one too.
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["other", "2026-07-27"],
+    });
+    await addSegment(db, 2, { ...FULL, name: "Other trip video", sourceId: 1 });
+
     expect((await listSegments(db, 1)).length).toBe(2);
     const fromVideo = await listSegments(db, 1, { sourceId: 1 });
     expect(fromVideo.length).toBe(1);
