@@ -85,6 +85,21 @@ describe("parseMentionsFile", () => {
     expect(errors[0]).toMatch(/^\[1\] tags/);
   });
 
+  test("a tag containing a comma is rejected, and the rest of the file still parses", () => {
+    // Tags share one comma-separated storage column (src/validate.ts's
+    // joinList). Without this check, a comma-bearing tag parses cleanly here
+    // and then throws deep inside createMention -> joinList mid-ingest,
+    // aborting every mention after it in the same batch.
+    const { specs, errors } = parseMentionsFile(JSON.stringify([
+      { text: "good" },
+      { text: "bad tags", tags: ["food,drink"] },
+    ]));
+    expect(specs.length).toBe(1);
+    expect(errors.length).toBe(1);
+    expect(errors[0]).toMatch(/^\[1\]/);
+    expect(errors[0]).toMatch(/comma/i);
+  });
+
   test("invalid JSON is a hard error naming the problem", () => {
     expect(() => parseMentionsFile("{not json")).toThrow(/JSON/i);
   });
@@ -262,6 +277,38 @@ describe("ingestMentions", () => {
     expect(failed!.state).toBe("pending");
     expect(failed!.reason).toContain("geocode failed");
     expect(failed!.reason).toContain("429");
+  });
+
+  test("a geocode result that fails segment creation is queued, and the batch survives", async () => {
+    // A malformed or hostile API response can carry an out-of-range
+    // coordinate (parsePoiResponse only checks lat/lon are finite, not in
+    // range). That reaches addSegment's own validate(), which throws — and
+    // until this fix, that throw was outside ingestMentions's try, aborting
+    // the whole batch after any earlier mentions had already been written.
+    const db = await ingestDb("segment-fail");
+    const r = await ingestMentions(db, 1, 1, [
+      { text: "bad coords", atSeconds: null, dwellMinutes: null, tags: [] },
+      { text: "good spot", atSeconds: null, dwellMinutes: null, tags: [] },
+    ], CENTRE, {
+      geocode: async (q) => q === "bad coords"
+        ? [{ ...poi("x"), latitude: 999 }]
+        : [poi("洪崖洞")],
+      sleepFn: NO_SLEEP,
+    });
+    expect(r).toEqual({ total: 2, geocoded: 1, queued: 0, failed: 1 });
+
+    const mentions = await listMentions(db, 1);
+    const bad = mentions.find((m) => m.text === "bad coords");
+    expect(bad!.state).toBe("pending");
+    expect(bad!.reason).toMatch(/could not create segment/);
+
+    // The point of the fix: the SECOND, well-formed mention in the same
+    // batch still became a segment, rather than the batch dying on the first.
+    const good = mentions.find((m) => m.text === "good spot");
+    expect(good!.state).toBe("resolved");
+    const segs = await listSegments(db, 1);
+    expect(segs.length).toBe(1);
+    expect(segs[0]!.name).toBe("good spot");
   });
 
   test("lookups are spaced to respect the 1 req/sec policy", async () => {

@@ -33,6 +33,14 @@ function readTags(raw: unknown, index: number): string[] {
     if (typeof t !== "string" || t.trim() === "") {
       throw new Error(`[${index}] tags must be non-empty strings`);
     }
+    // Tags share one comma-separated storage column (src/validate.ts's
+    // joinList). Rejected here, at parse time, so the bad entry is skipped
+    // like any other malformed one — rather than parsing clean and throwing
+    // deep inside createMention -> joinList mid-ingest, which would abort
+    // every mention after it in the same batch.
+    if (t.includes(",")) {
+      throw new Error(`[${index}] a tag may not contain a comma`);
+    }
     return t.trim();
   });
 }
@@ -164,40 +172,55 @@ export async function ingestMentions(
       continue;
     }
 
-    await setCandidates(db, mentionId, candidates.map((c, idx) => ({
-      ...c, rank: idx + 1,
-    })));
+    // The mention row already exists by this point, so anything below —
+    // storing candidates, classifying, or writing the segment — can be
+    // queued honestly instead of thrown. A malformed candidate (parsePoiResponse
+    // only checks lat/lon are finite, not in range) or a spec that fails
+    // segment validation would otherwise abort the whole batch after earlier
+    // mentions were already committed. Kept as a SEPARATE reason from
+    // "geocode failed" — the two say different things to whoever reads the
+    // queue, and merging them would be the same mistake as merging `failed`
+    // into `queued`.
+    try {
+      await setCandidates(db, mentionId, candidates.map((c, idx) => ({
+        ...c, rank: idx + 1,
+      })));
 
-    const verdict = classify(candidates);
-    if (verdict.kind === "queued") {
-      await queueMention(db, mentionId, verdict.reason);
-      result.queued += 1;
+      const verdict = classify(candidates);
+      if (verdict.kind === "queued") {
+        await queueMention(db, mentionId, verdict.reason);
+        result.queued += 1;
+        continue;
+      }
+
+      const c = verdict.candidate;
+      const segmentId = await addSegment(db, tripId, {
+        // The video's own words. `local_name` keeps OSM's, which comes back in
+        // local script and is the string to show a taxi driver.
+        name: spec.text,
+        localName: c.localName,
+        latitude: c.latitude,
+        longitude: c.longitude,
+        dwellMinutes: spec.dwellMinutes ?? DEFAULT_DWELL_MINUTES,
+        dwellIsDefault: spec.dwellMinutes === null,
+        cost: null,
+        tags: spec.tags,
+        // A geocoder does not know opening hours. NULL is UNKNOWN, and the
+        // scheduler already reports these with a "?" rather than assuming a
+        // window (M2-2).
+        opensMin: null,
+        closesMin: null,
+        closedDays: [],
+        sourceId,
+        sourceAtSeconds: spec.atSeconds,
+      });
+      await resolveMention(db, mentionId, segmentId);
+      result.geocoded += 1;
+    } catch (err) {
+      await queueMention(db, mentionId, `could not create segment: ${(err as Error).message}`);
+      result.failed += 1;
       continue;
     }
-
-    const c = verdict.candidate;
-    const segmentId = await addSegment(db, tripId, {
-      // The video's own words. `local_name` keeps OSM's, which comes back in
-      // local script and is the string to show a taxi driver.
-      name: spec.text,
-      localName: c.localName,
-      latitude: c.latitude,
-      longitude: c.longitude,
-      dwellMinutes: spec.dwellMinutes ?? DEFAULT_DWELL_MINUTES,
-      dwellIsDefault: spec.dwellMinutes === null,
-      cost: null,
-      tags: spec.tags,
-      // A geocoder does not know opening hours. NULL is UNKNOWN, and the
-      // scheduler already reports these with a "?" rather than assuming a
-      // window (M2-2).
-      opensMin: null,
-      closesMin: null,
-      closedDays: [],
-      sourceId,
-      sourceAtSeconds: spec.atSeconds,
-    });
-    await resolveMention(db, mentionId, segmentId);
-    result.geocoded += 1;
   }
 
   return result;
