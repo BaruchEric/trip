@@ -11,6 +11,7 @@ import { runWatchCommand, type WatchCommandDeps } from "@/commands/watch";
 import { runReviewCommand, type ReviewDeps } from "@/commands/review";
 import { runWhoCommand } from "@/commands/who";
 import { runPassCommand } from "@/commands/passes";
+import { runCostsCommand } from "@/commands/costs";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -31,6 +32,8 @@ Usage:
   trip seg rm <id>             Remove a segment
   trip pass add <name>         Add a transport pass --days=2-4 --price=45
   trip pass ls / rm <id>       List or remove passes
+  trip costs add <label>       Record what a source said a trip cost
+  trip costs ls / rm <id>      List or remove cost observations
   trip plan                    Compile a day-by-day itinerary [--pace=] [--mode=]
   trip day <n>                 Show one day
   trip pin <seg> --day=<n>     Fix a segment in place [--at=HH:MM]
@@ -134,6 +137,11 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   "pass add": { value: ["--days", "--price", "--cost"] },
   "pass ls": {},
   "pass rm": {},
+  // Fallback for a bare `trip costs`, and the union of the three below.
+  costs: { value: ["--amount", "--currency", "--days", "--people", "--source", "--at"] },
+  "costs add": { value: ["--amount", "--currency", "--days", "--people", "--source", "--at"] },
+  "costs ls": {},
+  "costs rm": {},
   "seg ls": { bool: ["--unplaced"], value: ["--from"] },
   "seg rm": {},
   "seg set": { value: ["--dur"] },
@@ -284,6 +292,23 @@ const SUBCOMMAND_HELP: Record<string, string> = {
 
   Frames are cached by window beside the database. A repeat call reuses
   them; --refresh re-extracts.
+`,
+  "costs add": `trip costs add <label...> --amount=230 --currency=USD
+                          [--days=4] [--people=1] [--source=1] [--at=19:29]
+
+  Records what a SOURCE said a trip cost -- someone else's trip, not yours.
+
+  --days and --people are what the figure COVERED. Both are needed to work
+  out a per-person-per-day rate, and omitting either leaves that rate
+  UNKNOWN rather than estimated: "401 dollars for four days" means
+  something very different for one traveller than for two.
+
+  These are never summed. A video may state components AND their total, so
+  adding the rows double-counts by exactly the total.
+
+  They are never shown beside your own plan's total either. One is what a
+  stranger spent and the other is what your plan costs, in different
+  currencies with no conversion available.
 `,
   "review ls": `trip review ls [--source=<id>]
 
@@ -460,6 +485,7 @@ async function route(
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
   if (cmd === "who") return runWhoCommand(db, args, json);
   if (cmd === "pass") return runPassCommand(db, args, json);
+  if (cmd === "costs") return runCostsCommand(db, args, json);
   return runTripsCommand(db, rest, json);
 }
 
