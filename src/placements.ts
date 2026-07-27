@@ -147,12 +147,20 @@ export async function readPins(db: Client, tripId: number): Promise<Pin[]> {
 }
 
 /** `startMin` null is a day-lock: the day is fixed, the time is still the
- *  compiler's to choose. That is what `trip move` produces. Writes only the
- *  assertion columns (`pinned`, `day_number`, `pin_start_minutes`) — never
- *  `start_minutes`, which belongs to `savePlacements` alone. On a fresh
- *  INSERT, `start_minutes` is simply omitted, so it lands NULL: "no plan has
- *  compiled this segment yet," not a value this function has any business
- *  asserting. */
+ *  compiler's to choose. That is what `trip move` produces.
+ *
+ *  Writes the assertion columns (`pinned`, `day_number`, `pin_start_minutes`)
+ *  AND CLEARS `start_minutes` TO NULL. That clearing is load-bearing — do not
+ *  remove it. `start_minutes` is the compiler's result, and re-pinning makes
+ *  any previous result obsolete: the segment's day just changed underneath it.
+ *  Leaving the old value behind is what made `pin B --day=2 --at=13:00` print
+ *  "at 13:00" while `trip day 2` answered "09:00 B", and made a moved segment
+ *  render at a time outside its new day's window. NULL is what arms
+ *  `readPlacements`' skip and `doDay`'s "pinned but not placed" report, so the
+ *  segment is named as awaiting a replan instead of shown at a fictional time.
+ *
+ *  On a fresh INSERT `start_minutes` is simply omitted, landing NULL for the
+ *  same reason: "no plan has compiled this segment yet." */
 export async function setPinned(
   db: Client,
   segmentId: number,
