@@ -4,7 +4,7 @@
  *  script, building argv, spawning, distinguishing failure from an empty
  *  transcript) live in one place and the parser's tests stay network-free. */
 
-import { existsSync, mkdtempSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
 import { parseWatchReport, type WatchReport } from "@/watch/parse-report";
@@ -81,6 +81,108 @@ export function watchArgv(
   ];
   if (!whisper) argv.push("--no-whisper");
   return argv;
+}
+
+export interface FramesOptions {
+  scriptPath?: string;
+  home?: string;
+  runner?: WatchRunner;
+  maxFrames?: number;
+  width?: number;
+}
+
+export interface FramesResult {
+  /** Where the frames landed. Printed for the agent to read from. */
+  dir: string;
+  /** Absolute paths, sorted, so the caller's output is stable across runs. */
+  files: string[];
+}
+
+/** argv for a WINDOWED frame pass.
+ *
+ *  Distinct from `watchArgv` on purpose. That one pins `--max-frames 1`
+ *  because the ordinary watch wants a transcript and frames are the cost
+ *  dial; this command exists precisely because one frame is sometimes not
+ *  what you want. Inheriting the pin would make the whole command a no-op
+ *  that looks like it worked.
+ *
+ *  `--no-whisper` is unconditional here, where `watchArgv` makes it a flag:
+ *  this pass wants pictures, and the transcript it would produce is already
+ *  in the database. Same space-separated style as `watchArgv` — one
+ *  convention per script. */
+export function framesArgv(
+  script: string,
+  url: string,
+  outDir: string,
+  from: string,
+  to: string,
+  maxFrames: number,
+  width: number,
+): string[] {
+  return [
+    script, url,
+    "--max-frames", String(maxFrames),
+    "--resolution", String(width),
+    "--start", from,
+    "--end", to,
+    "--out-dir", outDir,
+    "--no-whisper",
+  ];
+}
+
+/** Extract frames for one window into `outDir`, and LEAVE THEM THERE.
+ *
+ *  `runWatch` deletes its working directory on success because its
+ *  deliverable is the parsed report. Here the files ARE the deliverable, so
+ *  the directory is kept and its path returned. */
+export async function runFrames(
+  url: string,
+  outDir: string,
+  from: string,
+  to: string,
+  opts: FramesOptions = {},
+): Promise<FramesResult> {
+  const script = opts.scriptPath ?? resolveWatchScript(opts.home);
+  const runner = opts.runner ?? defaultRunner;
+  mkdirSync(outDir, { recursive: true });
+
+  let result: RunResult;
+  try {
+    result = await runner(framesArgv(
+      script, url, outDir, from, to, opts.maxFrames ?? 12, opts.width ?? 900,
+    ));
+  } catch (err) {
+    throw new Error(
+      `watch.py could not be run: ${(err as Error).message}\n` +
+      `Working directory kept at ${outDir}`,
+    );
+  }
+  if (result.code !== 0) {
+    throw new Error(
+      `watch.py failed (exit ${result.code})` +
+      `${result.stderr.trim() ? `:\n${tail(result.stderr)}` : ""}\n` +
+      `Working directory kept at ${outDir}`,
+    );
+  }
+
+  const dir = join(outDir, "frames");
+  // `.jpg` only: watch.py leaves its own working files beside the frames, and
+  // counting one as a frame would make an empty window look populated —
+  // exactly what the guard below exists to prevent.
+  const files = existsSync(dir)
+    ? readdirSync(dir).filter((f) => f.endsWith(".jpg")).sort()
+        .map((f) => join(dir, f))
+    : [];
+  if (files.length === 0) {
+    // Absence is loud: an empty result here would tell the agent the window
+    // genuinely showed nothing, which is a different fact from extraction
+    // having produced nothing.
+    throw new Error(
+      `watch.py exited 0 but wrote no frames for ${from}-${to}. ` +
+      `Working directory kept at ${outDir}`,
+    );
+  }
+  return { dir, files };
 }
 
 const defaultRunner: WatchRunner = async (argv) => {
