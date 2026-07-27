@@ -39,7 +39,10 @@ Flags:
 
 Every command validates its own flags: one it does not own, or a value flag
 given space-separated instead of --name=value, is rejected rather than
-silently ignored.
+silently ignored. Validation is keyed per TOP-LEVEL command, not per
+subcommand, though - "review"'s flags cover "ls" and "resolve" together, so
+"trip review ls --reject" passes validation but ls itself never reads
+--reject and silently ignores it.
 `;
 
 export interface CliResult {

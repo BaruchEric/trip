@@ -278,6 +278,19 @@ describe("cli: per-command flag validation (M3)", () => {
     expect(JSON.parse(review.stdout).error).toContain("no mention #1");
   });
 
+  test("review ls --reject passes validation but ls itself silently ignores it", async () => {
+    // Documents the USAGE comment this test guards: validation is keyed per
+    // TOP-LEVEL command, not per subcommand. "review"'s flag set covers both
+    // "ls" and "resolve" together, so --reject (owned by "resolve") passes
+    // the validator for "ls" too, then reaches lsCmd, which never reads it -
+    // no "unknown flag" error, no different output, just silently ignored.
+    const p = dbPath("review-ls-reject");
+    await run(["new", "lisbon"], { dbPath: p });
+    const r = await run(["review", "ls", "--reject", "--json"], { dbPath: p });
+    expect(r.code).toBe(0);
+    expect(JSON.parse(r.stdout).pending).toEqual([]);
+  });
+
   test("watch and review are routed", async () => {
     const p = dbPath("route");
     // No active trip: the command must be REACHED and report that, rather
