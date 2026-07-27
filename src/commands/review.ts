@@ -8,6 +8,7 @@ import {
 import { addSegment } from "@/segments";
 import { classify, DEFAULT_DWELL_MINUTES } from "@/watch/ingest";
 import { SEARCH_RADIUS_KM, geocodePoi } from "@/geo/poi";
+import { getSource } from "@/sources";
 import { renderReviewQueue } from "@/render-review";
 
 const USAGE =
@@ -47,9 +48,24 @@ async function lsCmd(
   json: boolean,
 ): Promise<string> {
   const sourceRaw = flag(argv, "--source");
+  let sourceId: number | null = null;
+  if (sourceRaw !== null) {
+    sourceId = Number(sourceRaw);
+    // A NaN id (e.g. --source=abc) must not reach the driver as a query
+    // param - that surfaces as a raw driver error instead of a message
+    // naming the problem. Validated the same way `watch ingest` validates
+    // --source, so a typo reads as "no such source", never as a drained
+    // queue (an empty filter result IS a legitimate answer for a source
+    // that exists; it is not for one that does not).
+    if (!Number.isInteger(sourceId)) {
+      throw new Error(`invalid --source "${sourceRaw}" - must be a whole number`);
+    }
+    const source = await getSource(db, trip.id, sourceId);
+    if (source === null) throw new Error(`no source #${sourceRaw} in this trip`);
+  }
   const pending = await listMentions(db, trip.id, {
     state: "pending",
-    ...(sourceRaw === null ? {} : { sourceId: Number(sourceRaw) }),
+    ...(sourceId === null ? {} : { sourceId }),
   });
 
   const dest = trip.destinationId === null

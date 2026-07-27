@@ -86,7 +86,13 @@ describe("trip review ls", () => {
 
   test("--source scopes the queue to one video", async () => {
     const { db } = await queued("ls-source");
-    const out = JSON.parse(await runReviewCommand(db, ["ls", "--source=99"], true));
+    // A second, real source with no mentions of its own - proves the filter
+    // actually scopes rather than just happening to see an empty queue.
+    await db.execute({
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/y", "2026-07-27T00:00:00Z"],
+    });
+    const out = JSON.parse(await runReviewCommand(db, ["ls", "--source=2"], true));
     expect(out.pending).toEqual([]);
   });
 
@@ -94,6 +100,24 @@ describe("trip review ls", () => {
     const { db, id } = await queued("ls-source-hit");
     const out = JSON.parse(await runReviewCommand(db, ["ls", "--source=1"], true));
     expect(out.pending.map((m: { id: number }) => m.id)).toEqual([id]);
+  });
+
+  test("an unknown --source is named, not a drained queue", async () => {
+    // Regression (M3 final review): review ls did not validate --source at
+    // all, so a typo'd id reported "nothing pending review" indistinguishable
+    // from a genuinely drained queue. Mirrors watch ingest's own
+    // "no source #999" validation (src/commands/watch.ts).
+    const { db } = await queued("ls-source-unknown");
+    await expect(
+      runReviewCommand(db, ["ls", "--source=99"], true),
+    ).rejects.toThrow(/no source #99/);
+  });
+
+  test("a non-numeric --source is rejected, not sent to the driver as NaN", async () => {
+    const { db } = await queued("ls-source-nan");
+    await expect(
+      runReviewCommand(db, ["ls", "--source=abc"], true),
+    ).rejects.toThrow(/invalid --source/);
   });
 
   test("an unknown subcommand is a usage error", async () => {
