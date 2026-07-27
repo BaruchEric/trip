@@ -277,6 +277,18 @@ const MIGRATIONS: Migration[] = [
             `ALTER TABLE segments ADD COLUMN dwell_is_default INTEGER NOT NULL DEFAULT 0`,
           ],
   },
+  {
+    version: 7,
+    // What the extractor said this place IS, so a unique-but-wrong geocode
+    // result can be caught (M4). NULL means none was declared — never '' —
+    // and NULL is what routes a mention to the denylist rather than to the
+    // kind comparison. The two cases are only distinguishable if this stays
+    // NULL, so no DEFAULT is given.
+    statements: async (db) =>
+      (await hasColumn(db, "mentions", "kind"))
+        ? []
+        : [`ALTER TABLE mentions ADD COLUMN kind TEXT`],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */

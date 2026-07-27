@@ -89,6 +89,7 @@ describe("segments", () => {
     });
     const mentionId = await createMention(db, 1, 1, {
       text: "Hongya Cave", atSeconds: 272, dwellMinutes: null, tags: [],
+      kind: null,
     });
     const id = await addSegment(db, 1, { ...FULL, sourceId: 1 });
     await resolveMention(db, mentionId, id);
@@ -255,6 +256,7 @@ describe("segments", () => {
     });
     const mentionId = await createMention(db, 1, 1, {
       text: "Hongya Cave", atSeconds: 272, dwellMinutes: null, tags: [],
+      kind: null,
     });
     const segId = await addSegment(db, 1, { ...FULL, sourceId: 1 });
     await resolveMention(db, mentionId, segId);

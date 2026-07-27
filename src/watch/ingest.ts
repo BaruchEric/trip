@@ -154,7 +154,12 @@ export async function ingestMentions(
   };
 
   for (const [i, spec] of specs.entries()) {
-    const mentionId = await createMention(db, tripId, sourceId, spec);
+    // `kind` reaches MentionSpec with the contract change in the next commit.
+    // Until then every ingested mention declares none, which is exactly M3's
+    // behaviour — the column exists but nothing writes a value to it yet.
+    const mentionId = await createMention(
+      db, tripId, sourceId, { ...spec, kind: null },
+    );
 
     // Spaced, not batched: Nominatim's policy is 1 request/second. The wait
     // goes BEFORE each lookup except the first, so a single-mention ingest

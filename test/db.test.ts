@@ -424,10 +424,13 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 6", async () => {
-    const db = openDb(tmpDb("m6-version"));
+  test("schema version is 7", async () => {
+    // Deliberately a hardcoded number, not SCHEMA_VERSION — against
+    // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
+    // migration must be a conscious act that also updates this line.
+    const db = openDb(tmpDb("m7-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(6);
+    expect(await schemaVersion(db)).toBe(7);
   });
 
   test("migration 6 backfills an existing segments row instead of erasing it", async () => {
@@ -450,7 +453,11 @@ describe("schema migrations", () => {
 
     await migrate(db);
 
-    expect(await schemaVersion(db)).toBe(6);
+    // SCHEMA_VERSION, not a literal: this test is about the backfill, and
+    // asserting migrate() reached the latest version is the point. Pinning
+    // the number here would make every future migration edit this test for
+    // no reason — the pin lives in "schema version is 7" above.
+    expect(await schemaVersion(db)).toBe(SCHEMA_VERSION);
     const row = await db.execute("SELECT * FROM segments WHERE id = 1");
     expect(row.rows).toHaveLength(1);
     const r = row.rows[0]!;
@@ -464,5 +471,19 @@ describe("schema migrations", () => {
     // Untouched by the backfill.
     expect(r.name).toBe("Torre");
     expect(Number(r.dwell_minutes)).toBe(60);
+  });
+
+  test("migration 7 adds mentions.kind, and re-running is a no-op", async () => {
+    const db = openDb(tmpDb("m7"));
+    await migrate(db);
+
+    const cols = (await db.execute("PRAGMA table_info(mentions)"))
+      .rows.map((r) => String(r.name));
+    expect(cols).toContain("kind");
+
+    // Every migration is guarded by a hasColumn/hasTable check, so a second
+    // run must not throw and must not change the version.
+    await migrate(db);
+    expect(await schemaVersion(db)).toBe(SCHEMA_VERSION);
   });
 });

@@ -1,5 +1,6 @@
 import type { Client, Row } from "@libsql/client";
 import { joinList } from "@/validate";
+import type { Kind } from "@/geo/plausibility";
 
 export type MentionState = "pending" | "resolved" | "rejected";
 
@@ -33,6 +34,13 @@ export interface Mention {
   atSeconds: number | null;
   dwellMinutes: number | null;
   tags: string[];
+  /** What the extractor said this place is, for the plausibility check.
+   *  NULL means it declared none — the denylist applies instead.
+   *
+   *  NOT `tags`: `tags` is user-facing categorisation that flows into
+   *  `segments.tags` and is read by the planner. This is a geocode
+   *  verification input, consumed by `classify` and never rendered. */
+  kind: Kind | null;
   reason: string | null;
   segmentId: number | null;
   rejectedAt: string | null;
@@ -51,6 +59,10 @@ export interface MentionInput {
   atSeconds: number | null;
   dwellMinutes: number | null;
   tags: string[];
+  /** Required, not optional: an optional field would let a future writer
+   *  forget it and silently store NULL, disabling the plausibility check for
+   *  that path with no signal. The compiler names every writer instead. */
+  kind: Kind | null;
 }
 
 function strOrNull(v: unknown): string | null {
@@ -95,7 +107,7 @@ function toCandidate(row: Row): MentionCandidate {
 }
 
 const SELECT = `SELECT id, trip_id, source_id, text, resolved_name, at_seconds,
-                       dwell_minutes, tags, reason, segment_id, rejected_at
+                       dwell_minutes, tags, kind, reason, segment_id, rejected_at
                 FROM mentions`;
 
 function toMention(row: Row, candidates: MentionCandidate[]): Mention {
@@ -110,6 +122,11 @@ function toMention(row: Row, candidates: MentionCandidate[]): Mention {
     atSeconds: numOrNull(row.at_seconds),
     dwellMinutes: numOrNull(row.dwell_minutes),
     tags: splitList(row.tags),
+    // The cast is honest here and nowhere else: this column is only ever
+    // written through `MentionInput.kind`, which is `Kind | null` at the type
+    // level, and the mentions-file parser rejects anything outside the closed
+    // vocabulary before it can be stored.
+    kind: strOrNull(row.kind) as Kind | null,
     reason: strOrNull(row.reason),
     segmentId: numOrNull(row.segment_id),
     rejectedAt: strOrNull(row.rejected_at),
@@ -132,11 +149,11 @@ export async function createMention(
   const tags = joinList(input.tags, "tag");
   const r = await db.execute({
     sql: `INSERT INTO mentions
-            (trip_id, source_id, text, at_seconds, dwell_minutes, tags)
-          VALUES (?, ?, ?, ?, ?, ?)
+            (trip_id, source_id, text, at_seconds, dwell_minutes, tags, kind)
+          VALUES (?, ?, ?, ?, ?, ?, ?)
           RETURNING id`,
     args: [tripId, sourceId, input.text.trim(), input.atSeconds,
-           input.dwellMinutes, tags],
+           input.dwellMinutes, tags, input.kind],
   });
   return Number(r.rows[0]!.id);
 }

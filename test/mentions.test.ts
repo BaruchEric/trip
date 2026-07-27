@@ -26,7 +26,10 @@ async function freshDb(tag: string) {
   return db;
 }
 
-const HOTPOT = { text: "hot pot", atSeconds: 272, dwellMinutes: null, tags: ["food"] };
+const HOTPOT = {
+  text: "hot pot", atSeconds: 272, dwellMinutes: null, tags: ["food"],
+  kind: null,
+};
 
 const CANDIDATE = {
   rank: 1, displayName: "夜福火锅", localName: "夜福火锅",
@@ -36,6 +39,24 @@ const CANDIDATE = {
 };
 
 describe("mentions", () => {
+  test("kind round-trips, and NULL means none was declared", async () => {
+    const db = await freshDb("kind-roundtrip");
+
+    const withKind = await createMention(db, 1, 1, {
+      text: "Jiefangbei Pedestrian Street",
+      atSeconds: 272, dwellMinutes: null, tags: [], kind: "street",
+    });
+    const without = await createMention(db, 1, 1, {
+      text: "that ramen spot",
+      atSeconds: null, dwellMinutes: null, tags: [], kind: null,
+    });
+
+    expect((await getMention(db, 1, withKind))!.kind).toBe("street");
+    // NULL, not "". An undeclared kind is a fact worth keeping distinct: it is
+    // what routes the mention to the denylist instead of the kind comparison.
+    expect((await getMention(db, 1, without))!.kind).toBeNull();
+  });
+
   test("a new mention is pending and carries its reason", async () => {
     const db = await freshDb("pending");
     const id = await createMention(db, 1, 1, HOTPOT);

@@ -36,7 +36,8 @@ async function queued(tag: string, opts: { dwellMinutes?: number | null } = {}) 
     args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
   });
   const id = await createMention(db, 1, 1, {
-    text: "hot pot", atSeconds: 272, dwellMinutes: opts.dwellMinutes ?? null, tags: [],
+    text: "hot pot", atSeconds: 272, dwellMinutes: opts.dwellMinutes ?? null,
+    tags: [], kind: null,
   });
   await setCandidates(db, id, [{
     rank: 1, displayName: "夜福火锅, 渝中区, 重庆市", localName: "夜福火锅",
