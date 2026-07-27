@@ -73,9 +73,18 @@ async function addCmd(
     const [from, to] = hoursRaw.split("-");
     if (!from || !to) throw new Error("--hours must look like 10:00-18:00");
     opensMin = parseClock(from);
-    // 24:00 is a legitimate closing time and parseClock rejects it, so the
-    // end of day is spelled 23:59 internally.
-    closesMin = to === "24:00" ? 1439 : parseClock(to);
+    // 24:00 is a legitimate closing time and parseClock rejects it (it bounds
+    // hours at 23), so this is the single place the string is understood.
+    //
+    // It maps to 1440, NOT 1439. The rest of the codebase already spells the
+    // end of day 1440 — `plan/order.ts` calls a day 1440 minutes, `plan.ts`
+    // tests day overflow at >= 1440, and `addSegment`'s bound accepts 1440 —
+    // so 1439 here was the lone dissenter, and it cost a real minute:
+    // `schedule.ts` rejects a placement when `start + dwell > closesMin`, so
+    // 22:00 + 120m == 1440 was refused at a place the user said closes at
+    // midnight. It also made the CLI render `--hours=10:00-24:00` back as
+    // `10:00-23:59`, restating the user's input as something they did not type.
+    closesMin = to === "24:00" ? 1440 : parseClock(to);
     if (closesMin <= opensMin) throw new Error("--hours must close after it opens");
   }
 

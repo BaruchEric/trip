@@ -3,6 +3,7 @@ import { openDb, migrate } from "@/db";
 import { createTrip, setActiveTrip } from "@/trips";
 import { runSegmentsCommand } from "@/commands/segments";
 import { addSegment, listSegments } from "@/segments";
+import { renderSegmentList } from "@/render-plan";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -36,8 +37,21 @@ describe("trip seg add", () => {
     expect(s!.opensMin).toBe(600);
     // A swap of opensMin/closesMin was previously caught only incidentally,
     // via the closesMin <= opensMin guard throwing. Assert closesMin directly.
-    expect(s!.closesMin).toBe(1439);
+    // 1440, not 1439: M4-7 canonicalised midnight on the spelling the rest of
+    // the codebase already used.
+    expect(s!.closesMin).toBe(1440);
     expect(s!.closedDays).toEqual(["mon"]);
+  });
+
+  test("--hours=...-24:00 renders back as 24:00, not 23:59", async () => {
+    // M4-7. The CLI used to store 1439 for 24:00, so it echoed the user's
+    // `10:00-24:00` back as `10:00-23:59` — restating their input as
+    // something they did not type. Reverting the fix fails this line.
+    const db = await freshDb("midnight-render");
+    await runSegmentsCommand(db, [
+      "add", "Late", "Bar", "--dur=60m", "--hours=18:00-24:00",
+    ], false);
+    expect(renderSegmentList(await listSegments(db, 1))).toContain("18:00-24:00");
   });
 
   test("json flags whether coordinates and hours are known, not just id/name", async () => {
