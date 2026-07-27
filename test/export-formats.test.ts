@@ -22,7 +22,8 @@ function view(o: Partial<ExportView> = {}): ExportView {
       stops: [stop()], dayTotal: { total: null, unknown: 1 },
     }],
     unplaced: [], travellers: [], perTraveller: [],
-    tripTotal: { total: null, unknown: 1 }, calibration: null, ...o,
+    tripTotal: { total: null, unknown: 1 },
+    passTotal: { total: 0, unknown: 0 }, calibration: null, ...o,
   };
 }
 

@@ -130,6 +130,44 @@ describe("trip budget", () => {
     expect(out).toMatch(/OVER by 121.50 USD/);
   });
 
+  test("unknown admissions ALONE block a single figure", async () => {
+    // Isolates one blocker. Every other test that has unknown admissions also
+    // has a currency mismatch or no --daily, so this decision was unguarded
+    // until a mutation removing it killed nothing -- the same shape as M5's
+    // unguarded child-price case and M7's dead code.
+    //
+    // Same currency, a daily selected, and exactly one unpriced segment: the
+    // ONLY thing standing between this and a number is the unknown price.
+    const { path } = await tripDb("onlyunknown", { currency: "USD" });
+    const j = JSON.parse(
+      (await run(["budget", "--daily=4", "--limit=1000", "--json"], { dbPath: path })).stdout);
+    expect(j.admissions.unknown).toBe(1);
+    expect(j.blockers).toHaveLength(1);
+    expect(j.blockers[0]).toMatch(/no price recorded/);
+    // A floor is not a total, so there is no single figure.
+    expect(j.total).toBeNull();
+
+    const out = (await run(["budget", "--daily=4", "--limit=1000"], { dbPath: path })).stdout;
+    expect(out).toMatch(/No single figure, because:/);
+    expect(out).toMatch(/floor rather than a total/);
+  });
+
+  test("a transport pass reaches the budget", async () => {
+    // Nearly shipped as a hardcoded zero and documented as a limitation. A
+    // budget that silently omits a pass understates the total, which is the
+    // quiet understatement this whole project refuses -- so it was fixed
+    // rather than written down.
+    const { path } = await tripDb("pass", { currency: "USD" });
+    await run(["seg", "price", "1", "--price=0"], { dbPath: path });
+    await run(["pass", "add", "Metro 3-day", "--days=1-3", "--price=45"], { dbPath: path });
+    await run(["plan"], { dbPath: path });
+    const out = (await run(["budget", "--daily=4", "--limit=2000"], { dbPath: path })).stdout;
+    expect(out).toMatch(/PASSES/);
+    // 45 per traveller x 2 = 90, on top of 20 admissions and 601.50 daily.
+    expect(out).toContain("90 USD");
+    expect(out).toContain("711.50 USD");
+  });
+
   test("with no observations it says daily costs are unaccounted, not free", async () => {
     const { path } = await tripDb("none", { currency: "CNY", card: false });
     const out = (await run(["budget"], { dbPath: path })).stdout;

@@ -73,6 +73,9 @@ export interface ExportView {
    *  worse than pointing at the file that has it. */
   perTraveller: { id: number; label: string; total: number | null }[];
   tripTotal: { total: number | null; unknown: number };
+  /** Counted ONCE per pass, never sliced across the days it covers: no single
+   *  day costs a third of a three-day pass, and an average is not a fact. */
+  passTotal: { total: number | null; unknown: number };
   /** null when no legs are stored -- which is UNKNOWN, not agreement. */
   calibration: Calibration | null;
 }
@@ -179,6 +182,7 @@ export async function buildExportView(db: Client): Promise<ExportView> {
       total: perTravellerTotal(pricing, reconciled, t.id),
     })),
     tripTotal: totalOf(reconciled.map((p) => pricing.bySegment.get(p.segmentId))),
+    passTotal: totalOf(pricing.passes.map((x) => x.price)),
     calibration: legs.length === 0 ? null : calibrate(legs, mode),
   };
 }

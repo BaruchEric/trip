@@ -46,9 +46,10 @@ export async function runBudgetCommand(
     days: view.days.length,
     travellers: view.travellers.length,
     admissions: view.tripTotal,
-    // Passes are already inside the plan's pricing; surfaced separately here
-    // only when the view has them.
-    passes: { total: 0, unknown: 0 },
+    // Real, not a hardcoded zero. A budget that silently omitted transport
+    // passes would understate the total, which is the quiet understatement
+    // this whole project refuses.
+    passes: view.passTotal,
     observations,
     dailyId: dailyRaw,
     limit,
