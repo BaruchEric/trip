@@ -21,8 +21,18 @@ export function renderReviewQueue(
     // A missing timestamp is named, not rendered as 00:00 — second 0 is the
     // first frame of the video and would send a reader to the wrong place.
     const at = m.atSeconds === null ? "no timestamp" : formatStamp(m.atSeconds);
+    // BOTH facts, the way displayName keeps a segment's name beside its local
+    // name. Rendering `text` alone meant a failed `--rename` left you looking
+    // at the name you had just replaced, unable to see what was stored or
+    // queried — found by M6's first real end-to-end run, where ten of eleven
+    // caption names needed renaming and several still missed. Rendering
+    // `name` alone would lose what the video actually SAID, which is the one
+    // thing a mention exists to record.
+    const said = m.resolvedName !== null && m.resolvedName !== m.text
+      ? `  (said: "${m.text}")`
+      : "";
     lines.push(
-      `#${m.id}  "${m.text}"  (source ${m.sourceId}, ${at}) - ${m.reason ?? "pending"}`,
+      `#${m.id}  "${m.name}"${said}  (source ${m.sourceId}, ${at}) - ${m.reason ?? "pending"}`,
     );
     if (m.candidates.length === 0) {
       lines.push(

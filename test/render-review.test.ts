@@ -8,7 +8,7 @@ function mention(over: Partial<Mention> = {}): Mention {
     text: "hot pot", resolvedName: null,
     atSeconds: 272, dwellMinutes: null, tags: [], kind: null, price: [],
     reason: "2 candidates", segmentId: null, rejectedAt: null,
-    state: "pending", name: "hot pot",
+    state: "pending",
     candidates: [
       {
         id: 1, mentionId: 4, rank: 1,
@@ -28,6 +28,11 @@ function mention(over: Partial<Mention> = {}): Mention {
       },
     ],
     ...over,
+    // DERIVED, exactly as toMention derives it, and after the spread so a
+    // test that sets resolvedName gets a matching name without restating it.
+    // Hardcoding it here made the factory produce a Mention shape the storage
+    // layer can never produce.
+    name: over.name ?? over.resolvedName ?? over.text ?? "hot pot",
   };
 }
 
@@ -116,5 +121,41 @@ describe("renderReviewQueue", () => {
       "Chongqing", 25,
     );
     expect(out).toContain("1. 夜福火锅 - 1.4 km");
+  });
+});
+
+describe("M6: a renamed mention shows both names", () => {
+  test("a renamed mention shows the new name AND what the video said", () => {
+    // Found by the first real end-to-end run: after a --rename that still
+    // failed, the queue showed the name you had just replaced, so you could
+    // not see what was stored or what was queried -- and a second attempt
+    // looked like it was operating on the original.
+    const out = renderReviewQueue([mention({
+      text: "Longman how old street",
+      resolvedName: "Longmenhao Old Street",
+      reason: "no match",
+      candidates: [],
+    })], "Chongqing", 25);
+    expect(out).toContain("Longmenhao Old Street");
+    expect(out).toContain("Longman how old street");
+    expect(out).toMatch(/said/);
+  });
+
+  test("a mention nobody renamed renders exactly as before", () => {
+    // The half that matters more: this must not churn every queue line or
+    // every existing review test.
+    const out = renderReviewQueue([mention({
+      text: "hot pot", resolvedName: null,
+    })], "Chongqing", 25);
+    expect(out).toContain(`"hot pot"`);
+    expect(out).not.toMatch(/said/);
+  });
+
+  test("a rename to the same string adds no parenthetical", () => {
+    const out = renderReviewQueue([mention({
+      text: "Shibati", resolvedName: "Shibati", reason: "2 candidates",
+    })], "Chongqing", 25);
+    expect(out).toContain(`"Shibati"`);
+    expect(out).not.toMatch(/said/);
   });
 });
