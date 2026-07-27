@@ -23,9 +23,13 @@ Re-queried 2026-07-27 while scoping this milestone (full output in the appendix)
 | Query | OSM result | M3 verdict |
 |---|---|---|
 | `Luohan Temple` | `amenity/place_of_worship` | correct |
-| `Hongya Cave` | `building/yes` | correct |
+| `Hongya Cave` | `building/yes` — **see the correction below** | correct |
 | `Ring Shopping Park` | **0 results** | recorded correct; does not reproduce |
 | `Jiefangbei Pedestrian Street` | `tourism/hotel` | **wrong** |
+
+**Correction, made during implementation.** That scoping query omitted `addressdetails=1`, which `geocodePoi` sends. With it, Nominatim reports **the same OSM object** — `way/939578294` — as **`tourism/attraction`**, not `building/yes`. Verified both ways against the live API and captured in `test/fixtures/nominatim-hongya-cave.json`.
+
+The argument below is unchanged and in fact strengthened: `tourism/attraction` is a catch-all in exactly the way `building/yes` is, and it is what `trip` *actually* sees for a correct match. Filing it under `culture` — which the first draft of the family map did — would have mis-flagged a real result in live use rather than only in theory.
 
 Two things follow, and both shaped the design.
 
@@ -252,6 +256,15 @@ Nominatim, `viewbox=106.35,29.65,106.65,29.45&bounded=1&limit=5&format=jsonv2`, 
 "Ring Shopping Park"           n=0
 "Jiefangbei Pedestrian Street" n=1  tourism/hotel             rank 30  imp 0.0001  你好酒店(重庆解放碑步行街店)
 ```
+
+**This query is not the one the code makes.** It omits `addressdetails=1`. Re-run with it, as `geocodePoi` does:
+
+```
+"Hongya Cave"  without addressdetails  ->  building/yes       way/939578294  洪崖洞
+"Hongya Cave"  with addressdetails=1   ->  tourism/attraction way/939578294  洪崖洞
+```
+
+Same object, different reported primary tag. The lesson generalises past this one place: **evidence gathered with a query that differs from the production query is evidence about a different question.** M3's acceptance appendix has the same shape of gap — results recorded in prose rather than captured — and M4's fixtures are captured through `parsePoiResponse` for exactly this reason.
 
 Two findings recorded at the top of this document come from exactly this output: `building/yes` on a correct match, which killed the naive form of the check, and `Ring Shopping Park` returning nothing, which reduced M3's four-point evidence base to three.
 
