@@ -136,11 +136,19 @@ export function renderDay(
   withBreakdown = false,
   // Absent means no hop lines at all, exactly as before M8.
   travel?: PlanTravel,
+  // DEFAULTS TO TRUE, deliberately. `renderPlan` passes false and appends the
+  // caveat once at the end instead of once per day. Every other caller gets it
+  // without having to remember -- and a caller who forgets ends up with the
+  // caveat twice rather than never, which is the failure worth having. M8
+  // shipped `trip day` with no hop lines at all because a second call site was
+  // missed; a flag defaulting to silence would be that defect again.
+  withTransitCaveat = true,
 ): string {
   const lines = [
     `Day ${day.day}  ${day.date} ${day.weekday}  ` +
     `${formatClock(day.startMin)}-${formatClock(day.endMin)}`,
   ];
+  let sawGraph = false;
   const onDay = placements
     .filter((p) => p.day === day.day)
     // (ordinal, startMin, segmentId), not ordinal alone: between `trip
@@ -186,6 +194,7 @@ export function renderDay(
       // optimistic on hops under 2 km -- which is most of a day -- so a reader
       // deserves to know which of the two kinds of number they are looking at.
       const hop = travel === undefined ? null : hopLine(previous, s, travel);
+      if (hop !== null && travel !== undefined && usedGraph(previous, s, travel)) sawGraph = true;
       if (hop !== null) lines.push(hop);
       previous = s;
 
@@ -256,7 +265,28 @@ export function renderDay(
       lines.push(`  ${segments.get(u.segmentId)?.name ?? `#${u.segmentId}`} - ${u.reason}`);
     }
   }
+  if (withTransitCaveat) lines.push(...transitCaveat(sawGraph));
   return lines.join("\n");
+}
+
+/** Did this hop's number come from the station graph, in either direction?
+ *
+ *  True for a modelled ride AND for a walk the graph told you to take: both
+ *  rest on OSM's stations, and the caveat about what OSM does not carry
+ *  applies to the decision as much as to the duration. */
+function usedGraph(
+  from: Segment | undefined,
+  to: Segment | undefined,
+  travel: PlanTravel,
+): boolean {
+  if (!from || !to) return false;
+  if (from.latitude === null || from.longitude === null) return false;
+  if (to.latitude === null || to.longitude === null) return false;
+  return travel.model.estimate(
+    { latitude: from.latitude, longitude: from.longitude },
+    { latitude: to.latitude, longitude: to.longitude },
+    travel.mode,
+  ).transit !== undefined;
 }
 
 /** null when there is no hop to describe: the first stop of a day, a segment
@@ -326,7 +356,19 @@ export function renderPlan(
 ): string {
   const byId = new Map(segments.map((s) => [s.id, s]));
   const parts = days.map((d) =>
-    renderDay(d, placements, byId, [], pricing, false, travel));
+    renderDay(d, placements, byId, [], pricing, false, travel, false));
+  // Per day, and in the SAME sorted order renderDay uses. Walking the flat
+  // placements array would pair the last stop of one day with the first of the
+  // next -- a hop that does not exist -- and would read them in whatever order
+  // the compiler happened to emit.
+  const sawGraph = travel !== undefined && days.some((d) => {
+    const onDay = placements
+      .filter((p) => p.day === d.day)
+      .sort((a, b) => a.ordinal - b.ordinal || a.startMin - b.startMin
+        || a.segmentId - b.segmentId);
+    return onDay.some((p, i) =>
+      i > 0 && usedGraph(byId.get(onDay[i - 1]!.segmentId), byId.get(p.segmentId), travel));
+  });
 
   if (pricing !== undefined) {
     if (pricing.travellers.length === 0) {
@@ -382,5 +424,8 @@ export function renderPlan(
       parts.push(`  ${byId.get(u.segmentId)?.name ?? `#${u.segmentId}`} - ${u.reason}`);
     }
   }
+  // Once for the whole plan rather than once per day, which is why the
+  // per-day calls above pass false.
+  parts.push(...transitCaveat(sawGraph));
   return parts.join("\n");
 }
