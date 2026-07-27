@@ -381,6 +381,43 @@ const MIGRATIONS: Migration[] = [
         ? []
         : [`ALTER TABLE mentions ADD COLUMN price TEXT NOT NULL DEFAULT ''`],
   },
+  {
+    version: 10,
+    // M6: what a SOURCE said a trip cost.
+    //
+    // NOT cost_bands. This records observations with their provenance;
+    // cost_bands would be reference data estimating what a city costs, and
+    // building that from one video is the thin-evidence trap M5 warned about.
+    //
+    // The first row this table ever holds was read off a video FRAME -- the
+    // Chongqing budget card, which the transcript announces and never states.
+    statements: async (db) =>
+      (await hasColumn(db, "cost_observations", "label"))
+        ? []
+        : [
+            `CREATE TABLE IF NOT EXISTS cost_observations (
+               id            INTEGER PRIMARY KEY AUTOINCREMENT,
+               trip_id       INTEGER NOT NULL REFERENCES trips(id),
+               -- NULL for a hand-entered figure. NOT NULL would force a fake
+               -- source row for anything the user simply knows.
+               source_id     INTEGER REFERENCES sources(id),
+               -- Where in the video it was stated. NULL means it did not say.
+               at_seconds    INTEGER,
+               label         TEXT NOT NULL,
+               amount        REAL NOT NULL,
+               -- NOT NULL: an amount with no unit cannot be compared to
+               -- anything, which M5 established for trips.currency.
+               currency      TEXT NOT NULL,
+               -- NULL is UNKNOWN on either axis. BOTH are needed to
+               -- normalise to a per-person-per-day rate, and an unknown
+               -- either side makes that UNAVAILABLE rather than approximate.
+               covers_days   INTEGER,
+               covers_people INTEGER
+             )`,
+            `CREATE INDEX IF NOT EXISTS cost_observations_trip
+               ON cost_observations (trip_id)`,
+          ],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */

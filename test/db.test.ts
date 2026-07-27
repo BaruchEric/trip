@@ -424,13 +424,34 @@ describe("schema migrations", () => {
     await expect(db.execute(ins)).rejects.toThrow();
   });
 
-  test("schema version is 9", async () => {
+  test("schema version is 10", async () => {
     // Deliberately a hardcoded number, not SCHEMA_VERSION — against
     // SCHEMA_VERSION this would be a tautology. It is a speed bump: adding a
     // migration must be a conscious act that also updates this line.
-    const db = openDb(tmpDb("m9-version"));
+    const db = openDb(tmpDb("m10-version"));
     await migrate(db);
-    expect(await schemaVersion(db)).toBe(9);
+    expect(await schemaVersion(db)).toBe(10);
+  });
+
+  test("migration 10 adds cost_observations", async () => {
+    const db = openDb(tmpDb("m10"));
+    await migrate(db);
+    const cols = (await db.execute(`PRAGMA table_info(cost_observations)`))
+      .rows.map((r) => String(r.name));
+    expect(cols).toContain("label");
+    expect(cols).toContain("amount");
+    expect(cols).toContain("currency");
+    expect(cols).toContain("covers_days");
+    expect(cols).toContain("covers_people");
+    expect(cols).toContain("source_id");
+    expect(cols).toContain("at_seconds");
+  });
+
+  test("migration 10 is a no-op on a second run", async () => {
+    const db = openDb(tmpDb("m10-idempotent"));
+    await migrate(db);
+    await migrate(db);
+    expect(await schemaVersion(db)).toBe(SCHEMA_VERSION);
   });
 
   test("migration 6 backfills an existing segments row instead of erasing it", async () => {
