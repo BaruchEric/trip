@@ -1,0 +1,7778 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:32:06Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 46326414,
+  "lat": 52.3580481,
+  "lon": 4.8521827,
+  "tags": {
+    "name": "Surinameplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291725"
+  }
+},
+{
+  "type": "node",
+  "id": 46350382,
+  "lat": 52.3635043,
+  "lon": 4.9193627,
+  "tags": {
+    "name": "Alexanderplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111376243"
+  }
+},
+{
+  "type": "node",
+  "id": 46369643,
+  "lat": 52.3679611,
+  "lon": 4.9053602,
+  "tags": {
+    "name": "Meester Visserplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "AND",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111397558"
+  }
+},
+{
+  "type": "node",
+  "id": 46432024,
+  "lat": 52.3813125,
+  "lon": 4.8792047,
+  "tags": {
+    "name": "Nassaukade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307092"
+  }
+},
+{
+  "type": "node",
+  "id": 46462976,
+  "lat": 52.3880840,
+  "lon": 4.8851416,
+  "tags": {
+    "name": "Zoutkeetsgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q127977567"
+  }
+},
+{
+  "type": "node",
+  "id": 148726445,
+  "lat": 52.3844185,
+  "lon": 4.8749198,
+  "tags": {
+    "name": "Van Limburg Stirumplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111307089"
+  }
+},
+{
+  "type": "node",
+  "id": 237938749,
+  "lat": 52.3735332,
+  "lon": 4.8936441,
+  "tags": {
+    "name": "Dam",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111305178"
+  }
+},
+{
+  "type": "node",
+  "id": 237962735,
+  "lat": 52.3531224,
+  "lon": 4.8820871,
+  "tags": {
+    "name": "Roelof Hartplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30007015",
+    "wheelchair": "limited",
+    "wikidata": "Q111307975"
+  }
+},
+{
+  "type": "node",
+  "id": 237962753,
+  "lat": 52.3566951,
+  "lon": 4.8796377,
+  "tags": {
+    "name": "Concertgebouw",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307976"
+  }
+},
+{
+  "type": "node",
+  "id": 240316872,
+  "lat": 52.3784783,
+  "lon": 4.8752680,
+  "tags": {
+    "name": "Frederik Hendrikplantsoen",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30002132",
+    "wheelchair": "limited",
+    "wikidata": "Q111307093"
+  }
+},
+{
+  "type": "node",
+  "id": 240316873,
+  "lat": 52.3750097,
+  "lon": 4.8729548,
+  "tags": {
+    "name": "Hugo de Grootplein",
+    "panoramax": "d84f7c04-1ea7-433b-a635-393126abee2c",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307094"
+  }
+},
+{
+  "type": "node",
+  "id": 240316874,
+  "lat": 52.3742987,
+  "lon": 4.8725310,
+  "tags": {
+    "name": "Hugo de Grootplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307094"
+  }
+},
+{
+  "type": "node",
+  "id": 240489038,
+  "lat": 52.3545947,
+  "lon": 4.9120486,
+  "tags": {
+    "name": "Wibautstraat",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 241392441,
+  "lat": 52.3659142,
+  "lon": 4.9324956,
+  "tags": {
+    "name": "Zeeburgerdijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396598"
+  }
+},
+{
+  "type": "node",
+  "id": 241392462,
+  "lat": 52.3659161,
+  "lon": 4.9272040,
+  "tags": {
+    "name": "Pontanusstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396595"
+  }
+},
+{
+  "type": "node",
+  "id": 241772055,
+  "lat": 52.3669934,
+  "lon": 4.9019846,
+  "tags": {
+    "name": "Waterlooplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111397560"
+  }
+},
+{
+  "type": "node",
+  "id": 241772061,
+  "lat": 52.3630235,
+  "lon": 4.9206416,
+  "tags": {
+    "name": "Mauritskade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 241775832,
+  "lat": 52.3609734,
+  "lon": 4.8871040,
+  "tags": {
+    "alt_name": "Spiegelgracht",
+    "name": "Rijksmuseum",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291263"
+  }
+},
+{
+  "type": "node",
+  "id": 250222259,
+  "lat": 52.3390351,
+  "lon": 4.8739781,
+  "tags": {
+    "name": "Zuid",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30009562",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250222332,
+  "lat": 52.3890375,
+  "lon": 4.8389786,
+  "tags": {
+    "name": "Station Sloterdijk",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250222348,
+  "lat": 52.3951031,
+  "lon": 4.8505958,
+  "tags": {
+    "name": "Isolatorweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250224115,
+  "lat": 52.3794609,
+  "lon": 4.8380564,
+  "tags": {
+    "name": "De Vlugtlaan",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250224725,
+  "lat": 52.3645995,
+  "lon": 4.8338612,
+  "tags": {
+    "name": "Postjesweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250225300,
+  "lat": 52.3523291,
+  "lon": 4.8344010,
+  "tags": {
+    "name": "Heemstedestraat",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250225792,
+  "lat": 52.3463850,
+  "lon": 4.8343950,
+  "tags": {
+    "name": "Henk Sneevlietweg",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250229766,
+  "lat": 52.3775081,
+  "lon": 4.9010471,
+  "tags": {
+    "name": "Centraal Station",
+    "name:de": "Hauptbahnhof",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 250233796,
+  "lat": 52.3186119,
+  "lon": 4.9413977,
+  "tags": {
+    "name": "Strandvliet",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250233804,
+  "lat": 52.3118060,
+  "lon": 4.9476178,
+  "tags": {
+    "name": "Bijlmer ArenA",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30009522",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250233821,
+  "lat": 52.2955964,
+  "lon": 4.9743774,
+  "tags": {
+    "name": "Reigersbos",
+    "public_transport": "stop_position",
+    "subway": "yes",
+    "zone": "5725"
+  }
+},
+{
+  "type": "node",
+  "id": 250233831,
+  "lat": 52.2964067,
+  "lon": 4.9891612,
+  "tags": {
+    "name": "Gein",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250234673,
+  "lat": 52.3068690,
+  "lon": 4.9521292,
+  "tags": {
+    "name": "Bullewijk",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "zone": "5725"
+  }
+},
+{
+  "type": "node",
+  "id": 250236254,
+  "lat": 52.3267211,
+  "lon": 4.9464091,
+  "tags": {
+    "name": "Venserpolder",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 250236271,
+  "lat": 52.3282901,
+  "lon": 4.9672062,
+  "tags": {
+    "name": "Verrijn Stuartweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "zone": "5725"
+  }
+},
+{
+  "type": "node",
+  "id": 250236278,
+  "lat": 52.3237180,
+  "lon": 4.9728507,
+  "tags": {
+    "name": "Ganzenhoef",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 250236279,
+  "lat": 52.3169789,
+  "lon": 4.9790073,
+  "tags": {
+    "layer": "1",
+    "name": "Kraaiennest",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wikidata": "Q3241211",
+    "wikimedia_commons": "Category:Metrostation Kraaiennest",
+    "wikipedia": "nl:Kraaiennest (metrostation)",
+    "zone": "5725"
+  }
+},
+{
+  "type": "node",
+  "id": 250236282,
+  "lat": 52.3111615,
+  "lon": 4.9843391,
+  "tags": {
+    "name": "Gaasperplas",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30009555",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 275930365,
+  "lat": 52.3730125,
+  "lon": 4.9348277,
+  "tags": {
+    "name": "Rietlandpark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008261",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q13652597",
+    "wikimedia_commons": "Category:Rietlandpark (tram stop)",
+    "wikipedia": "nl:Rietlandpark (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 283601358,
+  "lat": 52.3515256,
+  "lon": 4.8501741,
+  "tags": {
+    "name": "Hoofddorpplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111301513"
+  }
+},
+{
+  "type": "node",
+  "id": 283603496,
+  "lat": 52.3511681,
+  "lon": 4.8495922,
+  "tags": {
+    "name": "Hoofddorpplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111301513"
+  }
+},
+{
+  "type": "node",
+  "id": 286316889,
+  "lat": 52.3652037,
+  "lon": 4.9520639,
+  "tags": {
+    "name": "Flevopark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305420"
+  }
+},
+{
+  "type": "node",
+  "id": 286610403,
+  "lat": 52.3030059,
+  "lon": 4.8717636,
+  "tags": {
+    "name": "Oranjebaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q1867682",
+    "wikimedia_commons": "File:Oranjebaan.jpg",
+    "wikipedia": "nl:Oranjebaan (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 286610407,
+  "lat": 52.2964971,
+  "lon": 4.8677828,
+  "tags": {
+    "name": "Ouderkerkerlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2739727",
+    "wikimedia_commons": "Category:Sneltramhalte Ouderkerkerlaan",
+    "wikipedia": "nl:Ouderkerkerlaan (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 287763010,
+  "lat": 52.3514907,
+  "lon": 4.8342872,
+  "tags": {
+    "name": "Heemstedestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295883"
+  }
+},
+{
+  "type": "node",
+  "id": 287765628,
+  "lat": 52.3466865,
+  "lon": 4.8242594,
+  "tags": {
+    "name": "Louwesweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111295872"
+  }
+},
+{
+  "type": "node",
+  "id": 289344481,
+  "lat": 52.3426151,
+  "lon": 4.8767774,
+  "tags": {
+    "name": "Prinses Irenestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007186",
+    "tram": "yes",
+    "wikidata": "Q111364716"
+  }
+},
+{
+  "type": "node",
+  "id": 289364883,
+  "lat": 52.3402318,
+  "lon": 4.8921974,
+  "tags": {
+    "name": "Europaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111335784"
+  }
+},
+{
+  "type": "node",
+  "id": 289426088,
+  "lat": 52.3464422,
+  "lon": 4.8156883,
+  "tags": {
+    "name": "Laan van Vlaanderen",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30004276",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295870"
+  }
+},
+{
+  "type": "node",
+  "id": 289426091,
+  "lat": 52.3463857,
+  "lon": 4.8110474,
+  "tags": {
+    "name": "Centrum Nieuw Sloten",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295869"
+  }
+},
+{
+  "type": "node",
+  "id": 289428760,
+  "lat": 52.3449284,
+  "lon": 4.8036706,
+  "tags": {
+    "name": "Oudenaardeplantsoen",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111292829"
+  }
+},
+{
+  "type": "node",
+  "id": 289430207,
+  "lat": 52.3450454,
+  "lon": 4.8041222,
+  "tags": {
+    "name": "Oudenaardeplantsoen",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111292829"
+  }
+},
+{
+  "type": "node",
+  "id": 289818100,
+  "lat": 52.3772063,
+  "lon": 4.9134308,
+  "tags": {
+    "name": "Muziekgebouw",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008234",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458110",
+    "wikimedia_commons": "Category:Tram stop Muziekgebouw Bimhuis"
+  }
+},
+{
+  "type": "node",
+  "id": 289980226,
+  "lat": 52.2805456,
+  "lon": 4.8517035,
+  "tags": {
+    "name": "Brink",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2240034",
+    "wikimedia_commons": "Category:Sneltramhalte Brink",
+    "wikipedia": "nl:Brink (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 289980799,
+  "lat": 52.2831286,
+  "lon": 4.8458857,
+  "tags": {
+    "name": "Poortwachter",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q1807246",
+    "wikimedia_commons": "Category:Sneltramhalte Poortwachter",
+    "wikipedia": "nl:Poortwachter (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 290080777,
+  "lat": 52.2748113,
+  "lon": 4.8310348,
+  "tags": {
+    "name": "Westwijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2044925",
+    "wikimedia_commons": "Category:Sneltramhalte Westwijk",
+    "wikipedia": "nl:Westwijk (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 290930270,
+  "lat": 52.3579358,
+  "lon": 4.8401257,
+  "tags": {
+    "name": "Derkinderenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291724"
+  }
+},
+{
+  "type": "node",
+  "id": 290930272,
+  "lat": 52.3578798,
+  "lon": 4.8345590,
+  "tags": {
+    "name": "Station Lelylaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291723",
+    "wikimedia_commons": "Category:Trams at Station Amsterdam Lelylaan"
+  }
+},
+{
+  "type": "node",
+  "id": 290931857,
+  "lat": 52.3647729,
+  "lon": 4.8531786,
+  "tags": {
+    "name": "Postjesweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375703"
+  }
+},
+{
+  "type": "node",
+  "id": 290955747,
+  "lat": 52.3565093,
+  "lon": 4.8107529,
+  "tags": {
+    "name": "Meer en Vaart",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291721"
+  }
+},
+{
+  "type": "node",
+  "id": 290957004,
+  "lat": 52.3580728,
+  "lon": 4.8509943,
+  "tags": {
+    "name": "Surinameplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291725"
+  }
+},
+{
+  "type": "node",
+  "id": 290963343,
+  "lat": 52.3515685,
+  "lon": 4.8456281,
+  "tags": {
+    "bus": "yes",
+    "name": "Westlandgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111295881"
+  }
+},
+{
+  "type": "node",
+  "id": 291646148,
+  "lat": 52.3560251,
+  "lon": 4.8707820,
+  "tags": {
+    "name": "Cornelis Schuytstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111301510"
+  }
+},
+{
+  "type": "node",
+  "id": 291660551,
+  "lat": 52.3588540,
+  "lon": 4.8812446,
+  "tags": {
+    "name": "Museumplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111301509"
+  }
+},
+{
+  "type": "node",
+  "id": 293883917,
+  "lat": 52.2833338,
+  "lon": 4.8450525,
+  "tags": {
+    "name": "Poortwachter",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q1807246",
+    "wikimedia_commons": "Category:Sneltramhalte Poortwachter",
+    "wikipedia": "nl:Poortwachter (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 293884152,
+  "lat": 52.2805811,
+  "lon": 4.8517152,
+  "tags": {
+    "name": "Brink",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2240034",
+    "wikimedia_commons": "Category:Sneltramhalte Brink",
+    "wikipedia": "nl:Brink (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 293884357,
+  "lat": 52.2808955,
+  "lon": 4.8569619,
+  "tags": {
+    "name": "Meent",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q1824137",
+    "wikimedia_commons": "Category:Sneltramhalte Meent",
+    "wikipedia": "nl:Meent (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 293886212,
+  "lat": 52.3012694,
+  "lon": 4.8670933,
+  "tags": {
+    "name": "Amstelveen Stadshart",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111345412",
+    "wikimedia_commons": "Category:Amstelveen Stadshart (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 294091330,
+  "lat": 52.3369653,
+  "lon": 4.8687042,
+  "tags": {
+    "name": "Parnassusweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111358933",
+    "wikimedia_commons": "Category:Sneltramhalte Parnassusweg"
+  }
+},
+{
+  "type": "node",
+  "id": 295552866,
+  "lat": 52.3153498,
+  "lon": 4.8552783,
+  "tags": {
+    "name": "Amsterdamseweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 296020283,
+  "lat": 52.3849720,
+  "lon": 4.8835037,
+  "tags": {
+    "name": "Haarlemmerplein",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "tram": "yes",
+    "wikidata": "Q127977997"
+  }
+},
+{
+  "type": "node",
+  "id": 296265564,
+  "lat": 52.3694262,
+  "lon": 4.8446631,
+  "tags": {
+    "name": "Admiraal Helfrichstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396097"
+  }
+},
+{
+  "type": "node",
+  "id": 296265916,
+  "lat": 52.3772780,
+  "lon": 4.8029137,
+  "tags": {
+    "name": "Lambertus Zijlplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111383650"
+  }
+},
+{
+  "type": "node",
+  "id": 296266579,
+  "lat": 52.3432179,
+  "lon": 4.9474661,
+  "tags": {
+    "name": "Brinkstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111434569"
+  }
+},
+{
+  "type": "node",
+  "id": 296703876,
+  "lat": 52.3591171,
+  "lon": 4.8032265,
+  "tags": {
+    "name": "Osdorpplein West",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419287"
+  }
+},
+{
+  "type": "node",
+  "id": 296992497,
+  "lat": 52.3279919,
+  "lon": 4.8565436,
+  "tags": {
+    "name": "Van Nijenrodeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 296996392,
+  "lat": 52.3352796,
+  "lon": 4.8544501,
+  "tags": {
+    "name": "Jollenpad",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 296999161,
+  "lat": 52.3411779,
+  "lon": 4.8524016,
+  "tags": {
+    "description": "halte IJsbaanpad",
+    "name": "IJsbaanpad",
+    "note": "position unsure",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 297099561,
+  "lat": 52.3768181,
+  "lon": 4.9373469,
+  "tags": {
+    "name": "Azartplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111369771"
+  }
+},
+{
+  "type": "node",
+  "id": 297099562,
+  "lat": 52.3766133,
+  "lon": 4.9373223,
+  "tags": {
+    "name": "Azartplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111369771"
+  }
+},
+{
+  "type": "node",
+  "id": 297934760,
+  "lat": 52.3467738,
+  "lon": 4.8730291,
+  "tags": {
+    "name": "Minervaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007091",
+    "tram": "yes",
+    "wikidata": "Q111442481"
+  }
+},
+{
+  "type": "node",
+  "id": 297934761,
+  "lat": 52.3468693,
+  "lon": 4.8762769,
+  "tags": {
+    "name": "Beethovenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007308",
+    "tram": "yes",
+    "wikidata": "Q111364718"
+  }
+},
+{
+  "type": "node",
+  "id": 297934763,
+  "lat": 52.3488198,
+  "lon": 4.8771911,
+  "tags": {
+    "name": "Gerrit van der Veenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007084",
+    "tram": "yes",
+    "website": "https://www.gvb.nl/en/travel-information/stop/NL:S:30007083",
+    "wikidata": "Q111364719"
+  }
+},
+{
+  "type": "node",
+  "id": 297934764,
+  "lat": 52.3492157,
+  "lon": 4.8773650,
+  "tags": {
+    "name": "Gerrit van der Veenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007083",
+    "tram": "yes",
+    "website": "https://www.gvb.nl/en/travel-information/stop/NL:S:30007083",
+    "wikidata": "Q111364719"
+  }
+},
+{
+  "type": "node",
+  "id": 303720945,
+  "lat": 52.3408227,
+  "lon": 4.8739688,
+  "tags": {
+    "local_ref": "C",
+    "name": "Station Zuid",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007268",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30007268",
+    "wheelchair": "yes",
+    "wikidata": "Q101195703",
+    "wikimedia_commons": "Category:Tramhalte Strawinskylaan/Station Zuid"
+  }
+},
+{
+  "type": "node",
+  "id": 304800800,
+  "lat": 52.3523254,
+  "lon": 4.8342252,
+  "tags": {
+    "name": "Heemstedestraat",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 304965084,
+  "lat": 52.3248927,
+  "lon": 4.8689671,
+  "tags": {
+    "name": "Van Boshuizenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2637401",
+    "wikimedia_commons": "Category:Sneltramhalte Van Boshuizenstraat",
+    "wikipedia": "nl:Van Boshuizenstraat (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 304984034,
+  "lat": 52.3219431,
+  "lon": 4.8690693,
+  "tags": {
+    "name": "Uilenstede",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2457557",
+    "wikimedia_commons": "Category:Sneltramhalte Uilenstede",
+    "wikipedia": "nl:Uilenstede (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 305163755,
+  "lat": 52.3732299,
+  "lon": 4.9334664,
+  "tags": {
+    "name": "Rietlandpark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008226",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q13652597",
+    "wikimedia_commons": "Category:Rietlandpark (tram stop)",
+    "wikipedia": "nl:Rietlandpark (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 305789993,
+  "lat": 52.3463018,
+  "lon": 4.8658574,
+  "tags": {
+    "name": "Olympiaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007097",
+    "tram": "yes",
+    "wikidata": "Q111442482"
+  }
+},
+{
+  "type": "node",
+  "id": 310569749,
+  "lat": 52.3638329,
+  "lon": 4.8983188,
+  "tags": {
+    "name": "Keizersgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111343615"
+  }
+},
+{
+  "type": "node",
+  "id": 310569756,
+  "lat": 52.3599361,
+  "lon": 4.8990837,
+  "tags": {
+    "name": "Frederiksplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111286556"
+  }
+},
+{
+  "type": "node",
+  "id": 310569757,
+  "lat": 52.3575783,
+  "lon": 4.8994017,
+  "tags": {
+    "name": "Albert Cuypstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 310573222,
+  "lat": 52.3446536,
+  "lon": 4.9011051,
+  "tags": {
+    "name": "Waalstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009060",
+    "tram": "yes",
+    "wikidata": "Q111335841"
+  }
+},
+{
+  "type": "node",
+  "id": 310573223,
+  "lat": 52.3444211,
+  "lon": 4.9005615,
+  "tags": {
+    "name": "Waalstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009061",
+    "tram": "yes",
+    "wikidata": "Q111335841"
+  }
+},
+{
+  "type": "node",
+  "id": 310573224,
+  "lat": 52.3428638,
+  "lon": 4.8962714,
+  "tags": {
+    "name": "Maasstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009068",
+    "tram": "yes",
+    "wikidata": "Q111335797"
+  }
+},
+{
+  "type": "node",
+  "id": 310573225,
+  "lat": 52.3431180,
+  "lon": 4.8968730,
+  "tags": {
+    "name": "Maasstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009069",
+    "tram": "yes",
+    "wikidata": "Q111335797"
+  }
+},
+{
+  "type": "node",
+  "id": 310573227,
+  "lat": 52.3419250,
+  "lon": 4.8930007,
+  "tags": {
+    "name": "Dintelstraat",
+    "panoramax": "252d6be4-0487-4171-8c74-31faca1a06bf",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009003",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009001",
+    "wikidata": "Q111335794"
+  }
+},
+{
+  "type": "node",
+  "id": 310573230,
+  "lat": 52.3369049,
+  "lon": 4.8905473,
+  "tags": {
+    "name": "Station RAI",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111334932"
+  }
+},
+{
+  "type": "node",
+  "id": 317956000,
+  "lat": 52.3546903,
+  "lon": 4.9008616,
+  "tags": {
+    "name": "Van Woustraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009096",
+    "wheelchair": "yes",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 317956001,
+  "lat": 52.3549446,
+  "lon": 4.9015849,
+  "tags": {
+    "name": "Van Woustraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009096",
+    "wheelchair": "yes",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 319641124,
+  "lat": 52.3668676,
+  "lon": 4.9248123,
+  "tags": {
+    "name": "Hoogte Kadijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111378172"
+  }
+},
+{
+  "type": "node",
+  "id": 371226400,
+  "lat": 52.3593260,
+  "lon": 4.8077454,
+  "tags": {
+    "name": "Osdorpplein Oost",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111419289"
+  }
+},
+{
+  "type": "node",
+  "id": 371265387,
+  "lat": 52.3650035,
+  "lon": 4.8843839,
+  "tags": {
+    "name": "Prinsengracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305181"
+  }
+},
+{
+  "type": "node",
+  "id": 371265504,
+  "lat": 52.3659309,
+  "lon": 4.8863435,
+  "tags": {
+    "name": "Keizersgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305180"
+  }
+},
+{
+  "type": "node",
+  "id": 388184245,
+  "lat": 52.3511114,
+  "lon": 5.0048281,
+  "tags": {
+    "name": "IJburg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111458112"
+  }
+},
+{
+  "type": "node",
+  "id": 418653418,
+  "lat": 52.3452652,
+  "lon": 4.8583402,
+  "tags": {
+    "name": "Olympiaweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007120",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111442483"
+  }
+},
+{
+  "type": "node",
+  "id": 427560648,
+  "lat": 52.3610021,
+  "lon": 4.9071213,
+  "tags": {
+    "name": "Weesperplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30008053",
+    "wheelchair": "yes",
+    "wikidata": "Q111286555"
+  }
+},
+{
+  "type": "node",
+  "id": 427560737,
+  "lat": 52.3614042,
+  "lon": 4.9091584,
+  "tags": {
+    "name": "Weesperplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30008053",
+    "wikidata": "Q111286555"
+  }
+},
+{
+  "type": "node",
+  "id": 427561909,
+  "lat": 52.3572865,
+  "lon": 4.9093615,
+  "tags": {
+    "name": "Wibautstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009020",
+    "wikidata": "Q111318134"
+  }
+},
+{
+  "type": "node",
+  "id": 434142267,
+  "lat": 52.3471106,
+  "lon": 4.9109989,
+  "tags": {
+    "name": "Amsteldijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009140",
+    "tram": "yes",
+    "wikidata": "Q111382633"
+  }
+},
+{
+  "type": "node",
+  "id": 434142268,
+  "lat": 52.3468171,
+  "lon": 4.9003351,
+  "tags": {
+    "name": "Waalstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009083",
+    "tram": "yes",
+    "wikidata": "Q111382635"
+  }
+},
+{
+  "type": "node",
+  "id": 434142269,
+  "lat": 52.3465631,
+  "lon": 4.8997164,
+  "tags": {
+    "name": "Waalstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009082",
+    "tram": "yes",
+    "wikidata": "Q111382635"
+  }
+},
+{
+  "type": "node",
+  "id": 434397628,
+  "lat": 52.3828002,
+  "lon": 4.8508513,
+  "tags": {
+    "name": "Wiltzanghlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111426981"
+  }
+},
+{
+  "type": "node",
+  "id": 434397629,
+  "lat": 52.3811188,
+  "lon": 4.8539004,
+  "tags": {
+    "name": "Bos en Lommerweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111426980",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 434397631,
+  "lat": 52.3788687,
+  "lon": 4.8569721,
+  "tags": {
+    "name": "Karel Doormanstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111426979"
+  }
+},
+{
+  "type": "node",
+  "id": 434397633,
+  "lat": 52.3773555,
+  "lon": 4.8577243,
+  "tags": {
+    "name": "De Rijpstraat",
+    "panoramax": "680fbc17-f856-4361-9438-d00c5b6724ff",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 434397634,
+  "lat": 52.3751323,
+  "lon": 4.8584711,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111426983"
+  }
+},
+{
+  "type": "node",
+  "id": 434397635,
+  "lat": 52.3743002,
+  "lon": 4.8586427,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111426983"
+  }
+},
+{
+  "type": "node",
+  "id": 434397637,
+  "lat": 52.3715020,
+  "lon": 4.8600128,
+  "tags": {
+    "name": "Admiraal De Ruijterweg",
+    "official_name": "Admiraal de Ruijterweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111383644"
+  }
+},
+{
+  "type": "node",
+  "id": 434398865,
+  "lat": 52.3706925,
+  "lon": 4.8636349,
+  "tags": {
+    "name": "Willem de Zwijgerlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111383639"
+  }
+},
+{
+  "type": "node",
+  "id": 434414719,
+  "lat": 52.3735665,
+  "lon": 4.9388456,
+  "tags": {
+    "name": "C. van Eesterenlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008012",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111378178"
+  }
+},
+{
+  "type": "node",
+  "id": 434430962,
+  "lat": 52.3638735,
+  "lon": 4.9192366,
+  "tags": {
+    "name": "Alexanderplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111376243"
+  }
+},
+{
+  "type": "node",
+  "id": 434441207,
+  "lat": 52.3623479,
+  "lon": 4.9135923,
+  "tags": {
+    "name": "Korte 's-Gravesandestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111286554"
+  }
+},
+{
+  "type": "node",
+  "id": 434441216,
+  "lat": 52.3595051,
+  "lon": 4.8921024,
+  "tags": {
+    "name": "Vijzelgracht",
+    "old_name": "Weteringcircuit",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111286557"
+  }
+},
+{
+  "type": "node",
+  "id": 434441223,
+  "lat": 52.3773658,
+  "lon": 4.8784155,
+  "tags": {
+    "bus": "yes",
+    "name": "Marnixplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111364866"
+  }
+},
+{
+  "type": "node",
+  "id": 434441252,
+  "lat": 52.3832175,
+  "lon": 4.8770204,
+  "tags": {
+    "name": "De Wittenkade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307091"
+  }
+},
+{
+  "type": "node",
+  "id": 434441260,
+  "lat": 52.3842644,
+  "lon": 4.8698541,
+  "tags": {
+    "name": "Van Hallstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305421"
+  }
+},
+{
+  "type": "node",
+  "id": 434497040,
+  "lat": 52.3393768,
+  "lon": 4.9555768,
+  "tags": {
+    "name": "Arent Krijtsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111434568"
+  }
+},
+{
+  "type": "node",
+  "id": 434504353,
+  "lat": 52.3507248,
+  "lon": 4.9354146,
+  "tags": {
+    "name": "Hugo de Vrieslaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "wikidata": "Q111434572",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 434507136,
+  "lat": 52.3535680,
+  "lon": 4.9308725,
+  "tags": {
+    "name": "Hogeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111434574"
+  }
+},
+{
+  "type": "node",
+  "id": 434507137,
+  "lat": 52.3570101,
+  "lon": 4.9272273,
+  "tags": {
+    "name": "Oostpoort",
+    "old_name": "Pretoriusstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111434587"
+  }
+},
+{
+  "type": "node",
+  "id": 434509970,
+  "lat": 52.3667187,
+  "lon": 4.9109550,
+  "tags": {
+    "name": "Artis",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111397554"
+  }
+},
+{
+  "type": "node",
+  "id": 434524953,
+  "lat": 52.3647569,
+  "lon": 4.9476342,
+  "tags": {
+    "name": "Insulindeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111318131"
+  }
+},
+{
+  "type": "node",
+  "id": 434524954,
+  "lat": 52.3622746,
+  "lon": 4.9441018,
+  "tags": {
+    "name": "Soembawastraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111318132"
+  }
+},
+{
+  "type": "node",
+  "id": 434524956,
+  "lat": 52.3617259,
+  "lon": 4.9401785,
+  "tags": {
+    "name": "Molukkenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008290",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111318130"
+  }
+},
+{
+  "type": "node",
+  "id": 434552819,
+  "lat": 52.3744231,
+  "lon": 4.8912853,
+  "tags": {
+    "name": "Dam",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305178"
+  }
+},
+{
+  "type": "node",
+  "id": 434560935,
+  "lat": 52.3813940,
+  "lon": 4.8809562,
+  "tags": {
+    "name": "Nieuwe Willemsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111364868"
+  }
+},
+{
+  "type": "node",
+  "id": 434598996,
+  "lat": 52.3537327,
+  "lon": 4.7747567,
+  "tags": {
+    "name": "Matterhorn",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111284159"
+  }
+},
+{
+  "type": "node",
+  "id": 434598999,
+  "lat": 52.3528280,
+  "lon": 4.7770976,
+  "tags": {
+    "name": "Pilatus",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291714"
+  }
+},
+{
+  "type": "node",
+  "id": 434599001,
+  "lat": 52.3501979,
+  "lon": 4.7836582,
+  "tags": {
+    "name": "Inaristraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 434599008,
+  "lat": 52.3498075,
+  "lon": 4.7888748,
+  "tags": {
+    "name": "Ecuplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291717"
+  }
+},
+{
+  "type": "node",
+  "id": 434599011,
+  "lat": 52.3510417,
+  "lon": 4.7951129,
+  "tags": {
+    "name": "Baden Powellweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291718"
+  }
+},
+{
+  "type": "node",
+  "id": 434599013,
+  "lat": 52.3525411,
+  "lon": 4.8025242,
+  "tags": {
+    "name": "Hoekenes",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291719"
+  }
+},
+{
+  "type": "node",
+  "id": 434599016,
+  "lat": 52.3539266,
+  "lon": 4.8090899,
+  "tags": {
+    "name": "Louis Davidsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291720"
+  }
+},
+{
+  "type": "node",
+  "id": 434599019,
+  "lat": 52.3564413,
+  "lon": 4.7913000,
+  "tags": {
+    "name": "Baden Powellweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419283"
+  }
+},
+{
+  "type": "node",
+  "id": 434599022,
+  "lat": 52.3579858,
+  "lon": 4.7990044,
+  "tags": {
+    "name": "Hoekenes",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419285"
+  }
+},
+{
+  "type": "node",
+  "id": 434611618,
+  "lat": 52.3617312,
+  "lon": 4.8532957,
+  "tags": {
+    "name": "Corantijnstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419293"
+  }
+},
+{
+  "type": "node",
+  "id": 434611624,
+  "lat": 52.3648019,
+  "lon": 4.8591799,
+  "tags": {
+    "name": "Witte de Withstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375699"
+  }
+},
+{
+  "type": "node",
+  "id": 434636552,
+  "lat": 52.3654149,
+  "lon": 4.8653608,
+  "tags": {
+    "name": "Nicolaas Beetsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 434636555,
+  "lat": 52.3655250,
+  "lon": 4.8656566,
+  "tags": {
+    "name": "Nicolaas Beetsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 434636559,
+  "lat": 52.3671317,
+  "lon": 4.8717586,
+  "tags": {
+    "name": "Bilderdijkstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307979"
+  }
+},
+{
+  "type": "node",
+  "id": 434646764,
+  "lat": 52.3590503,
+  "lon": 4.8603541,
+  "tags": {
+    "name": "Rhijnvis Feithstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291259"
+  }
+},
+{
+  "type": "node",
+  "id": 434646765,
+  "lat": 52.3588447,
+  "lon": 4.8596776,
+  "tags": {
+    "name": "Rhijnvis Feithstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111291259"
+  }
+},
+{
+  "type": "node",
+  "id": 434662838,
+  "lat": 52.3772617,
+  "lon": 4.8033914,
+  "tags": {
+    "name": "Lambertus Zijlplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111383650"
+  }
+},
+{
+  "type": "node",
+  "id": 434662842,
+  "lat": 52.3768507,
+  "lon": 4.8071867,
+  "tags": {
+    "name": "Doctor H. Colijnstraat",
+    "official_name": "Dr. H. Colijnstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 434662845,
+  "lat": 52.3763846,
+  "lon": 4.8119642,
+  "tags": {
+    "name": "Burgemeester Van Leeuwenlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396104"
+  }
+},
+{
+  "type": "node",
+  "id": 434662850,
+  "lat": 52.3758565,
+  "lon": 4.8176034,
+  "tags": {
+    "name": "Slotermeerlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111372127"
+  }
+},
+{
+  "type": "node",
+  "id": 434662855,
+  "lat": 52.3743645,
+  "lon": 4.8277027,
+  "tags": {
+    "name": "Burgemeester Rendorpstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396102"
+  }
+},
+{
+  "type": "node",
+  "id": 434662859,
+  "lat": 52.3744723,
+  "lon": 4.8268013,
+  "tags": {
+    "name": "Burgemeester Rendorpstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396102"
+  }
+},
+{
+  "type": "node",
+  "id": 434662863,
+  "lat": 52.3730297,
+  "lon": 4.8359077,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396101"
+  }
+},
+{
+  "type": "node",
+  "id": 434675414,
+  "lat": 52.3716278,
+  "lon": 4.8381341,
+  "tags": {
+    "name": "Jan Tooropstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396099"
+  }
+},
+{
+  "type": "node",
+  "id": 434675418,
+  "lat": 52.3695968,
+  "lon": 4.8384594,
+  "tags": {
+    "name": "Jan Voermanstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396111"
+  }
+},
+{
+  "type": "node",
+  "id": 434675421,
+  "lat": 52.3701459,
+  "lon": 4.8507957,
+  "tags": {
+    "name": "Mercatorplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375707"
+  }
+},
+{
+  "type": "node",
+  "id": 434675423,
+  "lat": 52.3709604,
+  "lon": 4.8554942,
+  "tags": {
+    "name": "Marco Polostraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111383645"
+  }
+},
+{
+  "type": "node",
+  "id": 434696265,
+  "lat": 52.3745804,
+  "lon": 4.8185432,
+  "tags": {
+    "name": "Burgemeester Roëllstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111372127"
+  }
+},
+{
+  "type": "node",
+  "id": 434700014,
+  "lat": 52.3733319,
+  "lon": 4.8485891,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375708"
+  }
+},
+{
+  "type": "node",
+  "id": 440969468,
+  "lat": 52.3735587,
+  "lon": 4.8913489,
+  "tags": {
+    "name": "Dam",
+    "note": "tramhalte voor omleidingen en calamiteiten",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305178"
+  }
+},
+{
+  "type": "node",
+  "id": 500365599,
+  "lat": 52.3573493,
+  "lon": 4.9097221,
+  "tags": {
+    "name": "Wibautstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009020",
+    "wikidata": "Q111318134",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 500371070,
+  "lat": 52.3533345,
+  "lon": 4.8949263,
+  "tags": {
+    "name": "Tweede Van der Helststraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111318136"
+  }
+},
+{
+  "type": "node",
+  "id": 502259162,
+  "lat": 52.3384220,
+  "lon": 4.8572486,
+  "tags": {
+    "name": "Amstelveenseweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007493",
+    "tram": "yes",
+    "wheelchair": "no",
+    "wikidata": "Q111442488",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 502259165,
+  "lat": 52.3382323,
+  "lon": 4.8573010,
+  "tags": {
+    "cxx:code": "57142880",
+    "cxx:id": "32624",
+    "name": "Amstelveenseweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007490",
+    "tram": "yes",
+    "wheelchair": "no",
+    "wikidata": "Q111442488",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 502259168,
+  "lat": 52.3416051,
+  "lon": 4.8577457,
+  "tags": {
+    "cxx:code": "57142580",
+    "cxx:id": "32592",
+    "name": "IJsbaanpad",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007205",
+    "tram": "yes",
+    "wheelchair": "no",
+    "wikidata": "Q111442485",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 502259173,
+  "lat": 52.3405984,
+  "lon": 4.8575721,
+  "tags": {
+    "name": "IJsbaanpad",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007207",
+    "tram": "yes",
+    "wikidata": "Q111442485",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 502269968,
+  "lat": 52.3440249,
+  "lon": 4.8568368,
+  "tags": {
+    "bench": "yes",
+    "covered": "no",
+    "name": "Olympisch Stadion",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007202",
+    "shelter": "yes",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111442484",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 502341044,
+  "lat": 52.3695206,
+  "lon": 4.8775361,
+  "tags": {
+    "name": "Elandsgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364862"
+  }
+},
+{
+  "type": "node",
+  "id": 695213819,
+  "lat": 52.3432445,
+  "lon": 4.9474714,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Brinkstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000076",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "yes",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 695213896,
+  "lat": 52.3476243,
+  "lon": 4.9404785,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Kruislaan",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000071",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 695213988,
+  "lat": 52.3479273,
+  "lon": 4.9398853,
+  "tags": {
+    "name": "Kruislaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 702260888,
+  "lat": 52.3491038,
+  "lon": 4.8275024,
+  "tags": {
+    "name": "Johan Huizingalaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111295892",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 702260913,
+  "lat": 52.3777823,
+  "lon": 4.8449335,
+  "tags": {
+    "name": "Bos en Lommerplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375710",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 702261011,
+  "lat": 52.3492180,
+  "lon": 4.8274406,
+  "tags": {
+    "name": "Johan Huizingalaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111295892",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160479,
+  "lat": 52.3798913,
+  "lon": 4.8312794,
+  "tags": {
+    "name": "Burgemeester Fockstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "wikidata": "Q111372135",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160483,
+  "lat": 52.3787581,
+  "lon": 4.8382938,
+  "tags": {
+    "name": "Burgemeester de Vlugtlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:Q:30003163",
+    "wikidata": "Q111372139",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160531,
+  "lat": 52.3808373,
+  "lon": 4.8211591,
+  "tags": {
+    "name": "Plein '40-'45",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111372129",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160537,
+  "lat": 52.3789630,
+  "lon": 4.8372054,
+  "tags": {
+    "name": "Burgemeester de Vlugtlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:Q:30003163",
+    "wikidata": "Q111372139",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160612,
+  "lat": 52.3726515,
+  "lon": 4.8759027,
+  "tags": {
+    "name": "Rozengracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "route_ref": "10;80",
+    "source": "AND;CXX",
+    "tram": "yes",
+    "wikidata": "Q111364863",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 721160643,
+  "lat": 52.3812253,
+  "lon": 4.8225241,
+  "tags": {
+    "name": "Plein '40-'45",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "wikidata": "Q111372129",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160690,
+  "lat": 52.3681423,
+  "lon": 4.8784633,
+  "tags": {
+    "name": "Elandsgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364862"
+  }
+},
+{
+  "type": "node",
+  "id": 721160706,
+  "lat": 52.3807500,
+  "lon": 4.8258104,
+  "tags": {
+    "name": "Burgemeester Eliasstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111372132",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160782,
+  "lat": 52.3685410,
+  "lon": 4.8768971,
+  "tags": {
+    "name": "Elandsgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364862"
+  }
+},
+{
+  "type": "node",
+  "id": 721160810,
+  "lat": 52.3804505,
+  "lon": 4.8275036,
+  "tags": {
+    "name": "Burgemeester Eliasstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111372132",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 721160815,
+  "lat": 52.3795507,
+  "lon": 4.8332396,
+  "tags": {
+    "name": "Burgemeester Fockstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "source": "CXX",
+    "tram": "yes",
+    "wikidata": "Q111372135",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 724099181,
+  "lat": 52.3351977,
+  "lon": 4.8600614,
+  "tags": {
+    "cxx:code": "57142030",
+    "cxx:id": "32536",
+    "name": "VUmc Hoofdingang",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007350",
+    "tram": "yes",
+    "wikidata": "Q111442490",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 724099197,
+  "lat": 52.3351485,
+  "lon": 4.8611177,
+  "tags": {
+    "name": "VUmc Hoofdingang",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007303",
+    "tram": "yes",
+    "wikidata": "Q111442490",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 724232636,
+  "lat": 52.3563875,
+  "lon": 4.8798146,
+  "tags": {
+    "name": "Concertgebouw",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307976"
+  }
+},
+{
+  "type": "node",
+  "id": 724232674,
+  "lat": 52.3438468,
+  "lon": 4.8569523,
+  "tags": {
+    "bench": "yes",
+    "covered": "no",
+    "cxx:code": "57140450",
+    "cxx:id": "32599",
+    "name": "Olympisch Stadion",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007121",
+    "shelter": "yes",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111442484",
+    "zone": "5714"
+  }
+},
+{
+  "type": "node",
+  "id": 724345008,
+  "lat": 52.3516183,
+  "lon": 4.8569532,
+  "tags": {
+    "name": "Amstelveenseweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tactile_paving": "yes",
+    "tram": "yes",
+    "wikidata": "Q111301512",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "node",
+  "id": 724345254,
+  "lat": 52.3519533,
+  "lon": 4.8582793,
+  "tags": {
+    "name": "Amstelveenseweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tactile_paving": "yes",
+    "tram": "yes",
+    "wikidata": "Q111301512",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "node",
+  "id": 726817226,
+  "lat": 52.3768269,
+  "lon": 4.8946766,
+  "tags": {
+    "name": "Nieuwezijds Kolk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305176",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 726817850,
+  "lat": 52.3768464,
+  "lon": 4.8946435,
+  "tags": {
+    "name": "Nieuwezijds Kolk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305176",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 764161962,
+  "lat": 52.3515095,
+  "lon": 4.8337504,
+  "tags": {
+    "name": "Heemstedestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295883"
+  }
+},
+{
+  "type": "node",
+  "id": 795542606,
+  "lat": 52.3760656,
+  "lon": 4.9220599,
+  "tags": {
+    "name": "Kattenburgerstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008236",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458111"
+  }
+},
+{
+  "type": "node",
+  "id": 795542860,
+  "lat": 52.3720001,
+  "lon": 4.9616961,
+  "tags": {
+    "name": "Zuiderzeeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008240",
+    "tram": "yes",
+    "wikidata": "Q111458125"
+  }
+},
+{
+  "type": "node",
+  "id": 805087247,
+  "lat": 52.3464822,
+  "lon": 4.8163870,
+  "tags": {
+    "name": "Laan van Vlaanderen",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30004277",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295870"
+  }
+},
+{
+  "type": "node",
+  "id": 881345030,
+  "lat": 52.3524376,
+  "lon": 4.8018381,
+  "tags": {
+    "name": "Hoekenes",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291719"
+  }
+},
+{
+  "type": "node",
+  "id": 1081322915,
+  "lat": 52.3579573,
+  "lon": 4.8397482,
+  "tags": {
+    "name": "Derkinderenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291724"
+  }
+},
+{
+  "type": "node",
+  "id": 1101710079,
+  "lat": 52.3463657,
+  "lon": 4.9056743,
+  "tags": {
+    "name": "Victorieplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009049",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009048",
+    "wikidata": "Q111335849"
+  }
+},
+{
+  "type": "node",
+  "id": 1101710093,
+  "lat": 52.3467733,
+  "lon": 4.9050720,
+  "tags": {
+    "name": "Victorieplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009050",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009048",
+    "wheelchair": "limited",
+    "wikidata": "Q111335849"
+  }
+},
+{
+  "type": "node",
+  "id": 1132284679,
+  "lat": 52.3626163,
+  "lon": 4.8747145,
+  "tags": {
+    "alt_name": "Eerste Constantijn Huygensstraat",
+    "name": "1e C. Huygensstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "NL:S:30006045",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006045",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1262086564,
+  "lat": 52.3583350,
+  "lon": 4.9134821,
+  "tags": {
+    "name": "Camperstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111318133"
+  }
+},
+{
+  "type": "node",
+  "id": 1351089483,
+  "lat": 52.3708621,
+  "lon": 4.8551084,
+  "tags": {
+    "name": "Marco Polostraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111383645"
+  }
+},
+{
+  "type": "node",
+  "id": 1491878698,
+  "lat": 52.3352308,
+  "lon": 4.8659833,
+  "tags": {
+    "name": "De Boelelaan/VU",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007004",
+    "tram": "yes",
+    "wikidata": "Q2224590",
+    "wikimedia_commons": "Category:Sneltramhalte De Boelelaan / VU",
+    "wikipedia": "nl:De Boelelaan / VU"
+  }
+},
+{
+  "type": "node",
+  "id": 1534218534,
+  "lat": 52.3712485,
+  "lon": 4.8705518,
+  "tags": {
+    "name": "De Clercqstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307980"
+  }
+},
+{
+  "type": "node",
+  "id": 1582427256,
+  "lat": 52.3728657,
+  "lon": 4.8186098,
+  "tags": {
+    "name": "Sloterpark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111369773"
+  }
+},
+{
+  "type": "node",
+  "id": 1584103895,
+  "lat": 52.3494100,
+  "lon": 4.9040430,
+  "tags": {
+    "name": "Amstelkade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111336160"
+  }
+},
+{
+  "type": "node",
+  "id": 1595259761,
+  "lat": 52.3617404,
+  "lon": 4.9405051,
+  "tags": {
+    "name": "Molukkenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008291",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111318130"
+  }
+},
+{
+  "type": "node",
+  "id": 1614149707,
+  "lat": 52.3615445,
+  "lon": 4.9392725,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-01-29",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Molukkenstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008190",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1618762410,
+  "lat": 52.3634456,
+  "lon": 4.8830620,
+  "tags": {
+    "bus": "yes",
+    "name": "Leidseplein",
+    "name:nl": "Leidseplein",
+    "name:zh": "萊茲廣場",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006067",
+    "wheelchair": "no",
+    "wikidata": "Q111291262"
+  }
+},
+{
+  "type": "node",
+  "id": 1618775729,
+  "lat": 52.3605256,
+  "lon": 4.8666219,
+  "tags": {
+    "name": "Jan Pieter Heijestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006048",
+    "wikidata": "Q111291260"
+  }
+},
+{
+  "type": "node",
+  "id": 1686005101,
+  "lat": 52.3515418,
+  "lon": 4.8416382,
+  "tags": {
+    "bus": "yes",
+    "name": "Delflandlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295880"
+  }
+},
+{
+  "type": "node",
+  "id": 1686005104,
+  "lat": 52.3515580,
+  "lon": 4.8397600,
+  "tags": {
+    "name": "Delflandlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111295880"
+  }
+},
+{
+  "type": "node",
+  "id": 1690450992,
+  "lat": 52.3646155,
+  "lon": 4.8807936,
+  "tags": {
+    "description": "Halte Amsterdam Leidseplein - thv Marnixstraat - Richting NW",
+    "name": "Leidseplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006067",
+    "wheelchair": "yes",
+    "wikidata": "Q111291262"
+  }
+},
+{
+  "type": "node",
+  "id": 1716142293,
+  "lat": 52.3766604,
+  "lon": 4.8194571,
+  "tags": {
+    "name": "Burgemeester Roëllstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111372127"
+  }
+},
+{
+  "type": "node",
+  "id": 1719343349,
+  "lat": 52.3375055,
+  "lon": 4.8688542,
+  "tags": {
+    "name": "Parnassusweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111358933",
+    "wikimedia_commons": "Category:Sneltramhalte Parnassusweg"
+  }
+},
+{
+  "type": "node",
+  "id": 1776157172,
+  "lat": 52.3545601,
+  "lon": 4.9118953,
+  "tags": {
+    "name": "Wibautstraat",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 1776417898,
+  "lat": 52.3237799,
+  "lon": 4.9730314,
+  "tags": {
+    "name": "Ganzenhoef",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1776417900,
+  "lat": 52.3115025,
+  "lon": 4.9842364,
+  "tags": {
+    "name": "Gaasperplas",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30009550",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1923327168,
+  "lat": 52.3325890,
+  "lon": 4.8688694,
+  "tags": {
+    "name": "A. J. Ernststraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2313853",
+    "wikimedia_commons": "Category:Sneltramhalte A.J. Ernststraat",
+    "wikipedia": "nl:A.J. Ernststraat (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 1923339510,
+  "lat": 52.3029516,
+  "lon": 4.8718881,
+  "tags": {
+    "name": "Oranjebaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q1867682",
+    "wikimedia_commons": "File:Oranjebaan.jpg",
+    "wikipedia": "nl:Oranjebaan (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 1923365101,
+  "lat": 52.2812036,
+  "lon": 4.8573912,
+  "tags": {
+    "name": "Meent",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "no",
+    "wikidata": "Q1824137",
+    "wikimedia_commons": "Category:Sneltramhalte Meent",
+    "wikipedia": "nl:Meent (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 1923365119,
+  "lat": 52.2821859,
+  "lon": 4.8323231,
+  "tags": {
+    "name": "Sacharovlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2218736",
+    "wikimedia_commons": "Category:Sneltramhalte Sacharovlaan",
+    "wikipedia": "nl:Sacharovlaan (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 1978110960,
+  "lat": 52.3555825,
+  "lon": 4.7870176,
+  "tags": {
+    "name": "Dijkgraafplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111407642"
+  }
+},
+{
+  "type": "node",
+  "id": 1978110972,
+  "lat": 52.3554481,
+  "lon": 4.7864929,
+  "tags": {
+    "name": "Dijkgraafplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111407642"
+  }
+},
+{
+  "type": "node",
+  "id": 1978358503,
+  "lat": 52.3531821,
+  "lon": 4.8633455,
+  "tags": {
+    "name": "Valeriusplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111301511"
+  }
+},
+{
+  "type": "node",
+  "id": 1978358521,
+  "lat": 52.3532989,
+  "lon": 4.8636337,
+  "tags": {
+    "name": "Valeriusplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111301511"
+  }
+},
+{
+  "type": "node",
+  "id": 1979187101,
+  "lat": 52.3530108,
+  "lon": 4.7765540,
+  "tags": {
+    "name": "Pilatus",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291714"
+  }
+},
+{
+  "type": "node",
+  "id": 1979187198,
+  "lat": 52.3504489,
+  "lon": 4.7829483,
+  "tags": {
+    "name": "Inaristraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291716"
+  }
+},
+{
+  "type": "node",
+  "id": 2013949519,
+  "lat": 52.3611749,
+  "lon": 4.9336328,
+  "tags": {
+    "name": "Muiderpoortstation",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30000007",
+    "tram": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2020414930,
+  "lat": 52.3879696,
+  "lon": 4.8392172,
+  "tags": {
+    "name": "Station Sloterdijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30002362",
+    "tram": "yes",
+    "wikidata": "Q111422381",
+    "wikimedia_commons": "Category:Trams at Station Amsterdam Sloterdijk"
+  }
+},
+{
+  "type": "node",
+  "id": 2020614094,
+  "lat": 52.3673632,
+  "lon": 4.8725518,
+  "tags": {
+    "name": "Bilderdijkstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307979"
+  }
+},
+{
+  "type": "node",
+  "id": 2020641830,
+  "lat": 52.3429363,
+  "lon": 4.9477868,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "covered": "yes",
+    "highway": "bus_stop",
+    "name": "Brinkstraat",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000074",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 2300172831,
+  "lat": 52.3742782,
+  "lon": 4.8763837,
+  "tags": {
+    "name": "Bloemgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364864"
+  }
+},
+{
+  "type": "node",
+  "id": 2303104508,
+  "lat": 52.3670831,
+  "lon": 4.8722954,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Kinkerstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307979"
+  }
+},
+{
+  "type": "node",
+  "id": 2316881859,
+  "lat": 52.3778058,
+  "lon": 4.9003434,
+  "tags": {
+    "local_ref": "A4",
+    "name": "Centraal Station",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "A4",
+    "tram": "yes",
+    "wikidata": "Q21548886",
+    "wikimedia_commons": "Category:Amsterdam Central station tram station",
+    "wikipedia": "nl:Tramstation Amsterdam Centraal"
+  }
+},
+{
+  "type": "node",
+  "id": 2316881868,
+  "lat": 52.3778505,
+  "lon": 4.9003629,
+  "tags": {
+    "local_ref": "A3",
+    "name": "Centraal Station",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "A3",
+    "tram": "yes",
+    "wikidata": "Q21548886",
+    "wikimedia_commons": "Category:Amsterdam Central station tram station",
+    "wikipedia": "nl:Tramstation Amsterdam Centraal"
+  }
+},
+{
+  "type": "node",
+  "id": 2421932411,
+  "lat": 52.3803006,
+  "lon": 4.8552771,
+  "tags": {
+    "name": "Bos en Lommerweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111426980"
+  }
+},
+{
+  "type": "node",
+  "id": 2421932426,
+  "lat": 52.3820439,
+  "lon": 4.8522251,
+  "tags": {
+    "name": "Wiltzanghlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111426981"
+  }
+},
+{
+  "type": "node",
+  "id": 2672742552,
+  "lat": 52.3748676,
+  "lon": 4.8953791,
+  "tags": {
+    "name": "Dam",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2672749411,
+  "lat": 52.3694572,
+  "lon": 4.8921252,
+  "tags": {
+    "name": "Rokin",
+    "old_name": "Spui",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111343621"
+  }
+},
+{
+  "type": "node",
+  "id": 2672749474,
+  "lat": 52.3697221,
+  "lon": 4.8922740,
+  "tags": {
+    "name": "Rokin",
+    "old_name": "Spui",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111343621"
+  }
+},
+{
+  "type": "node",
+  "id": 2672987276,
+  "lat": 52.3662601,
+  "lon": 4.8964238,
+  "tags": {
+    "name": "Rembrandtplein",
+    "name:de": "Rembrandtplatz",
+    "name:nl": "Rembrandtplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111343619"
+  }
+},
+{
+  "type": "node",
+  "id": 2672987288,
+  "lat": 52.3671715,
+  "lon": 4.9022284,
+  "tags": {
+    "name": "Waterlooplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111397560"
+  }
+},
+{
+  "type": "node",
+  "id": 2673071064,
+  "lat": 52.3677535,
+  "lon": 4.9058474,
+  "tags": {
+    "name": "Meester Visserplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111397558"
+  }
+},
+{
+  "type": "node",
+  "id": 2673071086,
+  "lat": 52.3665623,
+  "lon": 4.9113237,
+  "tags": {
+    "name": "Artis",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111397554"
+  }
+},
+{
+  "type": "node",
+  "id": 2673087141,
+  "lat": 52.3637916,
+  "lon": 4.8982915,
+  "tags": {
+    "name": "Keizersgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111343615"
+  }
+},
+{
+  "type": "node",
+  "id": 2673087152,
+  "lat": 52.3590024,
+  "lon": 4.8989049,
+  "tags": {
+    "name": "Frederiksplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111286556"
+  }
+},
+{
+  "type": "node",
+  "id": 2673087196,
+  "lat": 52.3550346,
+  "lon": 4.9010669,
+  "tags": {
+    "name": "Ceintuurbaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009094",
+    "wheelchair": "yes",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 2673087253,
+  "lat": 52.3514501,
+  "lon": 4.9033200,
+  "tags": {
+    "name": "Lutmastraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111336158"
+  }
+},
+{
+  "type": "node",
+  "id": 2673092648,
+  "lat": 52.3465873,
+  "lon": 4.9051006,
+  "tags": {
+    "name": "Victorieplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009048",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009048",
+    "wheelchair": "limited",
+    "wikidata": "Q111335849"
+  }
+},
+{
+  "type": "node",
+  "id": 2673092651,
+  "lat": 52.3487259,
+  "lon": 4.9043407,
+  "tags": {
+    "name": "Amstelkade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111336160"
+  }
+},
+{
+  "type": "node",
+  "id": 2674521939,
+  "lat": 52.3630659,
+  "lon": 4.9213369,
+  "tags": {
+    "name": "Mauritskade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2674521942,
+  "lat": 52.3634343,
+  "lon": 4.9196097,
+  "tags": {
+    "name": "Alexanderplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111376243"
+  }
+},
+{
+  "type": "node",
+  "id": 2674521943,
+  "lat": 52.3652225,
+  "lon": 4.9152768,
+  "tags": {
+    "name": "Plantage Lepellaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111397557"
+  }
+},
+{
+  "type": "node",
+  "id": 2674521976,
+  "lat": 52.3574383,
+  "lon": 4.9269018,
+  "tags": {
+    "name": "Oostpoort",
+    "old_name": "Pretoriusstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111434587"
+  }
+},
+{
+  "type": "node",
+  "id": 2674538480,
+  "lat": 52.3395734,
+  "lon": 4.9546410,
+  "tags": {
+    "name": "Arent Krijtsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111434568"
+  }
+},
+{
+  "type": "node",
+  "id": 2674543283,
+  "lat": 52.3510660,
+  "lon": 4.9348010,
+  "tags": {
+    "name": "Hugo de Vrieslaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111434572",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 2674543285,
+  "lat": 52.3476135,
+  "lon": 4.9404536,
+  "tags": {
+    "name": "Kruislaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2674543286,
+  "lat": 52.3429508,
+  "lon": 4.9478099,
+  "tags": {
+    "name": "Brinkstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111434569"
+  }
+},
+{
+  "type": "node",
+  "id": 2674767992,
+  "lat": 52.3772761,
+  "lon": 4.9125470,
+  "tags": {
+    "name": "Muziekgebouw",
+    "panoramax": "b7fcc38e-dab7-42d9-8918-24f048084972",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008235",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458110",
+    "wikimedia_commons": "Category:Tram stop Muziekgebouw Bimhuis"
+  }
+},
+{
+  "type": "node",
+  "id": 2674855304,
+  "lat": 52.3729896,
+  "lon": 4.9340409,
+  "tags": {
+    "name": "Rietlandpark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008239",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q13652597",
+    "wikimedia_commons": "Category:Rietlandpark (tram stop)",
+    "wikipedia": "nl:Rietlandpark (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 2674855327,
+  "lat": 52.3719706,
+  "lon": 4.9616739,
+  "tags": {
+    "name": "Zuiderzeeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008241",
+    "tram": "yes",
+    "wikidata": "Q111458125"
+  }
+},
+{
+  "type": "node",
+  "id": 2674999726,
+  "lat": 52.3680424,
+  "lon": 4.8889914,
+  "tags": {
+    "name": "Koningsplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305179"
+  }
+},
+{
+  "type": "node",
+  "id": 2677256520,
+  "lat": 52.3689627,
+  "lon": 4.9688689,
+  "tags": {
+    "name": "Bob Haarmslaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008007",
+    "tram": "yes",
+    "wikidata": "Q111458127"
+  }
+},
+{
+  "type": "node",
+  "id": 2677256600,
+  "lat": 52.3555154,
+  "lon": 4.9946247,
+  "tags": {
+    "name": "Diemerparklaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458130"
+  }
+},
+{
+  "type": "node",
+  "id": 2678427768,
+  "lat": 52.3761672,
+  "lon": 4.9211099,
+  "tags": {
+    "name": "Kattenburgerstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008237",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458111"
+  }
+},
+{
+  "type": "node",
+  "id": 2678427769,
+  "lat": 52.3549103,
+  "lon": 4.9958806,
+  "tags": {
+    "name": "Diemerparklaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458130"
+  }
+},
+{
+  "type": "node",
+  "id": 2678427770,
+  "lat": 52.3525961,
+  "lon": 5.0002302,
+  "tags": {
+    "name": "Lumièrestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111458133"
+  }
+},
+{
+  "type": "node",
+  "id": 2678427771,
+  "lat": 52.3531807,
+  "lon": 4.9990167,
+  "tags": {
+    "name": "Lumièrestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458133"
+  }
+},
+{
+  "type": "node",
+  "id": 2763733921,
+  "lat": 52.3744189,
+  "lon": 4.8765160,
+  "tags": {
+    "bus": "yes",
+    "name": "Bloemgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364864"
+  }
+},
+{
+  "type": "node",
+  "id": 2941113425,
+  "lat": 52.3858873,
+  "lon": 4.8460808,
+  "tags": {
+    "name": "Molenwerf",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111426984"
+  }
+},
+{
+  "type": "node",
+  "id": 2987217066,
+  "lat": 52.3640547,
+  "lon": 4.9385662,
+  "tags": {
+    "name": "Javaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "shelter": "yes",
+    "tram": "yes",
+    "wikidata": "Q111396601"
+  }
+},
+{
+  "type": "node",
+  "id": 2987217067,
+  "lat": 52.3641725,
+  "lon": 4.9382411,
+  "tags": {
+    "name": "Javaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111396601"
+  }
+},
+{
+  "type": "node",
+  "id": 3011895788,
+  "lat": 52.3734596,
+  "lon": 4.9381702,
+  "tags": {
+    "name": "C. van Eesterenlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008233",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111378178"
+  }
+},
+{
+  "type": "node",
+  "id": 3078345542,
+  "lat": 52.3627073,
+  "lon": 4.9810143,
+  "tags": {
+    "name": "Steigereiland",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458128"
+  }
+},
+{
+  "type": "node",
+  "id": 3078345543,
+  "lat": 52.3632052,
+  "lon": 4.9799949,
+  "tags": {
+    "name": "Steigereiland",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458128"
+  }
+},
+{
+  "type": "node",
+  "id": 3157939509,
+  "lat": 52.3723569,
+  "lon": 4.8906536,
+  "tags": {
+    "name": "Paleisstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305178"
+  }
+},
+{
+  "type": "node",
+  "id": 3178067303,
+  "lat": 52.3662292,
+  "lon": 4.8968199,
+  "tags": {
+    "name": "Rembrandtplein",
+    "name:de": "Rembrandtplatz",
+    "name:nl": "Rembrandtplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111343619"
+  }
+},
+{
+  "type": "node",
+  "id": 3185290417,
+  "lat": 52.3718196,
+  "lon": 4.8759440,
+  "tags": {
+    "name": "Rozengracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "route_ref": "5;13",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111364863",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 3187687711,
+  "lat": 52.3705391,
+  "lon": 4.8925639,
+  "tags": {
+    "name": "Rokin",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3294629035,
+  "lat": 52.3545776,
+  "lon": 4.9014422,
+  "tags": {
+    "name": "Ceintuurbaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009094",
+    "wheelchair": "no",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 3294629036,
+  "lat": 52.3418870,
+  "lon": 4.8933240,
+  "tags": {
+    "name": "Dintelstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009001",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009001",
+    "wikidata": "Q111335794"
+  }
+},
+{
+  "type": "node",
+  "id": 3294629037,
+  "lat": 52.3404324,
+  "lon": 4.8922816,
+  "tags": {
+    "name": "Europaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111335784"
+  }
+},
+{
+  "type": "node",
+  "id": 3294629038,
+  "lat": 52.3369161,
+  "lon": 4.8906393,
+  "tags": {
+    "name": "Station RAI",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111334932"
+  }
+},
+{
+  "type": "node",
+  "id": 3294629045,
+  "lat": 52.3362207,
+  "lon": 4.8898010,
+  "tags": {
+    "name": "Drentepark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111335707"
+  }
+},
+{
+  "type": "node",
+  "id": 3294945446,
+  "lat": 52.3471037,
+  "lon": 4.9111583,
+  "tags": {
+    "name": "Amsteldijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009139",
+    "tram": "yes",
+    "wikidata": "Q111382633"
+  }
+},
+{
+  "type": "node",
+  "id": 3294946408,
+  "lat": 52.3704336,
+  "lon": 4.8641598,
+  "tags": {
+    "name": "Willem de Zwijgerlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111383639"
+  }
+},
+{
+  "type": "node",
+  "id": 3294946425,
+  "lat": 52.3713902,
+  "lon": 4.8604577,
+  "tags": {
+    "name": "Admiraal De Ruijterweg",
+    "official_name": "Admiraal de Ruijterweg",
+    "panoramax": "a2f59044-003a-4b96-963f-3130a95d5295",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111383644"
+  }
+},
+{
+  "type": "node",
+  "id": 3294946637,
+  "lat": 52.3674579,
+  "lon": 4.8719933,
+  "tags": {
+    "name": "Kinkerstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307979"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383111,
+  "lat": 52.3708243,
+  "lon": 4.8698359,
+  "tags": {
+    "name": "Bilderdijkstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307980"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383113,
+  "lat": 52.3527058,
+  "lon": 4.8905961,
+  "tags": {
+    "name": "De Pijp",
+    "old_name": "Ferdinand Bolstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009110",
+    "wikidata": "Q111318137"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383114,
+  "lat": 52.3630125,
+  "lon": 4.8750893,
+  "tags": {
+    "name": "Overtoom",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "NL:S:30006043",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006043",
+    "wheelchair": "limited",
+    "wikidata": "Q111291261"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383115,
+  "lat": 52.3632270,
+  "lon": 4.8749794,
+  "tags": {
+    "name": "Overtoom",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "NL:S:30006043",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006043",
+    "wheelchair": "limited",
+    "wikidata": "Q111291261"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383117,
+  "lat": 52.3584538,
+  "lon": 4.8783180,
+  "tags": {
+    "name": "Van Baerlestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307977"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383118,
+  "lat": 52.3587793,
+  "lon": 4.8781266,
+  "tags": {
+    "name": "Van Baerlestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307977"
+  }
+},
+{
+  "type": "node",
+  "id": 3295383119,
+  "lat": 52.3464278,
+  "lon": 4.9063478,
+  "tags": {
+    "name": "Victorieplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009051",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009048",
+    "wikidata": "Q111335849"
+  }
+},
+{
+  "type": "node",
+  "id": 3295582281,
+  "lat": 52.3576998,
+  "lon": 4.9905047,
+  "tags": {
+    "name": "Vennepluimstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458129"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373457,
+  "lat": 52.3509515,
+  "lon": 4.7944986,
+  "tags": {
+    "name": "Baden Powellweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291718"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373458,
+  "lat": 52.3496994,
+  "lon": 4.7881565,
+  "tags": {
+    "name": "Ecuplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q13575346",
+    "wikimedia_commons": "Category:Ecuplein, Amsterdam",
+    "wikipedia": "nl:Ecuplein"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373459,
+  "lat": 52.3626351,
+  "lon": 4.8748950,
+  "tags": {
+    "alt_name": "Eerste Constantijn Huygensstraat",
+    "name": "1e C. Huygensstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "NL:S:30006045",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006045",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373460,
+  "lat": 52.3577873,
+  "lon": 4.8262383,
+  "tags": {
+    "name": "Johan Huizingalaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291722"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373861,
+  "lat": 52.3578123,
+  "lon": 4.8258953,
+  "tags": {
+    "name": "Johan Huizingalaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111291722"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373862,
+  "lat": 52.3659919,
+  "lon": 4.8865383,
+  "tags": {
+    "name": "Keizersgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305180"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373863,
+  "lat": 52.3642233,
+  "lon": 4.8829717,
+  "tags": {
+    "name": "Leidseplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006067",
+    "wheelchair": "yes",
+    "wikidata": "Q111291262"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373864,
+  "lat": 52.3538423,
+  "lon": 4.8084929,
+  "tags": {
+    "name": "Louis Davidsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291720"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373865,
+  "lat": 52.3538687,
+  "lon": 4.7745043,
+  "tags": {
+    "name": "Matterhorn",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111284159"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373866,
+  "lat": 52.3563700,
+  "lon": 4.8099119,
+  "tags": {
+    "name": "Meer en Vaart",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291721"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373869,
+  "lat": 52.3650457,
+  "lon": 4.8845404,
+  "tags": {
+    "name": "Prinsengracht",
+    "panoramax": "0ccb2d1f-2eb4-4c32-9f47-5c005fecb7d1",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305181"
+  }
+},
+{
+  "type": "node",
+  "id": 3296373870,
+  "lat": 52.3579004,
+  "lon": 4.8337835,
+  "tags": {
+    "name": "Station Lelylaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111291723",
+    "wikimedia_commons": "Category:Trams at Station Amsterdam Lelylaan"
+  }
+},
+{
+  "type": "node",
+  "id": 3296687013,
+  "lat": 52.3559987,
+  "lon": 4.8705851,
+  "tags": {
+    "name": "Cornelis Schuytstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111301510"
+  }
+},
+{
+  "type": "node",
+  "id": 3296687016,
+  "lat": 52.3462812,
+  "lon": 4.8105405,
+  "tags": {
+    "name": "Centrum Nieuw Sloten",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111295869"
+  }
+},
+{
+  "type": "node",
+  "id": 3296687017,
+  "lat": 52.3467070,
+  "lon": 4.8250738,
+  "tags": {
+    "name": "Louwesweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111295872"
+  }
+},
+{
+  "type": "node",
+  "id": 3297465109,
+  "lat": 52.3850483,
+  "lon": 4.8836242,
+  "tags": {
+    "name": "Haarlemmerplein",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "tram": "yes",
+    "wikidata": "Q127977997"
+  }
+},
+{
+  "type": "node",
+  "id": 3297465110,
+  "lat": 52.3816379,
+  "lon": 4.8811800,
+  "tags": {
+    "name": "Nieuwe Willemsstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364868"
+  }
+},
+{
+  "type": "node",
+  "id": 3297544662,
+  "lat": 52.3786007,
+  "lon": 4.8754111,
+  "tags": {
+    "name": "Frederik Hendrikplantsoen",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30002132",
+    "wikidata": "Q111307093"
+  }
+},
+{
+  "type": "node",
+  "id": 3297544663,
+  "lat": 52.3531905,
+  "lon": 4.8942153,
+  "tags": {
+    "name": "Tweede Van der Helststraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111318136"
+  }
+},
+{
+  "type": "node",
+  "id": 3299908038,
+  "lat": 52.3607965,
+  "lon": 4.9326128,
+  "tags": {
+    "name": "Muiderpoortstation",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30000441",
+    "tram": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3299908039,
+  "lat": 52.3583909,
+  "lon": 4.9137826,
+  "tags": {
+    "name": "Camperstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111318133"
+  }
+},
+{
+  "type": "node",
+  "id": 3300150225,
+  "lat": 52.3466740,
+  "lon": 4.8768645,
+  "tags": {
+    "bus": "yes",
+    "name": "Stadionweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007088",
+    "tram": "yes",
+    "wikidata": "Q111364717"
+  }
+},
+{
+  "type": "node",
+  "id": 3300150226,
+  "lat": 52.3471425,
+  "lon": 4.8768834,
+  "tags": {
+    "name": "Stadionweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007087",
+    "tram": "yes",
+    "wikidata": "Q111364717"
+  }
+},
+{
+  "type": "node",
+  "id": 3300150230,
+  "lat": 52.3431074,
+  "lon": 4.8767749,
+  "tags": {
+    "name": "Prinses Irenestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007187",
+    "tram": "yes",
+    "wikidata": "Q111364716"
+  }
+},
+{
+  "type": "node",
+  "id": 3300514038,
+  "lat": 52.3647872,
+  "lon": 4.8586095,
+  "tags": {
+    "name": "Witte de Withstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375699"
+  }
+},
+{
+  "type": "node",
+  "id": 3300515588,
+  "lat": 52.3729826,
+  "lon": 4.8487242,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111375708"
+  }
+},
+{
+  "type": "node",
+  "id": 3301289966,
+  "lat": 52.3633708,
+  "lon": 4.9185684,
+  "tags": {
+    "name": "Alexanderplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111376243"
+  }
+},
+{
+  "type": "node",
+  "id": 3303180661,
+  "lat": 52.3652467,
+  "lon": 4.9510568,
+  "tags": {
+    "name": "Flevopark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305420"
+  }
+},
+{
+  "type": "node",
+  "id": 3303180662,
+  "lat": 52.3594109,
+  "lon": 4.8978483,
+  "tags": {
+    "name": "Frederiksplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111286556"
+  }
+},
+{
+  "type": "node",
+  "id": 3303180663,
+  "lat": 52.3649431,
+  "lon": 4.9478662,
+  "tags": {
+    "name": "Insulindeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111318131"
+  }
+},
+{
+  "type": "node",
+  "id": 3303180666,
+  "lat": 52.3621442,
+  "lon": 4.9433884,
+  "tags": {
+    "name": "Soembawastraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111318132"
+  }
+},
+{
+  "type": "node",
+  "id": 3303180667,
+  "lat": 52.3612917,
+  "lon": 4.8863802,
+  "tags": {
+    "alt_name": "Spiegelgracht",
+    "name": "Rijksmuseum",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "no",
+    "wikidata": "Q111291263"
+  }
+},
+{
+  "type": "node",
+  "id": 3306176728,
+  "lat": 52.3666491,
+  "lon": 4.9242477,
+  "tags": {
+    "name": "Hoogte Kadijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111378172"
+  }
+},
+{
+  "type": "node",
+  "id": 3306176729,
+  "lat": 52.3729280,
+  "lon": 4.9344011,
+  "tags": {
+    "name": "Rietlandpark",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008260",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q13652597",
+    "wikimedia_commons": "Category:Rietlandpark (tram stop)",
+    "wikipedia": "nl:Rietlandpark (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 3306416869,
+  "lat": 52.3831444,
+  "lon": 4.8770860,
+  "tags": {
+    "name": "De Wittenkade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307091"
+  }
+},
+{
+  "type": "node",
+  "id": 3306416870,
+  "lat": 52.3810685,
+  "lon": 4.8791525,
+  "tags": {
+    "name": "Nassaukade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111307092"
+  }
+},
+{
+  "type": "node",
+  "id": 3306416871,
+  "lat": 52.3842946,
+  "lon": 4.8751351,
+  "tags": {
+    "name": "Van Limburg Stirumplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111307089"
+  }
+},
+{
+  "type": "node",
+  "id": 3306520722,
+  "lat": 52.3694429,
+  "lon": 4.8438216,
+  "tags": {
+    "name": "Admiraal Helfrichstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396097"
+  }
+},
+{
+  "type": "node",
+  "id": 3306520724,
+  "lat": 52.3769230,
+  "lon": 4.8068137,
+  "tags": {
+    "name": "Doctor H. Colijnstraat",
+    "official_name": "Dr. H. Colijnstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3306520725,
+  "lat": 52.3714269,
+  "lon": 4.8381019,
+  "tags": {
+    "name": "Jan Tooropstraat",
+    "panoramax": "a934bef3-0694-4a2d-b7cc-4df2b9089041",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396099"
+  }
+},
+{
+  "type": "node",
+  "id": 3306520726,
+  "lat": 52.3697121,
+  "lon": 4.8378389,
+  "tags": {
+    "name": "Jan Voermanstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396111"
+  }
+},
+{
+  "type": "node",
+  "id": 3306520727,
+  "lat": 52.3732337,
+  "lon": 4.8350051,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396101"
+  }
+},
+{
+  "type": "node",
+  "id": 3306520728,
+  "lat": 52.3702349,
+  "lon": 4.8514871,
+  "tags": {
+    "name": "Mercatorplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375707"
+  }
+},
+{
+  "type": "node",
+  "id": 3307084740,
+  "lat": 52.3659034,
+  "lon": 4.9275974,
+  "tags": {
+    "name": "Pontanusstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396595"
+  }
+},
+{
+  "type": "node",
+  "id": 3307084741,
+  "lat": 52.3658377,
+  "lon": 4.9325945,
+  "tags": {
+    "name": "Zeeburgerdijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396598"
+  }
+},
+{
+  "type": "node",
+  "id": 3307343461,
+  "lat": 52.3351971,
+  "lon": 4.8663865,
+  "tags": {
+    "name": "De Boelelaan/VU",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007005",
+    "tram": "yes",
+    "wikidata": "Q2224590",
+    "wikimedia_commons": "Category:Sneltramhalte De Boelelaan / VU",
+    "wikipedia": "nl:De Boelelaan / VU"
+  }
+},
+{
+  "type": "node",
+  "id": 3307636848,
+  "lat": 52.3565018,
+  "lon": 4.7917476,
+  "tags": {
+    "name": "Baden Powellweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419283"
+  }
+},
+{
+  "type": "node",
+  "id": 3307636849,
+  "lat": 52.3615937,
+  "lon": 4.8532470,
+  "tags": {
+    "name": "Corantijnstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419293"
+  }
+},
+{
+  "type": "node",
+  "id": 3307636850,
+  "lat": 52.3580819,
+  "lon": 4.7995669,
+  "tags": {
+    "name": "Hoekenes",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419285"
+  }
+},
+{
+  "type": "node",
+  "id": 3307636851,
+  "lat": 52.3595388,
+  "lon": 4.8032041,
+  "tags": {
+    "name": "Osdorpplein West",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111419287"
+  }
+},
+{
+  "type": "node",
+  "id": 3307636852,
+  "lat": 52.3638557,
+  "lon": 4.8531487,
+  "tags": {
+    "name": "Postjesweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375703"
+  }
+},
+{
+  "type": "node",
+  "id": 3307636853,
+  "lat": 52.3586360,
+  "lon": 4.8080582,
+  "tags": {
+    "name": "Osdorpplein Oost",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111419289"
+  }
+},
+{
+  "type": "node",
+  "id": 3307702376,
+  "lat": 52.3466950,
+  "lon": 4.8720137,
+  "tags": {
+    "name": "Minervaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007094",
+    "tram": "yes",
+    "wikidata": "Q111442481"
+  }
+},
+{
+  "type": "node",
+  "id": 3307702377,
+  "lat": 52.3463735,
+  "lon": 4.8666421,
+  "tags": {
+    "name": "Olympiaplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007098",
+    "tram": "yes",
+    "wikidata": "Q111442482"
+  }
+},
+{
+  "type": "node",
+  "id": 3307702378,
+  "lat": 52.3452686,
+  "lon": 4.8586416,
+  "tags": {
+    "name": "Olympiaweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007108",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111442483"
+  }
+},
+{
+  "type": "node",
+  "id": 3307835922,
+  "lat": 52.3763312,
+  "lon": 4.8469734,
+  "tags": {
+    "name": "Erasmusgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375709"
+  }
+},
+{
+  "type": "node",
+  "id": 3307835927,
+  "lat": 52.3669952,
+  "lon": 4.8525960,
+  "tags": {
+    "name": "W. Schoutenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375704"
+  }
+},
+{
+  "type": "node",
+  "id": 3307835928,
+  "lat": 52.3673886,
+  "lon": 4.8523612,
+  "tags": {
+    "name": "W. Schoutenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375704"
+  }
+},
+{
+  "type": "node",
+  "id": 3308281966,
+  "lat": 52.3773546,
+  "lon": 4.9008686,
+  "tags": {
+    "name": "Centraal Station",
+    "name:de": "Hauptbahnhof",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 3308281969,
+  "lat": 52.2961495,
+  "lon": 4.8674092,
+  "tags": {
+    "name": "Ouderkerkerlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2739727",
+    "wikimedia_commons": "Category:Sneltramhalte Ouderkerkerlaan",
+    "wikipedia": "nl:Ouderkerkerlaan (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 3308281970,
+  "lat": 52.2825699,
+  "lon": 4.8327624,
+  "tags": {
+    "name": "Sacharovlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2218736",
+    "wikimedia_commons": "Category:Sneltramhalte Sacharovlaan",
+    "wikipedia": "nl:Sacharovlaan (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 3308281975,
+  "lat": 52.2743545,
+  "lon": 4.8305341,
+  "tags": {
+    "name": "Westwijk",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2044925",
+    "wikimedia_commons": "Category:Sneltramhalte Westwijk",
+    "wikipedia": "nl:Westwijk (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 3371092710,
+  "lat": 52.3515947,
+  "lon": 4.8450157,
+  "tags": {
+    "bus": "yes",
+    "name": "Westlandgracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111295881"
+  }
+},
+{
+  "type": "node",
+  "id": 3460303591,
+  "lat": 52.2488297,
+  "lon": 4.8116419,
+  "tags": {
+    "name": "Aan de Zoom",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3561192480,
+  "lat": 52.3219463,
+  "lon": 4.8692108,
+  "tags": {
+    "name": "Uilenstede",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2457557",
+    "wikimedia_commons": "File:Metro 51 on the Uilenstede stop..jpg",
+    "wikipedia": "nl:Uilenstede (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 3735469931,
+  "lat": 52.3693154,
+  "lon": 4.9682901,
+  "tags": {
+    "name": "Bob Haarmslaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008009",
+    "tram": "yes",
+    "wikidata": "Q111458127"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961976,
+  "lat": 52.3117311,
+  "lon": 4.9473959,
+  "tags": {
+    "name": "Bijlmer ArenA",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30009523",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961977,
+  "lat": 52.3791884,
+  "lon": 4.9009371,
+  "tags": {
+    "name": "Centraal Station",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961978,
+  "lat": 52.3792082,
+  "lon": 4.9008785,
+  "tags": {
+    "name": "Centraal Station",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961979,
+  "lat": 52.4020575,
+  "lon": 4.9325850,
+  "tags": {
+    "name": "Noord",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961980,
+  "lat": 52.4021571,
+  "lon": 4.9324020,
+  "tags": {
+    "name": "Noord",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961981,
+  "lat": 52.3885895,
+  "lon": 4.9182869,
+  "tags": {
+    "name": "Noorderpark",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4005961982,
+  "lat": 52.3886942,
+  "lon": 4.9181208,
+  "tags": {
+    "name": "Noorderpark",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4015458389,
+  "lat": 52.3466361,
+  "lon": 4.9174059,
+  "tags": {
+    "local_ref": "3",
+    "name": "Amstelstation",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "3",
+    "ref:IFOPT": "NL:Q:30009515",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4015458390,
+  "lat": 52.3466483,
+  "lon": 4.9174767,
+  "tags": {
+    "local_ref": "2",
+    "name": "Amstelstation",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "2",
+    "ref:IFOPT": "NL:Q:30009514",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064153239,
+  "lat": 52.3170385,
+  "lon": 4.9791866,
+  "tags": {
+    "layer": "1",
+    "name": "Kraaiennest",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wikidata": "Q3241211",
+    "wikimedia_commons": "Category:Metrostation Kraaiennest",
+    "wikipedia": "nl:Kraaiennest (metrostation)",
+    "zone": "5725"
+  }
+},
+{
+  "type": "node",
+  "id": 4064153242,
+  "lat": 52.3303113,
+  "lon": 4.9567748,
+  "tags": {
+    "name": "Station Diemen Zuid",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064153243,
+  "lat": 52.3304057,
+  "lon": 4.9566878,
+  "tags": {
+    "name": "Station Diemen Zuid",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064153244,
+  "lat": 52.3283668,
+  "lon": 4.9673352,
+  "tags": {
+    "name": "Verrijn Stuartweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064245740,
+  "lat": 52.3296548,
+  "lon": 4.9300743,
+  "tags": {
+    "name": "Van der Madeweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064245741,
+  "lat": 52.3297174,
+  "lon": 4.9302391,
+  "tags": {
+    "name": "Van der Madeweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064245742,
+  "lat": 52.3297352,
+  "lon": 4.9302846,
+  "tags": {
+    "name": "Van der Madeweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064245743,
+  "lat": 52.3297847,
+  "lon": 4.9304544,
+  "tags": {
+    "name": "Van der Madeweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4064245744,
+  "lat": 52.3268326,
+  "lon": 4.9462773,
+  "tags": {
+    "name": "Venserpolder",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4072288190,
+  "lat": 52.3401909,
+  "lon": 4.9206141,
+  "tags": {
+    "name": "Spaklerweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4072288191,
+  "lat": 52.3402348,
+  "lon": 4.9208004,
+  "tags": {
+    "name": "Spaklerweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4072288192,
+  "lat": 52.3402457,
+  "lon": 4.9208526,
+  "tags": {
+    "name": "Spaklerweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4072288193,
+  "lat": 52.3402871,
+  "lon": 4.9210454,
+  "tags": {
+    "name": "Spaklerweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737789,
+  "lat": 52.3383393,
+  "lon": 4.8575924,
+  "tags": {
+    "name": "Amstelveenseweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30007343",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737790,
+  "lat": 52.3384751,
+  "lon": 4.8575709,
+  "tags": {
+    "name": "Amstelveenseweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30007342",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737791,
+  "lat": 52.3316595,
+  "lon": 4.9177027,
+  "tags": {
+    "name": "Overamstel",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737792,
+  "lat": 52.3316938,
+  "lon": 4.9176682,
+  "tags": {
+    "name": "Overamstel",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737793,
+  "lat": 52.3317688,
+  "lon": 4.9176063,
+  "tags": {
+    "name": "Overamstel",
+    "panoramax": "8ae42090-306a-40c1-9b0f-8a19367a011e",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737797,
+  "lat": 52.3392126,
+  "lon": 4.8744046,
+  "tags": {
+    "name": "Zuid",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30009585",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4073737798,
+  "lat": 52.3393314,
+  "lon": 4.8743160,
+  "tags": {
+    "name": "Zuid",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30007409",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4075987790,
+  "lat": 52.3463868,
+  "lon": 4.8345741,
+  "tags": {
+    "name": "Henk Sneevlietweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4076017505,
+  "lat": 52.3580602,
+  "lon": 4.8342535,
+  "tags": {
+    "name": "Lelylaan",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wikidata": "Q50722",
+    "wikimedia_commons": "Category:Station Amsterdam Lelylaan",
+    "wikipedia": "nl:Station Amsterdam Lelylaan"
+  }
+},
+{
+  "type": "node",
+  "id": 4076017506,
+  "lat": 52.3580615,
+  "lon": 4.8344667,
+  "tags": {
+    "name": "Lelylaan",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wikidata": "Q50722",
+    "wikimedia_commons": "Category:Station Amsterdam Lelylaan",
+    "wikipedia": "nl:Station Amsterdam Lelylaan"
+  }
+},
+{
+  "type": "node",
+  "id": 4077313758,
+  "lat": 52.3794484,
+  "lon": 4.8382330,
+  "tags": {
+    "name": "De Vlugtlaan",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4077313760,
+  "lat": 52.3952329,
+  "lon": 4.8505967,
+  "tags": {
+    "name": "Isolatorweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4077313761,
+  "lat": 52.3725816,
+  "lon": 4.8353639,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4077313762,
+  "lat": 52.3725841,
+  "lon": 4.8351828,
+  "tags": {
+    "name": "Jan van Galenstraat",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4077313764,
+  "lat": 52.3645968,
+  "lon": 4.8340358,
+  "tags": {
+    "name": "Postjesweg",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4077313773,
+  "lat": 52.3890363,
+  "lon": 4.8387632,
+  "tags": {
+    "name": "Station Sloterdijk",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4103562362,
+  "lat": 52.3325889,
+  "lon": 4.8688100,
+  "tags": {
+    "name": "A. J. Ernststraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2313853",
+    "wikimedia_commons": "Category:Sneltramhalte A.J. Ernststraat",
+    "wikipedia": "nl:A.J. Ernststraat (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 4103562364,
+  "lat": 52.3013177,
+  "lon": 4.8671267,
+  "tags": {
+    "name": "Amstelveen Stadshart",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111345412",
+    "wikimedia_commons": "Category:Amstelveen Stadshart (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 4103562373,
+  "lat": 52.3082083,
+  "lon": 4.8724420,
+  "tags": {
+    "name": "Onderuit",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q13922931",
+    "wikimedia_commons": "Category:Sneltramhalte Onderuit",
+    "wikipedia": "nl:Onderuit (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 4103562375,
+  "lat": 52.3082080,
+  "lon": 4.8725812,
+  "tags": {
+    "name": "Onderuit",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q13922931",
+    "wikimedia_commons": "Category:Sneltramhalte Onderuit",
+    "wikipedia": "nl:Onderuit (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 4103567889,
+  "lat": 52.3248966,
+  "lon": 4.8690235,
+  "tags": {
+    "name": "Van Boshuizenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2637401",
+    "wikimedia_commons": "Category:Sneltramhalte Van Boshuizenstraat",
+    "wikipedia": "nl:Van Boshuizenstraat (tramhalte)"
+  }
+},
+{
+  "type": "node",
+  "id": 4103567892,
+  "lat": 52.3118330,
+  "lon": 4.8723724,
+  "tags": {
+    "name": "Zonnestein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q3079905",
+    "wikimedia_commons": "Category:Sneltramhalte Zonnestein",
+    "wikipedia": "nl:Zonnestein (verkeersplein)"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295865,
+  "lat": 52.3067895,
+  "lon": 4.9520015,
+  "tags": {
+    "name": "Bullewijk",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "zone": "5725"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295866,
+  "lat": 52.3235649,
+  "lon": 4.9364580,
+  "tags": {
+    "name": "Duivendrecht",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295867,
+  "lat": 52.3236024,
+  "lon": 4.9365601,
+  "tags": {
+    "name": "Duivendrecht",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295869,
+  "lat": 52.2962711,
+  "lon": 4.9892990,
+  "tags": {
+    "name": "Gein",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295870,
+  "lat": 52.2980894,
+  "lon": 4.9599574,
+  "tags": {
+    "name": "Holendrecht",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30000171",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295871,
+  "lat": 52.2981319,
+  "lon": 4.9601264,
+  "tags": {
+    "name": "Holendrecht",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref:IFOPT": "NL:Q:30000174",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295872,
+  "lat": 52.2956365,
+  "lon": 4.9740002,
+  "tags": {
+    "name": "Reigersbos",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4192295879,
+  "lat": 52.3183621,
+  "lon": 4.9414198,
+  "tags": {
+    "name": "Strandvliet",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4249280290,
+  "lat": 52.3156718,
+  "lon": 4.8554060,
+  "tags": {
+    "name": "Amsterdamseweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4249280293,
+  "lat": 52.3411758,
+  "lon": 4.8523781,
+  "tags": {
+    "name": "IJsbaanpad",
+    "note": "position unsure",
+    "public_transport": "platform",
+    "railway": "platform",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4249280294,
+  "lat": 52.3352719,
+  "lon": 4.8543795,
+  "tags": {
+    "name": "Jollenpad",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4249280297,
+  "lat": 52.3305598,
+  "lon": 4.8560952,
+  "tags": {
+    "name": "Koenenkade",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4519556579,
+  "lat": 52.3218182,
+  "lon": 4.8565037,
+  "tags": {
+    "name": "Kalfjeslaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4541648287,
+  "lat": 52.3858730,
+  "lon": 4.8467105,
+  "tags": {
+    "name": "Molenwerf",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111426984"
+  }
+},
+{
+  "type": "node",
+  "id": 4620947742,
+  "lat": 52.3617430,
+  "lon": 4.9401712,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-01-29",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Molukkenstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008290",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 4620947743,
+  "lat": 52.3622945,
+  "lon": 4.9440924,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Soembawastraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008121",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4620948083,
+  "lat": 52.3649335,
+  "lon": 4.9478901,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Insulindeweg",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008120"
+  }
+},
+{
+  "type": "node",
+  "id": 4620948084,
+  "lat": 52.3621253,
+  "lon": 4.9433977,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Soembawastraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008124"
+  }
+},
+{
+  "type": "node",
+  "id": 4621136127,
+  "lat": 52.3570150,
+  "lon": 4.9272548,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Oostpoort",
+    "old_name": "Pretoriusstraat",
+    "public_transport": "platform",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30000029",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111434587",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 4621136128,
+  "lat": 52.3535798,
+  "lon": 4.9308962,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Hogeweg",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000039",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4621136129,
+  "lat": 52.3507367,
+  "lon": 4.9354413,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Hugo de Vrieslaan",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000066",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4621136510,
+  "lat": 52.3615581,
+  "lon": 4.9388327,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-01-29",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Molukkenstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008129",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 4621705536,
+  "lat": 52.3574304,
+  "lon": 4.9268761,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Oostpoort",
+    "old_name": "Pretoriusstraat",
+    "public_transport": "platform",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30000030",
+    "shelter": "yes",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111434587",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 4621705721,
+  "lat": 52.3510527,
+  "lon": 4.9347785,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Hugo de Vrieslaan",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000065",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4621705722,
+  "lat": 52.3479155,
+  "lon": 4.9398623,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Kruislaan",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000070",
+    "shelter": "yes",
+    "zone": "5715"
+  }
+},
+{
+  "type": "node",
+  "id": 4623266152,
+  "lat": 52.3533517,
+  "lon": 4.8949176,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Tweede Van der Helststraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009109",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4851477406,
+  "lat": 52.3526769,
+  "lon": 4.8901771,
+  "tags": {
+    "name": "De Pijp",
+    "old_name": "Ferdinand Bolstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30009110",
+    "wikidata": "Q111318137"
+  }
+},
+{
+  "type": "node",
+  "id": 4957591472,
+  "lat": 52.3442966,
+  "lon": 4.8509865,
+  "tags": {
+    "name": "Jan Wilsbrug",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957591499,
+  "lat": 52.3465483,
+  "lon": 4.8520759,
+  "tags": {
+    "name": "Remise Karperweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957592283,
+  "lat": 52.3493953,
+  "lon": 4.8563405,
+  "tags": {
+    "name": "Haarlemmermeerstation",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957592307,
+  "lat": 52.3214358,
+  "lon": 4.8564951,
+  "tags": {
+    "name": "Kalfjeslaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957592331,
+  "lat": 52.3274177,
+  "lon": 4.8565395,
+  "tags": {
+    "name": "Van Nijenrodeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957592436,
+  "lat": 52.3085646,
+  "lon": 4.8506593,
+  "tags": {
+    "name": "Molenweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957592454,
+  "lat": 52.3109438,
+  "lon": 4.8507838,
+  "tags": {
+    "name": "Karselaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4957592461,
+  "lat": 52.3115129,
+  "lon": 4.8510350,
+  "tags": {
+    "name": "Karselaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5004454871,
+  "lat": 52.3632085,
+  "lon": 4.8810698,
+  "tags": {
+    "name": "Leidseplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006067",
+    "wikidata": "Q111291262"
+  }
+},
+{
+  "type": "node",
+  "id": 5046827919,
+  "lat": 52.3376890,
+  "lon": 4.8895390,
+  "tags": {
+    "name": "Station RAI",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5046828023,
+  "lat": 52.3376062,
+  "lon": 4.8894203,
+  "tags": {
+    "name": "Station RAI",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5162821556,
+  "lat": 52.3408165,
+  "lon": 4.8731849,
+  "tags": {
+    "local_ref": "D",
+    "name": "Station Zuid",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30007269",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30007268",
+    "wheelchair": "yes",
+    "wikidata": "Q101195703",
+    "wikimedia_commons": "Category:Tramhalte Strawinskylaan/Station Zuid"
+  }
+},
+{
+  "type": "node",
+  "id": 5367746707,
+  "lat": 52.3419224,
+  "lon": 4.8914299,
+  "tags": {
+    "layer": "-2",
+    "name": "Europaplein",
+    "name:de": "Europaplatz",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5367746708,
+  "lat": 52.3411785,
+  "lon": 4.8915605,
+  "tags": {
+    "layer": "-2",
+    "name": "Europaplein",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5399178947,
+  "lat": 52.3620972,
+  "lon": 4.8989490,
+  "tags": {
+    "name": "Prinsengracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111336153"
+  }
+},
+{
+  "type": "node",
+  "id": 5399178948,
+  "lat": 52.3621338,
+  "lon": 4.8989773,
+  "tags": {
+    "name": "Prinsengracht",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111336153"
+  }
+},
+{
+  "type": "node",
+  "id": 5487043827,
+  "lat": 52.3364299,
+  "lon": 4.9697229,
+  "tags": {
+    "name": "Sniep",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30000453",
+    "tram": "yes",
+    "wikidata": "Q111422382"
+  }
+},
+{
+  "type": "node",
+  "id": 5509458843,
+  "lat": 52.3474450,
+  "lon": 4.9178945,
+  "tags": {
+    "name": "Amstelstation",
+    "panoramax": "ced4e26d-9570-4242-8fbc-65b536b2e0f9",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009014",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30009013"
+  }
+},
+{
+  "type": "node",
+  "id": 5776624758,
+  "lat": 52.3606866,
+  "lon": 4.8910469,
+  "tags": {
+    "name": "Vijzelgracht",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5776624759,
+  "lat": 52.3606661,
+  "lon": 4.8912207,
+  "tags": {
+    "name": "Vijzelgracht",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5776624760,
+  "lat": 52.3539585,
+  "lon": 4.8906476,
+  "tags": {
+    "name": "De Pijp",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5776624761,
+  "lat": 52.3539577,
+  "lon": 4.8906487,
+  "tags": {
+    "name": "De Pijp",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5792105369,
+  "lat": 52.3596835,
+  "lon": 4.9000102,
+  "tags": {
+    "name": "Frederiksplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111286556"
+  }
+},
+{
+  "type": "node",
+  "id": 5792762173,
+  "lat": 52.3594772,
+  "lon": 4.8925358,
+  "tags": {
+    "name": "Vijzelgracht",
+    "old_name": "Weteringcircuit",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111286557"
+  }
+},
+{
+  "type": "node",
+  "id": 6484065646,
+  "lat": 52.3704434,
+  "lon": 4.8927726,
+  "tags": {
+    "name": "Rokin",
+    "operator": "Gemeentelijk Vervoerbedrijf",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "start_date": "2018-07-21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6536976362,
+  "lat": 52.3382375,
+  "lon": 4.9613021,
+  "tags": {
+    "name": "Diemerbrug",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111434567"
+  }
+},
+{
+  "type": "node",
+  "id": 6536976363,
+  "lat": 52.3383458,
+  "lon": 4.9610512,
+  "tags": {
+    "bus": "yes",
+    "name": "Diemerbrug",
+    "public_transport": "stop_position",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6578508136,
+  "lat": 52.3706445,
+  "lon": 4.8703967,
+  "tags": {
+    "name": "De Clercqstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111307980"
+  }
+},
+{
+  "type": "node",
+  "id": 6638921572,
+  "lat": 52.2897815,
+  "lon": 4.8632971,
+  "tags": {
+    "name": "Sportlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2292205",
+    "wikimedia_commons": "Category:Sneltramhalte Sportlaan",
+    "wikipedia": "nl:Sportlaan (verkeersplein)"
+  }
+},
+{
+  "type": "node",
+  "id": 6638921582,
+  "lat": 52.2904199,
+  "lon": 4.8639055,
+  "tags": {
+    "name": "Sportlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2292205",
+    "wikimedia_commons": "Category:Sneltramhalte Sportlaan",
+    "wikipedia": "nl:Sportlaan (verkeersplein)"
+  }
+},
+{
+  "type": "node",
+  "id": 6639049950,
+  "lat": 52.3159021,
+  "lon": 4.8706653,
+  "tags": {
+    "name": "Kronenburg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2109813",
+    "wikimedia_commons": "Category:Sneltramhalte Kronenburg",
+    "wikipedia": "nl:Kronenburg (verkeersplein)"
+  }
+},
+{
+  "type": "node",
+  "id": 6639049951,
+  "lat": 52.3158787,
+  "lon": 4.8705431,
+  "tags": {
+    "name": "Kronenburg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q2109813",
+    "wikimedia_commons": "Category:Sneltramhalte Kronenburg",
+    "wikipedia": "nl:Kronenburg (verkeersplein)"
+  }
+},
+{
+  "type": "node",
+  "id": 6639049972,
+  "lat": 52.3117915,
+  "lon": 4.8722536,
+  "tags": {
+    "name": "Zonnestein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q3079905",
+    "wikimedia_commons": "Category:Sneltramhalte Zonnestein",
+    "wikipedia": "nl:Zonnestein (verkeersplein)"
+  }
+},
+{
+  "type": "node",
+  "id": 6645243388,
+  "lat": 52.3744510,
+  "lon": 4.8267900,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Burgemeester Rendorpstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30003172"
+  }
+},
+{
+  "type": "node",
+  "id": 6653550879,
+  "lat": 52.3426122,
+  "lon": 4.8767388,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Prinses Irenestraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007186",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6653580400,
+  "lat": 52.3471486,
+  "lon": 4.8768559,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Stadionweg",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007087",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6659220819,
+  "lat": 52.3467781,
+  "lon": 4.9050990,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Victorieplein",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009050",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 6659367697,
+  "lat": 52.3470662,
+  "lon": 4.8954127,
+  "tags": {
+    "name": "Maasstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009079",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:Q:30009078",
+    "wikidata": "Q111382636"
+  }
+},
+{
+  "type": "node",
+  "id": 6659367698,
+  "lat": 52.3468163,
+  "lon": 4.8947303,
+  "tags": {
+    "name": "Maasstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30009078",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:Q:30009078",
+    "wikidata": "Q111382636"
+  }
+},
+{
+  "type": "node",
+  "id": 6744452194,
+  "lat": 52.3783193,
+  "lon": 4.8992878,
+  "tags": {
+    "name": "Centraal Station",
+    "name:de": "Hauptbahnhof",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q21548886",
+    "wikimedia_commons": "Category:Amsterdam Central station tram station",
+    "wikipedia": "nl:Tramstation Amsterdam Centraal"
+  }
+},
+{
+  "type": "node",
+  "id": 6744452236,
+  "lat": 52.3782813,
+  "lon": 4.8991546,
+  "tags": {
+    "name": "Centraal Station",
+    "name:de": "Hauptbahnhof",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q21548886",
+    "wikimedia_commons": "Category:Amsterdam Central station tram station",
+    "wikipedia": "nl:Tramstation Amsterdam Centraal"
+  }
+},
+{
+  "type": "node",
+  "id": 6744452341,
+  "lat": 52.3783416,
+  "lon": 4.8993575,
+  "tags": {
+    "name": "Centraal Station",
+    "name:de": "Hauptbahnhof",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q21548886",
+    "wikimedia_commons": "Category:Amsterdam Central station tram station",
+    "wikipedia": "nl:Tramstation Amsterdam Centraal"
+  }
+},
+{
+  "type": "node",
+  "id": 6839019595,
+  "lat": 52.2492571,
+  "lon": 4.8119553,
+  "tags": {
+    "name": "Aan de Zoom",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6839021402,
+  "lat": 52.2432788,
+  "lon": 4.8211369,
+  "tags": {
+    "local_ref": "J",
+    "name": "Uithoorn Station",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6839021404,
+  "lat": 52.2429496,
+  "lon": 4.8216082,
+  "tags": {
+    "local_ref": "I",
+    "name": "Uithoorn Station",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6839032148,
+  "lat": 52.2350153,
+  "lon": 4.8345317,
+  "tags": {
+    "name": "Uithoorn Centrum",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q139000975"
+  }
+},
+{
+  "type": "node",
+  "id": 6839032154,
+  "lat": 52.2350733,
+  "lon": 4.8346111,
+  "tags": {
+    "name": "Uithoorn Centrum",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q139000975"
+  }
+},
+{
+  "type": "node",
+  "id": 6841172670,
+  "lat": 52.3716333,
+  "lon": 4.8381029,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Jan Tooropstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30003077",
+    "shelter": "yes",
+    "tram": "yes",
+    "wikidata": "Q111396099"
+  }
+},
+{
+  "type": "node",
+  "id": 6841269796,
+  "lat": 52.3704058,
+  "lon": 4.8500681,
+  "tags": {
+    "name": "Mercatorplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375707",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 6841269798,
+  "lat": 52.3706818,
+  "lon": 4.8499792,
+  "tags": {
+    "name": "Mercatorplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375707",
+    "zone": "5713"
+  }
+},
+{
+  "type": "node",
+  "id": 6841407500,
+  "lat": 52.3771987,
+  "lon": 4.8464503,
+  "tags": {
+    "name": "Bos en Lommerplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111375710"
+  }
+},
+{
+  "type": "node",
+  "id": 6841904708,
+  "lat": 52.3768076,
+  "lon": 4.8947147,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Nieuwezijds Kolk",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30005069",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "tram": "yes",
+    "wikidata": "Q111305176"
+  }
+},
+{
+  "type": "node",
+  "id": 6841904711,
+  "lat": 52.3768607,
+  "lon": 4.8946168,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Nieuwezijds Kolk",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30005070",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "tram": "yes",
+    "wikidata": "Q111305176"
+  }
+},
+{
+  "type": "node",
+  "id": 6932856211,
+  "lat": 52.3546713,
+  "lon": 4.9008751,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Van Woustraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009097",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 6932905660,
+  "lat": 52.3549659,
+  "lon": 4.9015662,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Van Woustraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009096",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 6932930237,
+  "lat": 52.3545836,
+  "lon": 4.9014661,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Ceintuurbaan",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009094",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "tram": "yes",
+    "wikidata": "Q111318135"
+  }
+},
+{
+  "type": "node",
+  "id": 6933147467,
+  "lat": 52.3603640,
+  "lon": 4.8657924,
+  "tags": {
+    "name": "Jan Pieter Heijestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/en/travel-information/stop/NL:S:30006048",
+    "wikidata": "Q111291260"
+  }
+},
+{
+  "type": "node",
+  "id": 6948769924,
+  "lat": 52.3631629,
+  "lon": 4.8809054,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Leidseplein",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30006089",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6960792121,
+  "lat": 52.3642479,
+  "lon": 4.8539750,
+  "tags": {
+    "name": "Hoofdweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111375703"
+  }
+},
+{
+  "type": "node",
+  "id": 7026721048,
+  "lat": 52.3514523,
+  "lon": 4.9033465,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Lutmastraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009090",
+    "tram": "yes",
+    "wikidata": "Q111336158"
+  }
+},
+{
+  "type": "node",
+  "id": 7026721051,
+  "lat": 52.3517731,
+  "lon": 4.9031580,
+  "tags": {
+    "name": "Lutmastraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111336158"
+  }
+},
+{
+  "type": "node",
+  "id": 7026741141,
+  "lat": 52.3487294,
+  "lon": 4.9043666,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Amstelkade",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30009086",
+    "shelter": "yes",
+    "tram": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q111336160"
+  }
+},
+{
+  "type": "node",
+  "id": 7106869918,
+  "lat": 52.3713530,
+  "lon": 4.9010846,
+  "tags": {
+    "name": "Nieuwmarkt",
+    "name:de": "Neumarkt",
+    "name:nl": "Nieuwmarkt",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 7106870068,
+  "lat": 52.3666262,
+  "lon": 4.9036061,
+  "tags": {
+    "name": "Waterlooplein",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 7106870071,
+  "lat": 52.3666905,
+  "lon": 4.9037527,
+  "tags": {
+    "name": "Waterlooplein",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 7106870124,
+  "lat": 52.3714238,
+  "lon": 4.9009379,
+  "tags": {
+    "name": "Nieuwmarkt",
+    "name:de": "Neumarkt",
+    "name:nl": "Nieuwmarkt",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 7106910981,
+  "lat": 52.3613263,
+  "lon": 4.9079182,
+  "tags": {
+    "name": "Weesperplein",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 7106911022,
+  "lat": 52.3612993,
+  "lon": 4.9078472,
+  "tags": {
+    "name": "Weesperplein",
+    "network": "Amsterdam Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "zone": "5700"
+  }
+},
+{
+  "type": "node",
+  "id": 7191641103,
+  "lat": 52.3617240,
+  "lon": 4.9405104,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Molukkenstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008291",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7191714411,
+  "lat": 52.3647651,
+  "lon": 4.9476121,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Insulindeweg",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30008119"
+  }
+},
+{
+  "type": "node",
+  "id": 7208341888,
+  "lat": 52.3533990,
+  "lon": 4.9310178,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Hogeweg",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30000040",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7208341889,
+  "lat": 52.3534088,
+  "lon": 4.9310414,
+  "tags": {
+    "name": "Hogeweg",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111434574"
+  }
+},
+{
+  "type": "node",
+  "id": 7223733172,
+  "lat": 52.3527563,
+  "lon": 4.8828562,
+  "tags": {
+    "name": "Roelof Hartplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30007015",
+    "wheelchair": "limited",
+    "wikidata": "Q111307975"
+  }
+},
+{
+  "type": "node",
+  "id": 7223757894,
+  "lat": 52.3563986,
+  "lon": 4.8797803,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Concertgebouw",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007006",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7223757895,
+  "lat": 52.3567008,
+  "lon": 4.8796715,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2024-10-23",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Concertgebouw",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007007",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7223761934,
+  "lat": 52.3526244,
+  "lon": 4.8820922,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Roelof Hartplein",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007017",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7223761935,
+  "lat": 52.3526434,
+  "lon": 4.8820747,
+  "tags": {
+    "name": "Roelof Hartplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "website": "https://gvb.nl/reisinformatie/halte/NL:S:30007015",
+    "wikidata": "Q111307975"
+  }
+},
+{
+  "type": "node",
+  "id": 7223761977,
+  "lat": 52.3532908,
+  "lon": 4.8819437,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Roelof Hartplein",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007015",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7325122837,
+  "lat": 52.3488172,
+  "lon": 4.8772355,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gerrit van der Veenstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007084",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "website": "https://www.gvb.nl/en/travel-information/stop/NL:S:30007083"
+  }
+},
+{
+  "type": "node",
+  "id": 7325122843,
+  "lat": 52.3492265,
+  "lon": 4.8773344,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Gerrit van der Veenstraat",
+    "public_transport": "platform",
+    "ref:IFOPT": "NL:Q:30007083",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "website": "https://www.gvb.nl/en/travel-information/stop/NL:S:30007083"
+  }
+},
+{
+  "type": "node",
+  "id": 7819762726,
+  "lat": 52.3778833,
+  "lon": 4.8786970,
+  "tags": {
+    "bus": "yes",
+    "name": "Marnixplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111364866"
+  }
+},
+{
+  "type": "node",
+  "id": 7985931972,
+  "lat": 52.3665730,
+  "lon": 4.9113349,
+  "tags": {
+    "bus": "yes",
+    "name": "Artis",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 8721712740,
+  "lat": 52.3677211,
+  "lon": 4.8893472,
+  "tags": {
+    "name": "Koningsplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111305179"
+  }
+},
+{
+  "type": "node",
+  "id": 9081861253,
+  "lat": 52.3586751,
+  "lon": 4.8804736,
+  "tags": {
+    "name": "Museumplein",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111301509"
+  }
+},
+{
+  "type": "node",
+  "id": 9533383353,
+  "lat": 52.3042535,
+  "lon": 4.8504873,
+  "tags": {
+    "name": "Parklaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9552181254,
+  "lat": 52.3624363,
+  "lon": 4.9141489,
+  "tags": {
+    "name": "Korte 's-Gravesandestraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111286554"
+  }
+},
+{
+  "type": "node",
+  "id": 9611530190,
+  "lat": 52.3493102,
+  "lon": 4.8914418,
+  "tags": {
+    "name": "v. Hilligaertstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111382637"
+  }
+},
+{
+  "type": "node",
+  "id": 10273052985,
+  "lat": 52.3719007,
+  "lon": 4.8906411,
+  "tags": {
+    "name": "Paleisstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111305178"
+  }
+},
+{
+  "type": "node",
+  "id": 10607209062,
+  "lat": 52.3580579,
+  "lon": 4.9899502,
+  "tags": {
+    "name": "Vennepluimstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111458129"
+  }
+},
+{
+  "type": "node",
+  "id": 11405370176,
+  "lat": 52.3615386,
+  "lon": 4.9388387,
+  "tags": {
+    "name": "Molukkenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11421184057,
+  "lat": 52.3747581,
+  "lon": 4.8917191,
+  "tags": {
+    "name": "Dam",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11976157910,
+  "lat": 52.3790052,
+  "lon": 4.9032770,
+  "tags": {
+    "name": "Centraal Station",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q21548886",
+    "wikimedia_commons": "Category:Amsterdam Central station tram station",
+    "wikipedia": "nl:Tramstation Amsterdam Centraal"
+  }
+},
+{
+  "type": "node",
+  "id": 12091039531,
+  "lat": 52.3497109,
+  "lon": 4.8914559,
+  "tags": {
+    "name": "v. Hilligaertstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111382637"
+  }
+},
+{
+  "type": "node",
+  "id": 12529252155,
+  "lat": 52.3757902,
+  "lon": 4.8179757,
+  "tags": {
+    "name": "Slotermeerlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111372127"
+  }
+},
+{
+  "type": "node",
+  "id": 12529252182,
+  "lat": 52.3763175,
+  "lon": 4.8129201,
+  "tags": {
+    "name": "Burgemeester Van Leeuwenlaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111396104"
+  }
+},
+{
+  "type": "node",
+  "id": 12623214920,
+  "lat": 52.3572692,
+  "lon": 4.8994975,
+  "tags": {
+    "name": "Albert Cuypstraat",
+    "panoramax": "85db3a84-6845-42f6-8b8c-2eaa0b094533",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13706221628,
+  "lat": 52.3615670,
+  "lon": 4.9392660,
+  "tags": {
+    "name": "Molukkenstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref:IFOPT": "NL:Q:30008291",
+    "tram": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q111318130"
+  }
+},
+{
+  "type": "node",
+  "id": 13706254377,
+  "lat": 52.3625747,
+  "lon": 4.9109957,
+  "tags": {
+    "name": "Roetersstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111286554"
+  }
+},
+{
+  "type": "node",
+  "id": 13706254378,
+  "lat": 52.3620879,
+  "lon": 4.9112171,
+  "tags": {
+    "name": "Roetersstraat",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q111286554"
+  }
+},
+{
+  "type": "node",
+  "id": 13706282123,
+  "lat": 52.3675402,
+  "lon": 4.9094614,
+  "tags": {
+    "name": "Plantage Parklaan",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13706283045,
+  "lat": 52.3671549,
+  "lon": 4.9124417,
+  "tags": {
+    "name": "Artis/Holocaustmuseum",
+    "network": "GVB Amsterdam",
+    "operator": "GVB Amsterdam",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13991004531,
+  "lat": 52.3690549,
+  "lon": 4.9277776,
+  "tags": {
+    "name": "Czaar Peterstraat",
+    "network": "Stadsvervoer Amsterdam",
+    "network:wikidata": "Q137608588",
+    "operator": "GVB",
+    "operator:wikidata": "Q1808041",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q140443442"
+  }
+},
+{
+  "type": "node",
+  "id": 13991004532,
+  "lat": 52.3692852,
+  "lon": 4.9280940,
+  "tags": {
+    "name": "Czaar Peterstraat",
+    "network": "Stadsvervoer Amsterdam",
+    "network:wikidata": "Q137608588",
+    "operator": "GVB",
+    "operator:wikidata": "Q1808041",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes",
+    "wikidata": "Q140443442"
+  }
+}
+
+  ]
+}

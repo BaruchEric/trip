@@ -1,0 +1,59 @@
+{
+  "bbox": [
+    29.2,
+    106.1,
+    30,
+    107
+  ],
+  "places": [
+    {
+      "name": "Ring Shopping Park",
+      "local": "光环购物中心",
+      "lat": 29.6530663,
+      "lon": 106.5259717,
+      "from": "M6"
+    },
+    {
+      "name": "Luohan Temple",
+      "local": "罗汉寺",
+      "lat": 29.5625664,
+      "lon": 106.5778425,
+      "from": "M6"
+    },
+    {
+      "name": "Hongya Cave",
+      "local": "洪崖洞",
+      "lat": 29.5650738,
+      "lon": 106.5753425,
+      "from": "M6"
+    },
+    {
+      "name": "Testbed 2",
+      "local": "贰厂文创园",
+      "lat": 29.5537638,
+      "lon": 106.5368476,
+      "from": "M6"
+    },
+    {
+      "name": "Longmenhao Old Street",
+      "local": "龙门浩老街",
+      "lat": 29.5588249,
+      "lon": 106.5912051,
+      "from": "M7"
+    },
+    {
+      "name": "Kuixinglou",
+      "local": "魁星楼",
+      "lat": 29.563255,
+      "lon": 106.5699015,
+      "from": "M7"
+    },
+    {
+      "name": "Liziba",
+      "local": "李子坝",
+      "lat": 29.5556826,
+      "lon": 106.5338753,
+      "from": "M7"
+    }
+  ]
+}

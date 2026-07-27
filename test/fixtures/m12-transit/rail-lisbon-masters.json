@@ -1,0 +1,36 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:26:55Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 12622754,
+  "tags": {
+    "name": "Rede antiga de elétricos da Carris",
+    "route_master": "tram",
+    "type": "route_master"
+  }
+},
+{
+  "type": "relation",
+  "id": 16175348,
+  "tags": {
+    "name": "Prolongamento da Linha Vermelha",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "note": "no wikidata entry so that wikidata only reflects the in service part",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "proposed:wikidata": "Q163215",
+    "route_master": "subway",
+    "type": "route_master"
+  }
+}
+
+  ]
+}

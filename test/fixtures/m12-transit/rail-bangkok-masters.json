@@ -1,0 +1,30 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-06-12T12:14:17Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 7725058,
+  "tags": {
+    "colour": "#893B90",
+    "name": "รถไฟฟ้ามหานคร สายสีม่วง",
+    "name:en": "MRT Purple Line",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "Bangkok Expressway and Metro Public Company Limited",
+    "ref": "MRT Purple",
+    "route_master": "subway",
+    "type": "route_master",
+    "wikidata": "Q6584549",
+    "wikipedia": "en:Purple Line (Bangkok)"
+  }
+}
+
+  ]
+}

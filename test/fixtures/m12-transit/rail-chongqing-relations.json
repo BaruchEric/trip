@@ -1,0 +1,11232 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:25:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 444083,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7967188580,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9351362646,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7289533879,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486100,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686492307,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486103,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7941683808,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9351362649,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486093,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686492066,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486096,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686471528,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7617634979,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 815644104,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9228486098,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486105,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 176115076,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7619295749,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10177615109,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1536370021,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7619295860,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9351362644,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661045151,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889738,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7691923877,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923875,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923873,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661062521,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661062329,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1112429964,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112429962,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 851455391,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 780635574,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816604,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1354298189,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584178337,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584178334,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 825814199,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816610,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816607,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 51816117,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 585042158,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1535031909,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#007A33",
+    "from": "鱼洞",
+    "name": "重庆轨道交通2号线：鱼洞 → 较场口",
+    "name:en": "Line 2: Yudong → Jiaochangkou",
+    "name:zh": "重庆轨道交通2号线：鱼洞 → 较场口",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "monorail",
+    "to": "较场口",
+    "type": "route",
+    "wikidata": "Q836612"
+  }
+},
+{
+  "type": "relation",
+  "id": 2336456,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7096324913,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192311,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9620231631,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192312,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9620231637,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192315,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9620231640,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192316,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9620231656,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192318,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9620231655,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192320,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9689749194,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607117,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9689749195,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607118,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9689749196,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607120,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9932850022,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607122,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9932839911,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607123,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9458207705,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1078703968,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9888814681,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135647,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1855149609,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135648,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1855149601,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135649,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002078,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135650,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002080,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016672,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002079,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016673,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002072,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016674,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9949309187,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016675,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9702282433,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889735,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9949295645,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016676,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9948532398,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1085725889,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9948532337,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1085725881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9948486859,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1085725887,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1046092120,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1046092129,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1046092132,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1046092134,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1046092135,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493294094,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1054403521,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1054403520,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1054403518,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1054403519,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1025848042,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037187,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037167,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889736,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1417501979,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1085725880,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#E4002B",
+    "from": "璧山",
+    "name": "重庆轨道交通1号线：璧山 → 朝天门",
+    "name:en": "Line 1: Bishan → Chaotianmen",
+    "name:zh": "重庆轨道交通1号线：璧山 → 朝天门",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "1",
+    "route": "subway",
+    "to": "朝天门",
+    "type": "route",
+    "wikidata": "Q263572"
+  }
+},
+{
+  "type": "relation",
+  "id": 2336457,
+  "members": [
+    {
+      "type": "node",
+      "ref": 6898635501,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1085725885,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1853880141,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1085725881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1853880103,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1085725889,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1853880104,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016676,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002075,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889735,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002073,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016675,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9934815042,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016674,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9934815039,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016673,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9934815057,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1470016672,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9934815059,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135650,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9934815047,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135649,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9954696075,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135648,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1855149603,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135647,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1855149602,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1078703968,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515315,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607123,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515310,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607122,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515308,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607121,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515312,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607119,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5607426548,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1463607117,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515309,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192320,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515311,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192319,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515307,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192317,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2162515314,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192314,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 3333977748,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192313,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7095345880,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1462192311,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1521984630,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1417501980,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1078697738,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037168,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037169,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1078697721,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 206252339,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1015362796,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1015362795,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 206252340,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 611312951,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 464114705,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1046092130,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1046092131,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 551280509,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 718197924,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#E4002B",
+    "from": "朝天门",
+    "name": "重庆轨道交通1号线：朝天门 → 璧山",
+    "name:en": "Line 1: Chaotianmen → Bishan",
+    "name:zh": "重庆轨道交通1号线：朝天门 → 璧山",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "1",
+    "route": "subway",
+    "to": "璧山",
+    "type": "route",
+    "wikidata": "Q263572"
+  }
+},
+{
+  "type": "relation",
+  "id": 2341149,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7686492527,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10175486106,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10175628687,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1112259266,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016391,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871465,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016389,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871468,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016388,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176016385,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871470,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175717730,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176016383,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871472,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016381,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871474,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016379,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883808,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016377,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883811,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175714851,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883814,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016376,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883812,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175722077,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9702282522,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889739,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1871618098,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7165542389,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889729,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1854002077,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889727,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9702282354,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889725,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176114666,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176114657,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176114645,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620453,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176114627,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620452,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176095680,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020351,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176095678,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020363,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244869,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623382,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244859,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176244850,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020366,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244823,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020365,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244821,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020361,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244463,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020354,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244465,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020368,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244467,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020359,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244474,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020346,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244476,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020358,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244478,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020362,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244482,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020353,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244485,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 972467226,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 174866804,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 767445055,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 767445054,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112346389,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 174721848,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112346388,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112724508,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889742,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112309835,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112309836,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325320,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325319,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325318,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325317,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325316,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325315,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112325314,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#003DA5",
+    "from": "鱼洞",
+    "name": "重庆轨道交通3号线：鱼洞 → 江北机场T2航站楼",
+    "name:en": "Line 3: Yudong → Jiangbei Airport T2",
+    "name:zh": "重庆轨道交通3号线：鱼洞 → 江北机场T2航站楼",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "monorail",
+    "to": "江北机场T2航站楼",
+    "type": "route",
+    "wikidata": "Q6119227"
+  }
+},
+{
+  "type": "relation",
+  "id": 2341150,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7165542162,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9437281220,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020349,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244479,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020352,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244477,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020356,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244475,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020346,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244468,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020367,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244466,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020350,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244464,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020360,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244822,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020355,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244824,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020347,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1856754816,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020348,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176244860,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1856531410,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623381,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176095679,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020357,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176095681,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 175020369,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176114628,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620452,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1856754760,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620453,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2154566020,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176114667,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9702282355,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889725,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9702282188,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889728,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9702282277,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889729,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9702282467,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9702282532,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889739,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175722076,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176016375,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883812,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175717837,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883813,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016378,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883810,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016380,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 174883807,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016382,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871473,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016384,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871471,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175717861,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176016386,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871469,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016387,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176016390,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871467,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10176016392,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 258871466,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10175628686,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1112259266,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2166943968,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9378609944,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 767445050,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946769735,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946769736,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 174883804,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 174883796,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 175007923,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 174883803,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 174883793,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 689863040,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 178451537,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889743,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112346387,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889732,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112346390,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889733,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889726,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1055889740,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 551320868,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#003DA5",
+    "from": "江北机场T2航站楼",
+    "name": "重庆轨道交通3号线：江北机场T2航站楼 → 鱼洞",
+    "name:en": "Line 3: Jiangbei Airport T2 → Yudong",
+    "name:zh": "重庆轨道交通3号线：江北机场T2航站楼 → 鱼洞",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "monorail",
+    "to": "鱼洞",
+    "type": "route",
+    "wikidata": "Q6119227"
+  }
+},
+{
+  "type": "relation",
+  "id": 2353578,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10177654747,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10177654724,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923872,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923874,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923876,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7619295892,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1055889737,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 661048844,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7619295886,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10177615110,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1536370021,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7619295814,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486106,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 176115075,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 661053284,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7617634978,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 815644103,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7686471523,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1859686101,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686492063,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661059932,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661059939,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7941683809,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3357507694,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3357507695,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3357507696,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7289533874,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3357507693,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7967188581,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1535031910,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112429974,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 775318792,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816608,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816609,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 825814197,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 775318791,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 775318790,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1354298191,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816602,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 148292743,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 851455390,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112429963,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112429965,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#007A33",
+    "from": "较场口",
+    "name": "重庆轨道交通2号线：较场口→鱼洞",
+    "name:en": "Line 2: Jiaochangkou → Yudong",
+    "name:zh": "重庆轨道交通2号线：较场口→鱼洞",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "monorail",
+    "to": "鱼洞",
+    "type": "route",
+    "wikidata": "Q836612"
+  }
+},
+{
+  "type": "relation",
+  "id": 2768660,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11252183234,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211454,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183251,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183264,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211456,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183285,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 710457107,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183401,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211457,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183436,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211458,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183403,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211459,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183495,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211460,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183524,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210862,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183527,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210864,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183528,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210865,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183529,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210867,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183558,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185662924,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210871,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185662946,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210876,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183580,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210878,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183593,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210880,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183609,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183624,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203189,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9466236545,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722361,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9466236283,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722345,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250893816,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 327734431,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 3345481883,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498383565,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7693161323,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210886,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250895866,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210887,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 3345481877,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210889,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 3345481887,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210890,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 3345481878,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210891,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1214452145,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452162,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452157,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452158,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452161,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452160,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452159,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452164,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452163,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452165,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452170,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113388541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452169,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722368,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722369,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 327734436,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 327734438,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 327734435,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 823985799,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 327734433,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 327734434,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F67599",
+    "from": "北碚",
+    "name": "重庆轨道交通6号线：北碚 → 茶园",
+    "name:en": "Line 6: Beibei → Chayuan",
+    "name:fr": "Ligne 6 : Beibei → Chayuan",
+    "name:zh": "重庆轨道交通6号线：北碚 → 茶园",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "subway",
+    "to": "茶园",
+    "type": "route",
+    "wikidata": "Q5931449"
+  }
+},
+{
+  "type": "relation",
+  "id": 2768661,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11250893830,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210891,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250895839,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210890,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250895859,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210889,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250895867,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210888,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250893818,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210886,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250893812,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498383564,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11250893805,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 327734432,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9466236282,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722343,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2156031492,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722361,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2156031504,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203189,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2154566028,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5585918820,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210879,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183579,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210878,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5619893125,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210874,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10186265779,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210870,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183557,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183693,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210868,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183686,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210866,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183678,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210863,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5359332942,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210859,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9329031747,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211460,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183404,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211459,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183437,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211458,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183402,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211457,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2640841987,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 710457107,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2640841988,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211456,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5359333277,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2640841984,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533211454,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1214317365,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214305382,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214317364,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214317363,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214317362,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214317361,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037171,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722350,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533172580,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113388540,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113388534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 205631486,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 529231873,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 529231872,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 555489368,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 555489367,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 555489370,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 555489369,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533137490,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533137538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533137527,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 258754640,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F67599",
+    "from": "茶园",
+    "name": "重庆轨道交通6号线：茶园 → 北碚",
+    "name:en": "Line 6: Chayuan → Beibei",
+    "name:fr": "Ligne 6 : Chayuan → Beibei",
+    "name:zh": "重庆轨道交通6号线：茶园 → 北碚",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "subway",
+    "to": "北碚",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 3474487,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11252183513,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210861,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183176,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2352149649,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183172,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2640842008,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5141498922,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318658784,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220871,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8867330339,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8867330341,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8867330342,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8867330343,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8867330344,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8867330345,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 529205733,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 529205734,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946776357,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946776359,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 736844596,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946776368,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946776369,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1140763387,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1140763388,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 826309510,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F67599",
+    "from": "礼嘉",
+    "name": "重庆轨道交通6号线国博支线：礼嘉 → 悦来",
+    "name:en": "Line 6 – International Expo branch: Lijia → Yuelai",
+    "name:zh": "重庆轨道交通6号线国博支线：礼嘉 → 悦来",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "subway",
+    "to": "悦来",
+    "type": "route",
+    "wikidata": "Q130759548"
+  }
+},
+{
+  "type": "relation",
+  "id": 3474488,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11252133725,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252133719,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183044,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183067,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183087,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183106,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183127,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220868,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252183142,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183160,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183171,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183173,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183175,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11252183507,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210860,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1214452142,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1412902704,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452137,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452138,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452139,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452140,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452141,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452144,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452143,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214452167,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F67599",
+    "from": "悦来",
+    "name": "重庆轨道交通6号线国博支线：悦来 → 礼嘉",
+    "name:en": "Line 6 – International Expo branch: Yuelai → Lijia",
+    "name:zh": "重庆轨道交通6号线国博支线：悦来 → 礼嘉",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "subway",
+    "to": "礼嘉",
+    "type": "route",
+    "wikidata": "Q130759548"
+  }
+},
+{
+  "type": "relation",
+  "id": 7662492,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10180069079,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677496,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180144468,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180144477,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180144489,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180144498,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9458207714,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848043,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180144516,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186040,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186025,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186070,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186073,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186086,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186101,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623375,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180134025,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623377,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180119387,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623383,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180119405,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5185916328,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722360,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180121918,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121929,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9159693817,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121947,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11247352722,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121955,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121965,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180065204,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180068925,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180068933,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180068945,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645110,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180068966,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645111,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180068968,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645112,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180068990,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645113,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180069053,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533949755,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180069062,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645115,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180069079,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677496,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1112849311,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1025848044,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658208,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658216,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658211,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658213,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658217,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037164,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112652921,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037165,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651483,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722365,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722358,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722356,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584176192,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722367,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 782676527,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647187,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533420332,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647193,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647194,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647192,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647197,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647199,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647198,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647200,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647201,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112707020,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651487,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647202,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F2A900",
+    "name": "重庆轨道交通环线：顺时针",
+    "name:en": "Loop line: Clockwise",
+    "name:fr": "ligne de la boucle : sens horaire",
+    "name:zh": "重庆轨道交通环线：顺时针",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "环",
+    "roundtrip": "yes",
+    "route": "subway",
+    "type": "route",
+    "wikidata": "Q15915083"
+  }
+},
+{
+  "type": "relation",
+  "id": 7676337,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8395751722,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8395751758,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963874,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8395751779,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963876,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015162,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533960313,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182020260,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533958481,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182020233,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533949758,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182020217,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533949759,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015208,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677495,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015193,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645116,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015182,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645119,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015173,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645117,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015164,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135651,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733908,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533475072,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11205302955,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533475140,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11205190633,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10186265760,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10186265773,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210877,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10186265776,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318575227,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575081,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575072,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575049,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575043,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575032,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575021,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310951,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310948,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10701970209,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10701970216,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10724057624,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10724057612,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10724057610,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1412902067,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 904000870,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 904000874,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848146,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849309,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037189,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848147,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491375882,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1209420418,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113388535,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113388536,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1476696833,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1150444965,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153000985,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1227811199,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#00A3E0",
+    "from": "跳磴",
+    "name": "重庆轨道交通5号线：跳磴 → 悦港北路",
+    "name:en": "Line 5: Tiaodeng → Yuegangbeilu",
+    "name:fr": "ligne 5: Tiaodeng → Rue Yuegang nord",
+    "name:zh": "重庆轨道交通5号线：跳磴 → 悦港北路",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "5",
+    "route": "subway",
+    "to": "悦港北路",
+    "type": "route",
+    "wikidata": "Q15912187"
+  }
+},
+{
+  "type": "relation",
+  "id": 7676338,
+  "members": [
+    {
+      "type": "node",
+      "ref": 6168960238,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677498,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168960239,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645114,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7095345881,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533949755,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180068991,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645113,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180068967,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645112,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5175082856,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645111,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180068952,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645110,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5175082293,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180068922,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960213,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121964,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121956,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11247352723,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121943,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180121936,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5186526830,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5186526457,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9466236546,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722360,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168960123,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168959861,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623383,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6488570301,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623379,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168959870,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623375,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185801506,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5619893128,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960086,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186024,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960103,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960113,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5577715867,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848043,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168960246,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960122,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960243,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5627835463,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168960238,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677498,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1491976110,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584176190,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658867548,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112707019,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533420305,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658867546,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658867543,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658867541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647196,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647195,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647191,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647190,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783584513,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112647188,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783584512,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722366,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722352,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722355,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722359,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722357,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722364,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037166,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037162,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 830712119,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658214,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658212,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 537153695,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533420353,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849310,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F2A900",
+    "name": "重庆轨道交通环线：逆时针",
+    "name:en": "Loop line: Counterclockwise",
+    "name:fr": "ligne de la boucle : sens antihoraire",
+    "name:zh": "重庆轨道交通环线：逆时针",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "环",
+    "roundtrip": "yes",
+    "route": "subway",
+    "type": "route",
+    "wikidata": "Q15915083"
+  }
+},
+{
+  "type": "relation",
+  "id": 7677819,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11572781055,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781046,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781044,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781039,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781038,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781035,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781033,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781028,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1502888766,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9863177350,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623376,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9863177351,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9468836440,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041524,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9468836646,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1112832412,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9794606715,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533535562,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13727365945,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794606684,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7308759763,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794385153,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794408820,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794429778,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9863155669,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794429800,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794429808,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794462625,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9794462635,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918729,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918738,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918744,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918751,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918758,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1175800885,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9835918774,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918783,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918788,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479605233,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1476696832,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1244898721,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037163,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651439,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037160,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1073597484,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041525,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041547,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041539,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066662496,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066662495,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011155,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011159,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066662494,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 830186746,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1501212070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066640136,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066642010,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498998590,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498998589,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1208451194,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1478725256,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1071930490,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#DC8633",
+    "from": "石马河立交",
+    "name": "重庆轨道交通4号线：石马河立交→ 黄岭",
+    "name:en": "Line 4: Shimahelijiao → Huangling",
+    "name:zh": "重庆轨道交通4号线：石马河立交 → 黄岭",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道四号线建设运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "4",
+    "route": "subway",
+    "to": "黄岭",
+    "type": "route",
+    "wikidata": "Q15900365"
+  }
+},
+{
+  "type": "relation",
+  "id": 7913721,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11252166395,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252166403,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220872,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13423398083,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13423471373,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220874,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13423471375,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220875,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13681177066,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220876,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13423471378,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220878,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13412683201,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220879,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13363084425,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1532211568,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659356,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220880,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4892350360,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659363,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1234567877,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13724494944,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220883,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659382,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623380,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186460894,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620454,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186460900,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623384,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659389,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203187,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5587670561,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203190,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659392,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451698,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186526437,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340421,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7007400627,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340419,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238023,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340417,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8169006376,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340416,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193836264,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340414,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10770007940,
+      "role": "inactive"
+    },
+    {
+      "type": "way",
+      "ref": 1531340415,
+      "role": "inactive"
+    },
+    {
+      "type": "node",
+      "ref": 5186526711,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340413,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193836268,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340412,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1214454613,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214454614,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015944,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015947,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073363,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493013094,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1462241602,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073367,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073366,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073365,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193029,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193026,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193027,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783855758,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293139,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1082414362,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683890,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683893,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715612,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1413164044,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663935,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663934,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675023,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 907042297,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 878019565,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 878019566,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 534924936,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#3C1053",
+    "from": "王家庄",
+    "name": "重庆轨道交通10号线：王家庄 → 兰花路",
+    "name:en": "Line 10: Wangjiazhuang → Lanhua Road",
+    "name:fr": "Ligne 10: Wangjiazhuang → Lanhua Route",
+    "name:zh": "重庆轨道交通10号线：王家庄 → 兰花路",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "10",
+    "route": "subway",
+    "to": "兰花路",
+    "type": "route",
+    "wikidata": "Q15914281"
+  }
+},
+{
+  "type": "relation",
+  "id": 7913722,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10724057609,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10724057611,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10724057623,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10724057627,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310934,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310947,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310950,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310962,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310969,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310977,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727310997,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727318422,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727318432,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10727318445,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5318575243,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210872,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185662855,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210875,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185662965,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11205190632,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11205302954,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533475139,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733902,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533475072,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185916629,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1466135651,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5185915276,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645117,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8427532244,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645118,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8427532245,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500645116,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6897948461,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677497,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8342871648,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533949759,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5627836026,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533949758,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8342871649,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533958481,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015163,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533960312,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898081454,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963875,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5174915961,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6875144311,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1153000986,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153000988,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153000987,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1057086590,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1500626401,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113388538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1209420417,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491375881,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 537172967,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037188,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849308,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848145,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 904000873,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 588955643,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1412902066,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#00A3E0",
+    "from": "悦港北路",
+    "name": "重庆轨道交通5号线：悦港北路 → 跳磴",
+    "name:en": "Line 5: Yuegangbeilu → Tiaodeng",
+    "name:fr": "ligne 5: Rue Yuegang nord → Tiaodeng",
+    "name:zh": "重庆轨道交通5号线：悦港北路 → 跳磴",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "5",
+    "route": "subway",
+    "to": "跳磴",
+    "type": "route",
+    "wikidata": "Q15912187"
+  }
+},
+{
+  "type": "relation",
+  "id": 8300862,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11193836269,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340412,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10770007928,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340413,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193836265,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340414,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10770007939,
+      "role": "inactive"
+    },
+    {
+      "type": "way",
+      "ref": 1531340415,
+      "role": "inactive"
+    },
+    {
+      "type": "node",
+      "ref": 10576237994,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340416,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238022,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340417,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238015,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340418,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238008,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340420,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9463612929,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451698,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473429827,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203190,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473429821,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203188,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473420616,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623384,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473429819,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620454,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473429838,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623380,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13724494945,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220882,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9470773770,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1234567876,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13663947659,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7314027076,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220880,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7165542163,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1532211567,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7165542160,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220879,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659330,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220878,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13681177071,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220877,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318658809,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220875,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318658807,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220874,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318658806,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318658775,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220872,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252161735,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220870,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1134456891,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134456893,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134456895,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134456894,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1413164042,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663933,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663932,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1413164045,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683894,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683891,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293145,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490896348,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675022,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193030,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783855759,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715627,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715629,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715595,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 767445051,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1532957144,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675017,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015948,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015945,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675018,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675016,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#3C1053",
+    "from": "兰花路",
+    "name": "重庆轨道交通10号线：兰花路 → 王家庄",
+    "name:en": "Line 10: Lanhua Road → Wangjiazhuang",
+    "name:fr": "Ligne 10: Lanhua Route → Wangjiazhuang",
+    "name:zh": "重庆轨道交通10号线：兰花路 → 王家庄",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "10",
+    "route": "subway",
+    "to": "王家庄",
+    "type": "route",
+    "wikidata": "Q15914281"
+  }
+},
+{
+  "type": "relation",
+  "id": 9171927,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8764018346,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9863151261,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9468759310,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8764018315,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1175800885,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898635550,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9835918745,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6898629084,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9863155668,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6898636020,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8764018274,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8764018268,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8764010477,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9863155670,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8762782052,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6898635922,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5186526857,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168594044,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168594021,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 13727365939,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168593997,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533535561,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186461128,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1112832413,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168592379,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041524,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168592370,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6488442717,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623378,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11572781027,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1502888766,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11572781032,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781034,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781037,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781041,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781042,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11572781045,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7723451167,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 946766085,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 736844600,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946637338,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498998592,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498998591,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946637337,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745470,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1501212069,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 782651541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745468,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011158,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011156,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745467,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 672164470,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745466,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041543,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 830712120,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037161,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651443,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112654153,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 534915515,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#DC8633",
+    "from": "黄岭",
+    "name": "重庆轨道交通4号线：黄岭 → 石马河立交",
+    "name:en": "Line 4: Huangling → Shimahelijiao",
+    "name:zh": "重庆轨道交通4号线：黄岭 → 石马河立交",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道四号线建设运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "4",
+    "route": "subway",
+    "to": "石马河立交",
+    "type": "route",
+    "wikidata": "Q15900365"
+  }
+},
+{
+  "type": "relation",
+  "id": 9597502,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10176419031,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176418960,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176418919,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176418917,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176373515,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176373512,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6480351962,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 460823031,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460823030,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460823028,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460823029,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460823019,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#003DA5",
+    "from": "举人坝",
+    "name": "重庆轨道交通3号线空港支线：举人坝 → 碧津",
+    "name:en": "Line 3 – Konggang branch: Jurenba → Bijin",
+    "name:zh": "重庆轨道交通3号线空港支线：举人坝 → 碧津",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "monorail",
+    "to": "碧津",
+    "type": "route",
+    "wikidata": "Q6119227"
+  }
+},
+{
+  "type": "relation",
+  "id": 9597503,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10176244481,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176373513,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176373514,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176373516,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176418918,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176418959,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10176419028,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1112325311,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112341018,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112341015,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112341019,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112341016,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#003DA5",
+    "from": "碧津",
+    "name": "重庆轨道交通3号线空港支线：碧津 → 举人坝",
+    "name:en": "Line 3 – Konggang branch: Bijin → Jurenba",
+    "name:zh": "重庆轨道交通3号线空港支线：碧津 → 举人坝",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "monorail",
+    "to": "举人坝",
+    "type": "route",
+    "wikidata": "Q6119227"
+  }
+},
+{
+  "type": "relation",
+  "id": 10176833,
+  "members": [
+    {
+      "type": "node",
+      "ref": 9935821308,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929861033,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929905046,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929915841,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929915862,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929950759,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6875047389,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1412902069,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547132,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490277705,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490277704,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547126,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547127,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490277703,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946752656,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547123,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547116,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547154,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547121,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536997009,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 734142327,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536997003,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536997002,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547161,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547159,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 734116041,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946752663,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084965019,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946752664,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990212,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946752666,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990224,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990222,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946752667,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990219,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990218,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 946752662,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "from": "跳磴",
+    "name": "重庆市郊铁路江跳线: 跳磴 → 圣泉寺",
+    "name:fr": "ligne Jiangtiao : Tiaodeng → Temple de la source sacrée",
+    "name:zh": "重庆市郊铁路江跳线: 跳磴 → 圣泉寺",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "public_transport:version": "2",
+    "ref": "JT",
+    "route": "subway",
+    "to": "圣泉寺",
+    "type": "route",
+    "wikidata": "Q112169762"
+  }
+},
+{
+  "type": "relation",
+  "id": 11353824,
+  "members": [
+    {
+      "type": "node",
+      "ref": 5186526857,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6168592379,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041524,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168592370,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6488442717,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623378,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5619893128,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5577715867,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848043,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6168960122,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5627835463,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6897948461,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677497,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898081454,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963875,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5174915961,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6875144311,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 658745470,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1501212069,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 782651541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745468,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011157,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011156,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745467,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 672164470,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 658745466,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041543,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 830712120,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037161,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651443,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112654153,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651442,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 830712119,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658209,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658212,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 537153695,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 533420353,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849306,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037188,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849308,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848145,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848143,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 588955643,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1412902066,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#C16C18",
+    "from": "唐家沱",
+    "name": "重庆轨道交通4–环–5直通快速：唐家沱 → 跳磴",
+    "name:en": "4–Loop–5 Express: Tangjiatuo → Tiaodeng",
+    "name:zh": "重庆轨道交通4–环–5直通快速：唐家沱 → 跳磴",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "4–环–5",
+    "route": "subway",
+    "short_name": "直快",
+    "to": "跳磴",
+    "type": "route",
+    "via": "民安大道;重庆西站"
+  }
+},
+{
+  "type": "relation",
+  "id": 11665747,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8395751722,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8395751758,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963874,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 8395751779,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533963876,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10182015208,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1498677495,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10180144468,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180144489,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9458207714,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10180186073,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9863177350,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623376,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9863177351,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9468836440,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041524,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9794385153,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1412902067,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 904000870,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848144,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112848146,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849309,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037189,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112849307,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1025848044,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658208,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658216,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658211,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658210,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112658217,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037164,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651441,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112651439,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037160,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1073597484,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041525,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041547,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041539,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066662496,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066662495,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011155,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499011154,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066662494,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 830186746,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1501212070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1066640136,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#C16C18",
+    "from": "跳磴",
+    "name": "重庆轨道交通4–环–5直通快速：跳磴 → 唐家沱",
+    "name:en": "4–Loop–5 Express: Tiaodeng → Tangjiatuo",
+    "name:zh": "重庆轨道交通4–环–5直通快速：跳磴 → 唐家沱",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "4–环–5",
+    "route": "subway",
+    "short_name": "直快",
+    "to": "唐家沱",
+    "type": "route",
+    "via": "重庆西站;民安大道"
+  }
+},
+{
+  "type": "relation",
+  "id": 11665922,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7941683808,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9351362649,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486093,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686492066,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486096,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686471528,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7617634979,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 815644104,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9228486098,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486105,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 176115076,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7619295749,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10177615109,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1536370021,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7619295860,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9351362644,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661045151,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923877,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923875,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923873,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661062521,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661062329,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 780635574,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816604,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1354298189,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584178337,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584178334,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 825814199,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816610,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816607,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 51816117,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 585042158,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1535031909,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#007A33",
+    "from": "天堂堡",
+    "name": "重庆轨道交通2号线：天堂堡 → 较场口",
+    "name:en": "Line 2: Tiantangbao → Jiaochangkou",
+    "name:zh": "重庆轨道交通2号线：天堂堡 → 较场口",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "monorail",
+    "to": "较场口",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 11665923,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10177654747,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10177654724,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923872,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923874,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7691923876,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7619295892,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661048844,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7619295886,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10177615110,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1536370021,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7619295814,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9228486106,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 176115075,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 661053284,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7617634978,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 815644103,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7686471523,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1859686101,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7686492063,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661059932,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 661059939,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7941683809,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1535031910,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112429974,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 775318792,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816608,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816609,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 825814197,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 775318791,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 775318790,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1354298191,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815816602,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 148292743,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#007A33",
+    "from": "较场口",
+    "name": "重庆轨道交通2号线：较场口→天堂堡",
+    "name:en": "Line 2: Jiaochangkou → Tiantangbao",
+    "name:zh": "重庆轨道交通2号线：较场口→天堂堡",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "monorail",
+    "to": "天堂堡",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 11665976,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11193836269,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340412,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193836265,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340414,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238022,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340417,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238008,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340420,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9463612929,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451698,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473429827,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203190,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473420616,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623384,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9473429819,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620454,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9470773770,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1234567876,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7165542163,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1532211567,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7165542160,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220879,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318658806,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11252161735,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220870,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1134456891,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134456893,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134456895,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134456894,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1413164042,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663933,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663932,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1413164045,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683892,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683891,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293145,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490896348,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675022,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193030,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783855759,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715627,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715629,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715595,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 767445051,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1532957144,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675017,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015946,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015945,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675018,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675016,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#3C1053",
+    "from": "兰花路",
+    "name": "重庆轨道交通10号线快速：兰花路 → 王家庄",
+    "name:en": "Line 10 – Rapid: Lanhualu → Wangjiazhuang",
+    "name:zh": "重庆轨道交通10号线快速：兰花路 → 王家庄",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "10",
+    "route": "subway",
+    "to": "王家庄",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 11665977,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11252166395,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13423398083,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220873,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13412683201,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533220879,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 13363084425,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1532211568,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659363,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1234567877,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186460894,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500620454,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186460900,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500623384,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5587670561,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533203190,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5318659392,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451698,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5186526437,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340421,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576238023,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340417,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193836264,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340414,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193836268,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531340412,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1214454613,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1214454614,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015944,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493015943,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073363,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493013094,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1462241602,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073367,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073366,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1457073365,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193029,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193026,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783193027,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783855758,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293139,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1082414362,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683890,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498683889,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 497715612,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1413164044,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663935,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498663934,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 550675023,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 907042297,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 878019565,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 878019566,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 534924936,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#3C1053",
+    "from": "王家庄",
+    "name": "重庆轨道交通10号线快速：王家庄 → 兰花路",
+    "name:en": "Line 10 – Rapid: Wangjiazhuang → Lanhualu",
+    "name:zh": "重庆轨道交通10号线快速：王家庄 → 兰花路",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "10",
+    "route": "subway",
+    "to": "兰花路",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 12759727,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8090558730,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8769874756,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558735,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8659188066,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558739,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558740,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558742,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558744,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558750,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558754,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558755,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558762,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558761,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8763838924,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8763838939,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 946748890,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#1974D2",
+    "from": "璧山",
+    "name": "璧山云巴1号线（南向）",
+    "name:en": "Line 1, Bishan SkyShuttle (S)",
+    "name:zh": "璧山云巴1号线（南向）",
+    "network:en": "Bishan Skyshuttle",
+    "network:wikidata": "Q85882716",
+    "network:zh": "璧山云巴",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "operator": "重庆云巴轨道交通运营管理",
+    "public_transport:version": "2",
+    "route": "light_rail",
+    "start_date": "2021-04-16",
+    "to": "成渝高铁站",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 13305509,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8090558769,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558767,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7570235385,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7570235388,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7570235390,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558751,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558749,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558743,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090552604,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558741,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558718,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558721,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558736,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558734,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8090558731,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 809647423,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#1974D2",
+    "from": "成渝高铁站",
+    "name": "璧山云巴1号线（北向）",
+    "name:en": "Line 1, Bishan SkyShuttle (N)",
+    "name:zh": "璧山云巴1号线（北向）",
+    "network:en": "Bishan Skyshuttle",
+    "network:wikidata": "Q85882716",
+    "network:zh": "璧山云巴",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "operator": "重庆云巴轨道交通运营管理",
+    "public_transport:version": "2",
+    "route": "light_rail",
+    "start_date": "2021-04-16",
+    "to": "璧山",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 14004562,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10576291019,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291024,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291040,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291036,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291030,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9454896070,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1054154223,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896075,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1054154222,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896092,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027293075,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896095,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027293068,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7693388020,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9454896107,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1054154217,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896114,
+      "role": "inactive"
+    },
+    {
+      "type": "way",
+      "ref": 1533534627,
+      "role": "inactive"
+    },
+    {
+      "type": "node",
+      "ref": 7693388008,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041530,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904421,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041523,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904434,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026750584,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904444,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722348,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7693387986,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1234566491,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904461,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722333,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904478,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451697,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942296,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451694,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942293,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451688,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942291,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451684,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942290,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451680,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7693384066,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012965,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898635814,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012953,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454951118,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012950,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9459667275,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012944,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454964990,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848040,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454964988,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848036,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454964989,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025807455,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1134462906,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1497797584,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097248913,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134462908,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097248916,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027293142,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1082414361,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498129778,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041545,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750590,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750589,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750575,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722375,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722377,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722372,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750578,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750580,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547147,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750577,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1025177551,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#862041",
+    "from": "花石沟",
+    "from:en": "Huashigou",
+    "name": "重庆轨道交通9号线：花石沟 → 高滩岩",
+    "name:en": "Line 9: Huashigou → Gaotanyan",
+    "name:fr": "ligne 9 : Huashigou ->Gaotanyan",
+    "name:zh": "重庆轨道交通9号线：花石沟 → 高滩岩",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "9",
+    "route": "subway",
+    "to": "高滩岩",
+    "to:en": "Gaotanyan",
+    "type": "route",
+    "wikidata": "Q15917000"
+  }
+},
+{
+  "type": "relation",
+  "id": 14004563,
+  "members": [
+    {
+      "type": "node",
+      "ref": 9454964972,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025807455,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454964977,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848036,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454964991,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025848040,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9459667276,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012944,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454951117,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012951,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942311,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012953,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942305,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026012965,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942289,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451681,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942281,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451684,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942294,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451688,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454942297,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451694,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904479,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026451697,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904460,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722333,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904451,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1234566490,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904445,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026722348,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904435,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1026750585,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454904420,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041523,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896115,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027041529,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896113,
+      "role": "inactive"
+    },
+    {
+      "type": "way",
+      "ref": 1533534628,
+      "role": "inactive"
+    },
+    {
+      "type": "node",
+      "ref": 9454896106,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1054154217,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896099,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9454896096,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027293069,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896082,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1027293075,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896074,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1054154222,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9454896069,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1054154223,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10576291029,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291035,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291039,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291025,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10576291020,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1025451253,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1537352103,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1537352104,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493517652,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547148,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750581,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750579,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1112724509,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722373,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722376,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026722374,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750587,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750588,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1026750591,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041540,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1027041544,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1498129779,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491037194,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1025449338,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097248915,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1134462909,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097248914,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097248912,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1497797585,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#862041",
+    "from": "高滩岩",
+    "from:en": "Gaotanyan",
+    "name": "重庆轨道交通9号线：高滩岩 → 花石沟",
+    "name:en": "Line 9: Gaotanyan → Huashigou",
+    "name:fr": "ligne 9 : Gaotanyan -> Huashigou",
+    "name:zh": "重庆轨道交通9号线：高滩岩 → 花石沟",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "9",
+    "route": "subway",
+    "to": "花石沟",
+    "to:en": "Xingke Avenue",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 14434653,
+  "members": [
+    {
+      "type": "node",
+      "ref": 9929950740,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929950761,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929915860,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929915851,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929905031,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9929861036,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9935821309,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1083561222,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990217,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083561219,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990220,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083561218,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990221,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990223,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083561221,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084990211,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083561220,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084965020,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083558418,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083558417,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547160,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547162,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536997005,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536997004,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083556108,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536997008,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547122,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547155,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547153,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547124,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083556109,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490277707,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547128,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547125,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490277706,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1490277702,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1084547133,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1083553778,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "from": "圣泉寺",
+    "name": "重庆市郊铁路江跳线: 圣泉寺 → 跳磴",
+    "name:fr": "ligne Jiangtiao : Temple de la source sacrée → Tiaodeng",
+    "name:zh": "重庆市郊铁路江跳线: 圣泉寺 → 跳磴",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "public_transport:version": "2",
+    "ref": "JT",
+    "route": "subway",
+    "to": "跳磴",
+    "type": "route",
+    "wikidata": "Q112169762"
+  }
+},
+{
+  "type": "relation",
+  "id": 15749312,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10828329837,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287571,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10729743650,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287573,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10729743577,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287576,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10729743579,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1153733532,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10729743624,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287579,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329821,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287580,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329842,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287582,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329854,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287584,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329874,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287585,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329890,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287587,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10829131130,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287588,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733876,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287590,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193730628,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287591,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733881,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287592,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733844,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287593,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733888,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287594,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733893,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531278682,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733900,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531278113,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733913,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500662488,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1153733536,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733537,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733528,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733522,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1164326364,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1164326366,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493765445,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1164402048,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1208046600,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#2CD5C4",
+    "name": "重庆轨道交通18号线：跳磴南 → 富华路",
+    "name:en": "Line 18: Tiaodeng South → Fuhualu",
+    "name:zh": "重庆轨道交通18号线：跳磴南 → 富华路",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道十八号线建设运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "18",
+    "route": "subway",
+    "type": "route",
+    "wikidata": "Q17038985"
+  }
+},
+{
+  "type": "relation",
+  "id": 15749313,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7723412238,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1500662488,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733899,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531278113,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733894,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531278682,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733889,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287594,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898588652,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287593,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733880,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287592,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898635587,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287591,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11193733877,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287590,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10743249746,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287589,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10732108016,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287586,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898635828,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287585,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329844,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287584,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329841,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287583,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329820,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287581,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7692229109,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287579,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10729743580,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1153733532,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 9502323256,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287577,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6898636151,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287574,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10828329836,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1531287572,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1208046599,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 736844592,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1493765444,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1164326365,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153954869,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733519,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733521,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733518,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733531,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733535,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1153733520,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#2CD5C4",
+    "from": "小什字",
+    "name": "重庆轨道交通18号线：富华路 → 跳磴南",
+    "name:en": "Line 18: Fuhualu → Tiaodeng South",
+    "name:zh": "重庆轨道交通18号线：富华路 → 跳磴南",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道十八号线建设运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "18",
+    "route": "subway",
+    "to": "跳磴南",
+    "type": "route",
+    "wikidata": "Q17038985"
+  }
+},
+{
+  "type": "relation",
+  "id": 17135614,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10712233869,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479992621,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233867,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479992619,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233872,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539737,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233876,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539730,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233897,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539725,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233914,
+      "role": "inactive"
+    },
+    {
+      "type": "way",
+      "ref": 1479539723,
+      "role": "inactive"
+    },
+    {
+      "type": "node",
+      "ref": 10712233939,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539721,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233943,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539713,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233966,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539712,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1151519538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368461,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368459,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368454,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368457,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593057,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368453,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593055,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368450,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1496740773,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1496740777,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368448,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368444,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593061,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368446,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593062,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368442,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368440,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368439,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368437,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368433,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669455,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669454,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669453,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669450,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368431,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669452,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669448,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368428,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368426,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368424,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669461,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669462,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368422,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669465,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368418,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368417,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669466,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669471,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669470,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669473,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669477,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669476,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306364506,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306364507,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519542,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519539,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363872,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363867,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363868,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363862,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363859,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363856,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363854,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1321823466,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499248064,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499248063,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363852,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363848,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363847,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593054,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593052,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536651840,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368415,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368413,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368411,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368409,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368407,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368405,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519545,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361087,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361084,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361085,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519543,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536651838,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361081,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536671224,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368403,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368401,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361080,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361077,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361076,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361073,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519557,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519556,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593039,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593038,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361072,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361069,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361068,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361065,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519551,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1496754691,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1496754692,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1491426415,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#0057B8",
+    "from": "铜梁西",
+    "name": "重庆市郊铁路璧铜线: 铜梁西 → 璧山",
+    "name:en": "Bitong Line: Tongliang West → Bishan",
+    "name:zh": "重庆市郊铁路璧铜线: 铜梁西 → 璧山",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆璧铜线轨道交通运营管理",
+    "public_transport:version": "2",
+    "ref": "BT",
+    "route": "subway",
+    "to": "璧山",
+    "type": "route",
+    "wikidata": "Q85884864"
+  }
+},
+{
+  "type": "relation",
+  "id": 17135615,
+  "members": [
+    {
+      "type": "node",
+      "ref": 10712233958,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539712,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233946,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539714,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233940,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539722,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233920,
+      "role": "inactive"
+    },
+    {
+      "type": "way",
+      "ref": 1479539724,
+      "role": "inactive"
+    },
+    {
+      "type": "node",
+      "ref": 10712233898,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539726,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233875,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539731,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233873,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479539738,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233866,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479992618,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 10712233868,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1479992620,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1491426414,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368400,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361066,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361067,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361071,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593037,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593040,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519555,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519558,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361074,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361075,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361078,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361079,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368402,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368404,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536671223,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361082,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536651837,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519544,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361086,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361083,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306361088,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519546,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368406,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368408,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368410,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368412,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368414,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368416,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536651839,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593051,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593053,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363846,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363849,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363851,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499248062,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1499248061,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363853,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363855,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363857,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363858,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363865,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363869,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363866,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306363873,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519540,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1151519541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306364508,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306364505,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669475,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669474,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669472,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669469,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669468,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368419,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669467,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368420,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669464,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368421,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669463,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669460,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368423,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368425,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368427,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368430,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669449,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669459,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669458,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669451,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669457,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1536669456,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368432,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368436,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368438,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368441,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368443,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593060,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368447,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593059,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368445,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368449,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1496740778,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1496740774,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368451,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593056,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368452,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1468593058,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368456,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368455,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368458,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1346368460,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1065770360,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#0057B8",
+    "from": "璧山",
+    "name": "重庆市郊铁路璧铜线: 璧山 → 铜梁西",
+    "name:en": "Bitong Line: Bishan → Tongliang West",
+    "name:zh": "重庆市郊铁路璧铜线: 璧山 → 铜梁西",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆璧铜线轨道交通运营管理",
+    "public_transport:version": "2",
+    "ref": "BT",
+    "route": "subway",
+    "to": "铜梁西",
+    "type": "route",
+    "wikidata": "Q85884864"
+  }
+},
+{
+  "type": "relation",
+  "id": 19293565,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11368943513,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210885,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11368943456,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210884,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11368943451,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210883,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 12956323375,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210888,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1225943828,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1217809641,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F67599",
+    "from": "重庆东站",
+    "name": "重庆轨道交通6号线：重庆东站 → 刘家坪",
+    "name:en": "Line 6: Chongqingdong Railway Station → Liujiaping",
+    "name:zh": "重庆轨道交通6号线：重庆东站 → 刘家坪",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "subway",
+    "to": "刘家坪",
+    "type": "route",
+    "wikidata": "Q5931449"
+  }
+},
+{
+  "type": "relation",
+  "id": 19293566,
+  "members": [
+    {
+      "type": "node",
+      "ref": 12956323376,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210887,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11368943450,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210882,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11368943455,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210884,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 11368943514,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1533210885,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1217809642,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225943827,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F67599",
+    "from": "刘家坪",
+    "name": "重庆轨道交通6号线：刘家坪 → 重庆东站",
+    "name:en": "Line 6: Liujiaping → Chongqingdong Railway Station",
+    "name:zh": "重庆轨道交通6号线：刘家坪 → 重庆东站",
+    "network": "重庆轨道交通",
+    "network:en": "Chongqing Rail Transit",
+    "network:short": "CRT",
+    "network:wikidata": "Q1190894",
+    "network:zh": "重庆轨道交通",
+    "operator": "重庆轨道交通运营",
+    "operator:wikidata": "Q136485962",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "subway",
+    "to": "重庆东站",
+    "type": "route",
+    "wikidata": "Q5931449"
+  }
+}
+
+  ]
+}

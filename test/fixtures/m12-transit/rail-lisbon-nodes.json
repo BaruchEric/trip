@@ -1,0 +1,8942 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:26:55Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 69404070,
+  "lat": 38.7213409,
+  "lon": -9.1299148,
+  "tags": {
+    "name": "Sapadores",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9128",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 69481534,
+  "lat": 38.7154876,
+  "lon": -9.1320733,
+  "tags": {
+    "name": "Rua dos Lagares",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13822",
+    "short_name": "R. Lagares",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 146311452,
+  "lat": 38.7932600,
+  "lon": -9.1730002,
+  "tags": {
+    "name": "Odivelas",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 146311461,
+  "lat": 38.7856218,
+  "lon": -9.1718324,
+  "tags": {
+    "level": "2",
+    "name": "Senhor Roubado",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 218023631,
+  "lat": 38.7149888,
+  "lon": -9.1365402,
+  "tags": {
+    "name": "Martim Moniz",
+    "public_transport": "stop_position",
+    "ref": "805",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 245937922,
+  "lat": 38.7793175,
+  "lon": -9.1596348,
+  "tags": {
+    "name": "Ameixoeira",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 245937941,
+  "lat": 38.7733991,
+  "lon": -9.1593372,
+  "tags": {
+    "name": "Lumiar",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 246763946,
+  "lat": 38.7514975,
+  "lon": -9.1591140,
+  "tags": {
+    "name": "Cidade Universitária",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 246763964,
+  "lat": 38.7470271,
+  "lon": -9.1481984,
+  "tags": {
+    "name": "Entrecampos",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 246763968,
+  "lat": 38.7411137,
+  "lon": -9.1467947,
+  "tags": {
+    "name": "Campo Pequeno",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 247051839,
+  "lat": 38.7201088,
+  "lon": -9.1548457,
+  "tags": {
+    "name": "Rato",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256063257,
+  "lat": 38.7134879,
+  "lon": -9.1286897,
+  "tags": {
+    "name": "Calçada de São Vicente",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13806",
+    "short_name": "Cç. S. Vicente",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256063280,
+  "lat": 38.7101781,
+  "lon": -9.1323068,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Limoeiro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13804",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 256065636,
+  "lat": 38.7136482,
+  "lon": -9.1600382,
+  "tags": {
+    "name": "Estrela (Basílica)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "08111",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256065888,
+  "lat": 38.7078540,
+  "lon": -9.1534432,
+  "tags": {
+    "name": "Largo Vitorino Damásio",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3919",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256328846,
+  "lat": 38.7107323,
+  "lon": -9.1518094,
+  "tags": {
+    "name": "Rua dos Poiais de São Bento",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "06724",
+    "short_name": "R. Poais S. Bento",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256674213,
+  "lat": 38.7295152,
+  "lon": -9.1502590,
+  "tags": {
+    "name": "Parque",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256972634,
+  "lat": 38.7394453,
+  "lon": -9.1239422,
+  "tags": {
+    "name": "Olaias",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256975148,
+  "lat": 38.7475415,
+  "lon": -9.1176782,
+  "tags": {
+    "name": "Bela Vista",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256975157,
+  "lat": 38.7548276,
+  "lon": -9.1138872,
+  "tags": {
+    "name": "Chelas",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256975169,
+  "lat": 38.7629773,
+  "lon": -9.1040551,
+  "tags": {
+    "name": "Cabo Ruivo",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256976574,
+  "lat": 38.7376840,
+  "lon": -9.1592473,
+  "tags": {
+    "name": "Praça de Espanha",
+    "operator": "Metropolitano de Lisboa",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.metrolisboa.pt/viajar/praca-de-espanha/",
+    "wikidata": "Q605303",
+    "wikimedia_commons": "Category:Praça de Espanha (Lisbon Metro)",
+    "wikipedia": "pt:Estação Praça de Espanha"
+  }
+},
+{
+  "type": "node",
+  "id": 256978160,
+  "lat": 38.7420882,
+  "lon": -9.1689132,
+  "tags": {
+    "name": "Jardim Zoológico",
+    "name:de": "Zoologischer Garten",
+    "operator": "Metropolitano de Lisboa",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.metrolisboa.pt/viajar/jardim-zoologico/",
+    "wikidata": "Q2037057",
+    "wikimedia_commons": "Category:Jardim Zoológico (Lisbon Metro)",
+    "wikipedia": "pt:Estação Jardim Zoológico"
+  }
+},
+{
+  "type": "node",
+  "id": 256978165,
+  "lat": 38.7482497,
+  "lon": -9.1730362,
+  "tags": {
+    "name": "Laranjeiras",
+    "operator": "Metropolitano de Lisboa",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.metrolisboa.pt/viajar/alto-dos-moinhos/",
+    "wheelchair": "no",
+    "wikidata": "Q962631",
+    "wikimedia_commons": "Category:Laranjeiras (Lisbon Metro)",
+    "wikipedia": "pt:Estação Laranjeiras"
+  }
+},
+{
+  "type": "node",
+  "id": 256978170,
+  "lat": 38.7498954,
+  "lon": -9.1797946,
+  "tags": {
+    "name": "Alto dos Moinhos",
+    "operator": "Metropolitano de Lisboa",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.metrolisboa.pt/viajar/alto-dos-moinhos/",
+    "wikidata": "Q639045",
+    "wikimedia_commons": "Category:Alto dos Moinhos (Lisbon Metro)",
+    "wikipedia": "pt:Estação Alto dos Moinhos"
+  }
+},
+{
+  "type": "node",
+  "id": 256978583,
+  "lat": 38.7534253,
+  "lon": -9.1892531,
+  "tags": {
+    "name": "Colégio Militar/Luz",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 256981321,
+  "lat": 38.7603342,
+  "lon": -9.2045596,
+  "tags": {
+    "level": "-2",
+    "name": "Alfornelos",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 262253942,
+  "lat": 38.7130991,
+  "lon": -9.1377352,
+  "tags": {
+    "name": "Praça da Figueira",
+    "name:de": "Figueira Platz",
+    "name:en": "Figueira Square",
+    "name:pt": "Praça da Figueira",
+    "name:ru": "Остановка трамвая #15 в Белен, #12, #25",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "917",
+    "tram": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 377067810,
+  "lat": 38.7080221,
+  "lon": -9.1404533,
+  "tags": {
+    "bus": "no",
+    "name": "Largo da Academia Nacional das Belas Artes",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10518",
+    "short_name": "Lg. Academia Nacional Belas Artes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 489763351,
+  "lat": 38.7072920,
+  "lon": -9.1419894,
+  "tags": {
+    "bus": "yes",
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03821",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 600134721,
+  "lat": 38.7190102,
+  "lon": -9.1448310,
+  "tags": {
+    "name": "Avenida",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 854075754,
+  "lat": 38.7229115,
+  "lon": -9.1313593,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Rua Angelina Vidal",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9126",
+    "shelter": "yes",
+    "short_name": "R. Angelina Vidal",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 854076009,
+  "lat": 38.7238978,
+  "lon": -9.1320110,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "name": "Rua do Forno do Tijolo",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "601",
+    "route_ref": "28E;712;726;730",
+    "shelter": "yes",
+    "short_name": "R. Forno Tijolo"
+  }
+},
+{
+  "type": "node",
+  "id": 970773008,
+  "lat": 38.7167412,
+  "lon": -9.1351470,
+  "tags": {
+    "name": "Socorro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "817",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1106603473,
+  "lat": 38.7084653,
+  "lon": -9.1470514,
+  "tags": {
+    "name": "Rua de São Paulo (Bica)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "09902",
+    "short_name": "R. S. Paulo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1123890724,
+  "lat": 38.7078222,
+  "lon": -9.1536056,
+  "tags": {
+    "name": "Largo Vitorino Damásio",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3918",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1123890764,
+  "lat": 38.7066807,
+  "lon": -9.1578613,
+  "tags": {
+    "name": "Santos-o-Velho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03914",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1128851795,
+  "lat": 38.7160872,
+  "lon": -9.1330230,
+  "tags": {
+    "name": "Largo do Terreirinho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13824",
+    "short_name": "Lg. Terreirinho",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1131000951,
+  "lat": 38.7142481,
+  "lon": -9.1695067,
+  "tags": {
+    "name": "Campo de Ourique (Prazeres)",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "8017",
+    "short_name": "Campo Ourique (Prazeres)",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1135912715,
+  "lat": 38.7151876,
+  "lon": -9.1360384,
+  "tags": {
+    "name": "Martim Moniz",
+    "name:ru": "Конечная№28",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "801",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1138939833,
+  "lat": 38.7067280,
+  "lon": -9.1557396,
+  "tags": {
+    "name": "Santos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03912",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1140935124,
+  "lat": 38.7103396,
+  "lon": -9.1316511,
+  "tags": {
+    "name": "Limoeiro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13803",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1141524123,
+  "lat": 38.7100209,
+  "lon": -9.1342299,
+  "tags": {
+    "name": "Sé",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13802",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1152804318,
+  "lat": 38.7081663,
+  "lon": -9.1371209,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Praça do Comércio",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "05515",
+    "shelter": "yes",
+    "short_name": "Pç. Comércio",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1587160707,
+  "lat": 38.7049386,
+  "lon": -9.1967114,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "name": "Rua de Dom Vasco",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13306",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1772769766,
+  "lat": 38.7145095,
+  "lon": -9.1621829,
+  "tags": {
+    "name": "Estrela - Rua Domingos Sequeira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "8110",
+    "short_name": "Estrela - R. Domingos Sequeira",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938177286,
+  "lat": 38.7108929,
+  "lon": -9.1526303,
+  "tags": {
+    "name": "Rua de São Bento / Calçada da Estrela",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "06722",
+    "short_name": "R. S. Bento/Cç. Estrela",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938177303,
+  "lat": 38.7109886,
+  "lon": -9.1495146,
+  "tags": {
+    "name": "Calçada do Combro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "09903",
+    "short_name": "Cç. Combro",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938177322,
+  "lat": 38.7125860,
+  "lon": -9.1563230,
+  "tags": {
+    "name": "Calçada da Estrela/Rua Borges Carneiro",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "6719",
+    "short_name": "Cç. Estrela/R. Borges Carneiro",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938177325,
+  "lat": 38.7127386,
+  "lon": -9.1574196,
+  "tags": {
+    "name": "Calçada da Estrela / Rua Doutor Teófilo Braga",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "06718",
+    "short_name": "Cç. Estrela/R. Dr. Teófilo Braga",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938177328,
+  "lat": 38.7127544,
+  "lon": -9.1577985,
+  "tags": {
+    "name": "Calçada da Estrela / Rua Doutor Teófilo Braga",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "6717",
+    "short_name": "Cç. Estrela/R. Dr. Teófilo Braga",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938438485,
+  "lat": 38.7104101,
+  "lon": -9.1420799,
+  "tags": {
+    "name": "Chiado",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10514",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938597090,
+  "lat": 38.7101621,
+  "lon": -9.1322882,
+  "tags": {
+    "name": "Limoeiro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13804",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938597104,
+  "lat": 38.7113171,
+  "lon": -9.1306664,
+  "tags": {
+    "name": "Miradouro de Santa Luzia",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13816",
+    "short_name": "Miradouro Sta. Luzia",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938597108,
+  "lat": 38.7114781,
+  "lon": -9.1306170,
+  "tags": {
+    "name": "Miradouro de Santa Luzia",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13805",
+    "short_name": "Miradouro Sta. Luzia",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938597147,
+  "lat": 38.7130606,
+  "lon": -9.1297372,
+  "tags": {
+    "name": "Rua das Escolas Gerais",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13814",
+    "short_name": "R. Escolas Gerais",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938597203,
+  "lat": 38.7190853,
+  "lon": -9.1298499,
+  "tags": {
+    "name": "Rua da Graça",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9130",
+    "short_name": "R. Graça",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1938597233,
+  "lat": 38.7209668,
+  "lon": -9.1301727,
+  "tags": {
+    "name": "Sapadores",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9129",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1940413993,
+  "lat": 38.7066380,
+  "lon": -9.1559208,
+  "tags": {
+    "name": "Santos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03913",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1940414036,
+  "lat": 38.7084789,
+  "lon": -9.1466572,
+  "tags": {
+    "name": "Rua de São Paulo (Bica)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "09901",
+    "short_name": "R. S. Paulo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1940414083,
+  "lat": 38.7095437,
+  "lon": -9.1623303,
+  "tags": {
+    "name": "Rua de São Domingos à Lapa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10016",
+    "short_name": "R. S. Domingos à Lapa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1978063107,
+  "lat": 38.7086232,
+  "lon": -9.1517352,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Conde Barão",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "07106",
+    "route_ref": "25E;714",
+    "shelter": "no",
+    "short_name": "R. S. Paulo",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2459757742,
+  "lat": 38.7173059,
+  "lon": -9.1299004,
+  "tags": {
+    "name": "Graça",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "14804",
+    "tram": "yes",
+    "wikidata": "Q136648715"
+  }
+},
+{
+  "type": "node",
+  "id": 2516763918,
+  "lat": 38.7062398,
+  "lon": -9.1450474,
+  "tags": {
+    "alt_name": "Cais do Sodré - Av 24 de Julho",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Cais do Sodré",
+    "name:CCFL": "Cais do Sodré",
+    "name:TML": "Cais do Sodré - Av 24 de Julho",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref:CCFL": "3803",
+    "ref:TML": "060451",
+    "route_ref": "706;728;732;15E;201",
+    "shelter": "yes",
+    "tactile_paving": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2931441115,
+  "lat": 38.7143939,
+  "lon": -9.1442628,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "no",
+    "name": "Ascensor da Glória",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10604",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2931441116,
+  "lat": 38.7148579,
+  "lon": -9.1444364,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2023-11-17",
+    "lit": "yes",
+    "name": "Ascensor da Glória",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 3293540992,
+  "lat": 38.7105549,
+  "lon": -9.1438174,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Praça Luís de Camões",
+    "public_transport": "platform",
+    "ref": "10513",
+    "shelter": "yes",
+    "short_name": "Pç. Luís Camões",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3293540993,
+  "lat": 38.7105639,
+  "lon": -9.1437980,
+  "tags": {
+    "name": "Praça Luís de Camões",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10513",
+    "short_name": "Pç. Luís Camões",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4002784722,
+  "lat": 38.7238760,
+  "lon": -9.1320381,
+  "tags": {
+    "name": "Rua do Forno do Tijolo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "601",
+    "short_name": "R. Forno Tijolo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4018786481,
+  "lat": 38.7223121,
+  "lon": -9.1310489,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date": "2025-12-15",
+    "check_date:lit": "2025-12-15",
+    "check_date:tactile_paving": "2025-12-15",
+    "lit": "no",
+    "mapillary": "794043321217881",
+    "name": "Rua Angelina Vidal",
+    "network": "Carris",
+    "operator": "Carris",
+    "pole": "yes",
+    "public_transport": "platform",
+    "ref": "9127",
+    "shelter": "no",
+    "short_name": "R. Angelina Vidal",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4018786482,
+  "lat": 38.7223205,
+  "lon": -9.1310327,
+  "tags": {
+    "name": "Rua Angelina Vidal",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9127",
+    "short_name": "R. Angelina Vidal",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4018786789,
+  "lat": 38.7213327,
+  "lon": -9.1298541,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Sapadores",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9128",
+    "route_ref": "28E",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4207617290,
+  "lat": 38.6982273,
+  "lon": -9.2250576,
+  "tags": {
+    "bench": "yes",
+    "check_date:shelter": "2025-06-08",
+    "name": "Rua Damião de Góis",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "short_name": "R. Damião Góis"
+  }
+},
+{
+  "type": "node",
+  "id": 4247039812,
+  "lat": 38.6636386,
+  "lon": -9.2071743,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Universidade",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4247039827,
+  "lat": 38.6655498,
+  "lon": -9.1939937,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Fomega",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4247039841,
+  "lat": 38.6645242,
+  "lon": -9.2002964,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Monte de Caparica",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4247039851,
+  "lat": 38.6636057,
+  "lon": -9.2071729,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Universidade",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4247039862,
+  "lat": 38.6655118,
+  "lon": -9.1939912,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Fomega",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4247039864,
+  "lat": 38.6645555,
+  "lon": -9.2003039,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Monte de Caparica",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4248905731,
+  "lat": 38.6689431,
+  "lon": -9.1701486,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Ramalha",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4248905746,
+  "lat": 38.6662160,
+  "lon": -9.1799670,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Pragal",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "wikidata": "Q801331",
+    "wikipedia": "pt:Estação Ferroviária do Pragal"
+  }
+},
+{
+  "type": "node",
+  "id": 4248906728,
+  "lat": 38.6639426,
+  "lon": -9.1903552,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Boa Esperança",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4248906911,
+  "lat": 38.6689741,
+  "lon": -9.1701610,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Ramalha",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4248907156,
+  "lat": 38.6639691,
+  "lon": -9.1903490,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Boa Esperança",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4248907163,
+  "lat": 38.6662386,
+  "lon": -9.1799968,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Pragal",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "wikidata": "Q801331",
+    "wikipedia": "pt:Estação Ferroviária do Pragal"
+  }
+},
+{
+  "type": "node",
+  "id": 4251196171,
+  "lat": 38.6733358,
+  "lon": -9.1666590,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Bento Gonçalves",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4251197182,
+  "lat": 38.6733271,
+  "lon": -9.1665667,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Bento Gonçalves",
+    "operator": "Metro Sul do Tejo",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4251258625,
+  "lat": 38.6677148,
+  "lon": -9.1647993,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Cova da Piedade",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4251258626,
+  "lat": 38.6676853,
+  "lon": -9.1648150,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Cova da Piedade",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004424,
+  "lat": 38.6843668,
+  "lon": -9.1497135,
+  "tags": {
+    "light_rail": "yes",
+    "name": "25 de Abril",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004425,
+  "lat": 38.6795013,
+  "lon": -9.1576257,
+  "tags": {
+    "light_rail": "yes",
+    "name": "São João Baptista",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004446,
+  "lat": 38.6875468,
+  "lon": -9.1474925,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Cacilhas",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004487,
+  "lat": 38.6824853,
+  "lon": -9.1522636,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Gil Vicente",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004490,
+  "lat": 38.6825089,
+  "lon": -9.1522930,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Gil Vicente",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004495,
+  "lat": 38.6765989,
+  "lon": -9.1642479,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Almada",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004499,
+  "lat": 38.6875512,
+  "lon": -9.1473617,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Cacilhas",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004515,
+  "lat": 38.6794731,
+  "lon": -9.1576059,
+  "tags": {
+    "light_rail": "yes",
+    "name": "São João Baptista",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004517,
+  "lat": 38.6766549,
+  "lon": -9.1643030,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Almada",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004525,
+  "lat": 38.6875496,
+  "lon": -9.1474048,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Cacilhas",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004559,
+  "lat": 38.6875541,
+  "lon": -9.1472738,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Cacilhas",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4259004587,
+  "lat": 38.6843411,
+  "lon": -9.1496916,
+  "tags": {
+    "light_rail": "yes",
+    "name": "25 de Abril",
+    "operator": "Metro Transportes do Sul",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269854477,
+  "lat": 38.6485300,
+  "lon": -9.1531471,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Santo Amaro",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269854482,
+  "lat": 38.6605332,
+  "lon": -9.1573013,
+  "tags": {
+    "light_rail": "yes",
+    "name": "António Gedeão",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855208,
+  "lat": 38.6605208,
+  "lon": -9.1573331,
+  "tags": {
+    "light_rail": "yes",
+    "name": "António Gedeão",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855242,
+  "lat": 38.6643586,
+  "lon": -9.1600285,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Parque da Paz",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855279,
+  "lat": 38.6424871,
+  "lon": -9.1518024,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Casa do Povo",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855390,
+  "lat": 38.6558417,
+  "lon": -9.1543611,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Laranjeiro",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855599,
+  "lat": 38.6558364,
+  "lon": -9.1543966,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Laranjeiro",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855619,
+  "lat": 38.6643677,
+  "lon": -9.1599918,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Parque da Paz",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855650,
+  "lat": 38.6425018,
+  "lon": -9.1517680,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Casa do Povo",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4269855651,
+  "lat": 38.6485261,
+  "lon": -9.1531083,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Santo Amaro",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4276016374,
+  "lat": 38.6370980,
+  "lon": -9.1510205,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Corroios",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 4297242722,
+  "lat": 38.7063504,
+  "lon": -9.1453285,
+  "tags": {
+    "alt_name": "Av 24 de Julho",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Cais do Sodré",
+    "name:CCFL": "Cais do Sodré",
+    "name:TML": "Av 24 de Julho",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "3802",
+    "ref:TML": "060452",
+    "route_ref": "15E;18E;201;706;728;732;760",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4303023296,
+  "lat": 38.7107991,
+  "lon": -9.1452938,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2026-04-13",
+    "lit": "yes",
+    "name": "Calhariz (Bica)",
+    "public_transport": "platform",
+    "ref": "10510",
+    "route_ref": "28E",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4309574818,
+  "lat": 38.7099233,
+  "lon": -9.1359487,
+  "tags": {
+    "name": "Rua da Conceição / Rua dos Fanqueiros",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "5602",
+    "short_name": "R. Conceição / R. Fanqueiros",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4310912502,
+  "lat": 38.7251818,
+  "lon": -9.1599391,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Avenida Conselheiro Fernando Sousa",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4352963754,
+  "lat": 38.7110060,
+  "lon": -9.1469873,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "no",
+    "name": "Santa Catarina",
+    "public_transport": "platform",
+    "ref": "9906",
+    "route_ref": "28E",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4353284131,
+  "lat": 38.7107704,
+  "lon": -9.1435698,
+  "tags": {
+    "name": "Praça Luís de Camões (Bairro Alto)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10512",
+    "short_name": "Pç. Luís Camões",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4353284132,
+  "lat": 38.7107806,
+  "lon": -9.1435724,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Praça Luís de Camões (Bairro Alto)",
+    "network": "Carris",
+    "operator": "Carris",
+    "passenger_information_display": "no",
+    "public_transport": "platform",
+    "ref": "10512",
+    "shelter": "no",
+    "short_name": "Pç. Luís Camões",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4365852352,
+  "lat": 38.7063041,
+  "lon": -9.1485492,
+  "tags": {
+    "alt_name": "Conde Barão - Av 24 Julho (EDP)",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Conde Barão - Avenida 24 de Julho",
+    "name:TML": "Conde Barão - Av 24 Julho (EDP)",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "7101",
+    "ref:TML": "060418",
+    "route_ref": "15E;18E;201;706;728;732;760",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4365852354,
+  "lat": 38.7064083,
+  "lon": -9.1491047,
+  "tags": {
+    "alt_name": "Conde Barão - Av 24 Julho (EDP)",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Conde Barão - Avenida 24 de Julho",
+    "name:TML": "Conde Barão - Av 24 Julho (EDP)",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "7102",
+    "ref:TML": "060417",
+    "route_ref": "15E;18E;201;706;728;732;760",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4365852388,
+  "lat": 38.7061886,
+  "lon": -9.1557530,
+  "tags": {
+    "alt_name": "Av 24 de Julho Santos",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Santos",
+    "name:TML": "Av 24 de Julho Santos",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref": "03901",
+    "ref:TML": "060415",
+    "route_ref": "15E;18E;201;728;732;760",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4365853690,
+  "lat": 38.7062282,
+  "lon": -9.1559955,
+  "tags": {
+    "alt_name": "Av 24 de Julho Santos",
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Santos",
+    "name:TML": "Santos (Estação)",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "official_name:TML": "Santos (Estação)",
+    "operator": "Carris",
+    "operator:TML": "Transportes Sul do Tejo",
+    "operator:wikidata": "Q1045108",
+    "passenger_information_display": "yes",
+    "public_transport": "platform",
+    "ref": "3902",
+    "ref:TML": "062001",
+    "route_ref": "15E;18E;201;728;732;760",
+    "route_ref:TML": "3708",
+    "shelter": "yes",
+    "short_name:TML": "Santos (Estação)",
+    "tram": "yes",
+    "website:TML": "https://carrismetropolitana.pt/stops/062001"
+  }
+},
+{
+  "type": "node",
+  "id": 4373110266,
+  "lat": 38.7071690,
+  "lon": -9.1413926,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "03824",
+    "route_ref": "15E;25E;714;728;732;735;736;760;774;781;782;206;207;208;210",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4376749099,
+  "lat": 38.7073011,
+  "lon": -9.1419572,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03821",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4377356606,
+  "lat": 38.7097070,
+  "lon": -9.2031407,
+  "tags": {
+    "name": "Cemitério da Ajuda",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12929",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377356607,
+  "lat": 38.7088503,
+  "lon": -9.2002082,
+  "tags": {
+    "name": "Rua das Açucenas",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377356608,
+  "lat": 38.7089041,
+  "lon": -9.2003516,
+  "tags": {
+    "name": "Rua das Açucenas",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377356618,
+  "lat": 38.7031058,
+  "lon": -9.1933303,
+  "tags": {
+    "name": "Calçada da Boa Hora",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13408",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377357041,
+  "lat": 38.7049195,
+  "lon": -9.1967090,
+  "tags": {
+    "name": "Rua de Dom Vasco",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13306",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377357044,
+  "lat": 38.7049313,
+  "lon": -9.1962279,
+  "tags": {
+    "name": "Rua de Dom Vasco",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13305",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377357093,
+  "lat": 38.7063880,
+  "lon": -9.1991528,
+  "tags": {
+    "name": "Calçada da Ajuda (GNR)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377396857,
+  "lat": 38.7062632,
+  "lon": -9.1450366,
+  "tags": {
+    "name": "Cais do Sodré",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3803",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377396858,
+  "lat": 38.7063151,
+  "lon": -9.1453324,
+  "tags": {
+    "name": "Cais do Sodré",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3802",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377396876,
+  "lat": 38.7035125,
+  "lon": -9.1677172,
+  "tags": {
+    "name": "Avenida Infante Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10202",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471003,
+  "lat": 38.7041737,
+  "lon": -9.1738408,
+  "tags": {
+    "name": "Alcântara - Avenida 24 de Julho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "4001",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471004,
+  "lat": 38.7049210,
+  "lon": -9.1874570,
+  "tags": {
+    "name": "Alto de Santo Amaro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12007",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471005,
+  "lat": 38.7034919,
+  "lon": -9.1670588,
+  "tags": {
+    "name": "Avenida Infante Santo",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10201",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471006,
+  "lat": 38.7037264,
+  "lon": -9.1946076,
+  "tags": {
+    "name": "Boa Hora",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471007,
+  "lat": 38.7047455,
+  "lon": -9.1775030,
+  "tags": {
+    "name": "Calvário",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471008,
+  "lat": 38.7072031,
+  "lon": -9.1990667,
+  "tags": {
+    "name": "Calçada da Ajuda (Palácio)",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10311",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471010,
+  "lat": 38.7062846,
+  "lon": -9.1794314,
+  "tags": {
+    "name": "Calçada da Tapada",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12119",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471011,
+  "lat": 38.7060557,
+  "lon": -9.1822612,
+  "tags": {
+    "name": "Pavilhão Desportivo da Ajuda",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12013",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471013,
+  "lat": 38.7047423,
+  "lon": -9.1987076,
+  "tags": {
+    "name": "Rua da Bica do Marquês",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13303",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377471014,
+  "lat": 38.7053150,
+  "lon": -9.1854026,
+  "tags": {
+    "name": "Rua João de Barros",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12011",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377490639,
+  "lat": 38.7036406,
+  "lon": -9.1627691,
+  "tags": {
+    "name": "Cais da Rocha (Museu Nacional de Arte Antiga)",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3905",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377490640,
+  "lat": 38.7062106,
+  "lon": -9.1557637,
+  "tags": {
+    "name": "Santos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3901",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377490641,
+  "lat": 38.7062056,
+  "lon": -9.1559791,
+  "tags": {
+    "name": "Santos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3902",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537599,
+  "lat": 38.7042824,
+  "lon": -9.1739393,
+  "tags": {
+    "name": "Alcântara - Avenida 24 de Julho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "4004",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537600,
+  "lat": 38.7050189,
+  "lon": -9.1877210,
+  "tags": {
+    "name": "Alto de Santo Amaro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12006",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537601,
+  "lat": 38.7036889,
+  "lon": -9.1950131,
+  "tags": {
+    "name": "Boa Hora",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13410",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537602,
+  "lat": 38.7037588,
+  "lon": -9.1623813,
+  "tags": {
+    "name": "Cais da Rocha (Museu Nacional de Arte Antiga)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "3906",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537603,
+  "lat": 38.7048081,
+  "lon": -9.1773709,
+  "tags": {
+    "name": "Calvário",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12116",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537604,
+  "lat": 38.7064649,
+  "lon": -9.1991087,
+  "tags": {
+    "name": "Calçada da Ajuda (GNR)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537605,
+  "lat": 38.7074450,
+  "lon": -9.1990055,
+  "tags": {
+    "name": "Calçada da Ajuda (Palácio)",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10310",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537606,
+  "lat": 38.7060746,
+  "lon": -9.1790465,
+  "tags": {
+    "name": "Calçada da Tapada",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12120",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537607,
+  "lat": 38.7060823,
+  "lon": -9.1827975,
+  "tags": {
+    "name": "Pavilhão Desportivo da Ajuda",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12014",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537608,
+  "lat": 38.7037064,
+  "lon": -9.1908369,
+  "tags": {
+    "name": "Rio Seco",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13406",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537609,
+  "lat": 38.7043451,
+  "lon": -9.1895377,
+  "tags": {
+    "name": "Rua Aliança Operária",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12008",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537610,
+  "lat": 38.7047501,
+  "lon": -9.1989303,
+  "tags": {
+    "name": "Rua da Bica do Marquês",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13304",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377537611,
+  "lat": 38.7054739,
+  "lon": -9.1852431,
+  "tags": {
+    "name": "Rua João de Barros",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "12012",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457933,
+  "lat": 38.7041506,
+  "lon": -9.1738491,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "realtime",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Alcântara - Avenida 24 de Julho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "4001",
+    "route_ref": "15E;18E;720;732;738;201",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457936,
+  "lat": 38.7043137,
+  "lon": -9.1739283,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Alcântara - Avenida 24 de Julho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "4004",
+    "route_ref": "15E;18E;720;732;738;201",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457937,
+  "lat": 38.7048913,
+  "lon": -9.1874652,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-10-03",
+    "departures_board": "realtime",
+    "lit": "yes",
+    "name": "Alto de Santo Amaro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12007",
+    "route_ref": "742;760;18E",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457938,
+  "lat": 38.7050643,
+  "lon": -9.1877018,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-10-04",
+    "lit": "no",
+    "name": "Alto de Santo Amaro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12006",
+    "route_ref": "742;760;18E",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457939,
+  "lat": 38.7034708,
+  "lon": -9.1670560,
+  "tags": {
+    "alt_name": "Av Iinfante Santo 49A (Inst Militar)",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Avenida Infante Santo",
+    "name:TML": "Av Iinfante Santo 49A (Inst Militar)",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "10201",
+    "ref:TML": "060411",
+    "route_ref": "15E;18E;728;732;760;201",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457942,
+  "lat": 38.7035356,
+  "lon": -9.1677170,
+  "tags": {
+    "alt_name": "Av Iinfante Santo 49A (Inst Militar)",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Avenida Infante Santo",
+    "name:TML": "Av Iinfante Santo 49A (Inst Militar)",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "10202",
+    "ref:TML": "060423",
+    "route_ref": "15E;18E;728;732;201",
+    "shelter": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457943,
+  "lat": 38.7036978,
+  "lon": -9.1945996,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Boa Hora",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457944,
+  "lat": 38.7037239,
+  "lon": -9.1950220,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "realtime",
+    "name": "Boa Hora",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13410",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457945,
+  "lat": 38.7036193,
+  "lon": -9.1627597,
+  "tags": {
+    "alt_name": "Av 24 Jul (Cais Rocha GNR Mus Arte Ant)",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Cais da Rocha (Museu Nacional de Arte Antiga)",
+    "name:TML": "Av 24 Jul (Cais Rocha GNR Mus Arte Ant)",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q1045108;Q111611112",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "3905",
+    "ref:TML": "060413",
+    "route_ref": "15E;18E;728;732;201",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457947,
+  "lat": 38.7037741,
+  "lon": -9.1623900,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Cais da Rocha (Museu Nacional de Arte Antiga)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "3906",
+    "route_ref": "15E;18E;728;732;201",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457953,
+  "lat": 38.7047178,
+  "lon": -9.1774949,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "mapillary": "179446257390758",
+    "name": "Calvário",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12115",
+    "shelter": "yes",
+    "survey:date": "2018-03-29",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457956,
+  "lat": 38.7048349,
+  "lon": -9.1773791,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "mapillary": "295144525533485",
+    "name": "Calvário",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12116",
+    "shelter": "yes",
+    "survey:date": "2018-05-17",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457958,
+  "lat": 38.7064631,
+  "lon": -9.1990680,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Calçada da Ajuda (GNR)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "route_ref": "18E;729",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457959,
+  "lat": 38.7063903,
+  "lon": -9.1991884,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Calçada da Ajuda (GNR)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "route_ref": "18E;729",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457960,
+  "lat": 38.7072033,
+  "lon": -9.1991018,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Calçada da Ajuda (Palácio)",
+    "public_transport": "platform",
+    "ref": "10311",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457961,
+  "lat": 38.7074444,
+  "lon": -9.1989724,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "name": "Calçada da Ajuda (Palácio)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10310",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457962,
+  "lat": 38.7031086,
+  "lon": -9.1931312,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "name": "Calçada da Boa Hora",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "railway": "platform",
+    "route_ref": "18E",
+    "shelter": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457963,
+  "lat": 38.7031532,
+  "lon": -9.1933473,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Calçada da Boa Hora",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13408",
+    "route_ref": "18E;742",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457964,
+  "lat": 38.7060874,
+  "lon": -9.1790023,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "mapillary": "570885103883894",
+    "name": "Calçada da Tapada",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12120",
+    "route_ref": "18E;760",
+    "shelter": "yes",
+    "survey:date": "2018-05-17",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457965,
+  "lat": 38.7062562,
+  "lon": -9.1794195,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "check_date": "2024-11-19",
+    "check_date:bin": "2024-11-19",
+    "check_date:lit": "2024-11-19",
+    "check_date:tactile_paving": "2024-11-19",
+    "lit": "yes",
+    "mapillary": "773025170043252",
+    "name": "Calçada da Tapada",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12119",
+    "route_ref": "18E;760",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457968,
+  "lat": 38.7097300,
+  "lon": -9.2031291,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Cemitério da Ajuda",
+    "public_transport": "platform",
+    "ref": "12929",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457969,
+  "lat": 38.7060263,
+  "lon": -9.1822630,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Pavilhão Desportivo da Ajuda",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12013",
+    "route_ref": "18E;760",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457971,
+  "lat": 38.7061070,
+  "lon": -9.1828017,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Pavilhão Desportivo da Ajuda",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12014",
+    "route_ref": "18E;760",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457972,
+  "lat": 38.7034115,
+  "lon": -9.1915815,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-10-03",
+    "departures_board": "realtime",
+    "lit": "no",
+    "name": "Rio Seco",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13405",
+    "route_ref": "742;760;18E",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457973,
+  "lat": 38.7037240,
+  "lon": -9.1908505,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2023-09-25",
+    "lit": "no",
+    "name": "Rio Seco",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13406",
+    "route_ref": "742;760;18E",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457974,
+  "lat": 38.7043612,
+  "lon": -9.1895514,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "name": "Rua Aliança Operária",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12008",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457975,
+  "lat": 38.7047039,
+  "lon": -9.1987038,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Rua da Bica do Marquês",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13303",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457976,
+  "lat": 38.7047752,
+  "lon": -9.1989338,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "name": "Rua da Bica do Marquês",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13304",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457978,
+  "lat": 38.7048836,
+  "lon": -9.1962219,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-09-25",
+    "lit": "no",
+    "name": "Rua de Dom Vasco",
+    "public_transport": "platform",
+    "ref": "13305",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457979,
+  "lat": 38.7052919,
+  "lon": -9.1853767,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua João de Barros",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12011",
+    "route_ref": "18E;760",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457980,
+  "lat": 38.7055015,
+  "lon": -9.1852736,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua João de Barros",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "12012",
+    "route_ref": "18E;760",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457981,
+  "lat": 38.7088400,
+  "lon": -9.2002120,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "name": "Rua das Açucenas",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4378457982,
+  "lat": 38.7089368,
+  "lon": -9.2003398,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Rua das Açucenas",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4378458307,
+  "lat": 38.7063816,
+  "lon": -9.1491063,
+  "tags": {
+    "name": "Conde Barão - Avenida 24 de Julho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "7102",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379446142,
+  "lat": 38.6973505,
+  "lon": -9.2034785,
+  "tags": {
+    "name": "Mosteiro dos Jerónimos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9609",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379446153,
+  "lat": 38.6974103,
+  "lon": -9.1940790,
+  "tags": {
+    "name": "Altinho (MAAT)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379446216,
+  "lat": 38.6985858,
+  "lon": -9.1874792,
+  "tags": {
+    "name": "Hospital de Egas Moniz",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379512109,
+  "lat": 38.6960854,
+  "lon": -9.2195628,
+  "tags": {
+    "name": "Pedrouços",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379512162,
+  "lat": 38.6992303,
+  "lon": -9.2319938,
+  "tags": {
+    "name": "Algés (Jardim)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "4215",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379525899,
+  "lat": 38.6994212,
+  "lon": -9.2285858,
+  "tags": {
+    "name": "Algés - Praça Dom Manuel I",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379525900,
+  "lat": 38.6961102,
+  "lon": -9.2097069,
+  "tags": {
+    "name": "Centro Cultural de Belém",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379525901,
+  "lat": 38.6950179,
+  "lon": -9.2155453,
+  "tags": {
+    "name": "Largo da Princesa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "short_name": "Lg. Princesa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379525902,
+  "lat": 38.6982753,
+  "lon": -9.2250334,
+  "tags": {
+    "name": "Rua Damião de Góis",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "short_name": "R. Damião Góis",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379547128,
+  "lat": 38.6974005,
+  "lon": -9.1988495,
+  "tags": {
+    "name": "Belém",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379547129,
+  "lat": 38.7071960,
+  "lon": -9.1414040,
+  "tags": {
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03824",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379547130,
+  "lat": 38.7027311,
+  "lon": -9.1801365,
+  "tags": {
+    "name": "Estação de Santo Amaro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379547131,
+  "lat": 38.7082740,
+  "lon": -9.1363430,
+  "tags": {
+    "name": "Praça do Comércio",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "05512",
+    "short_name": "Pç. Comércio",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379547132,
+  "lat": 38.6980149,
+  "lon": -9.1905932,
+  "tags": {
+    "name": "Rua Pinto Ferreira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379547133,
+  "lat": 38.7001005,
+  "lon": -9.1835607,
+  "tags": {
+    "name": "Rua da Junqueira (Centro de Congressos)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379553578,
+  "lat": 38.6994905,
+  "lon": -9.2284719,
+  "tags": {
+    "name": "Algés - Praça Dom Manuel I",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379554869,
+  "lat": 38.7081468,
+  "lon": -9.1371140,
+  "tags": {
+    "name": "Praça do Comércio",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "05515",
+    "short_name": "Pç. Comércio",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567939,
+  "lat": 38.6974979,
+  "lon": -9.1959787,
+  "tags": {
+    "name": "Altinho (MAAT)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567940,
+  "lat": 38.6974412,
+  "lon": -9.1985467,
+  "tags": {
+    "name": "Belém",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567941,
+  "lat": 38.7019728,
+  "lon": -9.1810150,
+  "tags": {
+    "name": "Estação de Santo Amaro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567942,
+  "lat": 38.6984459,
+  "lon": -9.1883848,
+  "tags": {
+    "name": "Hospital de Egas Moniz",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567943,
+  "lat": 38.6972178,
+  "lon": -9.2050619,
+  "tags": {
+    "name": "Mosteiro dos Jerónimos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "toilets:wheelchair": "no",
+    "tram": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567944,
+  "lat": 38.6978302,
+  "lon": -9.1918631,
+  "tags": {
+    "name": "Rua Pinto Ferreira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379567945,
+  "lat": 38.6998095,
+  "lon": -9.1843405,
+  "tags": {
+    "name": "Rua da Junqueira (Centro de Congressos)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379571686,
+  "lat": 38.6962828,
+  "lon": -9.2092937,
+  "tags": {
+    "name": "Centro Cultural de Belém",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4379571687,
+  "lat": 38.6950278,
+  "lon": -9.2145554,
+  "tags": {
+    "name": "Largo da Princesa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "short_name": "Lg. Princesa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809854,
+  "lat": 38.7108152,
+  "lon": -9.1459565,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2026-06-16",
+    "lit": "yes",
+    "name": "Calhariz (Bica)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10511",
+    "route_ref": "28E",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809855,
+  "lat": 38.7122104,
+  "lon": -9.1550809,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2023-03-26",
+    "lit": "yes",
+    "name": "Calçada da Estrela",
+    "public_transport": "platform",
+    "railway": "tram_stop",
+    "ref": "6721",
+    "shelter": "no",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809856,
+  "lat": 38.7122240,
+  "lon": -9.1550776,
+  "tags": {
+    "name": "Calçada da Estrela",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "6721",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809857,
+  "lat": 38.7123593,
+  "lon": -9.1553874,
+  "tags": {
+    "name": "Calçada da Estrela / Rua Borges Carneiro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "06720",
+    "short_name": "Cç. Estrela / R. Borges Carneiro",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809858,
+  "lat": 38.7123777,
+  "lon": -9.1553775,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Calçada da Estrela / Rua Borges Carneiro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "06720",
+    "shelter": "no",
+    "short_name": "Cç. Estrela / R. Borges Carneiro",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809859,
+  "lat": 38.7125742,
+  "lon": -9.1563273,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2025-02-20",
+    "lit": "no",
+    "name": "Calçada da Estrela/Rua Borges Carneiro",
+    "public_transport": "platform",
+    "ref": "6719",
+    "shelter": "no",
+    "short_name": "Cç. Estrela/R. Borges Carneiro",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809860,
+  "lat": 38.7127395,
+  "lon": -9.1578018,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "name": "Calçada da Estrela / Rua Doutor Teófilo Braga",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "6717",
+    "shelter": "no",
+    "short_name": "Cç. Estrela/R. Dr. Teófilo Braga",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809861,
+  "lat": 38.7127542,
+  "lon": -9.1574172,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Calçada da Estrela / Rua Doutor Teófilo Braga",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "06718",
+    "shelter": "no",
+    "short_name": "Cç. Estrela/R. Dr. Teófilo Braga",
+    "tactile_paving": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809862,
+  "lat": 38.7134940,
+  "lon": -9.1287098,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2026-06-05",
+    "name": "Calçada de São Vicente",
+    "public_transport": "platform",
+    "ref": "13806",
+    "shelter": "no",
+    "short_name": "Cç. S. Vicente",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809863,
+  "lat": 38.7109641,
+  "lon": -9.1494997,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Calçada do Combro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9903",
+    "shelter": "yes",
+    "short_name": "Cç. Combro",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809864,
+  "lat": 38.7110095,
+  "lon": -9.1498122,
+  "tags": {
+    "name": "Calçada do Combro",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "09904",
+    "short_name": "Cç. Combro",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809865,
+  "lat": 38.7110200,
+  "lon": -9.1498147,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Calçada do Combro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "09904",
+    "shelter": "no",
+    "short_name": "Cç. Combro",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809866,
+  "lat": 38.7142542,
+  "lon": -9.1695347,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-03-26",
+    "lit": "yes",
+    "name": "Campo de Ourique (Prazeres)",
+    "public_transport": "platform",
+    "ref": "8017",
+    "shelter": "yes",
+    "short_name": "Campo Ourique (Prazeres)",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809867,
+  "lat": 38.7100961,
+  "lon": -9.1424329,
+  "tags": {
+    "name": "Chiado",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10515",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809868,
+  "lat": 38.7100986,
+  "lon": -9.1424533,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Chiado",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10515",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809869,
+  "lat": 38.7140991,
+  "lon": -9.1617304,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2024-11-20",
+    "lit": "yes",
+    "name": "Estrela - Rua Domingos Sequeira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "8109",
+    "shelter": "yes",
+    "short_name": "Estrela - R. Domingos Sequeira",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809870,
+  "lat": 38.7141466,
+  "lon": -9.1616786,
+  "tags": {
+    "name": "Estrela - Rua Domingos Sequeira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "8109",
+    "short_name": "Estrela - R. Domingos Sequeira",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809871,
+  "lat": 38.7145433,
+  "lon": -9.1621475,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "lit": "yes",
+    "name": "Estrela - Rua Domingos Sequeira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "8110",
+    "shelter": "yes",
+    "short_name": "Estrela - R. Domingos Sequeira",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809872,
+  "lat": 38.7136309,
+  "lon": -9.1600461,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Estrela (Basílica)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "08111",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809876,
+  "lat": 38.7171779,
+  "lon": -9.1297945,
+  "tags": {
+    "name": "Graça",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "14803",
+    "tram": "yes",
+    "wikidata": "Q136648715"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809877,
+  "lat": 38.7171924,
+  "lon": -9.1297598,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Graça",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "14803",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809879,
+  "lat": 38.7172943,
+  "lon": -9.1299336,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "realtime",
+    "lit": "yes",
+    "name": "Graça",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "14804",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809881,
+  "lat": 38.7100441,
+  "lon": -9.1352652,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "no",
+    "name": "Igreja de Santa Maria Madalena",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "5601",
+    "shelter": "no",
+    "short_name": "Igreja Sta. Maria Madalena",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809882,
+  "lat": 38.7100592,
+  "lon": -9.1352710,
+  "tags": {
+    "name": "Igreja de Santa Maria Madalena",
+    "name:en": "Church of Saint Mary Magdalene",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "5601",
+    "short_name": "Igreja Sta. Maria Madalena",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809883,
+  "lat": 38.7148284,
+  "lon": -9.1665177,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "realtime",
+    "lit": "no",
+    "name": "Igreja do Santo Condestável",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "08019",
+    "shelter": "no",
+    "short_name": "Igreja Sto. Condestável",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809884,
+  "lat": 38.7148773,
+  "lon": -9.1665379,
+  "tags": {
+    "name": "Igreja do Santo Condestável",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "08019",
+    "short_name": "Igreja Sto. Condestável",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809885,
+  "lat": 38.7149197,
+  "lon": -9.1664831,
+  "tags": {
+    "name": "Igreja do Santo Condestável",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "8018",
+    "short_name": "Igreja Sto. Condestável",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809886,
+  "lat": 38.7149616,
+  "lon": -9.1665012,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-09-21",
+    "departures_board": "timetable",
+    "lit": "no",
+    "name": "Igreja do Santo Condestável",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "8018",
+    "shelter": "yes",
+    "short_name": "Igreja Sto. Condestável",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809989,
+  "lat": 38.7221183,
+  "lon": -9.1352515,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Igreja dos Anjos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "701",
+    "shelter": "yes",
+    "short_name": "Igreja Anjos",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809990,
+  "lat": 38.7219945,
+  "lon": -9.1352981,
+  "tags": {
+    "name": "Igreja dos Anjos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "705",
+    "short_name": "Igreja Anjos",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809993,
+  "lat": 38.7221322,
+  "lon": -9.1354059,
+  "tags": {
+    "name": "Igreja dos Anjos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "704",
+    "short_name": "Igreja Anjos",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809994,
+  "lat": 38.7221336,
+  "lon": -9.1354469,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2024-02-21",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Igreja dos Anjos",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "704",
+    "shelter": "yes",
+    "short_name": "Igreja Anjos",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809995,
+  "lat": 38.7080707,
+  "lon": -9.1398890,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "no",
+    "name": "Largo da Academia Nacional das Belas Artes",
+    "public_transport": "platform",
+    "railway": "tram_stop",
+    "ref": "10521",
+    "shelter": "yes",
+    "short_name": "Lg. Academia Nacional Belas Artes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809996,
+  "lat": 38.7080699,
+  "lon": -9.1404528,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "no",
+    "check_date:shelter": "2023-03-28",
+    "lit": "no",
+    "name": "Largo da Academia Nacional das Belas Artes",
+    "public_transport": "platform",
+    "railway": "tram_stop",
+    "ref": "10518",
+    "shelter": "no",
+    "short_name": "Lg. Academia Nacional Belas Artes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809997,
+  "lat": 38.7122270,
+  "lon": -9.1304809,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Largo das Portas do Sol",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13812",
+    "shelter": "yes",
+    "short_name": "Lg. Portas Sol",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809998,
+  "lat": 38.7122518,
+  "lon": -9.1304419,
+  "tags": {
+    "name": "Largo das Portas do Sol",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13812",
+    "short_name": "Lg. Portas Sol",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381809999,
+  "lat": 38.7124093,
+  "lon": -9.1305677,
+  "tags": {
+    "name": "Largo das Portas do Sol",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13811",
+    "short_name": "Lg. Portas Sol",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810000,
+  "lat": 38.7124332,
+  "lon": -9.1305313,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Largo das Portas do Sol",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "13811",
+    "shelter": "yes",
+    "short_name": "Lg. Portas Sol",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810001,
+  "lat": 38.7103232,
+  "lon": -9.1316413,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Limoeiro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13803",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810002,
+  "lat": 38.7149502,
+  "lon": -9.1365579,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Martim Moniz",
+    "public_transport": "platform",
+    "ref": "805",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810003,
+  "lat": 38.7151925,
+  "lon": -9.1360222,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Martim Moniz",
+    "public_transport": "platform",
+    "ref": "801",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810004,
+  "lat": 38.7152143,
+  "lon": -9.1360902,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-02-09",
+    "lit": "yes",
+    "name": "Martim Moniz",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "819",
+    "route_ref": "28E",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810008,
+  "lat": 38.7113132,
+  "lon": -9.1307015,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2026-06-05",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Miradouro de Santa Luzia",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "13816",
+    "shelter": "no",
+    "short_name": "Miradouro Sta. Luzia",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810009,
+  "lat": 38.7114717,
+  "lon": -9.1305987,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Miradouro de Santa Luzia",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "13805",
+    "shelter": "yes",
+    "short_name": "Miradouro Sta. Luzia",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810010,
+  "lat": 38.7228999,
+  "lon": -9.1313868,
+  "tags": {
+    "name": "Rua Angelina Vidal",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9126",
+    "short_name": "R. Angelina Vidal",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810011,
+  "lat": 38.7149651,
+  "lon": -9.1630403,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua Domingos Sequeira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "08107",
+    "shelter": "yes",
+    "short_name": "R. Domingos Sequeira",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810012,
+  "lat": 38.7150050,
+  "lon": -9.1629990,
+  "tags": {
+    "name": "Rua Domingos Sequeira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "08107",
+    "short_name": "R. Domingos Sequeira",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810013,
+  "lat": 38.7151493,
+  "lon": -9.1631669,
+  "tags": {
+    "name": "Rua Domingos Sequeira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "08108",
+    "short_name": "R. Domingos Sequeira",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810014,
+  "lat": 38.7151802,
+  "lon": -9.1631342,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua Domingos Sequeira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "08108",
+    "shelter": "yes",
+    "short_name": "R. Domingos Sequeira",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810015,
+  "lat": 38.7234372,
+  "lon": -9.1338146,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "mapillary": "140280118028594",
+    "name": "Rua Maria Andrade",
+    "network": "Carris",
+    "operator": "Carris",
+    "pole": "yes",
+    "public_transport": "platform",
+    "ref": "707",
+    "shelter": "no",
+    "survey:date": "2017-09-22",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810016,
+  "lat": 38.7234605,
+  "lon": -9.1338125,
+  "tags": {
+    "name": "Rua Maria Andrade",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "707",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810017,
+  "lat": 38.7235373,
+  "lon": -9.1344401,
+  "tags": {
+    "name": "Rua Maria Andrade",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "706",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810018,
+  "lat": 38.7235549,
+  "lon": -9.1344400,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "mapillary": "2944688502521727",
+    "name": "Rua Maria Andrade",
+    "network": "Carris",
+    "operator": "Carris",
+    "pole": "yes",
+    "public_transport": "platform",
+    "ref": "706",
+    "shelter": "no",
+    "survey:date": "2018-03-28",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810019,
+  "lat": 38.7231987,
+  "lon": -9.1318919,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date": "2025-12-15",
+    "check_date:lit": "2025-12-15",
+    "check_date:tactile_paving": "2025-12-15",
+    "lit": "no",
+    "mapillary": "2935078296819454",
+    "name": "Rua Maria da Fonte",
+    "network": "Carris",
+    "operator": "Carris",
+    "pole": "yes",
+    "public_transport": "platform",
+    "ref": "709",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810020,
+  "lat": 38.7238211,
+  "lon": -9.1332398,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "name": "Rua Maria",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "708",
+    "shelter": "no",
+    "short_name": "R. Maria"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810021,
+  "lat": 38.7238186,
+  "lon": -9.1331857,
+  "tags": {
+    "name": "Rua Maria",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "708",
+    "short_name": "R. Maria",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810022,
+  "lat": 38.7152985,
+  "lon": -9.1646358,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-11-27",
+    "departures_board": "realtime",
+    "lit": "no",
+    "name": "Rua Saraiva de Carvalho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "8001",
+    "shelter": "yes",
+    "short_name": "R. Saraiva Carvalho",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810023,
+  "lat": 38.7153580,
+  "lon": -9.1646582,
+  "tags": {
+    "name": "Rua Saraiva de Carvalho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "8001",
+    "short_name": "R. Saraiva Carvalho",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810024,
+  "lat": 38.7154599,
+  "lon": -9.1643704,
+  "tags": {
+    "name": "Rua Saraiva de Carvalho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "8002",
+    "short_name": "R. Saraiva Carvalho",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810025,
+  "lat": 38.7154971,
+  "lon": -9.1643862,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2026-07-17",
+    "departures_board": "timetable",
+    "name": "Rua Saraiva Carvalho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "8002",
+    "shelter": "no",
+    "short_name": "R. Saraiva Carvalho"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810026,
+  "lat": 38.7079431,
+  "lon": -9.1426049,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2025-12-29",
+    "lit": "yes",
+    "name": "Rua Vítor Cordon",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10517",
+    "shelter": "no",
+    "short_name": "R. Vitor Cordon",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810027,
+  "lat": 38.7079739,
+  "lon": -9.1426033,
+  "tags": {
+    "name": "Rua Vítor Cordon",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10517",
+    "short_name": "R. Vitor Cordon",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810028,
+  "lat": 38.7079499,
+  "lon": -9.1415250,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2025-12-29",
+    "lit": "no",
+    "name": "Rua Vítor Cordon / Rua Serpa Pinto",
+    "public_transport": "platform",
+    "ref": "10519",
+    "shelter": "no",
+    "short_name": "R. Vitor Cordon/R. Serpa Pinto",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810029,
+  "lat": 38.7079801,
+  "lon": -9.1415251,
+  "tags": {
+    "bus": "no",
+    "name": "Rua Vítor Cordon / Rua Serpa Pinto",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10519",
+    "short_name": "R. Vitor Cordon/R. Serpa Pinto",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810030,
+  "lat": 38.7082264,
+  "lon": -9.1419761,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2025-12-29",
+    "lit": "no",
+    "name": "Rua Vitor Cordon/Rua Serpa Pinto",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10516",
+    "shelter": "no",
+    "short_name": "R. Vitor Cordon/R. Serpa Pinto",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810031,
+  "lat": 38.7082323,
+  "lon": -9.1420169,
+  "tags": {
+    "name": "Rua Vitor Cordon/Rua Serpa Pinto",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10516",
+    "short_name": "R. Vitor Cordon/R. Serpa Pinto",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810032,
+  "lat": 38.7093360,
+  "lon": -9.1381856,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua da Conceição",
+    "public_transport": "platform",
+    "ref": "5605",
+    "shelter": "yes",
+    "short_name": "R. Conceição",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810033,
+  "lat": 38.7093524,
+  "lon": -9.1381903,
+  "tags": {
+    "name": "Rua da Conceição",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "5605",
+    "short_name": "R. Conceição",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810034,
+  "lat": 38.7096664,
+  "lon": -9.1370098,
+  "tags": {
+    "name": "Rua da Conceição",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "5604",
+    "short_name": "R. Conceição",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810035,
+  "lat": 38.7096635,
+  "lon": -9.1370081,
+  "tags": {
+    "bench": "no",
+    "check_date:bench": "2023-03-28",
+    "covered": "yes",
+    "name": "Rua da Conceição",
+    "public_transport": "platform",
+    "ref": "5604",
+    "shelter": "yes",
+    "short_name": "R. Conceição",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810036,
+  "lat": 38.7190818,
+  "lon": -9.1298320,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Rua da Graça",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9130",
+    "shelter": "no",
+    "short_name": "R. Graça",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810037,
+  "lat": 38.7192434,
+  "lon": -9.1298370,
+  "tags": {
+    "name": "Rua da Graça",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9131",
+    "short_name": "R. Graça",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810038,
+  "lat": 38.7192457,
+  "lon": -9.1298554,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua da Graça",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9131",
+    "shelter": "no",
+    "short_name": "R. Graça",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810039,
+  "lat": 38.7191594,
+  "lon": -9.1357009,
+  "tags": {
+    "name": "Rua da Palma",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "804",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810040,
+  "lat": 38.7191605,
+  "lon": -9.1357406,
+  "tags": {
+    "bench": "yes",
+    "name": "Rua da Palma",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "804",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810041,
+  "lat": 38.7195453,
+  "lon": -9.1354967,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Rua da Palma",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "803",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810042,
+  "lat": 38.7195469,
+  "lon": -9.1355462,
+  "tags": {
+    "name": "Rua da Palma",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "803",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810043,
+  "lat": 38.7129467,
+  "lon": -9.1296085,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2022-09-06",
+    "lit": "no",
+    "name": "Rua das Escolas Gerais",
+    "public_transport": "platform",
+    "ref": "13813",
+    "shelter": "yes",
+    "short_name": "R. Escolas Gerais",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810044,
+  "lat": 38.7129601,
+  "lon": -9.1295958,
+  "tags": {
+    "name": "Rua das Escolas Gerais",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13813",
+    "short_name": "R. Escolas Gerais",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810045,
+  "lat": 38.7130733,
+  "lon": -9.1297290,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2023-03-28",
+    "name": "Rua das Escolas Gerais",
+    "public_transport": "platform",
+    "ref": "13814",
+    "shelter": "no",
+    "short_name": "R. Escolas Gerais",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810047,
+  "lat": 38.7108926,
+  "lon": -9.1526521,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "lit": "no",
+    "name": "Rua de São Bento / Calçada da Estrela",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "06722",
+    "shelter": "no",
+    "short_name": "R. S. Bento/Cç. Estrela",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810049,
+  "lat": 38.7114658,
+  "lon": -9.1531773,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Rua de São Bento / Calçada da Estrela",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "06722",
+    "shelter": "no",
+    "short_name": "R. S. Bento/Cç. Estrela",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810051,
+  "lat": 38.7098108,
+  "lon": -9.1516905,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2026-06-17",
+    "lit": "yes",
+    "name": "Rua do Poço dos Negros",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "07111",
+    "shelter": "no",
+    "short_name": "R. Poço Negros",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810052,
+  "lat": 38.7098295,
+  "lon": -9.1516997,
+  "tags": {
+    "name": "Rua do Poço dos Negros",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "07111",
+    "short_name": "R. Poço Negros",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810053,
+  "lat": 38.7107473,
+  "lon": -9.1518076,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2024-09-26",
+    "name": "Rua dos Poiais de São Bento",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "06724",
+    "shelter": "no",
+    "short_name": "R. Poais S. Bento",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810054,
+  "lat": 38.7209693,
+  "lon": -9.1301914,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "covered": "no",
+    "lit": "yes",
+    "name": "Sapadores",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9129",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810055,
+  "lat": 38.7097637,
+  "lon": -9.1337981,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Sé",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13801",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810056,
+  "lat": 38.7098112,
+  "lon": -9.1337700,
+  "tags": {
+    "name": "Sé",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13801",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810057,
+  "lat": 38.7100415,
+  "lon": -9.1342177,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Sé",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13802",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810058,
+  "lat": 38.7149912,
+  "lon": -9.1288133,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Voz do Operário",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "14802",
+    "shelter": "yes",
+    "short_name": "Voz Operário",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810059,
+  "lat": 38.7150038,
+  "lon": -9.1287590,
+  "tags": {
+    "name": "Voz do Operário",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "14802",
+    "short_name": "Voz Operário",
+    "train": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4381810060,
+  "lat": 38.7150540,
+  "lon": -9.1287088,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Voz do Operário",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "14801",
+    "shelter": "yes",
+    "short_name": "Voz Operário",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605848,
+  "lat": 38.7087972,
+  "lon": -9.1512721,
+  "tags": {
+    "name": "Conde Barão",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "07105",
+    "route_ref": "25E;714",
+    "short_name": "R. S. Paulo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605849,
+  "lat": 38.7088278,
+  "lon": -9.1512847,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2025-09-27",
+    "lit": "no",
+    "name": "Conde Barão",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "07105",
+    "route_ref": "25E;714",
+    "shelter": "yes",
+    "short_name": "R. S. Paulo",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605850,
+  "lat": 38.7078246,
+  "lon": -9.1534298,
+  "tags": {
+    "bench": "yes",
+    "name": "Largo Vitorino Damásio",
+    "public_transport": "platform",
+    "ref": "3919",
+    "route_ref": "25E",
+    "shelter": "yes",
+    "short_name": "Lg. Vitorino Damásio"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605851,
+  "lat": 38.7078382,
+  "lon": -9.1536163,
+  "tags": {
+    "bench": "yes",
+    "name": "Largo Vitorino Damásio",
+    "public_transport": "platform",
+    "ref": "3918",
+    "route_ref": "25E",
+    "shelter": "yes",
+    "short_name": "Lg. Vitorino Damásio"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605852,
+  "lat": 38.7075075,
+  "lon": -9.1613946,
+  "tags": {
+    "name": "Rua Garcia da Orta",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10008",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605853,
+  "lat": 38.7075115,
+  "lon": -9.1613747,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Rua Garcia da Orta",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10008",
+    "route_ref": "25E;774",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605854,
+  "lat": 38.7121109,
+  "lon": -9.1603719,
+  "tags": {
+    "name": "Rua de Buenos Aires",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10012",
+    "short_name": "R. Santana à Lapa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605855,
+  "lat": 38.7121143,
+  "lon": -9.1603548,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Rua de Buenos Aires",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "railway": "tram_stop",
+    "ref": "10012",
+    "shelter": "no",
+    "short_name": "R. Buenos Aires",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605856,
+  "lat": 38.7108213,
+  "lon": -9.1614049,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Rua de Santana à Lapa",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10014",
+    "route_ref": "25E;773",
+    "shelter": "no",
+    "short_name": "R. Santana à Lapa",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605857,
+  "lat": 38.7108371,
+  "lon": -9.1614265,
+  "tags": {
+    "name": "Rua de Santana à Lapa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10014",
+    "short_name": "R. Santana à Lapa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605858,
+  "lat": 38.7095572,
+  "lon": -9.1623120,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Rua de São Domingos à Lapa",
+    "public_transport": "platform",
+    "ref": "10016",
+    "shelter": "yes",
+    "short_name": "R. S. Domingos à Lapa",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605859,
+  "lat": 38.7077027,
+  "lon": -9.1596369,
+  "tags": {
+    "bus": "yes",
+    "name": "Rua de São João da Mata",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10010",
+    "short_name": "R. S. João Mata",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605860,
+  "lat": 38.7077200,
+  "lon": -9.1596473,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Rua de São João da Mata",
+    "public_transport": "platform",
+    "ref": "10010",
+    "route_ref": "25E;713",
+    "shelter": "yes",
+    "short_name": "R. S. João Mata",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605861,
+  "lat": 38.7084452,
+  "lon": -9.1470509,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua de São Paulo (Bica)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "09902",
+    "route_ref": "25E;714",
+    "shelter": "no",
+    "short_name": "R. S. Paulo",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605862,
+  "lat": 38.7085065,
+  "lon": -9.1466516,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua de São Paulo (Bica)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "09901",
+    "route_ref": "25E;714",
+    "shelter": "yes",
+    "short_name": "R. S. Paulo",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605863,
+  "lat": 38.7077027,
+  "lon": -9.1441355,
+  "tags": {
+    "name": "Rua de São Paulo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03819",
+    "short_name": "R. S. Paulo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605864,
+  "lat": 38.7077190,
+  "lon": -9.1441282,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2024-01-04",
+    "lit": "no",
+    "name": "Rua de São Paulo",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03819",
+    "route_ref": "25E;714",
+    "shelter": "yes",
+    "short_name": "R. S. Paulo",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605865,
+  "lat": 38.7066126,
+  "lon": -9.1559138,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Santos",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03913",
+    "route_ref": "25E;714;727",
+    "shelter": "yes",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605866,
+  "lat": 38.7067552,
+  "lon": -9.1557572,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2025-05-17",
+    "lit": "yes",
+    "name": "Santos",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03912",
+    "route_ref": "25E;714;727",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605869,
+  "lat": 38.7066429,
+  "lon": -9.1579245,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Santos-o-Velho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03915",
+    "route_ref": "25E",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407605871,
+  "lat": 38.7067059,
+  "lon": -9.1578193,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Santos-o-Velho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03914",
+    "route_ref": "25E;774",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626597,
+  "lat": 38.7086506,
+  "lon": -9.1517457,
+  "tags": {
+    "name": "Conde Barão",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "07106",
+    "short_name": "R. S. Paulo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626598,
+  "lat": 38.7082511,
+  "lon": -9.1363335,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Praça do Comércio",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "05512",
+    "route_ref": "15E;25E;774",
+    "shelter": "yes",
+    "short_name": "Pç. Comércio",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626599,
+  "lat": 38.7072708,
+  "lon": -9.1613971,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Rua Garcia da Orta",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10007",
+    "route_ref": "25E;713",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626600,
+  "lat": 38.7072764,
+  "lon": -9.1613707,
+  "tags": {
+    "name": "Rua Garcia da Orta",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10007",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626601,
+  "lat": 38.7126524,
+  "lon": -9.1602132,
+  "tags": {
+    "name": "Rua João de Deus",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "08113",
+    "short_name": "R. João Deus",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626602,
+  "lat": 38.7126645,
+  "lon": -9.1602300,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "image": "http://storage8.openstreetcam.org/files/photo/2018/6/12/lth/1248369_cc457_10.jpg",
+    "name": "Rua João de Deus",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "08113",
+    "shelter": "yes",
+    "short_name": "R. João Deus",
+    "survey:date": "2018-06-12",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626603,
+  "lat": 38.7114200,
+  "lon": -9.1607789,
+  "tags": {
+    "name": "Rua de Buenos Aires",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10011",
+    "short_name": "R. Santana à Lapa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626604,
+  "lat": 38.7114307,
+  "lon": -9.1607946,
+  "tags": {
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Rua de Buenos Aires",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10011",
+    "route_ref": "25E;713",
+    "shelter": "no",
+    "short_name": "R. Buenos Aires",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626605,
+  "lat": 38.7100507,
+  "lon": -9.1624127,
+  "tags": {
+    "name": "Rua de Santana à Lapa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10013",
+    "short_name": "R. Santana à Lapa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626606,
+  "lat": 38.7100702,
+  "lon": -9.1624364,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Rua de Santana à Lapa",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10013",
+    "route_ref": "25E;713;773",
+    "shelter": "yes",
+    "short_name": "R. Santana à Lapa",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626607,
+  "lat": 38.7088579,
+  "lon": -9.1618849,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Rua de São Domingos à Lapa",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10015",
+    "route_ref": "25E;713",
+    "shelter": "yes",
+    "short_name": "R. S. Domingos à Lapa",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626608,
+  "lat": 38.7088644,
+  "lon": -9.1618633,
+  "tags": {
+    "name": "Rua de São Domingos à Lapa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10015",
+    "short_name": "R. S. Domingos à Lapa",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626609,
+  "lat": 38.7078791,
+  "lon": -9.1590935,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Rua de São João da Mata",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "10009",
+    "route_ref": "25E;713",
+    "shelter": "yes",
+    "short_name": "R. S. João Mata",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626610,
+  "lat": 38.7078987,
+  "lon": -9.1591087,
+  "tags": {
+    "bus": "yes",
+    "name": "Rua de São João da Mata",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10009",
+    "short_name": "R. S. João Mata",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626611,
+  "lat": 38.7077857,
+  "lon": -9.1446091,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Rua de São Paulo",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "03818",
+    "route_ref": "25E;714",
+    "shelter": "yes",
+    "short_name": "R. S. Paulo"
+  }
+},
+{
+  "type": "node",
+  "id": 4407626612,
+  "lat": 38.7078092,
+  "lon": -9.1445976,
+  "tags": {
+    "name": "Rua de São Paulo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03818",
+    "short_name": "R. S. Paulo",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4560886861,
+  "lat": 38.7233648,
+  "lon": -9.1593816,
+  "tags": {
+    "name": "Rua das Amoreiras",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4560887023,
+  "lat": 38.7272648,
+  "lon": -9.1615401,
+  "tags": {
+    "name": "Campolide (Avenida Conselheiro Fernando Sousa)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4560887076,
+  "lat": 38.7214503,
+  "lon": -9.1563869,
+  "tags": {
+    "name": "Jardim das Amoreiras",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4560887096,
+  "lat": 38.7112168,
+  "lon": -9.1429174,
+  "tags": {
+    "name": "Praça Luís de Camões",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4560912712,
+  "lat": 38.7136940,
+  "lon": -9.1601104,
+  "tags": {
+    "name": "Estrela (Basílica)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "08112",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4562161969,
+  "lat": 38.7080819,
+  "lon": -9.1399380,
+  "tags": {
+    "bus": "no",
+    "name": "Largo da Academia Nacional das Belas Artes",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10521",
+    "short_name": "Lg. Academia Nacional Belas Artes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4562515058,
+  "lat": 38.7152246,
+  "lon": -9.1361279,
+  "tags": {
+    "name": "Martim Moniz",
+    "name:ru": "Остановка 28 трамвая Алфама",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "819",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4662273122,
+  "lat": 38.7167153,
+  "lon": -9.1351713,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2026-06-01",
+    "name": "Socorro",
+    "public_transport": "platform",
+    "ref": "817",
+    "route_ref": "12E",
+    "shelter": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4662455665,
+  "lat": 38.7066596,
+  "lon": -9.1578967,
+  "tags": {
+    "name": "Santos-o-Velho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "03915",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4715240142,
+  "lat": 38.6991907,
+  "lon": -9.2319770,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Algés (Jardim)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "4215",
+    "shelter": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4734015849,
+  "lat": 38.7150467,
+  "lon": -9.1287442,
+  "tags": {
+    "name": "Voz do Operário",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "14801",
+    "short_name": "Voz Operário",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4740513758,
+  "lat": 38.7232211,
+  "lon": -9.1319158,
+  "tags": {
+    "name": "Rua Maria da Fonte",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "709",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4748669201,
+  "lat": 38.7165550,
+  "lon": -9.1481068,
+  "tags": {
+    "name": "Príncipe Real",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5092781351,
+  "lat": 38.7215459,
+  "lon": -9.1565661,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Jardim das Amoreiras",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5289037632,
+  "lat": 38.6370750,
+  "lon": -9.1510511,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Corroios",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 5574550609,
+  "lat": 38.7109937,
+  "lon": -9.1469943,
+  "tags": {
+    "name": "Santa Catarina",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "9906",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5574550610,
+  "lat": 38.7108335,
+  "lon": -9.1459522,
+  "tags": {
+    "name": "Calhariz (Bica)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10511",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5574550611,
+  "lat": 38.7107605,
+  "lon": -9.1452974,
+  "tags": {
+    "name": "Calhariz (Bica)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "10510",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5574565987,
+  "lat": 38.7114566,
+  "lon": -9.1531858,
+  "tags": {
+    "name": "Rua de São Bento/Calçada da Estrela",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "06722",
+    "short_name": "R. S. Bento/Cç. Estrela",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901193590,
+  "lat": 38.7131752,
+  "lon": -9.1433987,
+  "tags": {
+    "name": "Largo Trindade Coelho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901193591,
+  "lat": 38.7131805,
+  "lon": -9.1433553,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "no",
+    "name": "Largo Trindade Coelho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901193592,
+  "lat": 38.7148543,
+  "lon": -9.1444456,
+  "tags": {
+    "name": "Ascensor da Glória",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901217560,
+  "lat": 38.7165695,
+  "lon": -9.1480944,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Príncipe Real",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901217563,
+  "lat": 38.7204635,
+  "lon": -9.1554603,
+  "tags": {
+    "name": "Rato",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901217564,
+  "lat": 38.7203947,
+  "lon": -9.1553231,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Rato",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "06819",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901217565,
+  "lat": 38.7214638,
+  "lon": -9.1563619,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Jardim das Amoreiras",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901249566,
+  "lat": 38.7241313,
+  "lon": -9.1597388,
+  "tags": {
+    "name": "Rua das Amoreiras",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901249567,
+  "lat": 38.7241342,
+  "lon": -9.1597066,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Rua das Amoreiras",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901249568,
+  "lat": 38.7251750,
+  "lon": -9.1599662,
+  "tags": {
+    "name": "Avenida Conselheiro Fernando Sousa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901249570,
+  "lat": 38.7272613,
+  "lon": -9.1615229,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "no",
+    "name": "Campolide (Avenida Conselheiro Fernando Sousa)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901249571,
+  "lat": 38.7268041,
+  "lon": -9.1620763,
+  "tags": {
+    "name": "Campolide",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901249572,
+  "lat": 38.7267728,
+  "lon": -9.1620784,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Campolide",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308614,
+  "lat": 38.7233548,
+  "lon": -9.1593900,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Rua das Amoreiras",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308617,
+  "lat": 38.7197838,
+  "lon": -9.1541070,
+  "tags": {
+    "name": "Rato",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308618,
+  "lat": 38.7197690,
+  "lon": -9.1541336,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2025-01-01",
+    "lit": "yes",
+    "name": "Rato",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308619,
+  "lat": 38.7175354,
+  "lon": -9.1510227,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2023-11-17",
+    "lit": "yes",
+    "name": "Rua da Escola Politécnica",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308620,
+  "lat": 38.7175721,
+  "lon": -9.1510056,
+  "tags": {
+    "name": "Rua da Escola Politécnica",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308623,
+  "lat": 38.7165760,
+  "lon": -9.1482040,
+  "tags": {
+    "name": "Príncipe Real",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308624,
+  "lat": 38.7165615,
+  "lon": -9.1482164,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Príncipe Real",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308625,
+  "lat": 38.7154605,
+  "lon": -9.1450928,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "no",
+    "name": "São Pedro de Alcântara",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308626,
+  "lat": 38.7154735,
+  "lon": -9.1450884,
+  "tags": {
+    "name": "São Pedro de Alcântara",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308627,
+  "lat": 38.7144116,
+  "lon": -9.1442092,
+  "tags": {
+    "name": "Ascensor da Glória",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308628,
+  "lat": 38.7124988,
+  "lon": -9.1431902,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2025-07-14",
+    "lit": "no",
+    "name": "Largo Trindade Coelho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5901308629,
+  "lat": 38.7125035,
+  "lon": -9.1431460,
+  "tags": {
+    "name": "Largo Trindade Coelho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5934945901,
+  "lat": 38.6983148,
+  "lon": -9.2250353,
+  "tags": {
+    "name": "Rua Damião de Góis",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "short_name": "R. Damião Góis",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5934945913,
+  "lat": 38.6958803,
+  "lon": -9.2188378,
+  "tags": {
+    "name": "Pedrouços",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5938044113,
+  "lat": 38.7034301,
+  "lon": -9.1915876,
+  "tags": {
+    "name": "Rio Seco",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13405",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5938044116,
+  "lat": 38.7031197,
+  "lon": -9.1931343,
+  "tags": {
+    "name": "Calçada da Boa Hora",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5938124258,
+  "lat": 38.7247171,
+  "lon": -9.1503309,
+  "tags": {
+    "name": "Marquês de Pombal",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5938124259,
+  "lat": 38.7241588,
+  "lon": -9.1491504,
+  "tags": {
+    "name": "Marquês de Pombal",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6018580829,
+  "lat": 38.7247048,
+  "lon": -9.1503014,
+  "tags": {
+    "name": "Marquês de Pombal",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6216317383,
+  "lat": 38.6949573,
+  "lon": -9.2155461,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Largo da Princesa",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "short_name": "Lg. Princesa",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6382294140,
+  "lat": 38.7111455,
+  "lon": -9.1428749,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Praça Luís de Camões",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6382314436,
+  "lat": 38.7180381,
+  "lon": -9.1518373,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Rua da Escola Politécnica",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6382314437,
+  "lat": 38.7180130,
+  "lon": -9.1518701,
+  "tags": {
+    "name": "Rua da Escola Politécnica",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6389504942,
+  "lat": 38.6983603,
+  "lon": -9.2250120,
+  "tags": {
+    "bench": "yes",
+    "name": "Rua Damião de Góis",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "short_name": "R. Damião Góis"
+  }
+},
+{
+  "type": "node",
+  "id": 6389504944,
+  "lat": 38.6960591,
+  "lon": -9.2195772,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pedrouços",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "ref": "13203",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6389528186,
+  "lat": 38.6960867,
+  "lon": -9.2096952,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Centro Cultural de Belém",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6389528188,
+  "lat": 38.6973233,
+  "lon": -9.2034816,
+  "tags": {
+    "alt_name": "Mosteiro Jerónimos",
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "check_date:shelter": "2023-02-09",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Mosteiro dos Jerónimos",
+    "name:TML": "Mosteiro Jerónimos",
+    "network": "Carris;Carris Metropolitana",
+    "network:wikidata": "Q111611112",
+    "operator": "Carris",
+    "operator:TML": "Viação Alvorada",
+    "public_transport": "platform",
+    "ref:TML": "060099",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6389775453,
+  "lat": 38.6972401,
+  "lon": -9.2050706,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Mosteiro dos Jerónimos",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6389778289,
+  "lat": 38.6963041,
+  "lon": -9.2093041,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Centro Cultural de Belém",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6389782644,
+  "lat": 38.6950559,
+  "lon": -9.2145565,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Largo da Princesa",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "13206",
+    "shelter": "yes",
+    "short_name": "Lg. Princesa"
+  }
+},
+{
+  "type": "node",
+  "id": 6389782645,
+  "lat": 38.6959249,
+  "lon": -9.2188132,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Pedrouços",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6403173678,
+  "lat": 38.7131057,
+  "lon": -9.1377051,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "name": "Praça da Figueira",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6403527148,
+  "lat": 38.7099353,
+  "lon": -9.1359539,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Rua da Conceição / Rua dos Fanqueiros",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport": "platform",
+    "ref": "5602",
+    "shelter": "no",
+    "short_name": "R. Conceição / R. Fanqueiros",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6406338641,
+  "lat": 38.6994059,
+  "lon": -9.2285783,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Algés - Praça Dom Manuel I",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6406338642,
+  "lat": 38.6995079,
+  "lon": -9.2284814,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Algés - Praça Dom Manuel I",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411908231,
+  "lat": 38.6973775,
+  "lon": -9.1988492,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "lit": "no",
+    "name": "Belém",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411908232,
+  "lat": 38.6974618,
+  "lon": -9.1985462,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "name": "Belém",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6411908233,
+  "lat": 38.6975154,
+  "lon": -9.1959787,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-11-26",
+    "name": "Altinho (MAAT)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6411908234,
+  "lat": 38.6973806,
+  "lon": -9.1940802,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Altinho (MAAT)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411916305,
+  "lat": 38.6979897,
+  "lon": -9.1905915,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2025-07-16",
+    "departures_board": "realtime",
+    "lit": "no",
+    "name": "Rua Pinto Ferreira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9507",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411919138,
+  "lat": 38.6985534,
+  "lon": -9.1874811,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "no",
+    "name": "Hospital de Egas Moniz",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9505",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411928600,
+  "lat": 38.7000724,
+  "lon": -9.1835613,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "lit": "yes",
+    "name": "Rua da Junqueira (Centro de Congressos)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "9503",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411932974,
+  "lat": 38.7026752,
+  "lon": -9.1801481,
+  "tags": {
+    "bench": "yes",
+    "name": "Estação de Santo Amaro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6411973730,
+  "lat": 38.7019743,
+  "lon": -9.1810380,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "departures_board": "timetable",
+    "lit": "no",
+    "name": "Estação de Santo Amaro",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411984687,
+  "lat": 38.6998315,
+  "lon": -9.1843562,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2023-10-03",
+    "departures_board": "realtime",
+    "lit": "yes",
+    "name": "Rua da Junqueira (Centro de Congressos)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411987801,
+  "lat": 38.6984689,
+  "lon": -9.1883970,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "check_date:shelter": "2024-01-13",
+    "departures_board": "realtime",
+    "lit": "no",
+    "name": "Hospital de Egas Moniz",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6411990865,
+  "lat": 38.6978711,
+  "lon": -9.1917071,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "check_date:shelter": "2023-10-04",
+    "departures_board": "realtime",
+    "lit": "no",
+    "name": "Rua Pinto Ferreira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "09508",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6412066683,
+  "lat": 38.7134850,
+  "lon": -9.1306505,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "lit": "yes",
+    "name": "São Tomé",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "13809",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412066684,
+  "lat": 38.7134860,
+  "lon": -9.1306212,
+  "tags": {
+    "name": "São Tomé",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "13809",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412078367,
+  "lat": 38.7154707,
+  "lon": -9.1320928,
+  "tags": {
+    "bench": "no",
+    "name": "Rua dos Lagares",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "13822",
+    "shelter": "no",
+    "short_name": "R. Lagares",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412112187,
+  "lat": 38.7160702,
+  "lon": -9.1330309,
+  "tags": {
+    "bench": "no",
+    "name": "Largo do Terreirinho",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "13824",
+    "shelter": "no",
+    "short_name": "Lg. Terreirinho",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412211154,
+  "lat": 38.7137117,
+  "lon": -9.1601024,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Estrela (Basílica)",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "ref": "08112",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412229151,
+  "lat": 38.7104286,
+  "lon": -9.1420674,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Chiado",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "railway": "platform",
+    "ref": "10514",
+    "shelter": "no",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412566512,
+  "lat": 38.7063327,
+  "lon": -9.1485488,
+  "tags": {
+    "name": "Conde Barão - Avenida 24 de Julho",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "ref": "7101",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6417170695,
+  "lat": 38.7068460,
+  "lon": -9.1416550,
+  "tags": {
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6417170696,
+  "lat": 38.7069481,
+  "lon": -9.1416129,
+  "tags": {
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6426084036,
+  "lat": 38.7068399,
+  "lon": -9.1416887,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6446066903,
+  "lat": 38.7069574,
+  "lon": -9.1415831,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Corpo Santo",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "platform",
+    "railway": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6529918573,
+  "lat": 38.7159968,
+  "lon": -9.1423098,
+  "tags": {
+    "layer": "-1",
+    "name": "Restauradores",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.metrolisboa.pt/viajar/restauradores/",
+    "wheelchair": "yes",
+    "wikidata": "Q637915",
+    "wikimedia_commons": "Category:Restauradores (Lisbon Metro)",
+    "wikipedia": "pt:Estação Restauradores"
+  }
+},
+{
+  "type": "node",
+  "id": 6529918575,
+  "lat": 38.7160110,
+  "lon": -9.1422819,
+  "tags": {
+    "layer": "-1",
+    "name": "Restauradores",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.metrolisboa.pt/viajar/restauradores/",
+    "wheelchair": "yes",
+    "wikidata": "Q637915",
+    "wikimedia_commons": "Category:Restauradores (Lisbon Metro)",
+    "wikipedia": "pt:Estação Restauradores"
+  }
+},
+{
+  "type": "node",
+  "id": 6768829499,
+  "lat": 38.7215631,
+  "lon": -9.1565353,
+  "tags": {
+    "name": "Jardim das Amoreiras",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7359956894,
+  "lat": 38.7856308,
+  "lon": -9.1717980,
+  "tags": {
+    "level": "2",
+    "name": "Senhor Roubado",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7986649818,
+  "lat": 38.7047620,
+  "lon": -9.1784658,
+  "tags": {
+    "name": "Rua Leão de Oliveira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "short_name": "R. Leão Oliveira",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7986649820,
+  "lat": 38.7047540,
+  "lon": -9.1784922,
+  "tags": {
+    "bench": "no",
+    "bin": "yes",
+    "check_date:shelter": "2024-11-29",
+    "departures_board": "no",
+    "lit": "yes",
+    "name": "Rua Leão de Oliveira",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "route_ref": "18E;73B",
+    "shelter": "no",
+    "short_name": "R. Leão Oliveira",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 8037770570,
+  "lat": 38.7241697,
+  "lon": -9.1490783,
+  "tags": {
+    "name": "Marquês de Pombal",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8349959165,
+  "lat": 38.7104186,
+  "lon": -9.1400448,
+  "tags": {
+    "name": "Baixa-Chiado",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8349959166,
+  "lat": 38.7104106,
+  "lon": -9.1402781,
+  "tags": {
+    "name": "Baixa-Chiado",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8349959167,
+  "lat": 38.7104204,
+  "lon": -9.1399898,
+  "tags": {
+    "name": "Baixa-Chiado",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8349959168,
+  "lat": 38.7104088,
+  "lon": -9.1403331,
+  "tags": {
+    "name": "Baixa-Chiado",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8349967322,
+  "lat": 38.7070519,
+  "lon": -9.1343878,
+  "tags": {
+    "name": "Terreiro do Paço",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8349967327,
+  "lat": 38.7070133,
+  "lon": -9.1343684,
+  "tags": {
+    "name": "Terreiro do Paço",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8350024444,
+  "lat": 38.7139982,
+  "lon": -9.1379018,
+  "tags": {
+    "name": "Rossio",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8350024445,
+  "lat": 38.7140396,
+  "lon": -9.1379162,
+  "tags": {
+    "name": "Rossio",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8350225068,
+  "lat": 38.7176117,
+  "lon": -9.1357622,
+  "tags": {
+    "name": "Martim Moniz",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8350225069,
+  "lat": 38.7176139,
+  "lon": -9.1357972,
+  "tags": {
+    "name": "Martim Moniz",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8350485245,
+  "lat": 38.7231691,
+  "lon": -9.1352009,
+  "tags": {
+    "name": "Intendente",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8350485246,
+  "lat": 38.7231737,
+  "lon": -9.1352785,
+  "tags": {
+    "name": "Intendente",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8362923776,
+  "lat": 38.7369698,
+  "lon": -9.1338402,
+  "tags": {
+    "name": "Alameda",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8362923777,
+  "lat": 38.7369716,
+  "lon": -9.1338745,
+  "tags": {
+    "name": "Alameda",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8362923797,
+  "lat": 38.7370031,
+  "lon": -9.1324548,
+  "tags": {
+    "name": "Alameda",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8362923798,
+  "lat": 38.7369693,
+  "lon": -9.1324457,
+  "tags": {
+    "name": "Alameda",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8365587016,
+  "lat": 38.7269700,
+  "lon": -9.1349013,
+  "tags": {
+    "name": "Anjos",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8365589517,
+  "lat": 38.7269655,
+  "lon": -9.1348238,
+  "tags": {
+    "name": "Anjos",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8365948407,
+  "lat": 38.7326967,
+  "lon": -9.1342565,
+  "tags": {
+    "name": "Arroios",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8365948408,
+  "lat": 38.7327013,
+  "lon": -9.1343338,
+  "tags": {
+    "name": "Arroios",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8421963218,
+  "lat": 38.7600826,
+  "lon": -9.1578199,
+  "tags": {
+    "name": "Campo Grande",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8421963219,
+  "lat": 38.7601152,
+  "lon": -9.1578383,
+  "tags": {
+    "name": "Campo Grande",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8421963220,
+  "lat": 38.7602361,
+  "lon": -9.1579070,
+  "tags": {
+    "name": "Campo Grande",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8421963221,
+  "lat": 38.7602668,
+  "lon": -9.1579245,
+  "tags": {
+    "name": "Campo Grande",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8422289351,
+  "lat": 38.7599702,
+  "lon": -9.1664213,
+  "tags": {
+    "level": "-2",
+    "name": "Telheiras",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8422289352,
+  "lat": 38.7599435,
+  "lon": -9.1664263,
+  "tags": {
+    "level": "-2",
+    "name": "Telheiras",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9109559235,
+  "lat": 38.7479973,
+  "lon": -9.1412090,
+  "tags": {
+    "name": "Roma",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9109559236,
+  "lat": 38.7479867,
+  "lon": -9.1412408,
+  "tags": {
+    "name": "Roma",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9291854093,
+  "lat": 38.7061078,
+  "lon": -9.1468286,
+  "tags": {
+    "layer": "-3",
+    "level": "-3",
+    "name": "Cais do Sodré",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9291854094,
+  "lat": 38.7061368,
+  "lon": -9.1468277,
+  "tags": {
+    "layer": "-3",
+    "level": "-3",
+    "name": "Cais do Sodré",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10097936739,
+  "lat": 38.7531171,
+  "lon": -9.1439989,
+  "tags": {
+    "level": "-2",
+    "name": "Alvalade",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10097936740,
+  "lat": 38.7531067,
+  "lon": -9.1440306,
+  "tags": {
+    "level": "-2",
+    "name": "Alvalade",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10099060705,
+  "lat": 38.7423343,
+  "lon": -9.1334787,
+  "tags": {
+    "level": "-2",
+    "name": "Areeiro",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10099060706,
+  "lat": 38.7423293,
+  "lon": -9.1335044,
+  "tags": {
+    "level": "-2",
+    "name": "Areeiro",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10185479290,
+  "lat": 38.7673178,
+  "lon": -9.1555259,
+  "tags": {
+    "level": "-2",
+    "name": "Quinta das Conchas",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10185479291,
+  "lat": 38.7673144,
+  "lon": -9.1555614,
+  "tags": {
+    "level": "-2",
+    "name": "Quinta das Conchas",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10221517286,
+  "lat": 38.7603845,
+  "lon": -9.2045421,
+  "tags": {
+    "level": "-2",
+    "name": "Alfornelos",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10222096314,
+  "lat": 38.7622296,
+  "lon": -9.1968448,
+  "tags": {
+    "level": "-2",
+    "name": "Pontinha",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10222096315,
+  "lat": 38.7622743,
+  "lon": -9.1968662,
+  "tags": {
+    "level": "-2",
+    "name": "Pontinha",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108206543,
+  "lat": 38.7351658,
+  "lon": -9.1443379,
+  "tags": {
+    "layer": "-3",
+    "level": "-3",
+    "name": "Saldanha",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108206544,
+  "lat": 38.7352017,
+  "lon": -9.1443392,
+  "tags": {
+    "layer": "-3",
+    "level": "-3",
+    "name": "Saldanha",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108206545,
+  "lat": 38.7346266,
+  "lon": -9.1530320,
+  "tags": {
+    "layer": "-3",
+    "level": "-3",
+    "name": "São Sebastião",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108375213,
+  "lat": 38.7339565,
+  "lon": -9.1535696,
+  "tags": {
+    "layer": "-2",
+    "level": "-2",
+    "name": "São Sebastião",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108375214,
+  "lat": 38.7339363,
+  "lon": -9.1536077,
+  "tags": {
+    "layer": "-2",
+    "level": "-2",
+    "name": "São Sebastião",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108375229,
+  "lat": 38.7303413,
+  "lon": -9.1469131,
+  "tags": {
+    "layer": "-2",
+    "level": "-2",
+    "name": "Picoas",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108375230,
+  "lat": 38.7303574,
+  "lon": -9.1469543,
+  "tags": {
+    "layer": "-2",
+    "level": "-2",
+    "name": "Picoas",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108376967,
+  "lat": 38.7348323,
+  "lon": -9.1452852,
+  "tags": {
+    "layer": "-2",
+    "level": "-2",
+    "name": "Saldanha",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11108376968,
+  "lat": 38.7348389,
+  "lon": -9.1452399,
+  "tags": {
+    "layer": "-2",
+    "level": "-2",
+    "name": "Saldanha",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11303562160,
+  "lat": 38.7394852,
+  "lon": -9.1239500,
+  "tags": {
+    "name": "Olaias",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11303648407,
+  "lat": 38.7629504,
+  "lon": -9.1040558,
+  "tags": {
+    "name": "Cabo Ruivo",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11303648423,
+  "lat": 38.7548223,
+  "lon": -9.1138532,
+  "tags": {
+    "name": "Chelas",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11303648425,
+  "lat": 38.7475293,
+  "lon": -9.1176464,
+  "tags": {
+    "name": "Bela Vista",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016875,
+  "lat": 38.7932789,
+  "lon": -9.1729638,
+  "tags": {
+    "name": "Odivelas",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016883,
+  "lat": 38.7733910,
+  "lon": -9.1593701,
+  "tags": {
+    "name": "Lumiar",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016893,
+  "lat": 38.7793282,
+  "lon": -9.1596665,
+  "tags": {
+    "name": "Ameixoeira",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016908,
+  "lat": 38.7200846,
+  "lon": -9.1548306,
+  "tags": {
+    "name": "Rato",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016915,
+  "lat": 38.7411153,
+  "lon": -9.1467724,
+  "tags": {
+    "name": "Campo Pequeno",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016916,
+  "lat": 38.7470324,
+  "lon": -9.1481645,
+  "tags": {
+    "name": "Entrecampos",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305016934,
+  "lat": 38.7515066,
+  "lon": -9.1590815,
+  "tags": {
+    "name": "Cidade Universitária",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305030137,
+  "lat": 38.7137010,
+  "lon": -9.1224796,
+  "tags": {
+    "layer": "-1",
+    "name": "Santa Apolónia",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11305030138,
+  "lat": 38.7279395,
+  "lon": -9.1500560,
+  "tags": {
+    "name": "Parque",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11306784693,
+  "lat": 38.7592419,
+  "lon": -9.1927437,
+  "tags": {
+    "name": "Carnide",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11306784694,
+  "lat": 38.7592150,
+  "lon": -9.1926830,
+  "tags": {
+    "name": "Carnide",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11306784696,
+  "lat": 38.7533803,
+  "lon": -9.1892931,
+  "tags": {
+    "name": "Colégio Militar/Luz",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11306784699,
+  "lat": 38.7190287,
+  "lon": -9.1447968,
+  "tags": {
+    "name": "Avenida",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047634,
+  "lat": 38.7678571,
+  "lon": -9.0997334,
+  "tags": {
+    "name": "Oriente",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047638,
+  "lat": 38.7684450,
+  "lon": -9.1282830,
+  "tags": {
+    "name": "Aeroporto",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q744682",
+    "wikimedia_commons": "Category:Aeroporto (Lisbon Metro)",
+    "wikipedia": "pt:Estação Aeroporto (Metropolitano de Lisboa)"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047671,
+  "lat": 38.7750965,
+  "lon": -9.1155308,
+  "tags": {
+    "name": "Encarnação",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047705,
+  "lat": 38.7749209,
+  "lon": -9.1030030,
+  "tags": {
+    "name": "Moscavide",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047731,
+  "lat": 38.7678552,
+  "lon": -9.0996989,
+  "tags": {
+    "name": "Oriente",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047732,
+  "lat": 38.7684185,
+  "lon": -9.1282772,
+  "tags": {
+    "name": "Aeroporto",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q744682",
+    "wikimedia_commons": "Category:Aeroporto (Lisbon Metro)",
+    "wikipedia": "pt:Estação Aeroporto (Metropolitano de Lisboa)"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047765,
+  "lat": 38.7750749,
+  "lon": -9.1155101,
+  "tags": {
+    "name": "Encarnação",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11515047799,
+  "lat": 38.7748940,
+  "lon": -9.1030009,
+  "tags": {
+    "name": "Moscavide",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11517815938,
+  "lat": 38.7605941,
+  "lon": -9.1119830,
+  "tags": {
+    "name": "Olivais",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11517815939,
+  "lat": 38.7606063,
+  "lon": -9.1120139,
+  "tags": {
+    "name": "Olivais",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12766819459,
+  "lat": 38.7241235,
+  "lon": -9.1597829,
+  "tags": {
+    "name": "Amoreiras",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "operator": "Carris",
+    "operator:wikidata": "Q1045108",
+    "public_transport": "stop_position",
+    "railway": "tram_stop",
+    "tram": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12766819460,
+  "lat": 38.7241173,
+  "lon": -9.1598038,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "lit": "yes",
+    "name": "Amoreiras",
+    "network": "Carris",
+    "operator": "Carris",
+    "public_transport": "platform",
+    "shelter": "no",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13020954295,
+  "lat": 38.7136710,
+  "lon": -9.1224361,
+  "tags": {
+    "layer": "-1",
+    "name": "Santa Apolónia",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13521063000,
+  "lat": 38.7584061,
+  "lon": -9.2183219,
+  "tags": {
+    "level": "-2",
+    "name": "Amadora Este",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13521109301,
+  "lat": 38.7584427,
+  "lon": -9.2183383,
+  "tags": {
+    "level": "-2",
+    "name": "Amadora Este",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13521109302,
+  "lat": 38.7522062,
+  "lon": -9.2241384,
+  "tags": {
+    "level": "-2",
+    "name": "Reboleira",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13521109303,
+  "lat": 38.7521904,
+  "lon": -9.2240930,
+  "tags": {
+    "level": "-2",
+    "name": "Reboleira",
+    "network": "Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa, E.P.E.",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "station": "subway",
+    "subway": "yes"
+  }
+}
+
+  ]
+}

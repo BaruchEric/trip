@@ -1,0 +1,41 @@
+{
+  "modes": "subway|monorail|light_rail|tram",
+  "cities": [
+    {
+      "city": "chongqing",
+      "bbox": [
+        29.2,
+        106.1,
+        30,
+        107
+      ]
+    },
+    {
+      "city": "lisbon",
+      "bbox": [
+        38.65,
+        -9.3,
+        38.85,
+        -9.05
+      ]
+    },
+    {
+      "city": "bangkok",
+      "bbox": [
+        13.6,
+        100.35,
+        13.95,
+        100.7
+      ]
+    },
+    {
+      "city": "amsterdam",
+      "bbox": [
+        52.28,
+        4.75,
+        52.43,
+        5.02
+      ]
+    }
+  ]
+}

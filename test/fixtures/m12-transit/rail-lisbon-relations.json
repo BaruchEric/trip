@@ -1,0 +1,6364 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:26:55Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 275382,
+  "members": [
+    {
+      "type": "node",
+      "ref": 262253942,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 6403173678,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4379554869,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1152804318,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 489763351,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4376749099,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407605863,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605864,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1940414036,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605862,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407605848,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605849,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1123890724,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605851,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1138939833,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605866,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1123890764,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605871,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407605859,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605860,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407605852,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605853,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1940414083,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605858,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407605857,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605856,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407605854,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605855,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4560912712,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6412211154,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1772769766,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809871,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810013,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810014,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810024,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810025,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809885,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809886,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1131000951,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 4381809866,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 24221008,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 628933832,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 689203547,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460529625,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 183449027,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7F00",
+    "from": "Rua da Alfândega",
+    "gtfs:route_id": "79_0",
+    "gtfs:shape_id": "79_0_ASC_shp",
+    "name": "Tram 25E: Praça da Figueira → Campo de Ourique (Prazeres)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/25e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "25E",
+    "route": "tram",
+    "to": "Campo de Ourique (Prazeres)",
+    "type": "route",
+    "wikidata": "Q63230206",
+    "wikipedia": "pt:25E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 370761,
+  "members": [
+    {
+      "type": "node",
+      "ref": 247051839,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5938124258,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108375230,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108376967,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 246763968,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 246763964,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 246763946,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8421963221,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10185479291,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305016883,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305016893,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 146311461,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 146311452,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 22917441,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242528631,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 96730109,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 22875901,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113292196,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648361,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648359,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648357,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648363,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 14813734,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 14813733,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 96874721,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F4BC18",
+    "from": "Rato",
+    "gtfs:route_id": "B",
+    "gtfs:shape_id": "shp8",
+    "name": "Linha Amarela: Rato → Odivelas",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Amarela",
+    "route": "subway",
+    "to": "Odivelas",
+    "type": "route",
+    "wikidata": "Q1826607",
+    "wikipedia": "pt:Linha Amarela do Metropolitano de Lisboa"
+  }
+},
+{
+  "type": "relation",
+  "id": 371021,
+  "members": [
+    {
+      "type": "node",
+      "ref": 13020954295,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8349967327,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8349959165,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6529918573,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 600134721,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5938124259,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256674213,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108375214,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256976574,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978160,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978165,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978170,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11306784696,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11306784693,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10222096314,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256981321,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 13521063000,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 13521109303,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1416970058,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970073,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970011,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970072,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970071,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 695346445,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970069,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1475480791,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970068,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970067,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970066,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970065,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970046,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970064,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970063,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970062,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970061,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970038,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970037,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970035,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970036,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 23704556,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970034,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970033,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970032,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970031,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970030,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970025,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970060,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1117600830,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970024,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970059,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970021,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970019,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792741,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792742,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792744,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792749,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792739,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#4E84C4",
+    "from": "Santa Apolónia",
+    "gtfs:route_id": "A",
+    "gtfs:shape_id": "shp7",
+    "name": "Linha Azul: Santa Apolónia → Reboleira",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Azul",
+    "route": "subway",
+    "to": "Reboleira",
+    "type": "route",
+    "wikidata": "Q1826609",
+    "wikipedia": "pt:Linha Azul do Metropolitano de Lisboa"
+  }
+},
+{
+  "type": "relation",
+  "id": 371080,
+  "members": [
+    {
+      "type": "node",
+      "ref": 9291854094,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8349959168,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8350024445,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8350225069,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8350485246,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8365587016,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8365948408,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8362923777,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10099060706,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9109559236,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10097936740,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8421963218,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8422289352,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1474046993,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584778684,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242528628,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584733306,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242528627,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1011905003,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#00AAA6",
+    "from": "Cais do Sodré",
+    "gtfs:route_id": "C",
+    "gtfs:shape_id": "shp_verde_cs-te_maio_2",
+    "name": "Linha Verde: Cais do Sodré → Telheiras",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Verde",
+    "route": "subway",
+    "to": "Telheiras",
+    "type": "route",
+    "wikidata": "Q1826613",
+    "wikipedia": "pt:Linha Verde (Metropolitano de Lisboa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 371084,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11108206545,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 11108206544,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8362923797,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11303562160,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256975148,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256975157,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11517815939,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256975169,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11515047634,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11515047799,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11515047765,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11515047732,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1230151779,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1230151781,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 900184896,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1103413249,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1103413251,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 23727716,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1472517660,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#DF096F",
+    "from": "São Sebastião",
+    "gtfs:route_id": "D",
+    "gtfs:shape_id": "shp3",
+    "name": "Linha Vermelha: São Sebastião → Aeroporto",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Vermelha",
+    "route": "subway",
+    "to": "Aeroporto",
+    "type": "route",
+    "wikidata": "Q163215",
+    "wikipedia": "pt:Linha Vermelha (Metropolitano de Lisboa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 372750,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4377356606,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4378457968,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4377356607,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457981,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471008,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457960,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377357093,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457959,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471013,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457975,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377357044,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457978,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471006,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457943,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5938044116,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457962,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5938044113,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457972,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471004,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457937,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471014,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457979,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471011,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457969,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471010,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457965,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 7986649818,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7986649820,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471007,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457953,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471003,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457933,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471005,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457939,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377490639,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457945,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377490640,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365852388,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6412566512,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365852352,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377396857,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 2516763918,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 183402434,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 183404852,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF0077",
+    "from": "Cemitério Ajuda",
+    "gtfs:route_id": "78_0",
+    "gtfs:shape_id": "78_0_DESC_shp",
+    "name": "Tram 18E: Cemitério da Ajuda → Cais do Sodré",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/18e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "18E",
+    "route": "tram",
+    "to": "Cais do Sodré",
+    "type": "route",
+    "wikidata": "Q63230200",
+    "wikipedia": "pt:18E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 1411178,
+  "members": [
+    {
+      "type": "node",
+      "ref": 1135912715,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810003,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 970773008,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4662273122,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1128851795,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6412112187,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 69481534,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6412078367,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6412066684,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6412066683,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809998,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809997,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597104,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810008,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597090,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256063280,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1141524123,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810057,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4309574818,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6403527148,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 262253942,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6403173678,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 1525952612,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 472014612,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 9266709,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480306593,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 440221927,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1280351285,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 24221008,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 98385805,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7F00",
+    "from": "Martim Moniz",
+    "gtfs:shape_id": "77_0_CIRC_shp",
+    "name": "Tram 12E: Martim Moniz ⇆ Martim Moniz",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/12e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "12E",
+    "roundtrip": "yes",
+    "route": "tram",
+    "to": "Martim Moniz",
+    "type": "route",
+    "wikidata": "Q1487139",
+    "wikipedia": "pt:12E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6546049,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4377396858,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4297242722,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4378458307,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365852354,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377490641,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365853690,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537602,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457947,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377396876,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457942,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537599,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457936,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537603,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457956,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537606,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457964,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537607,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457971,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537611,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457980,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537600,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457938,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537609,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457974,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537608,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457973,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377356618,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457963,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537601,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457944,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377357041,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1587160707,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537610,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457976,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537604,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457958,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537605,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457961,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377356608,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457982,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377356606,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 4378457968,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 440032640,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 440032634,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF0077",
+    "from": "Cais do Sodré",
+    "gtfs:route_id": "78_0",
+    "gtfs:shape_id": "78_0_ASC_shp",
+    "name": "Tram 18E: Cais do Sodré → Cemitério da Ajuda",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/18e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "18E",
+    "route": "tram",
+    "to": "Cemitério Ajuda",
+    "type": "route",
+    "wikidata": "Q63230200",
+    "wikipedia": "pt:18E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6549265,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4379512162,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4715240142,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4379525899,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6406338641,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379525902,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4207617290,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379512109,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389504944,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379525901,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6216317383,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379525900,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389528186,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379446142,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389528188,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547128,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411908231,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379446153,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411908234,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547132,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411916305,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379446216,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411919138,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547130,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411932974,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547133,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411928600,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471007,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457953,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471003,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457933,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377471005,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457939,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377490639,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457945,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377490640,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365852388,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6412566512,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365852352,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377396857,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2516763918,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6417170696,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6446066903,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547131,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626598,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6403173678,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 262253942,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 440037568,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 183404852,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460611287,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 440216931,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1280351285,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF0077",
+    "from": "Algés (Jardim)",
+    "gtfs:route_id": "76_0",
+    "gtfs:shape_id": "76_0_DESC_shp",
+    "name": "Tram 15E: Algés (Jardim) → Praça da Figueira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/15e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "15E",
+    "route": "tram",
+    "to": "Praça da Figueira",
+    "type": "route",
+    "wikidata": "Q63229924",
+    "wikipedia": "pt:15E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6549266,
+  "members": [
+    {
+      "type": "node",
+      "ref": 262253942,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 6403173678,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4379554869,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1152804318,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6417170695,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6426084036,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377396858,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4297242722,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4378458307,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365852354,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377490641,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4365853690,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537602,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457947,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377396876,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457942,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537599,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457936,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4377537603,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4378457956,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567941,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411973730,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567945,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411984687,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567942,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411987801,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567944,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411990865,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567939,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411908233,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567940,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6411908232,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379567943,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389775453,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379571686,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389778289,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379571687,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389782644,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6389782645,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5934945913,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6389504942,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5934945901,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4379553578,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6406338642,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379512162,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 4715240142,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 24221008,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 628933832,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 689203547,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480103208,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 440032640,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 440032646,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF0077",
+    "from": "Praça da Figueira",
+    "gtfs:route_id": "76_0",
+    "gtfs:shape_id": "76_0_ASC_shp",
+    "name": "Tram 15E: Praça da Figueira → Algés (Jardim)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/15e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "15E",
+    "route": "tram",
+    "to": "Algés (Jardim)",
+    "type": "route",
+    "wikidata": "Q63229924",
+    "wikipedia": "pt:15E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6552489,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4562515058,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4381810004,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4381810042,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810041,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809990,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809989,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810016,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810015,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4740513758,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810019,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4018786482,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4018786481,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597233,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810054,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810037,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810038,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 2459757742,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809879,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810059,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810058,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 256063257,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809862,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597147,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810045,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809998,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809997,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597104,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810008,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597090,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256063280,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1141524123,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810057,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810034,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810035,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 377067810,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809996,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810031,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810030,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938438485,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6412229151,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4353284131,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4353284132,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5574550611,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4303023296,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5574550609,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4352963754,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809864,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809865,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 256328846,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810053,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5574565987,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810049,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809857,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809858,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938177325,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809861,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4560912712,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6412211154,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1772769766,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809871,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810013,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810014,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810024,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810025,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809885,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809886,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1131000951,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809866,
+      "role": "platform"
+    },
+    {
+      "type": "way",
+      "ref": 460629537,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 472014612,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 472035824,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 761396920,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480380989,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480524534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480521666,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 604984371,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480521668,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480306593,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460588087,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 624996576,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 149309275,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 183449027,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7E00",
+    "from": "Martim Moniz",
+    "gtfs:route_id": "75_0",
+    "gtfs:shape_id": "75_0_ASC_shp",
+    "name": "Tram 28E: Martim Moniz → Campo de Ourique (Prazeres)",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/28e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "28E",
+    "route": "tram",
+    "to": "Campo de Ourique (Prazeres)",
+    "type": "route",
+    "wikidata": "Q63034669",
+    "wikipedia": "pt:28E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6552490,
+  "members": [
+    {
+      "type": "node",
+      "ref": 1131000951,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809866,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809884,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809883,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810023,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810022,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810012,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810011,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809870,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 256065636,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809872,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938177328,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809860,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938177322,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809859,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809856,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809855,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938177286,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810047,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810052,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810051,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938177303,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809863,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5574550610,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809854,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 3293540993,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3293540992,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809867,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809868,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810027,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810026,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810029,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810028,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4562161969,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809995,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810033,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810032,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809882,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809881,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810056,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810055,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1140935124,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810001,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597108,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810009,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809999,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810000,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810044,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810043,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 256063257,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809862,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4734015849,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810060,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809876,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809877,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1938597203,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810036,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 69404070,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4018786789,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810010,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 854075754,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4002784722,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 854076009,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810021,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810020,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810017,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810018,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809993,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809994,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810039,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810040,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 218023631,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 4381810002,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 28207961,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460588083,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584472929,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480306591,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1148462658,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 604984372,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480524534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 480380986,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 761396920,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460629536,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7E00",
+    "from": "Campo de Ourique (Prazeres)",
+    "gtfs:route_id": "75_0",
+    "gtfs:shape_id": "75_0_DESC_shp",
+    "name": "Tram 28E: Campo de Ourique (Prazeres) → Martim Moniz",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/28e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "28E",
+    "route": "tram",
+    "to": "Martim Moniz",
+    "type": "route",
+    "wikidata": "Q63034669",
+    "wikipedia": "pt:28E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6595975,
+  "members": [
+    {
+      "type": "node",
+      "ref": 1131000951,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4381809866,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4381809884,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809883,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810023,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810022,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381810012,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381810011,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4381809870,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 256065636,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4381809872,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626601,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626602,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626603,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626604,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626605,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626606,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626608,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626607,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626600,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626599,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626610,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626609,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4662455665,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605869,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1940413993,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605865,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 256065888,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605850,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626597,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1978063107,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 1106603473,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407605861,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4407626612,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626611,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547129,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4373110266,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4379547131,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4407626598,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 262253942,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 6403173678,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 28207961,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 460529626,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 440216931,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1280351285,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7F00",
+    "from": "Campo de Ourique (Prazeres)",
+    "gtfs:route_id": "79_0",
+    "gtfs:shape_id": "79_0_DESC_shp",
+    "name": "Tram 25E: Campo de Ourique (Prazeres) → Praça da Figueira",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/25e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "25E",
+    "route": "tram",
+    "to": "Rua da Alfândega",
+    "type": "route",
+    "wikidata": "Q63230206",
+    "wikipedia": "pt:25E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 6680813,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4259004499,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "way",
+      "ref": 271588951,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4259004424,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624831,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004490,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624823,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004425,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624809,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004517,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624818,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251196171,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425802926,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251258626,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425809252,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855242,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807098,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855208,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 407201138,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855599,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 314579418,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269854477,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807096,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855279,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807080,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5289037632,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 339332813,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 426624835,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097064438,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097076733,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 426624799,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922520,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922521,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922522,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922523,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922524,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922525,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922526,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922527,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922528,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922529,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922530,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922531,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922532,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922533,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547379641,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922535,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922536,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425802791,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425804344,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425809967,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922537,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547376028,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425810810,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922539,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922540,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922542,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922543,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922544,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922545,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922546,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922547,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922548,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922549,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922550,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922551,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922552,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922553,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922554,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922555,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922556,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 427807097,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922558,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#01A3E1",
+    "from": "Cacilhas",
+    "name": "Linha 1: Cacilhas → Corroios",
+    "network": "Metropolitano Sul do Tejo",
+    "network:wikidata": "Q24663",
+    "operator": "Metro Transportes do Sul",
+    "public_transport:version": "2",
+    "ref": "1",
+    "route": "light_rail",
+    "to": "Corroios",
+    "type": "route",
+    "wikidata": "Q48868979",
+    "wikipedia": "pt:Linha 1 do Metropolitano Sul do Tejo"
+  }
+},
+{
+  "type": "relation",
+  "id": 7734159,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11515047638,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 11515047671,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11515047705,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11515047731,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11303648407,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11517815938,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11303648423,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11303648425,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256972634,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8362923798,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108206543,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108206545,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1472517661,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1239514050,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1103413252,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 900184895,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 900184894,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1197150248,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1230151779,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#DF096F",
+    "from": "Aeroporto",
+    "gtfs:route_id": "D",
+    "gtfs:shape_id": "shp4",
+    "name": "Linha Vermelha: Aeroporto → São Sebastião",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Vermelha",
+    "route": "subway",
+    "to": "São Sebastião",
+    "type": "route",
+    "wikidata": "Q163215",
+    "wikipedia": "pt:Linha Vermelha (Metropolitano de Lisboa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 7734160,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8422289351,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8421963219,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10097936739,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9109559235,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10099060705,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8362923776,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8365948407,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8365589517,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8350485245,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8350225068,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8350024444,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8349959166,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9291854093,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 22875903,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242528626,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 22875902,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242528629,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 898569361,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1474046994,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#00AAA6",
+    "from": "Telheiras",
+    "gtfs:route_id": "C",
+    "gtfs:shape_id": "shp_verde_te-cs_maio_2",
+    "name": "Linha Verde: Telheiras → Cais do Sodré",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Verde",
+    "route": "subway",
+    "to": "Cais do Sodré",
+    "type": "route",
+    "wikidata": "Q1826613",
+    "wikipedia": "pt:Linha Verde (Metropolitano de Lisboa)"
+  }
+},
+{
+  "type": "relation",
+  "id": 7734161,
+  "members": [
+    {
+      "type": "node",
+      "ref": 13521109302,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 13521109301,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10221517286,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10222096315,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11306784694,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978583,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978170,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978165,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256978160,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 256976574,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108375213,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305030138,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8037770570,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11306784699,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6529918575,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8349959167,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8349967322,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305030137,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1473792746,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792750,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1473792743,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1117600831,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970016,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970017,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970018,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970020,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970022,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970023,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1117657017,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1197171785,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970027,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970028,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970026,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970029,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970030,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970031,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970032,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970033,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970034,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 23704556,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970036,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970035,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970037,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970040,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970039,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970041,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970042,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970043,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970044,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970045,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970047,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970048,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970049,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970050,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1475480790,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970051,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970052,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 862788694,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970053,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970054,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970010,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970056,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970055,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1416970057,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#4E84C4",
+    "from": "Reboleira",
+    "gtfs:route_id": "A",
+    "gtfs:shape_id": "shp6",
+    "name": "Linha Azul: Reboleira → Santa Apolónia",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Azul",
+    "route": "subway",
+    "to": "Santa Apolónia",
+    "type": "route",
+    "wikidata": "Q1826609",
+    "wikipedia": "pt:Linha Azul do Metropolitano de Lisboa"
+  }
+},
+{
+  "type": "relation",
+  "id": 7734162,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11305016875,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7359956894,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 245937922,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 245937941,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10185479290,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8421963220,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305016934,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305016916,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305016915,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108376968,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11108375229,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6018580829,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11305016908,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 584763792,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584763800,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584763787,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648364,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648358,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648360,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242648362,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1113292178,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584733305,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 584733308,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1242528630,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 638620591,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#F4BC18",
+    "from": "Odivelas",
+    "gtfs:route_id": "B",
+    "gtfs:shape_id": "shp9",
+    "name": "Linha Amarela: Odivelas → Rato",
+    "network": "Metropolitano de Lisboa",
+    "network:wikidata": "Q746032",
+    "network:wikipedia": "pt:Metropolitano de Lisboa",
+    "operator": "Metropolitano de Lisboa",
+    "operator:wikidata": "Q746032",
+    "operator:wikipedia": "pt:Metropolitano de Lisboa",
+    "public_transport:version": "2",
+    "ref": "Amarela",
+    "route": "subway",
+    "to": "Rato",
+    "type": "route",
+    "wikidata": "Q1826607",
+    "wikipedia": "pt:Linha Amarela do Metropolitano de Lisboa"
+  }
+},
+{
+  "type": "relation",
+  "id": 7817932,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4248905746,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "way",
+      "ref": 410861621,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4248905731,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425605130,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251258626,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425809252,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855242,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807098,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855208,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 407201138,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855599,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 314579418,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269854477,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807096,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855279,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807080,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5289037632,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 339332813,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1330641632,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641633,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605158,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605174,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605163,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922589,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425806290,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922588,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547376028,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922538,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425810810,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922539,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922540,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922541,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922542,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922543,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922544,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922545,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922546,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922547,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922548,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922549,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922550,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922551,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922552,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922553,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922554,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922555,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922556,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 427807097,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922558,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FFCC01",
+    "from": "Pragal",
+    "name": "Linha 2: Pragal → Corroios",
+    "network": "Metropolitano Sul do Tejo",
+    "network:wikidata": "Q24663",
+    "operator": "Metro Transportes do Sul",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "light_rail",
+    "to": "Corroios",
+    "type": "route",
+    "wikidata": "Q48868981",
+    "wikipedia": "pt:Linha 2 do Metropolitano Sul do Tejo"
+  }
+},
+{
+  "type": "relation",
+  "id": 7817935,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4259004446,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "way",
+      "ref": 271588949,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4259004424,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624831,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004490,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624823,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004425,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624809,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004517,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624818,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251196171,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425802926,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248906911,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 237361276,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248907163,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 410861642,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248907156,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425605207,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4247039827,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 99729601,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4247039864,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425371205,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4247039812,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 425371198,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 426624797,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097064439,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097076732,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922520,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922521,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922522,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922523,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922524,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922525,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922526,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922527,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922528,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922529,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922530,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922531,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922532,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922533,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547379641,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922534,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922535,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547376029,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922585,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922586,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605176,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605131,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641634,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605177,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641635,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641636,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641637,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605162,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641629,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605190,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641630,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641627,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 397339868,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641623,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641622,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641617,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641614,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641613,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641611,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922599,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922600,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922601,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922602,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922598,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922603,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#BCD019",
+    "from": "Cacilhas",
+    "name": "Linha 3: Cacilhas → Universidade",
+    "network": "Metropolitano Sul do Tejo",
+    "network:wikidata": "Q24663",
+    "operator": "Metro Transportes do Sul",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "light_rail",
+    "to": "Universidade",
+    "type": "route",
+    "wikidata": "Q48868985",
+    "wikipedia": "pt:Linha 3 do Metropolitano Sul do Tejo"
+  }
+},
+{
+  "type": "relation",
+  "id": 8681895,
+  "members": [
+    {
+      "type": "node",
+      "ref": 5901249571,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 5901249572,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 12766819459,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12766819460,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4560886861,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901308614,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6768829499,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5092781351,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901308617,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901308618,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901308620,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901308619,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901308623,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901308624,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901308626,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901308625,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901308627,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2931441115,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901308629,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901308628,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4353284131,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 4353284132,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 625005982,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 624996576,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7F00",
+    "from": "Campolide",
+    "gtfs:route_id": "213_0",
+    "gtfs:shape_id": "213_0_DESC_shp",
+    "name": "Tram 24E: Campolide → Praça Luís Camões",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/24e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "24E",
+    "route": "tram",
+    "to": "Praça Luis Camões",
+    "type": "route",
+    "wikidata": "Q63230204",
+    "wikipedia": "pt:24E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 8681909,
+  "members": [
+    {
+      "type": "node",
+      "ref": 3293540993,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 3293540992,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4560887096,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6382294140,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901193590,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901193591,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901193592,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2931441116,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4748669201,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901217560,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 6382314437,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6382314436,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901217563,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901217564,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4560887076,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901217565,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901249566,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901249567,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901249568,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4310912502,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4560887023,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5901249570,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 5901249571,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "node",
+      "ref": 5901249572,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 584472929,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 624996575,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FF7F00",
+    "from": "Praça Luis Camões",
+    "gtfs:route_id": "213_0",
+    "gtfs:shape_id": "213_0_ASC_shp",
+    "name": "Tram 24E: Praça Luís de Camões → Campolide",
+    "network": "Carris",
+    "network:wikidata": "Q1045108",
+    "network:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "opening_hours:url": "https://www.carris.pt/viaje/carreiras/24e/",
+    "operator": "Carris",
+    "operator:website": "https://www.carris.pt/",
+    "operator:wikidata": "Q1045108",
+    "operator:wikipedia": "pt:Companhia Carris de Ferro de Lisboa",
+    "public_transport:version": "2",
+    "ref": "24E",
+    "route": "tram",
+    "to": "Campolide",
+    "type": "route",
+    "wikidata": "Q63230204",
+    "wikipedia": "pt:24E CCFL"
+  }
+},
+{
+  "type": "relation",
+  "id": 14611342,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4276016374,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "way",
+      "ref": 428510473,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4269855650,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807089,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855651,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807081,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855390,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 314579464,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269854482,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 407201117,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855619,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807078,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251258625,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425809254,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251197182,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425802926,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004495,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624818,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004515,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624815,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004487,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624822,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004587,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624811,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004559,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 271588951,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1328922559,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922560,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922561,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922562,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922563,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922564,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922565,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922566,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922567,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922568,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922569,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 366158765,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922571,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922570,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922572,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922573,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425810812,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547376027,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425808125,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425804345,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425802790,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922574,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922575,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922576,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922577,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922578,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922579,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547379640,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922581,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922580,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922583,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922582,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097076733,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097064438,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 426624802,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#01A3E1",
+    "from": "Corroios",
+    "name": "Linha 1: Corroios → Cacilhas",
+    "network": "Metropolitano Sul do Tejo",
+    "network:wikidata": "Q24663",
+    "operator": "Metro Transportes do Sul",
+    "public_transport:version": "2",
+    "ref": "1",
+    "route": "light_rail",
+    "to": "Cacilhas",
+    "type": "route",
+    "wikidata": "Q48868979",
+    "wikipedia": "pt:Linha 1 do Metropolitano Sul do Tejo"
+  }
+},
+{
+  "type": "relation",
+  "id": 14611397,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4247039851,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "way",
+      "ref": 425371190,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4247039841,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425371204,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4247039862,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425371203,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248906728,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425605213,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248905746,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 410861621,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248905731,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425605130,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251197182,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425802926,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004495,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624818,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004515,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624815,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004487,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624822,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004587,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 426624811,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4259004525,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 271588949,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1328922592,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641638,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922593,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922594,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922595,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922596,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922597,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641612,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641616,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641618,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641621,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641624,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425371200,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641625,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641626,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605203,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641628,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605156,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641631,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641632,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641633,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605158,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605174,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605163,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922590,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922591,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547376030,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922574,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922575,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922576,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922577,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922578,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922579,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547379640,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922581,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922580,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922583,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922582,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097076733,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 426624829,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1097064439,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 426624803,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#BCD019",
+    "from": "Universidade",
+    "name": "Linha 3: Universidade → Cacilhas",
+    "network": "Metropolitano Sul do Tejo",
+    "network:wikidata": "Q24663",
+    "operator": "Metro Transportes do Sul",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "light_rail",
+    "to": "Cacilhas",
+    "type": "route",
+    "wikidata": "Q48868985",
+    "wikipedia": "pt:Linha 3 do Metropolitano Sul do Tejo"
+  }
+},
+{
+  "type": "relation",
+  "id": 14611426,
+  "members": [
+    {
+      "type": "node",
+      "ref": 4276016374,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "way",
+      "ref": 428510473,
+      "role": "platform_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 4269855650,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807089,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855651,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807081,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855390,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 314579464,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269854482,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 407201117,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4269855619,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 427807078,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4251258625,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 425809254,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248906911,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 237361276,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 4248907163,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 410861642,
+      "role": "platform_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1328922559,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922560,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922561,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922562,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922563,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922564,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922565,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922566,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922567,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922568,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922569,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 366158765,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922571,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922570,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922572,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922573,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425810812,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 547376027,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425804629,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1328922587,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605176,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605131,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641634,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 425605177,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1330641635,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#FFCC01",
+    "from": "Corroios",
+    "name": "Linha 2: Corroios → Pragal",
+    "network": "Metropolitano Sul do Tejo",
+    "network:wikidata": "Q24663",
+    "operator": "Metro Transportes do Sul",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "light_rail",
+    "to": "Pragal",
+    "type": "route",
+    "wikidata": "Q48868981",
+    "wikipedia": "pt:Linha 2 do Metropolitano Sul do Tejo"
+  }
+}
+
+  ]
+}

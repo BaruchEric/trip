@@ -1,0 +1,4573 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:27:58Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 257066779,
+  "lat": 13.7192683,
+  "lon": 100.5214619,
+  "tags": {
+    "air_conditioning": "no",
+    "name": "สุรศักดิ์",
+    "name:en": "Surasak",
+    "name:th": "สุรศักดิ์",
+    "network": "BTS",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S5",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "limited",
+    "wikidata": "Q1030152"
+  }
+},
+{
+  "type": "node",
+  "id": 257066790,
+  "lat": 13.7237969,
+  "lon": 100.5293250,
+  "tags": {
+    "name": "ช่องนนทรี",
+    "name:en": "Chong Nonsi",
+    "name:th": "ช่องนนทรี",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S3",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q1030199",
+    "wikipedia": "th:สถานีช่องนนทรี"
+  }
+},
+{
+  "type": "node",
+  "id": 257066809,
+  "lat": 13.7394708,
+  "lon": 100.5394496,
+  "tags": {
+    "name": "ราชดำริ",
+    "name:en": "Ratchadamri",
+    "name:th": "ราชดำริ",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S1",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q1030185"
+  }
+},
+{
+  "type": "node",
+  "id": 257066819,
+  "lat": 13.7465319,
+  "lon": 100.5290896,
+  "tags": {
+    "name": "สนามกีฬาแห่งชาติ",
+    "name:en": "National Stadium",
+    "name:th": "สนามกีฬาแห่งชาติ",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 257067085,
+  "lat": 13.7188128,
+  "lon": 100.5142230,
+  "tags": {
+    "addr:province": "กรุงเทพมหานคร",
+    "country": "ไทย",
+    "name": "สะพานตากสิน",
+    "name:de": "Saphan Taksin",
+    "name:en": "Saphan Taksin",
+    "name:fr": "Saphan Taksin",
+    "name:th": "สะพานตากสิน",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "province": "Bangkok",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S6",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q1021944"
+  }
+},
+{
+  "type": "node",
+  "id": 270666787,
+  "lat": 13.7518788,
+  "lon": 100.5315723,
+  "tags": {
+    "name": "ราชเทวี",
+    "name:en": "Ratchathewi",
+    "name:th": "ราชเทวี",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N1",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 270666790,
+  "lat": 13.7569781,
+  "lon": 100.5338074,
+  "tags": {
+    "name": "พญาไท",
+    "name:en": "Phaya Thai",
+    "name:ja": "パヤタイ",
+    "name:th": "พญาไท",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N2",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 270666791,
+  "lat": 13.7627534,
+  "lon": 100.5370668,
+  "tags": {
+    "name": "อนุสาวรีย์ชัยสมรภูมิ",
+    "name:en": "Victory Monument",
+    "name:th": "อนุสาวรีย์ชัยสมรภูมิ",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N3",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 270666802,
+  "lat": 13.7726146,
+  "lon": 100.5420928,
+  "tags": {
+    "name": "สนามเป้า",
+    "name:en": "Sanam Pao",
+    "name:th": "สนามเป้า",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N4",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 270666804,
+  "lat": 13.7797060,
+  "lon": 100.5446403,
+  "tags": {
+    "name": "อารีย์",
+    "name:en": "Ari",
+    "name:th": "อารีย์",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N5",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 270666805,
+  "lat": 13.7859356,
+  "lon": 100.5468650,
+  "tags": {
+    "construction": "station",
+    "name": "เสนาร่วม",
+    "name:en": "Sena Ruam",
+    "name:th": "เสนาร่วม",
+    "network": "BTS",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "construction",
+    "ref": "N6",
+    "train": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q16307686",
+    "wikipedia": "th:สถานีเสนาร่วม"
+  }
+},
+{
+  "type": "node",
+  "id": 270666806,
+  "lat": 13.7938190,
+  "lon": 100.5497245,
+  "tags": {
+    "name": "สะพานควาย",
+    "name:en": "Saphan Khwai",
+    "name:ja": "サパーンクワイ",
+    "name:th": "สะพานควาย",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "platforms": "2",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N7",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 270668230,
+  "lat": 13.7405545,
+  "lon": 100.5554426,
+  "tags": {
+    "addr:province": "กรุงเทพมหานคร",
+    "alt_name:ja": "ナーナー",
+    "name": "นานา",
+    "name:en": "Nana",
+    "name:ja": "ナナ",
+    "name:th": "นานา",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E3",
+    "subway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 270668232,
+  "lat": 13.7441192,
+  "lon": 100.5430732,
+  "tags": {
+    "name": "ชิดลม",
+    "name:en": "Chit Lom",
+    "name:th": "ชิดลม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E1",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 275514306,
+  "lat": 13.7304520,
+  "lon": 100.5697242,
+  "tags": {
+    "name": "พร้อมพงษ์",
+    "name:en": "Phrom Phong",
+    "name:ja": "プロムポン",
+    "name:th": "พร้อมพงษ์",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E5",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 275514816,
+  "lat": 13.7370298,
+  "lon": 100.5603422,
+  "tags": {
+    "name": "อโศก",
+    "name:en": "Asok",
+    "name:ja": "アソーク駅",
+    "name:ko": "아소크",
+    "name:th": "อโศก",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E4",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 275515851,
+  "lat": 13.7430500,
+  "lon": 100.5489714,
+  "tags": {
+    "name": "เพลินจิต",
+    "name:en": "Phloen Chit",
+    "name:th": "เพลินจิต",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E2",
+    "subway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 277360712,
+  "lat": 13.7242569,
+  "lon": 100.5785296,
+  "tags": {
+    "name": "ทองหล่อ",
+    "name:en": "Thong Lo",
+    "name:th": "ทองหล่อ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E6",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 277360862,
+  "lat": 13.7195515,
+  "lon": 100.5851283,
+  "tags": {
+    "name": "เอกมัย",
+    "name:en": "Ekkamai BTS Station",
+    "name:ja": "エカマイ",
+    "name:ru": "Эккамай",
+    "name:th": "ekkamai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E7",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 277360879,
+  "lat": 13.7151573,
+  "lon": 100.5912246,
+  "tags": {
+    "name": "พระโขนง",
+    "name:en": "Phra Khanong",
+    "name:th": "พระโขนง",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E8",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 277361532,
+  "lat": 13.7056187,
+  "lon": 100.6009828,
+  "tags": {
+    "name": "อ่อนนุช",
+    "name:en": "On Nut",
+    "name:th": "อ่อนนุช",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E9",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 280179421,
+  "lat": 13.7374958,
+  "lon": 100.5613964,
+  "tags": {
+    "name": "สุขุมวิท",
+    "name:en": "Sukhumvit",
+    "name:ja": "スクムウィット",
+    "name:th": "สุขุมวิท",
+    "name:zh": "素坤逸",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 280179426,
+  "lat": 13.7492003,
+  "lon": 100.5633376,
+  "tags": {
+    "alt_name": "Phetchaburi MRT station",
+    "name": "เพชรบุรี",
+    "name:en": "Phetchaburi",
+    "name:th": "เพชรบุรี",
+    "name:zh": "碧武里",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 280179427,
+  "lat": 13.7578166,
+  "lon": 100.5652774,
+  "tags": {
+    "addr:province": "กรุงเทพมหานคร",
+    "alt_name": "Phra Ram 9 Station",
+    "country": "Thailand",
+    "name": "พระราม 9",
+    "name:en": "Phra Ram 9",
+    "name:fr": "Phra Ram 9",
+    "name:th": "พระราม 9",
+    "name:zh": "帕蓝9站",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "province": "Bangkok",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL20",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.mrta.co.th/en/mrt-chaloem-ratchamongkhon",
+    "wheelchair": "yes",
+    "wikidata": "Q1036857"
+  }
+},
+{
+  "type": "node",
+  "id": 280179442,
+  "lat": 13.7291743,
+  "lon": 100.5370680,
+  "tags": {
+    "alt_name": "สถานีสีลม",
+    "alt_name:en": "Si Lom Station",
+    "alt_name:th": "สถานีสีลม",
+    "name": "สีลม",
+    "name:en": "Si Lom",
+    "name:fr": "Si Lom",
+    "name:th": "สีลม",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "province": "กรุงเทพมหานคร",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 280222869,
+  "lat": 13.7320456,
+  "lon": 100.5301137,
+  "tags": {
+    "alt_name": "สถานีสามย่าน",
+    "alt_name:en": "Samyan Station",
+    "alt_name:th": "สถานีสามย่าน",
+    "name": "สามย่าน",
+    "name:en": "Sam Yan",
+    "name:fr": "Sam Yan",
+    "name:th": "สามย่าน",
+    "province": "Bangkok",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 280239009,
+  "lat": 13.7786878,
+  "lon": 100.5735662,
+  "tags": {
+    "name": "ห้วยขวาง",
+    "name:en": "Huai Khwang",
+    "name:th": "ห้วยขวาง",
+    "name:zh": "汇权",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL18",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q13021853"
+  }
+},
+{
+  "type": "node",
+  "id": 280239362,
+  "lat": 13.7894884,
+  "lon": 100.5740801,
+  "tags": {
+    "name": "สุทธิสาร",
+    "name:en": "Sutthisan",
+    "name:th": "สุทธิสาร",
+    "name:zh": "素铁讪",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL17",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q4923841"
+  }
+},
+{
+  "type": "node",
+  "id": 280239363,
+  "lat": 13.7989706,
+  "lon": 100.5745537,
+  "tags": {
+    "name": "รัชดาภิเษก",
+    "name:en": "Ratchadaphisek",
+    "name:th": "รัชดาภิเษก",
+    "name:zh": "叻猜拉披色",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL16",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q4924317"
+  }
+},
+{
+  "type": "node",
+  "id": 280240577,
+  "lat": 13.8065030,
+  "lon": 100.5728701,
+  "tags": {
+    "name": "ลาดพร้าว",
+    "name:en": "Lat Phrao",
+    "name:th": "ลาดพร้าว",
+    "name:zh": "叻抛",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL15",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q4923372"
+  }
+},
+{
+  "type": "node",
+  "id": 280240580,
+  "lat": 13.8128808,
+  "lon": 100.5614634,
+  "tags": {
+    "addr:country": "Thailand",
+    "addr:district": "จตุจักร",
+    "addr:district:en": "Chatuchak",
+    "addr:postcode": "10900",
+    "addr:province": "กรุงเทพมหานคร",
+    "addr:province:en": "Bangkok",
+    "addr:street": "ถนนลาดพร้าว",
+    "addr:street:en": "Ladprao road",
+    "addr:subdistrict": "จตุจักร",
+    "alt_name": "สถานีรถไฟพหลโยธิน",
+    "description": "สถานีรถไฟพหลโยธิน Phahon Yothin Station ฺBangkok",
+    "name": "พหลโยธิน",
+    "name:en": "Phahon Yothin",
+    "name:ja": "パホンヨーティン駅",
+    "name:th": "พหลโยธิน",
+    "name:zh": "帕凤裕庭",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL14",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q4919752",
+    "wikipedia": "th:สถานีพหลโยธิน (รถไฟฟ้ามหานคร)"
+  }
+},
+{
+  "type": "node",
+  "id": 280240585,
+  "lat": 13.8029643,
+  "lon": 100.5532845,
+  "tags": {
+    "name": "สวนจตุจักร",
+    "name:en": "Chatuchak Park",
+    "name:th": "สวนจตุจักร",
+    "name:zh": "乍都节公园",
+    "network": "MRT",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL13",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q6633742"
+  }
+},
+{
+  "type": "node",
+  "id": 280240589,
+  "lat": 13.7979484,
+  "lon": 100.5478837,
+  "tags": {
+    "name": "กำแพงเพชร",
+    "name:en": "Kamphaeng Phet",
+    "name:th": "กำแพงเพชร",
+    "name:zh": "甘烹碧车站",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BL12",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q13590884"
+  }
+},
+{
+  "type": "node",
+  "id": 280246418,
+  "lat": 13.8023542,
+  "lon": 100.5410302,
+  "tags": {
+    "name": "บางซื่อ",
+    "name:en": "Bang Sue",
+    "name:th": "บางซื่อ",
+    "name:zh": "挽赐站",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 305693940,
+  "lat": 13.7192426,
+  "lon": 100.4859681,
+  "tags": {
+    "name": "โพธิ์นิมิตร",
+    "name:en": "Pho Nimit",
+    "name:th": "โพธิ์นิมิตร",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S9",
+    "start_date": "2013-01-12",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q18388309"
+  }
+},
+{
+  "type": "node",
+  "id": 340133002,
+  "lat": 13.7142201,
+  "lon": 100.4766912,
+  "tags": {
+    "name": "ตลาดพลู",
+    "name:en": "Talat Phlu",
+    "name:th": "ตลาดพลู",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S10",
+    "start_date": "2013-01-12",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q18393239",
+    "wikipedia": "th:สถานีตลาดพลู"
+  }
+},
+{
+  "type": "node",
+  "id": 443815142,
+  "lat": 13.7210816,
+  "lon": 100.4951594,
+  "tags": {
+    "name": "วงเวียนใหญ่",
+    "name:en": "Wongwian Yai",
+    "name:th": "วงเวียนใหญ่",
+    "network": "BTS",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S8",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q13021824",
+    "wikipedia": "th:สถานีวงเวียนใหญ่"
+  }
+},
+{
+  "type": "node",
+  "id": 443815144,
+  "lat": 13.7209307,
+  "lon": 100.5027176,
+  "tags": {
+    "name": "กรุงธนบุรี",
+    "name:en": "Krung Thon Buri",
+    "name:ja": "クルントンブリー",
+    "name:th": "กรุงธนบุรี",
+    "network": "BTS",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S7",
+    "short_name": "กรุงธน",
+    "short_name:en": "Kring Thon",
+    "short_name:th": "กรุงธน",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q11299499",
+    "wikipedia": "th:สถานีกรุงธนบุรี"
+  }
+},
+{
+  "type": "node",
+  "id": 451697335,
+  "lat": 13.7285677,
+  "lon": 100.5343416,
+  "tags": {
+    "addr:district": "บางรัก",
+    "addr:postcode": "10500",
+    "addr:province": "กรุงเทพมหานคร",
+    "addr:street": "ถนนสีลม",
+    "addr:subdistrict": "สีลม",
+    "internet_access": "no",
+    "name": "ศาลาแดง",
+    "name:en": "Sala Daeng",
+    "name:th": "ศาลาแดง",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S2",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q13021833",
+    "wikipedia": "th:สถานีศาลาแดง"
+  }
+},
+{
+  "type": "node",
+  "id": 1113055052,
+  "lat": 13.7130228,
+  "lon": 100.4689032,
+  "tags": {
+    "name": "วุฒากาศ",
+    "name:en": "Wutthakat",
+    "name:th": "วุฒากาศ",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S11",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q13021838"
+  }
+},
+{
+  "type": "node",
+  "id": 1560656072,
+  "lat": 13.6967555,
+  "lon": 100.6053182,
+  "tags": {
+    "name": "บางจาก",
+    "name:en": "Bang Chak",
+    "name:th": "บางจาก",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E10",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1672566455,
+  "lat": 13.7207956,
+  "lon": 100.4578054,
+  "tags": {
+    "name": "บางหว้า",
+    "name:en": "Bang Wa",
+    "name:th": "บางหว้า",
+    "name:zh": "曼瓦",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S12",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1697004538,
+  "lat": 13.7456968,
+  "lon": 100.5342336,
+  "tags": {
+    "local_ref": "1",
+    "name": "สยาม",
+    "name:en": "Siam",
+    "name:th": "สยาม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1697004542,
+  "lat": 13.7455463,
+  "lon": 100.5342054,
+  "tags": {
+    "local_ref": "4",
+    "name": "สยาม",
+    "name:en": "Siam",
+    "name:th": "สยาม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1697004544,
+  "lat": 13.7455583,
+  "lon": 100.5342076,
+  "tags": {
+    "local_ref": "3",
+    "name": "สยาม",
+    "name:en": "Siam",
+    "name:th": "สยาม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1697004551,
+  "lat": 13.7456840,
+  "lon": 100.5342312,
+  "tags": {
+    "local_ref": "2",
+    "name": "สยาม",
+    "name:en": "Siam",
+    "name:th": "สยาม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1726172762,
+  "lat": 13.6892717,
+  "lon": 100.6089770,
+  "tags": {
+    "name": "ปุณณวิถี",
+    "name:en": "Punnawithi",
+    "name:th": "ปุณณวิถี",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E11",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1726175401,
+  "lat": 13.6798680,
+  "lon": 100.6094903,
+  "tags": {
+    "name": "อุดมสุข",
+    "name:en": "Udom Suk",
+    "name:th": "อุดมสุข",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E12",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1726177803,
+  "lat": 13.6681362,
+  "lon": 100.6046807,
+  "tags": {
+    "name": "บางนา",
+    "name:en": "Bang Na",
+    "name:th": "บางนา",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E13",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1726177804,
+  "lat": 13.6611943,
+  "lon": 100.6017887,
+  "tags": {
+    "name": "แบริ่ง",
+    "name:en": "Bearing",
+    "name:th": "แบริ่ง",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E14",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2324802007,
+  "lat": 13.7469811,
+  "lon": 100.5023028,
+  "tags": {
+    "name": "สามยอด",
+    "name:en": "Sam Yot",
+    "name:th": "สามยอด",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2465782414,
+  "lat": 13.8061472,
+  "lon": 100.5307713,
+  "tags": {
+    "level": "3",
+    "name": "เตาปูน",
+    "name:en": "Tao Poon",
+    "name:zh": "岛本站",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL10",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487509478,
+  "lat": 13.8060902,
+  "lon": 100.5308491,
+  "tags": {
+    "level": "4",
+    "name": "เตาปูน",
+    "name:en": "Tao Poon",
+    "name:zh": "岛本站",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PP16",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487509479,
+  "lat": 13.8061106,
+  "lon": 100.5306924,
+  "tags": {
+    "level": "4",
+    "name": "เตาปูน",
+    "name:en": "Tao Poon",
+    "name:zh": "岛本站",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PP16",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487510793,
+  "lat": 13.8200869,
+  "lon": 100.5325210,
+  "tags": {
+    "name": "บางซ่อน",
+    "name:en": "Bang Son",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487510794,
+  "lat": 13.8201022,
+  "lon": 100.5323971,
+  "tags": {
+    "name": "บางซ่อน",
+    "name:en": "Bang Son",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487510833,
+  "lat": 13.8298214,
+  "lon": 100.5264565,
+  "tags": {
+    "name": "วงศ์สว่าง",
+    "name:en": "Wong Sawang",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487510834,
+  "lat": 13.8299187,
+  "lon": 100.5265316,
+  "tags": {
+    "name": "วงศ์สว่าง",
+    "name:en": "Wong Sawang",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487510857,
+  "lat": 13.8394825,
+  "lon": 100.5149298,
+  "tags": {
+    "name": "แยกติวานนท์",
+    "name:en": "Yaek Tiwanon",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487510858,
+  "lat": 13.8395749,
+  "lon": 100.5150107,
+  "tags": {
+    "name": "แยกติวานนท์",
+    "name:en": "Yaek Tiwanon",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511003,
+  "lat": 13.8484992,
+  "lon": 100.5147760,
+  "tags": {
+    "name": "กระทรวงสาธารณสุข",
+    "name:en": "Ministry of Public Health",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511004,
+  "lat": 13.8485661,
+  "lon": 100.5146718,
+  "tags": {
+    "name": "กระทรวงสาธารณสุข",
+    "name:en": "Ministry of Public Health",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511058,
+  "lat": 13.8601130,
+  "lon": 100.5130557,
+  "tags": {
+    "name": "ศูนย์ราชการนนทบุรี",
+    "name:en": "Nonthaburi Civic Center",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511061,
+  "lat": 13.8602332,
+  "lon": 100.5130721,
+  "tags": {
+    "name": "ศูนย์ราชการนนทบุรี",
+    "name:en": "Nonthaburi Civic Center",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511083,
+  "lat": 13.8615966,
+  "lon": 100.5046353,
+  "tags": {
+    "name": "บางกระสอ",
+    "name:en": "Bang Krasor",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511084,
+  "lat": 13.8617136,
+  "lon": 100.5046681,
+  "tags": {
+    "name": "บางกระสอ",
+    "name:en": "Bang Krasor",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511211,
+  "lat": 13.8659059,
+  "lon": 100.4940457,
+  "tags": {
+    "name": "แยกนนทบุรี 1",
+    "name:en": "Yaek Nonthaburi 1",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511212,
+  "lat": 13.8660112,
+  "lon": 100.4941078,
+  "tags": {
+    "name": "แยกนนทบุรี 1",
+    "name:en": "Yaek Nonthaburi 1",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511257,
+  "lat": 13.8702273,
+  "lon": 100.4801384,
+  "tags": {
+    "name": "สะพานพระนั่งเกล้า",
+    "name:en": "Phra Nang Klao Bridge",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511268,
+  "lat": 13.8703479,
+  "lon": 100.4801258,
+  "tags": {
+    "name": "สะพานพระนั่งเกล้า",
+    "name:en": "Phra Nang Klao Bridge",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511280,
+  "lat": 13.8704514,
+  "lon": 100.4666765,
+  "tags": {
+    "name": "ไทรม้า",
+    "name:en": "Sai Ma",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511288,
+  "lat": 13.8705727,
+  "lon": 100.4667109,
+  "tags": {
+    "name": "ไทรม้า",
+    "name:en": "Sai Ma",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511428,
+  "lat": 13.8746121,
+  "lon": 100.4193685,
+  "tags": {
+    "name": "สามแยกบางใหญ่",
+    "name:en": "Sam Yaek Bang Yai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511435,
+  "lat": 13.8747373,
+  "lon": 100.4193571,
+  "tags": {
+    "name": "สามแยกบางใหญ่",
+    "name:en": "Sam Yaek Bang Yai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511436,
+  "lat": 13.8747520,
+  "lon": 100.4559427,
+  "tags": {
+    "name": "บางรักน้อยท่าอิฐ",
+    "name:en": "Bang Rak Noi Tha It",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511444,
+  "lat": 13.8748656,
+  "lon": 100.4559982,
+  "tags": {
+    "name": "บางรักน้อยท่าอิฐ",
+    "name:en": "Bang Rak Noi Tha It",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511461,
+  "lat": 13.8757084,
+  "lon": 100.4338088,
+  "tags": {
+    "name": "บางพลู",
+    "name:en": "Bang Phlu",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511468,
+  "lat": 13.8758237,
+  "lon": 100.4337979,
+  "tags": {
+    "name": "บางพลู",
+    "name:en": "Bang Phlu",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511490,
+  "lat": 13.8765439,
+  "lon": 100.4449426,
+  "tags": {
+    "name": "บางรักใหญ่",
+    "name:en": "Bang Rak Yai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511701,
+  "lat": 13.8766694,
+  "lon": 100.4449336,
+  "tags": {
+    "name": "บางรักใหญ่",
+    "name:en": "Bang Rak Yai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511733,
+  "lat": 13.8810099,
+  "lon": 100.4092247,
+  "tags": {
+    "name": "ตลาดบางใหญ่",
+    "name:en": "Talad Bang Yai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511734,
+  "lat": 13.8810184,
+  "lon": 100.4093540,
+  "tags": {
+    "name": "ตลาดบางใหญ่",
+    "name:en": "Talad Bang Yai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511747,
+  "lat": 13.8924292,
+  "lon": 100.4081559,
+  "tags": {
+    "name": "คลองบางไผ่",
+    "name:en": "Khlong Bang Phai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3487511748,
+  "lat": 13.8924405,
+  "lon": 100.4082849,
+  "tags": {
+    "name": "คลองบางไผ่",
+    "name:en": "Khlong Bang Phai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3801037854,
+  "lat": 13.7202595,
+  "lon": 100.4570368,
+  "tags": {
+    "name": "บางหว้า",
+    "name:en": "Bang Wa",
+    "name:zh": "曼瓦",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL34",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3801040560,
+  "lat": 13.7443341,
+  "lon": 100.4946920,
+  "tags": {
+    "air_conditioning": "yes",
+    "name": "สนามไชย",
+    "name:en": "Sanam Chai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3801040562,
+  "lat": 13.7383274,
+  "lon": 100.4857021,
+  "tags": {
+    "name": "อิสรภาพ",
+    "name:en": "Itsaraphap",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3801040563,
+  "lat": 13.7422014,
+  "lon": 100.5099045,
+  "tags": {
+    "country": "ไทย",
+    "name": "วัดมังกร",
+    "name:en": "Wat Mangkon",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4774928037,
+  "lat": 13.6464702,
+  "lon": 100.5958545,
+  "tags": {
+    "name": "สำโรง",
+    "name:en": "Samrong",
+    "name:th": "สำโรง",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E15",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5388599065,
+  "lat": 13.8026054,
+  "lon": 100.5537959,
+  "tags": {
+    "addr:country": "ไทย",
+    "addr:district": "จตุจักร",
+    "addr:postcode": "10900",
+    "addr:province": "กรุงเทพมหานคร",
+    "addr:province:en": "Bangkok",
+    "addr:street": "ถนนพหลโยธิน",
+    "alt_name": "Mo Chit Station BTS Skytrain",
+    "alt_name:en": "Mo Chit BTS Station",
+    "country": "ไทย",
+    "description": "สถานีหมอชิต. สถานีรถไฟฟ้าBTS. Mo Chit Station Bangkok Mass Transit System (BTS) Skytrain. Electric train.",
+    "name": "หมอชิต;MRT Mo Chit - BL 13 - หมอชิต",
+    "name:en": "Mo Chit",
+    "name:ja": "モーチット",
+    "name:th": "หมอชิต",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "province": "กรุงเทพ;กรุงเทพมหานคร",
+    "public_transport": "station;stop_position",
+    "railway": "station;stop",
+    "ref": "N8",
+    "station": "subway",
+    "subway": "yes",
+    "toilets:wheelchair": "no",
+    "website": "https://www.bts.co.th/eng/service/areamap.html",
+    "wheelchair": "limited",
+    "wheelchair:description": "Mochit Station This station has elevator near the stairs.",
+    "wikidata": "Q873641"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597367,
+  "lat": 13.6372874,
+  "lon": 100.5919898,
+  "tags": {
+    "name": "ปู่เจ้า",
+    "name:en": "Pu Chao",
+    "name:th": "ปู่เจ้า",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E16",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597368,
+  "lat": 13.6215410,
+  "lon": 100.5901612,
+  "tags": {
+    "name": "ช้างเอราวัณ",
+    "name:en": "Chang Erawan",
+    "name:th": "ช้างเอราวัณ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E17",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597369,
+  "lat": 13.6084332,
+  "lon": 100.5949399,
+  "tags": {
+    "name": "โรงเรียนนายเรือ",
+    "name:en": "Royal Thai Naval Academy",
+    "name:th": "โรงเรียนนายเรือ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E18",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597370,
+  "lat": 13.6020950,
+  "lon": 100.5971365,
+  "tags": {
+    "name": "ปากน้ำ",
+    "name:en": "Pak Nam",
+    "name:th": "ปากน้ำ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E19",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597371,
+  "lat": 13.5920178,
+  "lon": 100.6089847,
+  "tags": {
+    "name": "ศรีนครินทร์",
+    "name:en": "Srinagarindra",
+    "name:th": "ศรีนครินทร์",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E20",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597372,
+  "lat": 13.5842345,
+  "lon": 100.6078612,
+  "tags": {
+    "name": "แพรกษา",
+    "name:en": "Phraek Sa",
+    "name:th": "แพรกษา",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E21",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597373,
+  "lat": 13.5778721,
+  "lon": 100.6054668,
+  "tags": {
+    "name": "สายลวด",
+    "name:en": "Sai Luat",
+    "name:th": "สายลวด",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E22",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6123597374,
+  "lat": 13.5677061,
+  "lon": 100.6077264,
+  "tags": {
+    "name": "เคหะฯ",
+    "name:en": "Kheha",
+    "name:th": "เคหะฯ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E23",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6563254035,
+  "lat": 13.7111444,
+  "lon": 100.6441576,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีนุช",
+    "name:en": "Si Nut",
+    "name:th": "ศรีนุช",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "construction",
+    "ref": "YL13"
+  }
+},
+{
+  "type": "node",
+  "id": 6681609031,
+  "lat": 13.8167252,
+  "lon": 100.5619431,
+  "tags": {
+    "alt_name": "Ladphrao Intersection",
+    "name": "ห้าแยกลาดพร้าว",
+    "name:en": "Ha Yaek Lat Phrao",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N9",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6695196331,
+  "lat": 13.7783773,
+  "lon": 100.6231873,
+  "tags": {
+    "monorail": "yes",
+    "name": "มหาดไทย",
+    "name:en": "Mahatthai",
+    "name:th": "มหาดไทย",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL06"
+  }
+},
+{
+  "type": "node",
+  "id": 6695196338,
+  "lat": 13.7944307,
+  "lon": 100.5944651,
+  "tags": {
+    "monorail": "yes",
+    "name": "โชคชัย 4",
+    "name:en": "Chok Chai 4",
+    "name:th": "โชคชัย 4",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL03"
+  }
+},
+{
+  "type": "node",
+  "id": 6703032843,
+  "lat": 13.6434708,
+  "lon": 100.6362413,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีแบริ่ง",
+    "name:en": "Si Bearing",
+    "name:th": "ศรีแบริ่ง",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL19"
+  }
+},
+{
+  "type": "node",
+  "id": 6703032848,
+  "lat": 13.6331246,
+  "lon": 100.6301044,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีด่าน",
+    "name:en": "Si Dan",
+    "name:th": "ศรีด่าน",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL20"
+  }
+},
+{
+  "type": "node",
+  "id": 6703032849,
+  "lat": 13.6450441,
+  "lon": 100.5966162,
+  "tags": {
+    "monorail": "yes",
+    "name": "สำโรง",
+    "name:en": "Samrong",
+    "name:th": "สำโรง",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL23"
+  }
+},
+{
+  "type": "node",
+  "id": 6703032861,
+  "lat": 13.6298789,
+  "lon": 100.6226820,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีเทพา",
+    "name:en": "Si Thepha",
+    "name:th": "ศรีเทพา",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL21"
+  }
+},
+{
+  "type": "node",
+  "id": 7156540353,
+  "lat": 13.9104450,
+  "lon": 100.5442477,
+  "tags": {
+    "monorail": "yes",
+    "name": "อิมแพ็ค เมืองทองธานี",
+    "name:en": "Impact Muang Thong Thani",
+    "name:th": "อิมแพ็ค เมืองทองธานี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "MT01"
+  }
+},
+{
+  "type": "node",
+  "id": 7271108084,
+  "lat": 13.7504328,
+  "lon": 100.6448116,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีกรีฑา",
+    "name:en": "Si Kritha",
+    "name:th": "ศรีกรีฑา",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL10"
+  }
+},
+{
+  "type": "node",
+  "id": 7613336660,
+  "lat": 13.8752221,
+  "lon": 100.5968199,
+  "tags": {
+    "name": "วัดพระศรีมหาธาตุ",
+    "name:en": "Wat Phra Sri Mahathat",
+    "name:th": "วัดพระศรีมหาธาตุ",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N17",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7613336661,
+  "lat": 13.8753392,
+  "lon": 100.5966803,
+  "tags": {
+    "name": "วัดพระศรีมหาธาตุ",
+    "name:en": "Wat Phra Sri Mahathat",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N17",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7647114249,
+  "lat": 13.8892580,
+  "lon": 100.5105633,
+  "tags": {
+    "monorail": "yes",
+    "name": "สามัคคี",
+    "name:en": "Samakkhi",
+    "name:th": "สามัคคี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK04"
+  }
+},
+{
+  "type": "node",
+  "id": 7647114250,
+  "lat": 13.8741000,
+  "lon": 100.5163068,
+  "tags": {
+    "monorail": "yes",
+    "name": "สนามบินน้ำ",
+    "name:en": "Sanambin Nam",
+    "name:th": "สนามบินน้ำ",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK03"
+  }
+},
+{
+  "type": "node",
+  "id": 7781133227,
+  "lat": 13.7211681,
+  "lon": 100.5037139,
+  "tags": {
+    "monorail": "yes",
+    "name": "กรุงธนบุรี",
+    "name:en": "Krung Thon Buri",
+    "name:th": "กรุงธนบุรี",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "1",
+    "station": "monorail"
+  }
+},
+{
+  "type": "node",
+  "id": 7781158247,
+  "lat": 13.7208160,
+  "lon": 100.5266863,
+  "tags": {
+    "name": "เซนต์หลุยส์",
+    "name:en": "Saint Louis",
+    "name:th": "เซนต์หลุยส์",
+    "network": "BTS",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "S4",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q13021839",
+    "wikipedia": "th:สถานีเซนต์หลุยส์"
+  }
+},
+{
+  "type": "node",
+  "id": 7781234528,
+  "lat": 13.6367360,
+  "lon": 100.6099158,
+  "tags": {
+    "monorail": "yes",
+    "name": "ทิพวัล",
+    "name:en": "Thipphawan",
+    "name:th": "ทิพวัล",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL22"
+  }
+},
+{
+  "type": "node",
+  "id": 7947412031,
+  "lat": 13.8166337,
+  "lon": 100.5621278,
+  "tags": {
+    "alt_name": "Ladphrao Intersection",
+    "name": "ห้าแยกลาดพร้าว",
+    "name:en": "Ha Yaek Lat Phrao",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N9",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8067064024,
+  "lat": 13.9183794,
+  "lon": 100.5456518,
+  "tags": {
+    "monorail": "yes",
+    "name": "ทะเลสาบเมืองทองธานี",
+    "name:en": "Lake Muang Thong Thani",
+    "name:th": "ทะเลสาบเมืองทองธานี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "MT02"
+  }
+},
+{
+  "type": "node",
+  "id": 8222573842,
+  "lat": 13.6465228,
+  "lon": 100.5957130,
+  "tags": {
+    "name": "สำโรง",
+    "name:en": "Samrong",
+    "name:th": "สำโรง",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E15",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8446348865,
+  "lat": 13.7296093,
+  "lon": 100.4739662,
+  "tags": {
+    "level": "4",
+    "name": "ท่าพระ",
+    "name:en": "Tha Phra",
+    "name:th": "ท่าพระ",
+    "name:zh": "塔帕",
+    "platforms": "4",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL01",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8446348866,
+  "lat": 13.7296938,
+  "lon": 100.4741202,
+  "tags": {
+    "level": "4",
+    "name": "ท่าพระ",
+    "name:en": "Tha Phra",
+    "name:th": "ท่าพระ",
+    "name:zh": "塔帕",
+    "platforms": "3",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL01",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8446348867,
+  "lat": 13.7296279,
+  "lon": 100.4740518,
+  "tags": {
+    "level": "3",
+    "name": "ท่าพระ",
+    "name:en": "Tha Phra",
+    "name:th": "ท่าพระ",
+    "name:zh": "塔帕",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL01",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8717828065,
+  "lat": 13.6676635,
+  "lon": 100.6450811,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีเอี่ยม",
+    "name:en": "Si Iam",
+    "name:th": "ศรีเอี่ยม",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL17"
+  }
+},
+{
+  "type": "node",
+  "id": 8717828067,
+  "lat": 13.6549576,
+  "lon": 100.6421358,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีลาซาล",
+    "name:en": "Si La Salle",
+    "name:th": "ศรีลาซาล",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL18"
+  }
+},
+{
+  "type": "node",
+  "id": 8717841716,
+  "lat": 13.7011148,
+  "lon": 100.6464837,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีนครินทร์ 38",
+    "name:en": "Srinagarindra 38",
+    "name:th": "ศรีนครินทร์ 38",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL14"
+  }
+},
+{
+  "type": "node",
+  "id": 8717841725,
+  "lat": 13.7253425,
+  "lon": 100.6417964,
+  "tags": {
+    "monorail": "yes",
+    "name": "กลันตัน",
+    "name:en": "Kalantan",
+    "name:th": "กลันตัน",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "construction",
+    "ref": "YL12"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933829,
+  "lat": 13.7618442,
+  "lon": 100.6455516,
+  "tags": {
+    "monorail": "yes",
+    "name": "แยกลำสาลี",
+    "name:en": "Yaek Lam Sali",
+    "name:th": "แยกลำสาลี",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL09"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933831,
+  "lat": 13.7690978,
+  "lon": 100.6397564,
+  "tags": {
+    "monorail": "yes",
+    "name": "บางกะปิ",
+    "name:en": "Bang Kapi",
+    "name:th": "บางกะปิ",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL08"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933832,
+  "lat": 13.7746782,
+  "lon": 100.6298034,
+  "tags": {
+    "monorail": "yes",
+    "name": "ลาดพร้าว 101",
+    "name:en": "Lat Phrao 101",
+    "name:th": "ลาดพร้าว 101",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL07"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933833,
+  "lat": 13.7837527,
+  "lon": 100.6136046,
+  "tags": {
+    "monorail": "yes",
+    "name": "ลาดพร้าว 83",
+    "name:en": "Lat Phrao 83",
+    "name:th": "ลาดพร้าว 83",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL05"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933834,
+  "lat": 13.7871028,
+  "lon": 100.6075898,
+  "tags": {
+    "monorail": "yes",
+    "name": "ลาดพร้าว 71",
+    "name:en": "Lat Phrao 71",
+    "name:th": "ลาดพร้าว 71",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL04"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933835,
+  "lat": 13.8001710,
+  "lon": 100.5842166,
+  "tags": {
+    "monorail": "yes",
+    "name": "ภาวนา",
+    "name:en": "Phawana",
+    "name:th": "ภาวนา",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL02"
+  }
+},
+{
+  "type": "node",
+  "id": 8717933837,
+  "lat": 13.8069911,
+  "lon": 100.5748076,
+  "tags": {
+    "monorail": "yes",
+    "name": "ลาดพร้าว",
+    "name:en": "Lat Phrao",
+    "name:th": "ลาดพร้าว",
+    "name:zh": "叻抛",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "YL01"
+  }
+},
+{
+  "type": "node",
+  "id": 8730762308,
+  "lat": 13.8084018,
+  "lon": 100.7326744,
+  "tags": {
+    "monorail": "yes",
+    "name": "มีนบุรี",
+    "name:en": "Min Buri",
+    "name:th": "มีนบุรี",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK30"
+  }
+},
+{
+  "type": "node",
+  "id": 8730802232,
+  "lat": 13.8124926,
+  "lon": 100.7258333,
+  "tags": {
+    "monorail": "yes",
+    "name": "ตลาดมีนบุรี",
+    "name:en": "Min Buri Market",
+    "name:th": "ตลาดมีนบุรี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK29"
+  }
+},
+{
+  "type": "node",
+  "id": 8730802242,
+  "lat": 13.8127016,
+  "lon": 100.7029282,
+  "tags": {
+    "monorail": "yes",
+    "name": "บางชัน",
+    "name:en": "Bang Chan",
+    "name:th": "บางชัน",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK27"
+  }
+},
+{
+  "type": "node",
+  "id": 8730802243,
+  "lat": 13.8126776,
+  "lon": 100.7126280,
+  "tags": {
+    "monorail": "yes",
+    "name": "เศรษฐบุตรบำเพ็ญ",
+    "name:en": "Setthabutbamphen",
+    "name:th": "เศรษฐบุตรบำเพ็ญ",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK28"
+  }
+},
+{
+  "type": "node",
+  "id": 8730802246,
+  "lat": 13.8165197,
+  "lon": 100.6856410,
+  "tags": {
+    "monorail": "yes",
+    "name": "นพรัตน์",
+    "name:en": "Nopparat",
+    "name:th": "นพรัตน์",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK26",
+    "wikidata": "Q123537786",
+    "wikimedia_commons": "File:MRT Pink Line Nopparat Station 20231203-1.jpg",
+    "wikipedia": "en:Nopparat MRT station"
+  }
+},
+{
+  "type": "node",
+  "id": 9697341535,
+  "lat": 13.8244404,
+  "lon": 100.6771946,
+  "tags": {
+    "monorail": "yes",
+    "name": "วงแหวนรามอินทรา",
+    "name:en": "Outer Ring Road-Ram Inthra",
+    "name:th": "วงแหวนรามอินทรา",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK25"
+  }
+},
+{
+  "type": "node",
+  "id": 9697341538,
+  "lat": 13.8337657,
+  "lon": 100.6675628,
+  "tags": {
+    "monorail": "yes",
+    "name": "รามอินทรา กม.9",
+    "name:en": "Ram Inthra Kor Mor 9",
+    "name:th": "รามอินทรา กม.9",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK24"
+  }
+},
+{
+  "type": "node",
+  "id": 9733987626,
+  "lat": 13.8743502,
+  "lon": 100.5970783,
+  "tags": {
+    "monorail": "yes",
+    "name": "วัดพระศรีมหาธาตุ",
+    "name:en": "Wat Phra Sri Mahathat",
+    "name:th": "วัดพระศรีมหาธาตุ",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK16"
+  }
+},
+{
+  "type": "node",
+  "id": 9733987641,
+  "lat": 13.8799282,
+  "lon": 100.5892826,
+  "tags": {
+    "monorail": "yes",
+    "name": "ราชภัฏพระนคร",
+    "name:en": "Rajabhat Phranakhon",
+    "name:th": "ราชภัฏพระนคร",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK15"
+  }
+},
+{
+  "type": "node",
+  "id": 9733987646,
+  "lat": 13.8744608,
+  "lon": 100.5972681,
+  "tags": {
+    "monorail": "yes",
+    "name": "วัดพระศรีมหาธาตุ",
+    "name:en": "Wat Phra Sri Mahathat",
+    "name:th": "วัดพระศรีมหาธาตุ",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK16"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277455,
+  "lat": 13.8709386,
+  "lon": 100.6026040,
+  "tags": {
+    "monorail": "yes",
+    "name": "รามอินทรา 3",
+    "name:en": "Ram Inthra 3",
+    "name:th": "รามอินทรา 3",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK17"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277456,
+  "lat": 13.8627778,
+  "lon": 100.6178017,
+  "tags": {
+    "monorail": "yes",
+    "name": "ลาดปลาเค้า",
+    "name:en": "Lat Pla Khao",
+    "name:th": "ลาดปลาเค้า",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK18"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277457,
+  "lat": 13.8582913,
+  "lon": 100.6261191,
+  "tags": {
+    "monorail": "yes",
+    "name": "รามอินทรา กม.4",
+    "name:en": "Ram Inthra Kor Mor 4",
+    "name:th": "รามอินทรา กม.4",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK19"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277458,
+  "lat": 13.8550006,
+  "lon": 100.6322133,
+  "tags": {
+    "monorail": "yes",
+    "name": "มัยลาภ",
+    "name:en": "Maiyalap",
+    "name:th": "มัยลาภ",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK20"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277459,
+  "lat": 13.8492496,
+  "lon": 100.6428691,
+  "tags": {
+    "monorail": "yes",
+    "name": "วัชรพล",
+    "name:en": "Vacharaphol",
+    "name:th": "วัชรพล",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK21"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277460,
+  "lat": 13.8452427,
+  "lon": 100.6502343,
+  "tags": {
+    "monorail": "yes",
+    "name": "รามอินทรา กม.6",
+    "name:en": "Ram Inthra Kor Mor 6",
+    "name:th": "รามอินทรา กม.6",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK22"
+  }
+},
+{
+  "type": "node",
+  "id": 9734277461,
+  "lat": 13.8406089,
+  "lon": 100.6587805,
+  "tags": {
+    "monorail": "yes",
+    "name": "คู้บอน",
+    "name:en": "Khu Bon",
+    "name:th": "คู้บอน",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK23"
+  }
+},
+{
+  "type": "node",
+  "id": 9913078093,
+  "lat": 13.8840495,
+  "lon": 100.5826810,
+  "tags": {
+    "monorail": "yes",
+    "name": "หลักสี่",
+    "name:en": "Lak Si",
+    "name:th": "หลักสี่",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK14"
+  }
+},
+{
+  "type": "node",
+  "id": 10147872913,
+  "lat": 13.8985366,
+  "lon": 100.5070785,
+  "tags": {
+    "monorail": "yes",
+    "name": "กรมชลประทาน",
+    "name:en": "Royal Irrigation Department",
+    "name:th": "กรมชลประทาน",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK05"
+  }
+},
+{
+  "type": "node",
+  "id": 10867419311,
+  "lat": 13.9061476,
+  "lon": 100.5054000,
+  "tags": {
+    "monorail": "yes",
+    "name": "แยกปากเกร็ด",
+    "name:en": "Yaek Pak Kret",
+    "name:th": "แยกปากเกร็ด",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK06"
+  }
+},
+{
+  "type": "node",
+  "id": 10867419312,
+  "lat": 13.9041381,
+  "lon": 100.5292669,
+  "tags": {
+    "monorail": "yes",
+    "name": "แจ้งวัฒนะ-ปากเกร็ด 28",
+    "name:en": "Chaeng Watthana-Pak Kret 28",
+    "name:th": "แจ้งวัฒนะ-ปากเกร็ด 28",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK08"
+  }
+},
+{
+  "type": "node",
+  "id": 10867419318,
+  "lat": 13.9064767,
+  "lon": 100.5155582,
+  "tags": {
+    "monorail": "yes",
+    "name": "เลี่ยงเมืองปากเกร็ด",
+    "name:en": "Pak Kret Bypass",
+    "name:th": "เลี่ยงเมืองปากเกร็ด",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK07"
+  }
+},
+{
+  "type": "node",
+  "id": 10867419319,
+  "lat": 13.6766379,
+  "lon": 100.6461707,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีอุดม",
+    "name:en": "Si Udom",
+    "name:th": "ศรีอุดม",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "YL16",
+    "station": "monorail",
+    "wikidata": "Q119010086",
+    "wikipedia": "th:สถานีศรีอุดม"
+  }
+},
+{
+  "type": "node",
+  "id": 10867419320,
+  "lat": 13.6908637,
+  "lon": 100.6471028,
+  "tags": {
+    "monorail": "yes",
+    "name": "สวนหลวง ร.9",
+    "name:en": "Suan Luang Rama IX",
+    "name:th": "สวนหลวง ร.9",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "YL15",
+    "station": "monorail",
+    "wikidata": "Q119010410",
+    "wikipedia": "th:สถานีสวนหลวง ร.9"
+  }
+},
+{
+  "type": "node",
+  "id": 10867419324,
+  "lat": 13.7361482,
+  "lon": 100.6411384,
+  "tags": {
+    "addr:country": "Thailand",
+    "addr:district": "สวนหลวง",
+    "addr:district:en": "Suanluang",
+    "addr:province": "กรุงเทพมหานคร",
+    "addr:province:en": "Bangkok",
+    "alt_name": "Hua Mak station",
+    "monorail": "yes",
+    "name": "หัวหมาก",
+    "name:en": "Hua Mak",
+    "name:th": "หัวหมาก",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "YL11",
+    "station": "monorail",
+    "wikidata": "Q109130566",
+    "wikipedia": "th:สถานีหัวหมาก"
+  }
+},
+{
+  "type": "node",
+  "id": 11012357560,
+  "lat": 13.7264656,
+  "lon": 100.5090929,
+  "tags": {
+    "country": "Thailand",
+    "monorail": "yes",
+    "name": "เจริญนคร",
+    "name:en": "Charoen Nakhon",
+    "name:th": "เจริญนคร",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 11012357562,
+  "lat": 13.7303253,
+  "lon": 100.5077277,
+  "tags": {
+    "monorail": "yes",
+    "name": "คลองสาน",
+    "name:en": "Khlong San",
+    "name:th": "คลองสาน",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 11012357573,
+  "lat": 13.7264623,
+  "lon": 100.5090516,
+  "tags": {
+    "country": "Thailand",
+    "monorail": "yes",
+    "name": "เจริญนคร",
+    "name:en": "Charoen Nakhon",
+    "name:th": "เจริญนคร",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 11364308558,
+  "lat": 13.8596996,
+  "lon": 100.5181056,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศูนย์ราชการนนทบุรี",
+    "name:en": "Nonthaburi Civic Center",
+    "name:th": "ศูนย์ราชการนนทบุรี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK01"
+  }
+},
+{
+  "type": "node",
+  "id": 11364361870,
+  "lat": 13.8626398,
+  "lon": 100.5206417,
+  "tags": {
+    "monorail": "yes",
+    "name": "แคราย",
+    "name:en": "Khae Rai",
+    "name:th": "แคราย",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK02"
+  }
+},
+{
+  "type": "node",
+  "id": 11364361909,
+  "lat": 13.9006355,
+  "lon": 100.5400305,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีรัช",
+    "name:en": "Si Rat",
+    "name:th": "ศรีรัช",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK09"
+  }
+},
+{
+  "type": "node",
+  "id": 11364361915,
+  "lat": 13.9005089,
+  "lon": 100.5399850,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศรีรัช",
+    "name:en": "Si Rat",
+    "name:th": "ศรีรัช",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK09"
+  }
+},
+{
+  "type": "node",
+  "id": 11364361936,
+  "lat": 13.8973975,
+  "lon": 100.5484363,
+  "tags": {
+    "monorail": "yes",
+    "name": "เมืองทองธานี",
+    "name:en": "Muang Thong Thani",
+    "name:th": "เมืองทองธานี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK10"
+  }
+},
+{
+  "type": "node",
+  "id": 11364361948,
+  "lat": 13.8932826,
+  "lon": 100.5601429,
+  "tags": {
+    "monorail": "yes",
+    "name": "แจ้งวัฒนะ 14",
+    "name:en": "Chaeng Watthana 14",
+    "name:th": "แจ้งวัฒนะ 14",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK11"
+  }
+},
+{
+  "type": "node",
+  "id": 11364465362,
+  "lat": 13.8907528,
+  "lon": 100.5673425,
+  "tags": {
+    "monorail": "yes",
+    "name": "ศูนย์ราชการเฉลิมพระเกียรติ",
+    "name:en": "Government Complex",
+    "name:th": "ศูนย์ราชการเฉลิมพระเกียรติ",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK12"
+  }
+},
+{
+  "type": "node",
+  "id": 11364501869,
+  "lat": 13.8875633,
+  "lon": 100.5757092,
+  "tags": {
+    "monorail": "yes",
+    "name": "โทรคมนาคมแห่งชาติ",
+    "name:en": "National Telecom",
+    "name:th": "โทรคมนาคมแห่งชาติ",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK13"
+  }
+},
+{
+  "type": "node",
+  "id": 11364501919,
+  "lat": 13.8583122,
+  "lon": 100.6261305,
+  "tags": {
+    "monorail": "yes",
+    "name": "รามอินทรา กม.4",
+    "name:en": "Ram Inthra Kor Mor 4",
+    "name:th": "รามอินทรา กม.4",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "PK19",
+    "station": "monorail",
+    "wikidata": "Q123537779",
+    "wikipedia": "th:สถานีรามอินทรา กม.4"
+  }
+},
+{
+  "type": "node",
+  "id": 11505460639,
+  "lat": 13.7464933,
+  "lon": 100.5290823,
+  "tags": {
+    "name": "สนามกีฬาแห่งชาติ",
+    "name:en": "National Stadium",
+    "name:th": "สนามกีฬาแห่งชาติ",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326727,
+  "lat": 13.7443177,
+  "lon": 100.4945552,
+  "tags": {
+    "air_conditioning": "yes",
+    "name": "สนามไชย",
+    "name:en": "Sanam Chai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326775,
+  "lat": 13.7374083,
+  "lon": 100.5170471,
+  "tags": {
+    "name": "หัวลำโพง",
+    "name:en": "Hua Lamphong",
+    "name:th": "หัวลำโพง",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326776,
+  "lat": 13.7376750,
+  "lon": 100.5171924,
+  "tags": {
+    "name": "หัวลำโพง",
+    "name:en": "Hua Lamphong",
+    "name:th": "หัวลำโพง",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326821,
+  "lat": 13.7108560,
+  "lon": 100.4094930,
+  "tags": {
+    "name": "หลักสอง",
+    "name:en": "Lak Song",
+    "name:zh": "叻松",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326826,
+  "lat": 13.7109118,
+  "lon": 100.4094821,
+  "tags": {
+    "name": "หลักสอง",
+    "name:en": "Lak Song",
+    "name:zh": "叻松",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326859,
+  "lat": 13.7119679,
+  "lon": 100.4223316,
+  "tags": {
+    "name": "บางแค",
+    "name:en": "Bang Khae",
+    "name:zh": "曼凯",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326860,
+  "lat": 13.7119171,
+  "lon": 100.4223363,
+  "tags": {
+    "name": "บางแค",
+    "name:en": "Bang Khae",
+    "name:zh": "曼凯",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326879,
+  "lat": 13.7128979,
+  "lon": 100.4343319,
+  "tags": {
+    "name": "ภาษีเจริญ",
+    "name:en": "Phasi Charoen",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326880,
+  "lat": 13.7129403,
+  "lon": 100.4343260,
+  "tags": {
+    "name": "ภาษีเจริญ",
+    "name:en": "Phasi Charoen",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326903,
+  "lat": 13.7155773,
+  "lon": 100.4454417,
+  "tags": {
+    "name": "เพชรเกษม 48",
+    "name:en": "Phetkasem 48",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326904,
+  "lat": 13.7155384,
+  "lon": 100.4454535,
+  "tags": {
+    "name": "เพชรเกษม 48",
+    "name:en": "Phetkasem 48",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326931,
+  "lat": 13.7203153,
+  "lon": 100.4570052,
+  "tags": {
+    "name": "บางหว้า",
+    "name:en": "Bang Wa",
+    "name:zh": "曼瓦",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL34",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326948,
+  "lat": 13.7246395,
+  "lon": 100.4650677,
+  "tags": {
+    "name": "บางไผ่",
+    "name:en": "Bang Phai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800326949,
+  "lat": 13.7246100,
+  "lon": 100.4650861,
+  "tags": {
+    "name": "บางไผ่",
+    "name:en": "Bang Phai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800327003,
+  "lat": 13.7296671,
+  "lon": 100.4740253,
+  "tags": {
+    "level": "3",
+    "name": "ท่าพระ",
+    "name:en": "Tha Phra",
+    "name:th": "ท่าพระ",
+    "name:zh": "塔帕",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL01",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800399150,
+  "lat": 13.7401792,
+  "lon": 100.4706880,
+  "tags": {
+    "name": "จรัญฯ 13",
+    "name:ja": "ジャラン13",
+    "name:th": "จรัญฯ 13",
+    "name:zh": "乍伦13巷",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800399151,
+  "lat": 13.7401843,
+  "lon": 100.4707336,
+  "tags": {
+    "name": "จรัญฯ 13",
+    "name:ja": "ジャラン13",
+    "name:th": "จรัญฯ 13",
+    "name:zh": "乍伦13巷",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800399153,
+  "lat": 13.7557994,
+  "lon": 100.4693484,
+  "tags": {
+    "name": "ไฟฉาย",
+    "name:en": "Fai Chai",
+    "name:ja": "ファイチャーイ",
+    "name:th": "ไฟฉาย",
+    "name:zh": "发彩",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800399154,
+  "lat": 13.7557960,
+  "lon": 100.4692992,
+  "tags": {
+    "name": "ไฟฉาย",
+    "name:en": "Fai Chai",
+    "name:ja": "ファイチャーイ",
+    "name:th": "ไฟฉาย",
+    "name:zh": "发彩",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800436566,
+  "lat": 13.7292217,
+  "lon": 100.5370753,
+  "tags": {
+    "alt_name": "สถานีสีลม",
+    "alt_name:en": "Si Lom Station",
+    "alt_name:th": "สถานีสีลม",
+    "name": "สีลม",
+    "name:en": "Si Lom",
+    "name:fr": "Si Lom",
+    "name:th": "สีลม",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "province": "Bangkok",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800436580,
+  "lat": 13.7222374,
+  "lon": 100.5543746,
+  "tags": {
+    "name": "คลองเตย",
+    "name:en": "Khlong Toei",
+    "name:th": "คลองเตย",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442507,
+  "lat": 13.7633437,
+  "lon": 100.4732739,
+  "tags": {
+    "name": "บางขุนนนท์",
+    "name:en": "Bang Khun Non",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442508,
+  "lat": 13.7633001,
+  "lon": 100.4733265,
+  "tags": {
+    "name": "บางขุนนนท์",
+    "name:en": "Bang Khun Non",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442510,
+  "lat": 13.7774131,
+  "lon": 100.4852308,
+  "tags": {
+    "name": "บางยี่ขัน",
+    "name:en": "Bang Yi Khan",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442511,
+  "lat": 13.7773776,
+  "lon": 100.4852762,
+  "tags": {
+    "name": "บางยี่ขัน",
+    "name:en": "Bang Yi Khan",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442536,
+  "lat": 13.7838927,
+  "lon": 100.4933056,
+  "tags": {
+    "name": "สิรินธร",
+    "name:en": "Sirindhorn",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442537,
+  "lat": 13.7838554,
+  "lon": 100.4933380,
+  "tags": {
+    "name": "สิรินธร",
+    "name:en": "Sirindhorn",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442589,
+  "lat": 13.7923954,
+  "lon": 100.5048978,
+  "tags": {
+    "name": "บางพลัด",
+    "name:en": "Bang Phlat",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442590,
+  "lat": 13.7924196,
+  "lon": 100.5048593,
+  "tags": {
+    "name": "บางพลัด",
+    "name:en": "Bang Phlat",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442595,
+  "lat": 13.7989727,
+  "lon": 100.5098155,
+  "tags": {
+    "name": "บางอ้อ",
+    "name:en": "Bang O",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442598,
+  "lat": 13.7990007,
+  "lon": 100.5097597,
+  "tags": {
+    "name": "บางอ้อ",
+    "name:en": "Bang O",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442636,
+  "lat": 13.8063850,
+  "lon": 100.5210194,
+  "tags": {
+    "name": "บางโพ",
+    "name:en": "Bang Pho",
+    "name:th": "บางโพ",
+    "name:zh": "曼坡",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442665,
+  "lat": 13.8061980,
+  "lon": 100.5307757,
+  "tags": {
+    "level": "3",
+    "name": "เตาปูน",
+    "name:en": "Tao Poon",
+    "name:zh": "岛本站",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "BL10",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442678,
+  "lat": 13.8024270,
+  "lon": 100.5410596,
+  "tags": {
+    "name": "บางซื่อ",
+    "name:en": "Bang Sue",
+    "name:th": "บางซื่อ",
+    "name:zh": "挽赐站",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442805,
+  "lat": 13.7374717,
+  "lon": 100.5616094,
+  "tags": {
+    "name": "สุขุมวิท",
+    "name:en": "Sukhumvit",
+    "name:ja": "スクムウィット",
+    "name:th": "สุขุมวิท",
+    "name:zh": "素坤逸",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442822,
+  "lat": 13.7227074,
+  "lon": 100.5598021,
+  "tags": {
+    "name": "ศูนย์การประชุมแห่งชาติสิริกิติ์",
+    "name:en": "Queen Sirikit National Convention Centre",
+    "name:th": "ศูนย์การประชุมแห่งชาติสิริกิติ์",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12800442843,
+  "lat": 13.7220528,
+  "lon": 100.5543059,
+  "tags": {
+    "name": "คลองเตย",
+    "name:en": "Khlong Toei",
+    "name:th": "คลองเตย",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915069,
+  "lat": 13.7226217,
+  "lon": 100.5600667,
+  "tags": {
+    "name": "ศูนย์การประชุมแห่งชาติสิริกิติ์",
+    "name:en": "Queen Sirikit National Convention Centre",
+    "name:th": "ศูนย์การประชุมแห่งชาติสิริกิติ์",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915070,
+  "lat": 13.7255938,
+  "lon": 100.5457184,
+  "tags": {
+    "name": "ลุมพินี",
+    "name:en": "Lumphini",
+    "name:th": "ลุมพินี",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915071,
+  "lat": 13.7256181,
+  "lon": 100.5457358,
+  "tags": {
+    "country": "Thailand",
+    "name": "ลุมพินี",
+    "name:en": "Lumphini",
+    "name:th": "ลุมพินี",
+    "province": "Bangkok",
+    "public_transport": "stop_position",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915073,
+  "lat": 13.7422168,
+  "lon": 100.5099156,
+  "tags": {
+    "country": "ไทย",
+    "name": "วัดมังกร",
+    "name:en": "Wat Mangkon",
+    "name:th": "วัดมังกร",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915075,
+  "lat": 13.7470185,
+  "lon": 100.5023016,
+  "tags": {
+    "name": "สามยอด",
+    "name:en": "Sam Yot",
+    "name:th": "สามยอด",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915079,
+  "lat": 13.7320794,
+  "lon": 100.5301286,
+  "tags": {
+    "alt_name": "สถานีสามย่าน",
+    "alt_name:en": "Sam Yan Station",
+    "alt_name:th": "สถานีสามย่าน",
+    "name": "สามย่าน",
+    "name:en": "Sam Yan",
+    "name:fr": "Sam Yan",
+    "name:th": "สามย่าน",
+    "province": "กรุงเทพมหานคร",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915081,
+  "lat": 13.7383988,
+  "lon": 100.4856982,
+  "tags": {
+    "name": "อิสรภาพ",
+    "name:en": "Itsaraphap",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12803915083,
+  "lat": 13.8064497,
+  "lon": 100.5210262,
+  "tags": {
+    "name": "บางโพ",
+    "name:en": "Bang Pho",
+    "name:th": "บางโพ",
+    "name:zh": "曼坡",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12805950166,
+  "lat": 13.7491774,
+  "lon": 100.5634829,
+  "tags": {
+    "alt_name": "Phetchaburi MRT station",
+    "name": "เพชรบุรี",
+    "name:en": "Phetchaburi",
+    "name:th": "เพชรบุรี",
+    "name:zh": "碧武里",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12848732941,
+  "lat": 13.8975407,
+  "lon": 100.5484874,
+  "tags": {
+    "monorail": "yes",
+    "name": "เมืองทองธานี",
+    "name:en": "Muang Thong Thani",
+    "name:th": "เมืองทองธานี",
+    "network": "MRT",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Northern Bangkok Monorail Company Limited",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "PK10"
+  }
+},
+{
+  "type": "node",
+  "id": 12885438029,
+  "lat": 13.7209558,
+  "lon": 100.5027177,
+  "tags": {
+    "name": "กรุงธนบุรี",
+    "name:en": "Krung Thon Buri",
+    "name:ja": "クルントンブリー",
+    "name:th": "กรุงธนบุรี",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S7",
+    "short_name": "กรุงธน",
+    "short_name:en": "Kring Thon",
+    "short_name:th": "กรุงธน",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885438030,
+  "lat": 13.7209129,
+  "lon": 100.5027183,
+  "tags": {
+    "name": "กรุงธนบุรี",
+    "name:en": "Krung Thon Buri",
+    "name:ja": "クルントンブリー",
+    "name:th": "กรุงธนบุรี",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S7",
+    "short_name": "กรุงธน",
+    "short_name:en": "Kring Thon",
+    "short_name:th": "กรุงธน",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885438052,
+  "lat": 13.7211086,
+  "lon": 100.4951556,
+  "tags": {
+    "name": "วงเวียนใหญ่",
+    "name:en": "Wongwian Yai",
+    "name:th": "วงเวียนใหญ่",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S8",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885438053,
+  "lat": 13.7210685,
+  "lon": 100.4951564,
+  "tags": {
+    "name": "วงเวียนใหญ่",
+    "name:en": "Wongwian Yai",
+    "name:th": "วงเวียนใหญ่",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S8",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885438093,
+  "lat": 13.7192674,
+  "lon": 100.4859652,
+  "tags": {
+    "name": "โพธิ์นิมิตร",
+    "name:en": "Pho Nimit",
+    "name:th": "โพธิ์นิมิตร",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S9",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885438094,
+  "lat": 13.7192286,
+  "lon": 100.4859751,
+  "tags": {
+    "name": "โพธิ์นิมิตร",
+    "name:en": "Pho Nimit",
+    "name:th": "โพธิ์นิมิตร",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S9",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885474280,
+  "lat": 13.7142066,
+  "lon": 100.4766992,
+  "tags": {
+    "name": "ตลาดพลู",
+    "name:en": "Talat Phlu",
+    "name:th": "ตลาดพลู",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S10",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885474281,
+  "lat": 13.7142443,
+  "lon": 100.4766775,
+  "tags": {
+    "name": "ตลาดพลู",
+    "name:en": "Talat Phlu",
+    "name:th": "ตลาดพลู",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S10",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885483032,
+  "lat": 13.7130133,
+  "lon": 100.4689006,
+  "tags": {
+    "name": "วุฒากาศ",
+    "name:en": "Wutthakat",
+    "name:th": "วุฒากาศ",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S11",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885483033,
+  "lat": 13.7130504,
+  "lon": 100.4689201,
+  "tags": {
+    "name": "วุฒากาศ",
+    "name:en": "Wutthakat",
+    "name:th": "วุฒากาศ",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S11",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885483139,
+  "lat": 13.7207873,
+  "lon": 100.4577634,
+  "tags": {
+    "name": "บางหว้า",
+    "name:en": "Bang Wa",
+    "name:th": "บางหว้า",
+    "name:zh": "曼瓦",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "S12",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885545795,
+  "lat": 13.7518858,
+  "lon": 100.5315331,
+  "tags": {
+    "name": "ราชเทวี",
+    "name:en": "Ratchathewi",
+    "name:th": "ราชเทวี",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N1",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885876726,
+  "lat": 13.9250012,
+  "lon": 100.6258548,
+  "tags": {
+    "name": "แยก คปอ.",
+    "name:en": "Yaek Kor Por Aor",
+    "name:th": "แยก คปอ.",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885876727,
+  "lat": 13.9250239,
+  "lon": 100.6258199,
+  "tags": {
+    "name": "แยก คปอ.",
+    "name:en": "Yaek Kor Por Aor",
+    "name:th": "แยก คปอ.",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877616,
+  "lat": 13.7569678,
+  "lon": 100.5338497,
+  "tags": {
+    "name": "พญาไท",
+    "name:en": "Phaya Thai",
+    "name:ja": "パヤタイ",
+    "name:th": "พญาไท",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N2",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877702,
+  "lat": 13.7797175,
+  "lon": 100.5446036,
+  "tags": {
+    "name": "อารีย์",
+    "name:en": "Ari",
+    "name:th": "อารีย์",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N5",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877711,
+  "lat": 13.7726371,
+  "lon": 100.5420529,
+  "tags": {
+    "name": "สนามเป้า",
+    "name:en": "Sanam Pao",
+    "name:th": "สนามเป้า",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N4",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877729,
+  "lat": 13.7627683,
+  "lon": 100.5370398,
+  "tags": {
+    "name": "อนุสาวรีย์ชัยสมรภูมิ",
+    "name:en": "Victory Monument",
+    "name:th": "อนุสาวรีย์ชัยสมรภูมิ",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N3",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877748,
+  "lat": 13.7938310,
+  "lon": 100.5496927,
+  "tags": {
+    "name": "สะพานควาย",
+    "name:en": "Saphan Khwai",
+    "name:ja": "サパーンクワイ",
+    "name:th": "สะพานควาย",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "platforms": "2",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "N7",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877878,
+  "lat": 13.8241136,
+  "lon": 100.5664414,
+  "tags": {
+    "name": "พหลโยธิน 24",
+    "name:en": "Phahonyothin 24",
+    "name:ja": "パホンヨーティン24駅",
+    "name:th": "พหลโยธิน 24",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877879,
+  "lat": 13.8241276,
+  "lon": 100.5664091,
+  "tags": {
+    "name": "พหลโยธิน 24",
+    "name:en": "Phahonyothin 24",
+    "name:ja": "パホンヨーティン24駅",
+    "name:th": "พหลโยธิน 24",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877901,
+  "lat": 13.8297378,
+  "lon": 100.5697400,
+  "tags": {
+    "name": "รัชโยธิน",
+    "name:en": "Ratchayothin",
+    "name:ja": "ラチャヨーティン駅",
+    "name:th": "รัชโยธิน",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877902,
+  "lat": 13.8297575,
+  "lon": 100.5697043,
+  "tags": {
+    "name": "รัชโยธิน",
+    "name:en": "Ratchayothin",
+    "name:ja": "ラチャヨーティン駅",
+    "name:th": "รัชโยธิน",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877921,
+  "lat": 13.8364194,
+  "lon": 100.5736088,
+  "tags": {
+    "name": "เสนานิคม",
+    "name:en": "Sena Nikhom",
+    "name:ja": "セナニコム駅",
+    "name:th": "เสนานิคม",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877922,
+  "lat": 13.8363920,
+  "lon": 100.5736484,
+  "tags": {
+    "name": "เสนานิคม",
+    "name:en": "Sena Nikhom",
+    "name:ja": "セナニコム駅",
+    "name:th": "เสนานิคม",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877969,
+  "lat": 13.8423258,
+  "lon": 100.5770870,
+  "tags": {
+    "name": "มหาวิทยาลัยเกษตรศาสตร์",
+    "name:en": "Kasetsart University",
+    "name:ja": "カセサート大学駅",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877970,
+  "lat": 13.8423024,
+  "lon": 100.5771229,
+  "tags": {
+    "name": "มหาวิทยาลัยเกษตรศาสตร์",
+    "name:en": "Kasetsart University",
+    "name:ja": "カセサート大学駅",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877971,
+  "lat": 13.8503171,
+  "lon": 100.5818348,
+  "tags": {
+    "name": "กรมป่าไม้",
+    "name:en": "Royal Forest Department",
+    "name:ja": "ロイヤルフォレストデパートメント駅",
+    "name:th": "กรมป่าไม้",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877972,
+  "lat": 13.8503348,
+  "lon": 100.5817968,
+  "tags": {
+    "name": "กรมป่าไม้",
+    "name:en": "Royal Forest Department",
+    "name:ja": "ロイヤルフォレストデパートメント駅",
+    "name:th": "กรมป่าไม้",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885877999,
+  "lat": 13.8560609,
+  "lon": 100.5851586,
+  "tags": {
+    "name": "บางบัว",
+    "name:en": "Bang Bua",
+    "name:th": "บางบัว",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885878000,
+  "lat": 13.8560370,
+  "lon": 100.5851985,
+  "tags": {
+    "name": "บางบัว",
+    "name:en": "Bang Bua",
+    "name:th": "บางบัว",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885893602,
+  "lat": 13.8675707,
+  "lon": 100.5919926,
+  "tags": {
+    "name": "กรมทหารราบที่ 11",
+    "name:en": "11th Infantry Regiment",
+    "name:th": "สถานีกรมทหารราบที่ 11",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885893603,
+  "lat": 13.8675861,
+  "lon": 100.5919528,
+  "tags": {
+    "name": "กรมทหารราบที่ 11",
+    "name:en": "11th Infantry Regiment",
+    "name:th": "สถานีกรมทหารราบที่ 11",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885893661,
+  "lat": 13.8824386,
+  "lon": 100.6007499,
+  "tags": {
+    "name": "พหลโยธิน 59",
+    "name:en": "Phahonyothin 59",
+    "name:th": "พหลโยธิน 59",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885893662,
+  "lat": 13.8824579,
+  "lon": 100.6007124,
+  "tags": {
+    "name": "พหลโยธิน 59",
+    "name:en": "Phahonyothin 59",
+    "name:th": "พหลโยธิน 59",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885893669,
+  "lat": 13.8884414,
+  "lon": 100.6042877,
+  "tags": {
+    "name": "สายหยุด",
+    "name:en": "Sai Yud",
+    "name:th": "สายหยุด",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885893670,
+  "lat": 13.8884606,
+  "lon": 100.6042492,
+  "tags": {
+    "name": "สายหยุด",
+    "name:en": "Sai Yud",
+    "name:th": "สายหยุด",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885902270,
+  "lat": 13.8966040,
+  "lon": 100.6090979,
+  "tags": {
+    "name": "สะพานใหม่",
+    "name:en": "Saphan Mai",
+    "name:th": "สะพานใหม่",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885902271,
+  "lat": 13.8966218,
+  "lon": 100.6090569,
+  "tags": {
+    "name": "สะพานใหม่",
+    "name:en": "Saphan Mai",
+    "name:th": "สะพานใหม่",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885902274,
+  "lat": 13.9107054,
+  "lon": 100.6174170,
+  "tags": {
+    "name": "โรงพยาบาลภูมิพลอดุลยเดช",
+    "name:en": "Bhumibol Adulyadej Hospital",
+    "name:th": "โรงพยาบาลภูมิพลอดุลยเดช",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885902275,
+  "lat": 13.9107226,
+  "lon": 100.6173751,
+  "tags": {
+    "name": "โรงพยาบาลภูมิพลอดุลยเดช",
+    "name:en": "Bhumibol Adulyadej Hospital",
+    "name:th": "โรงพยาบาลภูมิพลอดุลยเดช",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885902286,
+  "lat": 13.9179808,
+  "lon": 100.6216679,
+  "tags": {
+    "name": "พิพิธภัณฑ์กองทัพอากาศ",
+    "name:en": "Royal Thai Air Force Museum",
+    "name:th": "พิพิธภัณฑ์กองทัพอากาศ",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12885902287,
+  "lat": 13.9179618,
+  "lon": 100.6217140,
+  "tags": {
+    "name": "พิพิธภัณฑ์กองทัพอากาศ",
+    "name:en": "Royal Thai Air Force Museum",
+    "name:th": "พิพิธภัณฑ์กองทัพอากาศ",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12886086387,
+  "lat": 13.9323479,
+  "lon": 100.6465227,
+  "tags": {
+    "name": "คูคต",
+    "name:en": "Khu Khot",
+    "name:th": "คูคต",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12886086388,
+  "lat": 13.9323836,
+  "lon": 100.6465226,
+  "tags": {
+    "name": "คูคต",
+    "name:en": "Khu Khot",
+    "name:th": "คูคต",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888241902,
+  "lat": 13.7440781,
+  "lon": 100.5430673,
+  "tags": {
+    "name": "ชิดลม",
+    "name:en": "Chit Lom",
+    "name:th": "ชิดลม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E1",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888241906,
+  "lat": 13.7430904,
+  "lon": 100.5489792,
+  "tags": {
+    "name": "เพลินจิต",
+    "name:en": "Phloen Chit",
+    "name:th": "เพลินจิต",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E2",
+    "subway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12888241949,
+  "lat": 13.7405255,
+  "lon": 100.5554116,
+  "tags": {
+    "addr:province": "กรุงเทพมหานคร",
+    "alt_name:ja": "ナーナー",
+    "name": "นานา",
+    "name:en": "Nana",
+    "name:ja": "ナナ",
+    "name:th": "นานา",
+    "province": "Bangkok",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E3",
+    "subway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12888241968,
+  "lat": 13.7370681,
+  "lon": 100.5603644,
+  "tags": {
+    "name": "อโศก",
+    "name:en": "Asok",
+    "name:ja": "アソーク駅",
+    "name:ko": "아소크",
+    "name:th": "อโศก",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E4",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242010,
+  "lat": 13.7304180,
+  "lon": 100.5697037,
+  "tags": {
+    "name": "พร้อมพงษ์",
+    "name:en": "Phrom Phong",
+    "name:ja": "プロムポン",
+    "name:th": "พร้อมพงษ์",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E5",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242031,
+  "lat": 13.7242199,
+  "lon": 100.5784999,
+  "tags": {
+    "name": "ทองหล่อ",
+    "name:en": "Thong Lo",
+    "name:th": "ทองหล่อ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E6",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242051,
+  "lat": 13.7195218,
+  "lon": 100.5850979,
+  "tags": {
+    "name": "เอกมัย",
+    "name:en": "Ekkamai BTS Station",
+    "name:ja": "エカマイ",
+    "name:ru": "Эккамай",
+    "name:th": "ekkamai",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E7",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242069,
+  "lat": 13.7151891,
+  "lon": 100.5912483,
+  "tags": {
+    "name": "พระโขนง",
+    "name:en": "Phra Khanong",
+    "name:th": "พระโขนง",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E8",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242117,
+  "lat": 13.7056321,
+  "lon": 100.6010231,
+  "tags": {
+    "name": "อ่อนนุช",
+    "name:en": "On Nut",
+    "name:th": "อ่อนนุช",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E9",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242136,
+  "lat": 13.6967721,
+  "lon": 100.6053570,
+  "tags": {
+    "name": "บางจาก",
+    "name:en": "Bang Chak",
+    "name:th": "บางจาก",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E10",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242158,
+  "lat": 13.6892886,
+  "lon": 100.6090144,
+  "tags": {
+    "name": "ปุณณวิถี",
+    "name:en": "Punnawithi",
+    "name:th": "ปุณณวิถี",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E11",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242249,
+  "lat": 13.6681480,
+  "lon": 100.6046454,
+  "tags": {
+    "name": "บางนา",
+    "name:en": "Bang Na",
+    "name:th": "บางนา",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E13",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242250,
+  "lat": 13.6798835,
+  "lon": 100.6094473,
+  "tags": {
+    "name": "อุดมสุข",
+    "name:en": "Udom Suk",
+    "name:th": "อุดมสุข",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E12",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242301,
+  "lat": 13.6611796,
+  "lon": 100.6018252,
+  "tags": {
+    "name": "แบริ่ง",
+    "name:en": "Bearing",
+    "name:th": "แบริ่ง",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E14",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12888242344,
+  "lat": 13.6372738,
+  "lon": 100.5920269,
+  "tags": {
+    "name": "ปู่เจ้า",
+    "name:en": "Pu Chao",
+    "name:th": "ปู่เจ้า",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "ref": "E16",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13980371099,
+  "lat": 13.7661039,
+  "lon": 100.5701929,
+  "tags": {
+    "name": "ศูนย์วัฒนธรรมแห่งประเทศไทย",
+    "name:en": "Thailand Cultural Centre",
+    "name:th": "ศูนย์วัฒนธรรมแห่งประเทศไทย",
+    "name:zh": "泰国文化中心",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13980371100,
+  "lat": 13.7662418,
+  "lon": 100.5700446,
+  "tags": {
+    "name": "ศูนย์วัฒนธรรมแห่งประเทศไทย",
+    "name:en": "Thailand Cultural Centre",
+    "name:th": "ศูนย์วัฒนธรรมแห่งประเทศไทย",
+    "name:zh": "泰国文化中心",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "ทางด่วนและรถไฟฟ้ากรุงเทพ",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes"
+  }
+}
+
+  ]
+}

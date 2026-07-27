@@ -1,0 +1,2976 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-27T22:31:05Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 444651,
+  "members": [
+    {
+      "type": "node",
+      "ref": 12886086387,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885876726,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885902287,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885902274,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885902270,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885893669,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885893661,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7613336660,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885893602,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885878000,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877971,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877970,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877922,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877901,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877878,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7947412031,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666806,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666805,
+      "role": "stop_inactive"
+    },
+    {
+      "type": "node",
+      "ref": 270666804,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666802,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666791,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877616,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666787,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1697004538,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270668232,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888241906,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270668230,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1392287985,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 12888241968,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1392287987,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 275514306,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 277360712,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 277360862,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242069,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242117,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242136,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242158,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1726175401,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1726177803,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242301,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 4774928037,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242344,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597368,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597369,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597370,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597371,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597372,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597373,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597374,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 791625654,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 884167052,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815065850,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 377160877,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392013009,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449600340,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 157481747,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1165313179,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392287981,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1306290560,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392287999,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449603200,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 859223070,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392288031,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#65B724",
+    "from": "Khu Khot",
+    "name": "รถไฟฟ้าบีทีเอส สายสุขุมวิท (คูคต → เคหะ)",
+    "name:en": "BTS Sukhumvit Line (Khu Khot → Kheha)",
+    "name:ja": "BTSスクムウィット線（クーコット→ケーハー）",
+    "name:th": "รถไฟฟ้าบีทีเอส สายสุขุมวิท (คูคต → เคหะ)",
+    "network": "รถไฟฟ้าบีทีเอส",
+    "network:en": "BTS Skytrain",
+    "network:short": "BTS",
+    "network:th": "รถไฟฟ้าบีทีเอส",
+    "network:wikidata": "Q806501",
+    "note": "I didn't include \"Last train route\" and \"Peak-only route\" into this \"Main route\".",
+    "opening_hours": "Mo-Su 05:15-23:35",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport:version": "2",
+    "ref": "สุขุมวิท",
+    "route": "subway",
+    "to": "Kheha",
+    "type": "route",
+    "website": "https://www.bts.co.th/service/timetable.html",
+    "wikidata": "Q4921598",
+    "wikipedia": "th:รถไฟฟ้าบีทีเอส สายสุขุมวิท"
+  }
+},
+{
+  "type": "relation",
+  "id": 444659,
+  "members": [
+    {
+      "type": "node",
+      "ref": 8446348865,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800399150,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800399154,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442507,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442510,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442536,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442590,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442598,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915083,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442665,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442678,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280240589,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280240585,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280240580,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280240577,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280239363,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280239362,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280239009,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 13980371099,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280179427,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12805950166,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442805,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915069,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442843,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915070,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280179442,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280222869,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326775,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3801040563,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2324802007,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3801040560,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3801040562,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8446348867,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326949,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3801037854,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326904,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326879,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326860,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326821,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1104620351,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1054370117,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 909682546,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382574087,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382574091,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382574086,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382577452,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 223597841,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 699315164,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 909682551,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 223597840,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#1E398D",
+    "from": "ท่าพระ",
+    "name": "รถไฟฟ้ามหานคร สายสีน้ำเงิน",
+    "name:en": "MRT Blue Line (Tha Phra → Lak Song)",
+    "name:th": "รถไฟฟ้ามหานครสายสีน้ำเงิน",
+    "name:zh": "曼谷地铁蓝线",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "Bangkok Expressway and Metro Public Company Limited",
+    "public_transport:version": "2",
+    "ref": "MRT-BL",
+    "route": "subway",
+    "to": "หลักสอง",
+    "type": "route",
+    "wikidata": "Q2486364",
+    "wikipedia": "th:รถไฟฟ้ามหานคร สายสีน้ำเงิน"
+  }
+},
+{
+  "type": "relation",
+  "id": 2067854,
+  "members": [
+    {
+      "type": "node",
+      "ref": 257066819,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1697004544,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 257066809,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 451697335,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257066790,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 7781158247,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257066779,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257067085,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 443815144,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 443815142,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 305693940,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 340133002,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 1113055052,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 1672566455,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 157481750,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 158182389,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 157482223,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1391977406,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1418574208,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449601865,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 853439699,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1418574505,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1391980683,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#02817D",
+    "name": "รถไฟฟ้าบีทีเอส สายสีลม (สนามกีฬาแห่งชาติ → บางหว้า)",
+    "name:en": "BTS Silom Line (National Stadium → Bang Wa)",
+    "name:th": "รถไฟฟ้าบีทีเอส สายสีลม (สนามกีฬาแห่งชาติ → บางหว้า)",
+    "network": "รถไฟฟ้าบีทีเอส",
+    "network:en": "BTS Skytrain",
+    "network:short": "BTS",
+    "network:th": "รถไฟฟ้าบีทีเอส",
+    "network:wikidata": "Q806501",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport:version": "2",
+    "ref": "สีลม",
+    "route": "subway",
+    "type": "route",
+    "wikidata": "Q2634702",
+    "wikipedia": "th:รถไฟฟ้าบีทีเอส สายสีลม"
+  }
+},
+{
+  "type": "relation",
+  "id": 6988563,
+  "members": [
+    {
+      "type": "node",
+      "ref": 3487511748,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511734,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511435,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511468,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511701,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511444,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511288,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511268,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511212,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511084,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511061,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511003,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487510858,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487510834,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487510793,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487509478,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 685610910,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#893B90",
+    "from": "คลองบางไผ่",
+    "name": "รถไฟฟ้ามหานคร สายสีม่วง (คลองบางไผ่ → เตาปูน)",
+    "name:en": "MRT Purple Line (Khlong Bang Phai → Tao Poon)",
+    "name:th": "รถไฟฟ้ามหานคร สายสีม่วง (คลองบางไผ่ → เตาปูน)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "Bangkok Expressway and Metro Public Company Limited",
+    "public_transport:version": "2",
+    "ref": "MRT Purple",
+    "route": "subway",
+    "to": "เตาปูน",
+    "type": "route",
+    "wikidata": "Q6584549",
+    "wikipedia": "en:MRT Purple Line"
+  }
+},
+{
+  "type": "relation",
+  "id": 7725025,
+  "members": [
+    {
+      "type": "node",
+      "ref": 12800326826,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326859,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326880,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326903,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326931,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326948,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800327003,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915081,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326727,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915075,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915073,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800326776,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915079,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800436566,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12803915071,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800436580,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442822,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280179421,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280179426,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280179427,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 13980371100,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 280239009,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280239362,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280239363,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280240577,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280240580,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280240585,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280240589,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 280246418,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 2465782414,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442636,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442595,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442589,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442537,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442511,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800442508,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800399153,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12800399151,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8446348866,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1382560870,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382560873,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382560869,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1382577453,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 156261336,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 160656732,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 160656737,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 377157581,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 199430175,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 909682545,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 909682553,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 926655582,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#1E398D",
+    "from": "หลักสอง",
+    "name": "รถไฟฟ้ามหานคร สายสีน้ำเงิน",
+    "name:en": "MRT Blue Line (Lak Song → Tha Phra)",
+    "name:th": "รถไฟฟ้ามหานครสายสีน้ำเงิน",
+    "name:zh": "曼谷地铁蓝线",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "Bangkok Expressway and Metro Public Company Limited",
+    "public_transport:version": "2",
+    "ref": "MRT-BL",
+    "route": "subway",
+    "to": "ท่าพระ",
+    "type": "route",
+    "wikidata": "Q2486364",
+    "wikipedia": "th:รถไฟฟ้ามหานคร สายสีน้ำเงิน"
+  }
+},
+{
+  "type": "relation",
+  "id": 7725057,
+  "members": [
+    {
+      "type": "node",
+      "ref": 3487509479,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487510794,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487510833,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487510857,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511004,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511058,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511083,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511211,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511257,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511280,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511436,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511490,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511461,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511428,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511733,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 3487511747,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 359418225,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#893B90",
+    "from": "เตาปูน",
+    "name": "รถไฟฟ้ามหานคร สายสีม่วง (เตาปูน → คลองบางไผ่)",
+    "name:en": "MRT Purple Line (Tao Poon → Khlong Bang Phai)",
+    "name:th": "รถไฟฟ้ามหานคร สายสีม่วง",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "Bangkok Expressway and Metro Public Company Limited",
+    "public_transport:version": "2",
+    "ref": "MRT Purple",
+    "route": "subway",
+    "to": "คลองบางไผ่",
+    "type": "route",
+    "wikidata": "Q6584549",
+    "wikipedia": "en:Purple Line (Bangkok)"
+  }
+},
+{
+  "type": "relation",
+  "id": 7989376,
+  "members": [
+    {
+      "type": "node",
+      "ref": 6123597374,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597373,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597372,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597371,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597370,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597369,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597368,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6123597367,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8222573842,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1726177804,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242249,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242250,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1726172762,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1560656072,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 277361532,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 277360879,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242051,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242031,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888242010,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 275514816,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1392287986,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 12888241949,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1392287984,
+      "role": "platform"
+    },
+    {
+      "type": "node",
+      "ref": 275515851,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12888241902,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1697004551,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885545795,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666790,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877729,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877711,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877702,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 270666805,
+      "role": "stop_inactive"
+    },
+    {
+      "type": "node",
+      "ref": 12885877748,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 5388599065,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6681609031,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877879,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877902,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877921,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877969,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877972,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885877999,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885893603,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7613336661,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885893662,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885893670,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885902271,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885902275,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885902286,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885876727,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12886086388,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1392288031,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 859223069,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449603201,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 884165264,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 156261395,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 852283472,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449600342,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392013008,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392013005,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 815065851,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1392015020,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#65B724",
+    "from": "Kheha",
+    "name": "รถไฟฟ้าบีทีเอส สายสุขุมวิท (เคหะ → คูคต)",
+    "name:en": "BTS Sukhumvit Line (Kheha → Khu Khot)",
+    "name:ja": "BTSスクムウィット線（クーコット→ケーハー）",
+    "name:th": "รถไฟฟ้าบีทีเอส สายสุขุมวิท (เคหะ → คูคต)",
+    "network": "รถไฟฟ้าบีทีเอส",
+    "network:en": "BTS Skytrain",
+    "network:short": "BTS",
+    "network:th": "รถไฟฟ้าบีทีเอส",
+    "network:wikidata": "Q806501",
+    "note": "I didn't include \"Last train route\" and \"Peak-only route\" into this \"Main route\".",
+    "opening_hours": "Mo-Su 05:15-23:43",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport:version": "2",
+    "ref": "สุขุมวิท",
+    "route": "subway",
+    "to": "Khu Khot",
+    "type": "route",
+    "website": "https://www.bts.co.th/service/timetable.html",
+    "wikidata": "Q4921598",
+    "wikipedia": "th:รถไฟฟ้าบีทีเอส สายสุขุมวิท"
+  }
+},
+{
+  "type": "relation",
+  "id": 7989385,
+  "members": [
+    {
+      "type": "node",
+      "ref": 12885483139,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 1113055052,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 340133002,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 305693940,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 443815142,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 443815144,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257067085,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257066779,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 7781158247,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257066790,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 451697335,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 257066809,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 1697004542,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11505460639,
+      "role": "stop"
+    },
+    {
+      "type": "way",
+      "ref": 1391980684,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1418574506,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1391977407,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449601866,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1418574207,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1391977406,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 157481737,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#02817D",
+    "name": "รถไฟฟ้าบีทีเอส สายสีลม (บางหว้า → สนามกีฬาแห่งชาติ)",
+    "name:en": "BTS Silom Line (Bang Wa → National Stadium)",
+    "name:th": "รถไฟฟ้าบีทีเอส สายสีลม (บางหว้า → สนามกีฬาแห่งชาติ)",
+    "network": "รถไฟฟ้าบีทีเอส",
+    "network:en": "BTS Skytrain",
+    "network:short": "BTS",
+    "network:th": "รถไฟฟ้าบีทีเอส",
+    "network:wikidata": "Q806501",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport:version": "2",
+    "ref": "สีลม",
+    "route": "subway",
+    "type": "route",
+    "wikidata": "Q2634702",
+    "wikipedia": "th:รถไฟฟ้าบีทีเอส สายสีลม"
+  }
+},
+{
+  "type": "relation",
+  "id": 11681439,
+  "members": [
+    {
+      "type": "node",
+      "ref": 7781133227,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 11012357573,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11012357562,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 909460168,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513182,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 852021475,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513196,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513198,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513192,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#A58704",
+    "from": "Krung Thon Buri",
+    "name": "รถไฟฟ้าสายสีทอง (กรุงธนบุรี → คลองสาน)",
+    "name:en": "Gold Line (Krung Thon Buri → Khlong San)",
+    "name:th": "รถไฟฟ้าสายสีทอง (กรุงธนบุรี → คลองสาน)",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport:version": "2",
+    "ref": "APM Gold Line",
+    "route": "subway",
+    "to": "Khlong San",
+    "type": "route",
+    "wikidata": "Q25540775",
+    "wikipedia": "en:Gold Line (Bangkok)"
+  }
+},
+{
+  "type": "relation",
+  "id": 11681440,
+  "members": [
+    {
+      "type": "node",
+      "ref": 11012357562,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 11012357560,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7781133227,
+      "role": "stop_exit_only"
+    },
+    {
+      "type": "way",
+      "ref": 1185513192,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513198,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513184,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1185513186,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 909460168,
+      "role": ""
+    }
+  ],
+  "tags": {
+    "colour": "#A58704",
+    "from": "Khlong San",
+    "name": "รถไฟฟ้าสายสีทอง (คลองสาน → กรุงธนบุรี)",
+    "name:en": "Gold Line (Khlong San → Krung Thon Buri)",
+    "name:th": "รถไฟฟ้าสายสีทอง (คลองสาน → กรุงธนบุรี)",
+    "network": "BTS",
+    "operator": "กรุงเทพธนาคม",
+    "public_transport:version": "2",
+    "ref": "APM Gold Line",
+    "route": "subway",
+    "to": "Krung Thon Buri",
+    "type": "route",
+    "wikidata": "Q25540775",
+    "wikipedia": "en:Gold Line (Bangkok)"
+  }
+},
+{
+  "type": "relation",
+  "id": 15806897,
+  "members": [
+    {
+      "type": "way",
+      "ref": 941378129,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378133,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378132,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 943857567,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 943857568,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378130,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941766421,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941766422,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 712065119,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 8717933837,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 8717933835,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6695196338,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933834,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933833,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6695196331,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933832,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933831,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933829,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7271108084,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419324,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 8717841725,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6563254035,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717841716,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419320,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 10867419319,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 8717828065,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717828067,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032843,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032848,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032861,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7781234528,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032849,
+      "role": "stop_exit_only"
+    }
+  ],
+  "tags": {
+    "colour": "#FFD400",
+    "from": "Lat Phrao",
+    "name": "รถไฟฟ้าสายสีเหลือง (ลาดพร้าว - สำโรง)",
+    "name:en": "Yellow Line (Lat Phrao - Samrong)",
+    "name:th": "รถไฟฟ้าสายสีเหลือง (ลาดพร้าว - สำโรง)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "ref": "MRT Yellow",
+    "route": "monorail",
+    "start_date": "2023-06-03",
+    "to": "Samrong",
+    "type": "route",
+    "wikidata": "Q14784897",
+    "wikipedia": "th:รถไฟฟ้ามหานคร สายสีเหลือง"
+  }
+},
+{
+  "type": "relation",
+  "id": 15806898,
+  "members": [
+    {
+      "type": "way",
+      "ref": 712065119,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941766422,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941766421,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378131,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 943857568,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 943857567,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378132,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378133,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 941378129,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 6703032849,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 7781234528,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032861,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032848,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6703032843,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717828067,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717828065,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419319,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 10867419320,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 8717841716,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6563254035,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717841725,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419324,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 7271108084,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933829,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933831,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933832,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6695196331,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933833,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933834,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 6695196338,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933835,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8717933837,
+      "role": "stop_exit_only"
+    }
+  ],
+  "tags": {
+    "colour": "#FFD400",
+    "from": "Samrong",
+    "name": "รถไฟฟ้าสายสีเหลือง (สำโรง - ลาดพร้าว)",
+    "name:en": "Yellow Line (Samrong - Lat Phrao)",
+    "name:th": "รถไฟฟ้าสายสีเหลือง (สำโรง - ลาดพร้าว)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "อีสเทิร์นบางกอกโมโนเรล",
+    "operator:en": "Eastern Bangkok Monorail",
+    "operator:th": "อีสเทิร์นบางกอกโมโนเรล",
+    "ref": "MRT Yellow",
+    "route": "monorail",
+    "start_date": "2023-06-03",
+    "to": "Lat Phrao",
+    "type": "route",
+    "wikidata": "Q14784897",
+    "wikipedia": "th:รถไฟฟ้ามหานคร สายสีเหลือง"
+  }
+},
+{
+  "type": "relation",
+  "id": 16740886,
+  "members": [
+    {
+      "type": "way",
+      "ref": 1225451148,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451149,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451151,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451152,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451153,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 735263928,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470378,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783365160,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470380,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470382,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470383,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783360022,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 901894727,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 11364308558,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361870,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7647114250,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7647114249,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10147872913,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419311,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419318,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419312,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361909,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361936,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361948,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364465362,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364501869,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9913078093,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9733987641,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9733987646,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277455,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277456,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277457,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277458,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277459,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277460,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277461,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9697341538,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9697341535,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802246,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802242,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802243,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802232,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730762308,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364501919,
+      "role": "platform"
+    }
+  ],
+  "tags": {
+    "colour": "#E76589",
+    "from": "ศูนย์ราชการนนทบุรี",
+    "name": "รถไฟฟ้ามหานคร สายสีชมพู (ศูนย์ราชการนนทบุรี → มีนบุรี)",
+    "name:en": "MRT Pink Line (Nonthaburi Civic Center → Min Buri)",
+    "name:th": "รถไฟฟ้ามหานคร สายสีชมพู (ศูนย์ราชการนนทบุรี → มีนบุรี)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport:version": "2",
+    "ref": "MRT Pink",
+    "route": "monorail",
+    "to": "มีนบุรี",
+    "type": "route",
+    "wikidata": "Q6584557",
+    "wikipedia": "en:Pink Line (Bangkok)"
+  }
+},
+{
+  "type": "relation",
+  "id": 16740887,
+  "members": [
+    {
+      "type": "way",
+      "ref": 901894727,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783360022,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470383,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470382,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470381,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 783365161,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225470379,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 735263928,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451154,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451152,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451150,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451149,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1225451148,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 8730762308,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802232,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802243,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802242,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8730802246,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9697341535,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9697341538,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277461,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277460,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277459,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277458,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277457,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277456,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9734277455,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9733987626,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9733987641,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 9913078093,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364501869,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364465362,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361948,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361936,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361915,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419312,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419318,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10867419311,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 10147872913,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7647114249,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 7647114250,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364361870,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364308558,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 11364501919,
+      "role": "platform"
+    }
+  ],
+  "tags": {
+    "colour": "#E76589",
+    "from": "มีนบุรี",
+    "name": "รถไฟฟ้ามหานคร สายสีชมพู (มีนบุรี → ศูนย์ราชการนนทบุรี)",
+    "name:en": "MRT Pink Line (Min Buri → Nonthaburi Civic Center)",
+    "name:th": "รถไฟฟ้ามหานคร สายสีชมพู (มีนบุรี → ศูนย์ราชการนนทบุรี)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport:version": "2",
+    "ref": "MRT Pink",
+    "route": "monorail",
+    "to": "ศูนย์ราชการนนทบุรี",
+    "type": "route",
+    "wikidata": "Q6584557",
+    "wikipedia": "en:Pink Line (Bangkok)"
+  }
+},
+{
+  "type": "relation",
+  "id": 19149752,
+  "members": [
+    {
+      "type": "way",
+      "ref": 1387844925,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1387844926,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 766246138,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 12848732941,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 7156540353,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 8067064024,
+      "role": "stop_exit_only"
+    }
+  ],
+  "tags": {
+    "colour": "#C4007B",
+    "from": "เมืองทองธานี",
+    "name": "รถไฟฟ้ามหานคร สายสีชมพู (เมืองทองธานี → ทะเลสาบเมืองทองธานี)",
+    "name:en": "Pink Line MRT (Muang Thong Thani → Lake Muang Thong Thani)",
+    "name:th": "รถไฟฟ้ามหานคร สายสีชมพู (เมืองทองธานี → ทะเลสาบเมืองทองธานี)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport:version": "2",
+    "ref": "IMPACT Link",
+    "route": "monorail",
+    "to": "ทะเลสาบเมืองทองธานี",
+    "type": "route",
+    "wikidata": "Q134883230"
+  }
+},
+{
+  "type": "relation",
+  "id": 19150155,
+  "members": [
+    {
+      "type": "way",
+      "ref": 766246138,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1387844926,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1387844925,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 8067064024,
+      "role": "stop_entry_only"
+    },
+    {
+      "type": "node",
+      "ref": 7156540353,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12848732941,
+      "role": "stop_exit_only"
+    }
+  ],
+  "tags": {
+    "colour": "#C4007B",
+    "from": "ทะเลสาบเมืองทองธานี",
+    "name": "รถไฟฟ้ามหานคร สายสีชมพู (ทะเลสาบเมืองทองธานี → เมืองทองธานี)",
+    "name:en": "Pink Line MRT (Lake Muang Thong Thani → Muang Thong Thani)",
+    "name:th": "รถไฟฟ้ามหานคร สายสีชมพู (ทะเลสาบเมืองทองธานี → เมืองทองธานี)",
+    "network": "Metropolitan Rapid Transit",
+    "network:short": "MRT",
+    "network:wikidata": "Q806485",
+    "operator": "นอร์ทเทิร์นบางกอกโมโนเรล",
+    "public_transport:version": "2",
+    "ref": "IMPACT Link",
+    "route": "monorail",
+    "to": "เมืองทองธานี",
+    "type": "route",
+    "wikidata": "Q134883230"
+  }
+},
+{
+  "type": "relation",
+  "id": 19407241,
+  "members": [
+    {
+      "type": "way",
+      "ref": 1449601866,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1391977407,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1418574506,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 12885438030,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885438053,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885438094,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885474280,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885483032,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885483139,
+      "role": "stop"
+    }
+  ],
+  "tags": {
+    "colour": "#02817D",
+    "from": "กรุงธนบุรี",
+    "name": "ขบวนเสริม รถไฟฟ้าบีทีเอส สายสีลม (กรุงธนบุรี → บางหว้า)",
+    "name:en": "BTS Silom Line Supplementary Route (Krung Thon Buri → Bang Wa)",
+    "name:th": "ขบวนเสริม รถไฟฟ้าบีทีเอส สายสีลม (กรุงธนบุรี → บางหว้า)",
+    "network": "รถไฟฟ้าบีทีเอส",
+    "network:en": "BTS Skytrain",
+    "network:short": "BTS",
+    "network:th": "รถไฟฟ้าบีทีเอส",
+    "network:wikidata": "Q806501",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport:version": "2",
+    "ref": "สีลม",
+    "route": "subway",
+    "to": "บางหว้า",
+    "type": "route",
+    "wikidata": "Q2634702",
+    "wikipedia": "th:รถไฟฟ้าบีทีเอส สายสีลม"
+  }
+},
+{
+  "type": "relation",
+  "id": 19407242,
+  "members": [
+    {
+      "type": "way",
+      "ref": 1418574505,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 853439699,
+      "role": ""
+    },
+    {
+      "type": "way",
+      "ref": 1449601865,
+      "role": ""
+    },
+    {
+      "type": "node",
+      "ref": 1672566455,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885483033,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885474281,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885438093,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885438052,
+      "role": "stop"
+    },
+    {
+      "type": "node",
+      "ref": 12885438029,
+      "role": "stop"
+    }
+  ],
+  "tags": {
+    "colour": "#02817D",
+    "from": "บางหว้า",
+    "name": "ขบวนเสริม รถไฟฟ้าบีทีเอส สายสีลม (บางหว้า → กรุงธนบุรี)",
+    "name:en": "BTS Silom Line Supplementary Route (Bang Wa → Krung Thon Buri)",
+    "name:th": "ขบวนเสริม รถไฟฟ้าบีทีเอส สายสีลม (บางหว้า → กรุงธนบุรี)",
+    "network": "รถไฟฟ้าบีทีเอส",
+    "network:en": "BTS Skytrain",
+    "network:short": "BTS",
+    "network:th": "รถไฟฟ้าบีทีเอส",
+    "network:wikidata": "Q806501",
+    "operator": "ระบบขนส่งมวลชนกรุงเทพ",
+    "operator:en": "Bangkok Mass Transit System;BTSC",
+    "public_transport:version": "2",
+    "ref": "สีลม",
+    "route": "subway",
+    "to": "กรุงธนบุรี",
+    "type": "route",
+    "wikidata": "Q2634702",
+    "wikipedia": "th:รถไฟฟ้าบีทีเอส สายสีลม"
+  }
+}
+
+  ]
+}
