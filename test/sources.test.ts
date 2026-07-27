@@ -37,6 +37,9 @@ describe("sources", () => {
     expect(s!.title).toBe("4 Days in Chongqing");
     expect(s!.durationSeconds).toBe(1694);
     expect(s!.transcriptSource).toBe("captions");
+    expect(s!.url).toBe(VIDEO.url);
+    expect(s!.uploader).toBe("Some Traveller");
+    expect(s!.fetchedAt).toBe("2026-07-27T10:00:00Z");
   });
 
   test("an absent transcript stays NULL, not empty string", async () => {
@@ -77,10 +80,14 @@ describe("sources", () => {
     expect(await getSourceByUrl(db, 1, VIDEO.url)).not.toBeNull();
   });
 
-  test("latestSource returns the most recently fetched", async () => {
+  test("latestSource orders by fetched_at, not by insertion order", async () => {
     const db = await freshDb("latest");
-    await upsertSource(db, 1, { ...VIDEO, url: "a", fetchedAt: "2026-07-01T00:00:00Z" });
+    // Newer timestamp inserted FIRST, so id order and fetched_at order
+    // disagree. An implementation that fell back to ORDER BY id DESC would
+    // return the wrong row here, which the previous version of this test
+    // could not detect.
     const newer = await upsertSource(db, 1, { ...VIDEO, url: "b", fetchedAt: "2026-07-20T00:00:00Z" });
+    await upsertSource(db, 1, { ...VIDEO, url: "a", fetchedAt: "2026-07-01T00:00:00Z" });
     expect((await latestSource(db, 1))!.id).toBe(newer);
   });
 
