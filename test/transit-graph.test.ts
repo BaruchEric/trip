@@ -108,6 +108,37 @@ describe("transit station graph", () => {
     expect(empty.route(at(29.56, 106.50), at(29.56, 106.70))).toBeNull();
   });
 
+  test("the transfer penalty CHANGES WHICH ROUTE IS CHOSEN", async () => {
+    // Written because the mutation sweep found this decision unguarded: with
+    // TRANSFER_MINUTES set to 0, the only test that died was the constants
+    // speed-bump below, which just reads the number back. Nothing asserted
+    // that a transfer costs anything where it matters -- in the routing.
+    //
+    // P and Q are joined two ways. The one-line route is LONGER in track but
+    // needs no change; the two-line route is shorter but transfers at X. With
+    // a transfer charged, the through route wins; charge nothing and the
+    // graph starts sending travellers through changes to save 20 seconds.
+    const stations: TransitStation[] = [
+      { name: "P", latitude: 29.50, longitude: 106.50 },
+      { name: "X", latitude: 29.50, longitude: 106.55 },
+      { name: "Q", latitude: 29.50, longitude: 106.60 },
+      { name: "R", latitude: 29.51, longitude: 106.55 },
+    ];
+    const edges: TransitEdge[] = [
+      // Two lines meeting at X: 8.6 km of track, one change.
+      { fromName: "P", toName: "X", line: "P-line", km: 4.3 },
+      { fromName: "X", toName: "Q", line: "Q-line", km: 4.3 },
+      // One line the whole way via R: 10 km of track, no change.
+      { fromName: "P", toName: "R", line: "through", km: 5.0 },
+      { fromName: "R", toName: "Q", line: "through", km: 5.0 },
+    ];
+    const r = buildGraph(stations, edges)
+      .route(at(29.5001, 106.5001), at(29.5001, 106.6001))!;
+    expect(r).not.toBeNull();
+    // 1.4 km of extra track costs 2.8 min at 30 km/h; a change costs 4.
+    expect(r.transfers).toBe(0);
+  });
+
   test("the four unevidenced constants are the ones the recon swept", async () => {
     // A speed bump, like the schema version test. These numbers are not
     // measured and the recon's sensitivity table is stated in terms of them;
