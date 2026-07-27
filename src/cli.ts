@@ -14,6 +14,7 @@ import { runPassCommand } from "@/commands/passes";
 import { runCostsCommand } from "@/commands/costs";
 import { runRouteCommand, type RouteDeps } from "@/commands/route";
 import { runCalibrateCommand } from "@/commands/calibrate";
+import { runExportCommand, type ExportDeps } from "@/commands/export";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -43,6 +44,7 @@ Usage:
   trip move <seg> --to=day<n>  Move a segment to another day (pins it)
   trip route                   Measure real walking legs (network) [--refresh]
   trip calibrate               How wrong the travel model is, here
+  trip export --format=ics     Write the plan out [--out=<path>] [--force]
   trip replan                  Rebuild the plan, respecting pins
 
   trip watch <url>             Fetch a video transcript [--refresh] [--whisper]
@@ -95,6 +97,7 @@ export interface CliDeps {
   watch?: WatchCommandDeps;
   review?: ReviewDeps;
   route?: RouteDeps;
+  export?: ExportDeps;
 }
 
 /** Flags every command accepts, bare, regardless of what it declares below. */
@@ -159,6 +162,9 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // No flags of its own -- it reports on the trip's own mode, so a --mode
   // here would let you ask about a mode the plan is not compiled with.
   calibrate: {},
+  // --format is required and has no default: a default would silently pick
+  // one of three files the user asked for by name. --force is bool-only.
+  export: { bool: ["--force"], value: ["--format", "--out"] },
 
   plan: { value: ["--mode", "--pace"] },
   replan: { value: ["--mode", "--pace"] },
@@ -204,6 +210,29 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
  *  block, which is the honest default — a stub reading "no help available"
  *  would be worse than the real thing. */
 const SUBCOMMAND_HELP: Record<string, string> = {
+  export: `trip export --format=ics|md|geojson [--out=<path>] [--force]
+
+  Write the plan out. Exports the STORED itinerary - the one trip plan last
+  saved and you may have adjusted with pin and move - and never re-plans on
+  the way out.
+
+  Without --out it writes to stdout. With --out it writes the file and says
+  what it wrote; it refuses to overwrite unless --force.
+
+    ics      a calendar. Segments whose opening hours are UNKNOWN become
+             STATUS:TENTATIVE, which is the one place a calendar can say
+             "this might be wrong". Anything the plan could not place
+             becomes an all-day event titled "Not planned: ...".
+    md       the COMPLETE record: per-traveller costs, the unknown-price
+             counts, and how far the travel times can be trusted. The other
+             two formats point at this one.
+    geojson  a map. Places the tool could not locate are Features with a
+             null geometry, which is what RFC 7946 provides for. Each hop is
+             a straight LineString carrying whether it was measured - it is
+             NOT the route walked.
+
+  Unknown is never rendered as zero, in any of the three.
+`,
   calibrate: `trip calibrate
 
   How wrong this project's own travel model is, in THIS city, measured
@@ -575,6 +604,7 @@ async function route(
   if (cmd === "seg") return runSegmentsCommand(db, args, json);
   if (cmd === "route") return runRouteCommand(db, args, json, deps.route);
   if (cmd === "calibrate") return runCalibrateCommand(db, args, json);
+  if (cmd === "export") return runExportCommand(db, args, json, deps.export);
   if (PLAN_COMMANDS.includes(cmd)) return runPlanCommand(db, cmd, args, json);
   if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
