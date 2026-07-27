@@ -7,6 +7,7 @@ import { formatRule, type PriceRule } from "@/pricing/rules";
 import type { Pass } from "@/passes";
 import type { Mode } from "@/plan/types";
 import type { TravelModel } from "@/plan/travel";
+import { basisWord } from "@/plan/travel";
 
 /** How to get between two consecutive stops, and whether anyone measured it.
  *
@@ -274,9 +275,45 @@ function hopLine(
     { latitude: to.latitude, longitude: to.longitude },
     travel.mode,
   );
+
+  // A transit hop the graph decided you should WALK. The one thing the old
+  // straight-line constant could never say, and the reason M12 exists: it
+  // recommended riding in 36-42 of every 42 pairs the recon measured, and
+  // measured walking actually won 4 to 11 of them.
+  const t = est.transit;
+  if (t !== undefined && t.walkWins) {
+    const why = t.fromStation === null
+      ? "no station within reach"
+      : t.fromStation === t.toStation
+        ? `both stops are nearest ${t.fromStation}`
+        : "the railway does not help here";
+    return `       -> ${est.minutes} min WALK instead (${basisWord(est.basis)})\n` +
+           `          ${why}`;
+  }
+
   const word = travel.mode === "walking" ? "walk" : "transit";
-  return `       -> ${est.minutes} min ${word} ` +
-         `(${est.measured ? "measured" : "estimated"})`;
+  const head = `       -> ${est.minutes} min ${word} (${basisWord(est.basis)})`;
+  if (t === undefined || t.fromStation === null) return head;
+
+  const changes = t.transfers === 1 ? "1 change" : `${t.transfers} changes`;
+  const stops = t.stops === 1 ? "1 stop" : `${t.stops} stops`;
+  return `${head}\n          ${t.fromStation} -> ${t.toStation}, ${stops}, ${changes}`;
+}
+
+/** The caveat that must travel with any total built on the station graph.
+ *
+ *  Returned as lines rather than printed here so `trip plan` and `trip day`
+ *  cannot drift: M8 shipped hop lines in one and not the other, and it took
+ *  until M10 to notice. */
+export function transitCaveat(used: boolean): string[] {
+  if (!used) return [];
+  return [
+    "",
+    "Transit times are modelled from OSM station geometry: real stations, real",
+    "stop order, real interchanges. OSM carries NO TIMETABLE for any city this",
+    "was measured in, so line speed and the boarding allowance are assumed, and",
+    "actual waiting depends on a frequency nothing here knows.",
+  ];
 }
 
 export function renderPlan(

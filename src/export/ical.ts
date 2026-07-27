@@ -1,4 +1,5 @@
 import type { ExportView, ExportStop } from "@/export/view";
+import { basisWord } from "@/plan/travel";
 
 /** RFC 5545 iCalendar.
  *
@@ -73,7 +74,7 @@ function describe(s: ExportStop, currency: string | null): string {
   const parts: string[] = [];
   if (s.arriveBy) {
     parts.push(`Getting here: ${s.arriveBy.minutes} min ${s.arriveBy.mode} ` +
-      `(${s.arriveBy.measured ? "measured" : "estimated"})`);
+      `(${basisWord(s.arriveBy.basis)})`);
   }
   parts.push(money(s.price, currency));
   if (!s.hoursKnown) {
@@ -120,7 +121,7 @@ export function renderIcs(v: ExportView, now: string): string {
       if (s.arriveBy) {
         lines.push(
           `X-TRIP-TRAVEL-MINUTES:${s.arriveBy.minutes}`,
-          `X-TRIP-TRAVEL-MEASURED:${s.arriveBy.measured ? "TRUE" : "FALSE"}`,
+          `X-TRIP-TRAVEL-BASIS:${s.arriveBy.basis.toUpperCase()}`,
         );
       }
       if (s.latitude !== null && s.longitude !== null) {

@@ -59,6 +59,20 @@ export function haversineKm(a: Point, b: Point): number {
   return 2 * EARTH_RADIUS_KM * Math.asin(Math.min(1, Math.sqrt(h)));
 }
 
+/** Minutes to walk a straight-line distance, UNROUNDED.
+ *
+ *  For the transit model's access and egress walks, which arrive as distances
+ *  from a station rather than as a pair of points. Unrounded because they are
+ *  summed with a ride and a boarding allowance before anything reaches a
+ *  clock; rounding each term first would let three half-minutes vanish.
+ *
+ *  Shares MODEL.walking with `travelMinutes` rather than restating 1.3 and 4.5,
+ *  so a change to the walking model cannot reach one caller and miss the other. */
+export function walkMinutesForKm(km: number): number {
+  const m = MODEL.walking;
+  return ((km * m.detour) / m.kmh) * 60 + m.perHopMinutes;
+}
+
 /** Whole minutes. Fractional travel times would let clock arithmetic drift
  *  across a day and make placements irreproducible at the second. */
 export function travelMinutes(a: Point, b: Point, mode: Mode): number {

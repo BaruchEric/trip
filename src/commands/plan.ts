@@ -173,7 +173,7 @@ function hopJson(
   from: Segment | undefined,
   to: Segment | undefined,
   travel: PlanTravel,
-): { minutes: number; measured: boolean; mode: string } | null {
+): { minutes: number; basis: string; transit?: unknown; mode: string } | null {
   if (!from || !to) return null;
   if (from.latitude === null || from.longitude === null) return null;
   if (to.latitude === null || to.longitude === null) return null;
@@ -182,7 +182,7 @@ function hopJson(
     { latitude: to.latitude, longitude: to.longitude },
     travel.mode,
   );
-  return { minutes: est.minutes, measured: est.measured, mode: travel.mode };
+  return { minutes: est.minutes, basis: est.basis, transit: est.transit, mode: travel.mode };
 }
 
 export function planJson(

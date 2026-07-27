@@ -20,7 +20,7 @@ describe("modelOnly", () => {
     const t = modelOnly();
     for (const mode of ["walking", "transit"] as const) {
       expect(t.minutes(TESTBED, LIZIBA, mode)).toBe(travelMinutes(TESTBED, LIZIBA, mode));
-      expect(t.estimate(TESTBED, LIZIBA, mode).measured).toBe(false);
+      expect(t.estimate(TESTBED, LIZIBA, mode).basis).not.toBe("measured");
     }
   });
 });
@@ -41,7 +41,7 @@ describe("withLegs", () => {
       leg({ source: "valhalla-pedestrian", minutes: 23.4 }),
     ]);
     expect(t.minutes(TESTBED, LIZIBA, "walking")).toBe(23);
-    expect(t.estimate(TESTBED, LIZIBA, "walking").measured).toBe(true);
+    expect(t.estimate(TESTBED, LIZIBA, "walking").basis).toBe("measured");
   });
 
   test("the slower wins whichever ORDER the legs arrive in", () => {
@@ -72,8 +72,8 @@ describe("withLegs", () => {
 
   test("a leg for one direction does NOT answer the other", () => {
     const t = withLegs([leg()]);
-    expect(t.estimate(TESTBED, LIZIBA, "walking").measured).toBe(true);
-    expect(t.estimate(LIZIBA, TESTBED, "walking").measured).toBe(false);
+    expect(t.estimate(TESTBED, LIZIBA, "walking").basis).toBe("measured");
+    expect(t.estimate(LIZIBA, TESTBED, "walking").basis).not.toBe("measured");
   });
 
   test("a moved segment falls back to the model rather than reusing its leg", () => {
@@ -82,7 +82,7 @@ describe("withLegs", () => {
     // ids would have silently answered with a leg measured somewhere else.
     const moved = { latitude: 29.56, longitude: 106.54 };
     const t = withLegs([leg()]);
-    expect(t.estimate(TESTBED, moved, "walking").measured).toBe(false);
+    expect(t.estimate(TESTBED, moved, "walking").basis).not.toBe("measured");
     expect(t.minutes(TESTBED, moved, "walking"))
       .toBe(travelMinutes(TESTBED, moved, "walking"));
   });
@@ -91,7 +91,7 @@ describe("withLegs", () => {
     // Nothing in M8 measured transit, and `trip route` stores mode='walking'
     // only. A transit plan is exactly as unevidenced after M8 as before it.
     const t = withLegs([leg()]);
-    expect(t.estimate(TESTBED, LIZIBA, "transit").measured).toBe(false);
+    expect(t.estimate(TESTBED, LIZIBA, "transit").basis).not.toBe("measured");
     expect(t.minutes(TESTBED, LIZIBA, "transit"))
       .toBe(travelMinutes(TESTBED, LIZIBA, "transit"));
   });
@@ -99,13 +99,13 @@ describe("withLegs", () => {
   test("a coordinate differing below 5dp still hits", () => {
     const t = withLegs([leg()]);
     const nudged = { latitude: TESTBED.latitude + 0.000001, longitude: TESTBED.longitude };
-    expect(t.estimate(nudged, LIZIBA, "walking").measured).toBe(true);
+    expect(t.estimate(nudged, LIZIBA, "walking").basis).toBe("measured");
   });
 
   test("a coordinate differing ABOVE 5dp misses", () => {
     const t = withLegs([leg()]);
     const moved = { latitude: TESTBED.latitude + 0.01, longitude: TESTBED.longitude };
-    expect(t.estimate(moved, LIZIBA, "walking").measured).toBe(false);
+    expect(t.estimate(moved, LIZIBA, "walking").basis).not.toBe("measured");
   });
 
   test("minutes are whole, because clock arithmetic must not drift", () => {
@@ -117,14 +117,14 @@ describe("withLegs", () => {
   test("an empty leg set is exactly modelOnly", () => {
     expect(withLegs([]).minutes(TESTBED, LIZIBA, "walking"))
       .toBe(modelOnly().minutes(TESTBED, LIZIBA, "walking"));
-    expect(withLegs([]).estimate(TESTBED, LIZIBA, "walking").measured).toBe(false);
+    expect(withLegs([]).estimate(TESTBED, LIZIBA, "walking").basis).not.toBe("measured");
   });
 
   test("a zero-minute measured leg is still MEASURED, not absent", () => {
     // 0 is a real number here and must not be read as "no leg". The routers
     // never return it, but the distinction is the project's oldest rule.
     const t = withLegs([leg({ minutes: 0 })]);
-    expect(t.estimate(TESTBED, LIZIBA, "walking").measured).toBe(true);
+    expect(t.estimate(TESTBED, LIZIBA, "walking").basis).toBe("measured");
     expect(t.minutes(TESTBED, LIZIBA, "walking")).toBe(0);
   });
 });

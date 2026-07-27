@@ -76,7 +76,7 @@ export function renderGeoJson(v: ExportView): string {
           // A boolean, never a string: an agent must be able to tell a
           // measured leg from a modelled one without parsing prose. The
           // straight line drawn here is NOT the route walked.
-          measured: hop.measured,
+          basis: hop.basis,
         },
       });
     }

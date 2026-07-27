@@ -2,7 +2,7 @@ import type { Client } from "@libsql/client";
 import { loadContext, buildPricing, reconcilePinned } from "@/commands/plan";
 import { readPins, readPlacements } from "@/placements";
 import { listLegs } from "@/legs";
-import { withLegs } from "@/plan/travel";
+import { withLegs, type TravelBasis, type TransitDetail } from "@/plan/travel";
 import { calibrate, type Calibration } from "@/calibrate";
 import { MODES, type Mode } from "@/plan/types";
 import type { Segment } from "@/segments";
@@ -25,9 +25,17 @@ import type { Segment } from "@/segments";
 
 export interface ExportHop {
   minutes: number;
-  /** false means NO measured leg exists for this directed hop -- the number
-   *  came from a straight line times a constant. */
-  measured: boolean;
+  /** Where the number came from. THREE values, not a boolean, since M12.
+   *
+   *  A boolean `measured` reported a station-graph result and the bare
+   *  straight-line constant identically, as "not measured" -- and those are
+   *  not the same claim. The graph knows where the stations are and can say
+   *  the railway does not help here; the constant cannot, and M12 measured it
+   *  wrong in four cities. Collapsing them would be the M10 error in the
+   *  place M10 was written about: a format's confidence must match the plan's. */
+  basis: TravelBasis;
+  /** Present only when a station graph was consulted. */
+  transit?: TransitDetail;
   mode: Mode;
 }
 
@@ -201,7 +209,7 @@ function hopOf(
     { latitude: to.latitude, longitude: to.longitude },
     mode,
   );
-  return { minutes: est.minutes, measured: est.measured, mode };
+  return { minutes: est.minutes, basis: est.basis, transit: est.transit, mode };
 }
 
 /** The M5 rule, unchanged: a segment whose PARTY total is unknown drops out

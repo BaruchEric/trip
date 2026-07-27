@@ -117,10 +117,13 @@ describe("iCalendar", () => {
     const ics = renderIcs(view({
       days: [{ day: 1, date: "2026-09-01", weekday: "tue", startMin: 540, endMin: 1140,
         stops: [stop(), stop({ segmentId: 2, startMin: 700, endMin: 760,
-          arriveBy: { minutes: 22, measured: true, mode: "walking" } })],
+          arriveBy: { minutes: 22, basis: "measured", mode: "walking" } })],
         dayTotal: { total: null, unknown: 2 } }],
     }), NOW);
-    expect(ics).toContain("X-TRIP-TRAVEL-MEASURED:TRUE");
+    // Three-valued since M12: a station-graph result and the bare constant
+    // used to serialise identically as MEASURED:FALSE, and they are not the
+    // same claim.
+    expect(ics).toContain("X-TRIP-TRAVEL-BASIS:MEASURED");
     expect(ics).toMatch(/22 min walking \(measured\)/);
   });
 });
@@ -145,18 +148,22 @@ describe("GeoJSON", () => {
     expect(p.geometry.coordinates[1]).toBeCloseTo(29.565, 2);
   });
 
-  test("each hop is a LineString carrying measured as a BOOLEAN", () => {
+  test("each hop is a LineString carrying basis as a known enum string", () => {
     const g = JSON.parse(renderGeoJson(view({
       days: [{ day: 1, date: "2026-09-01", weekday: "tue", startMin: 540, endMin: 1140,
         stops: [stop(), stop({ segmentId: 2, latitude: 29.5537638, longitude: 106.5368476,
           startMin: 700, endMin: 760,
-          arriveBy: { minutes: 22, measured: true, mode: "walking" } })],
+          arriveBy: { minutes: 22, basis: "measured", mode: "walking" } })],
         dayTotal: { total: null, unknown: 2 } }],
     })));
     const hop = g.features.find((x: any) => x.properties.kind === "hop");
     expect(hop.geometry.type).toBe("LineString");
-    expect(hop.properties.measured).toBe(true);
-    expect(typeof hop.properties.measured).toBe("boolean");
+    // An ENUM, not prose. A map client must be able to branch on it without
+    // parsing English -- the same reason M10 made this a boolean rather than
+    // a sentence. M12 widened it to three values because a station-graph
+    // result and the bare straight-line constant are different claims.
+    expect(hop.properties.basis).toBe("measured");
+    expect(["measured", "osm-graph", "model"]).toContain(hop.properties.basis);
   });
 
   test("unknown price is null and free is 0", () => {

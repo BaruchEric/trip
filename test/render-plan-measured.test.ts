@@ -79,27 +79,28 @@ describe("the plan distinguishes measured hops from estimated ones", () => {
     expect(r.stdout.split("min walk").length - 1).toBe(1);
   });
 
-  test("--json carries measured as a BOOLEAN, never a string", async () => {
+  test("--json carries basis as a known enum string, never prose", async () => {
     const { db, path } = await tripDb("json");
     for (const l of BOTH_WAYS) await saveLeg(db, l);
     const r = await run(["plan", "--json"], { dbPath: path });
     const raw = r.stdout;
-    expect(raw).toContain('"measured":true');
-    expect(raw).not.toContain('"measured":"true"');
+    expect(raw).toContain('"basis":"measured"');
+    // An enum an agent can branch on, never a sentence.
+    expect(raw).not.toContain('"basis":"measured leg"');
     const j = JSON.parse(raw);
     const stops = j.days[0].placements;
     expect(stops[0].arriveBy).toBeNull();
     expect(stops[1].arriveBy.minutes).toBe(22);
-    expect(stops[1].arriveBy.measured).toBe(true);
+    expect(stops[1].arriveBy.basis).toBe("measured");
   });
 
-  test("--json without any leg says measured false rather than omitting it", async () => {
+  test("--json without any leg names the basis rather than omitting it", async () => {
     // An absent field would make the agent infer from silence, which is the
     // thing M2-2 exists to prevent.
     const { path } = await tripDb("jsonnone");
     const r = await run(["plan", "--json"], { dbPath: path });
     const j = JSON.parse(r.stdout);
-    expect(j.days[0].placements[1].arriveBy.measured).toBe(false);
+    expect(j.days[0].placements[1].arriveBy.basis).toBe("model");
   });
 
   test("transit finds no legs and every hop stays estimated", async () => {

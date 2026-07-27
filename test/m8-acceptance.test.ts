@@ -132,14 +132,14 @@ describe("M8 acceptance: a measured leg beats a straight line", () => {
   test("a moved segment falls back to the model", () => {
     const t = withLegs(legsFor("Testbed 2", "Liziba"));
     const moved = { latitude: 29.56, longitude: 106.54 };
-    expect(t.estimate(P("Testbed 2"), moved, "walking").measured).toBe(false);
+    expect(t.estimate(P("Testbed 2"), moved, "walking").basis).not.toBe("measured");
   });
 
   test("a hop with no leg is unchanged from M7 -- the control", () => {
     // Without this, every test above proves only that the lookup runs.
     const t = withLegs(legsFor("Testbed 2", "Liziba"));
     const [A, B] = [P("Hongya Cave"), P("Luohan Temple")];
-    expect(t.estimate(A, B, "walking").measured).toBe(false);
+    expect(t.estimate(A, B, "walking").basis).not.toBe("measured");
     expect(t.minutes(A, B, "walking")).toBe(modelOnly().minutes(A, B, "walking"));
   });
 
@@ -149,7 +149,7 @@ describe("M8 acceptance: a measured leg beats a straight line", () => {
     // rather than left as a paragraph in a spec.
     const t = withLegs(legsFor("Testbed 2", "Liziba"));
     const [A, B] = [P("Testbed 2"), P("Liziba")];
-    expect(t.estimate(A, B, "transit").measured).toBe(false);
+    expect(t.estimate(A, B, "transit").basis).not.toBe("measured");
     expect(t.minutes(A, B, "transit")).toBe(modelOnly().minutes(A, B, "transit"));
   });
 });
@@ -203,14 +203,14 @@ describe("M8 cross-command consistency", () => {
 
     const planned = JSON.parse((await run(["plan", "--json"], { dbPath: path })).stdout);
     const hops = planned.days.flatMap(
-      (d: { placements: { arriveBy: { measured: boolean } | null }[] }) =>
+      (d: { placements: { arriveBy: { basis: string } | null }[] }) =>
         d.placements.map((p) => p.arriveBy).filter(Boolean),
     );
     // Every pair was routed, so every hop the plan takes must be measured.
     // A single "estimated" here means the two commands disagree about the
     // same database.
     expect(hops.length).toBe(2);
-    expect(hops.every((h: { measured: boolean }) => h.measured)).toBe(true);
+    expect(hops.every((h: { basis: string }) => h.basis === "measured")).toBe(true);
   });
 
   test("trip plan and trip day describe the same hops", async () => {

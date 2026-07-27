@@ -132,7 +132,7 @@ describe("buildExportView", () => {
 
     const before = await buildExportView(db);
     const hopBefore = before.days.flatMap((d) => d.stops).find((s) => s.arriveBy)!;
-    expect(hopBefore.arriveBy!.measured).toBe(false);
+    expect(hopBefore.arriveBy!.basis).not.toBe("measured");
 
     for (const [f, t] of [[HONGYA, LUOHAN], [LUOHAN, HONGYA]] as const) {
       await saveLeg(db, {
@@ -143,7 +143,7 @@ describe("buildExportView", () => {
     }
     const after = await buildExportView(db);
     const hopAfter = after.days.flatMap((d) => d.stops).find((s) => s.arriveBy)!;
-    expect(hopAfter.arriveBy!.measured).toBe(true);
+    expect(hopAfter.arriveBy!.basis).toBe("measured");
     expect(hopAfter.arriveBy!.minutes).toBe(9);
   });
 

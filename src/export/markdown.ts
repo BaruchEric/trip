@@ -1,5 +1,6 @@
 import { formatClock } from "@/parse";
 import type { ExportView, ExportStop } from "@/export/view";
+import { basisWord } from "@/plan/travel";
 
 /** The complete record.
  *
@@ -49,7 +50,7 @@ export function renderMarkdownExport(v: ExportView): string {
         // "(estimated)" is a loud absence: no measured leg exists for this
         // directed hop, so the number came from a straight line.
         out.push(`| | _→ ${s.arriveBy.minutes} min ${s.arriveBy.mode}` +
-          ` (${s.arriveBy.measured ? "measured" : "estimated"})_ | | |`);
+          ` (${basisWord(s.arriveBy.basis)})_ | | |`);
       }
       out.push(stopLine(s, v.currency));
     }
