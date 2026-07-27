@@ -356,4 +356,48 @@ describe("schema migrations", () => {
     // no honest value to invent for the new column.
     expect(row.rows[0]!.pin_start_minutes).toBeNull();
   });
+
+  test("migration 6 creates the video-source tables", async () => {
+    const db = openDb(tmpDb("m6-tables"));
+    await migrate(db);
+    for (const table of ["sources", "mentions", "mention_candidates"]) {
+      const r = await db.execute({
+        sql: `SELECT name FROM sqlite_master WHERE type='table' AND name=?`,
+        args: [table],
+      });
+      expect(r.rows.length).toBe(1);
+    }
+  });
+
+  test("migration 6 adds provenance columns to segments", async () => {
+    const db = openDb(tmpDb("m6-cols"));
+    await migrate(db);
+    const r = await db.execute(`PRAGMA table_info(segments)`);
+    const names = r.rows.map((row) => String(row.name));
+    expect(names).toContain("local_name");
+    expect(names).toContain("source_id");
+    expect(names).toContain("source_at_seconds");
+    expect(names).toContain("dwell_is_default");
+  });
+
+  test("one video cannot be watched twice into the same trip", async () => {
+    const db = openDb(tmpDb("m6-unique"));
+    await migrate(db);
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["lisbon", "2026-07-27"],
+    });
+    const ins = {
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+    };
+    await db.execute(ins);
+    await expect(db.execute(ins)).rejects.toThrow();
+  });
+
+  test("schema version is 6", async () => {
+    const db = openDb(tmpDb("m6-version"));
+    await migrate(db);
+    expect(await schemaVersion(db)).toBe(6);
+  });
 });

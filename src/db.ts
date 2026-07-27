@@ -194,6 +194,89 @@ const MIGRATIONS: Migration[] = [
         ? []
         : [`ALTER TABLE placements ADD COLUMN pin_start_minutes INTEGER`],
   },
+  {
+    version: 6,
+    // M3: video sources and the review queue.
+    //
+    // A mention deliberately lives OUTSIDE `segments`. The alternative --
+    // segments.status = 'review' -- makes "an unresolved guess reached the
+    // itinerary" a filter every reader must remember, and `segments.status`
+    // is currently written by its schema default and read by NOTHING, so that
+    // reading would have silently planned review items from day one. Keeping
+    // mentions in their own table makes it structurally impossible instead:
+    // the compiler reads `segments`, and a pending mention has no segment row.
+    //
+    // `segments.status` stays (migration 4 is frozen) and is hereby confirmed
+    // dead rather than left looking meaningful.
+    statements: async (db) =>
+      (await hasColumn(db, "segments", "local_name"))
+        ? []
+        : [
+            `CREATE TABLE IF NOT EXISTS sources (
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               trip_id INTEGER NOT NULL REFERENCES trips(id),
+               url TEXT NOT NULL,
+               -- NULL means yt-dlp did not report it. Never "".
+               title TEXT,
+               uploader TEXT,
+               duration_seconds INTEGER,
+               -- NULL means NO transcript was obtained. An empty transcript and
+               -- an absent one are different facts and ingest treats them
+               -- differently, so this must never be defaulted to ''.
+               transcript TEXT,
+               transcript_source TEXT,
+               fetched_at TEXT NOT NULL,
+               -- Re-watching a URL reuses the cached row; only --refresh
+               -- re-downloads. Without this, every re-run re-fetched the video.
+               UNIQUE (trip_id, url)
+             )`,
+            `CREATE TABLE IF NOT EXISTS mentions (
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               trip_id INTEGER NOT NULL REFERENCES trips(id),
+               source_id INTEGER NOT NULL REFERENCES sources(id),
+               -- What the video called it. Written once, never updated: a
+               -- segment must trace back to what was said at its minute mark.
+               text TEXT NOT NULL,
+               -- NULL until someone renames. --rename must NOT overwrite
+               -- text, because a mention gets renamed precisely when text
+               -- was useless ("that ramen spot"). Segment name is
+               -- COALESCE(resolved_name, text) -- both facts kept.
+               resolved_name TEXT,
+               -- NULL means the extractor gave no timestamp. Not 0, which is
+               -- the first frame of the video.
+               at_seconds INTEGER,
+               -- NULL means the extractor proposed no dwell. The 60-minute
+               -- default is applied at segment creation and flagged THERE.
+               -- Storing 60 here would erase the fact that nobody said so.
+               dwell_minutes INTEGER,
+               tags TEXT NOT NULL DEFAULT '',
+               -- Why it is queued. NULL once resolved.
+               reason TEXT,
+               segment_id INTEGER REFERENCES segments(id),
+               rejected_at TEXT
+             )`,
+            `CREATE TABLE IF NOT EXISTS mention_candidates (
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               mention_id INTEGER NOT NULL REFERENCES mentions(id),
+               -- 1-based, exactly as review resolve --pick=N takes it.
+               rank INTEGER NOT NULL,
+               display_name TEXT NOT NULL,
+               local_name TEXT,
+               latitude REAL NOT NULL,
+               longitude REAL NOT NULL,
+               category TEXT,
+               type TEXT,
+               importance REAL,
+               osm_type TEXT,
+               osm_id INTEGER,
+               km_from_centre REAL NOT NULL
+             )`,
+            `ALTER TABLE segments ADD COLUMN local_name TEXT`,
+            `ALTER TABLE segments ADD COLUMN source_id INTEGER REFERENCES sources(id)`,
+            `ALTER TABLE segments ADD COLUMN source_at_seconds INTEGER`,
+            `ALTER TABLE segments ADD COLUMN dwell_is_default INTEGER NOT NULL DEFAULT 0`,
+          ],
+  },
 ];
 
 /** The version a freshly migrated database lands on. Derived, never hand-set. */
