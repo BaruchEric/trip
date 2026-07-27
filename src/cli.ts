@@ -51,12 +51,27 @@ export interface CliResult {
 /** Injection point for the two commands that reach the network by default
  *  (`watch`, which downloads a video, and `review resolve --rename`, which
  *  re-geocodes). Nothing else needs one: every other command is pure CLI +
- *  DB. Without this, a cross-command test driving the CLI through `run()`
- *  end-to-end had no way to exercise `watch`/`review` without either hitting
- *  Nominatim/yt-dlp for real or calling `runWatchCommand`/`runReviewCommand`
- *  directly — which is exactly the module-level shortcut a *cross-command*
- *  test exists to avoid. Additive and optional, mirroring `dbPath`: existing
- *  callers of `run()` pass nothing and get today's behaviour unchanged. */
+ *  DB.
+ *
+ *  DELIBERATE DESIGN DECISION (Task 17), not scope creep: the M3 consistency
+ *  suite has to drive the CLI through `run(argv, { dbPath })` — that is what
+ *  makes it a *cross-command* test rather than a module test — while ALSO
+ *  using the same injected, no-network fixtures every per-command suite
+ *  already uses. Those two requirements are only jointly satisfiable if
+ *  `run()` can pass deps down; without this, `watch` would really invoke
+ *  yt-dlp and `review resolve --rename` would really hit Nominatim.
+ *
+ *  This completes an existing seam rather than inventing one:
+ *  `runWatchCommand`/`runReviewCommand` already accept an optional `deps`
+ *  argument (as does everything below them — `WatchRunner`, `IngestDeps`,
+ *  `geocode`), and `route()` was simply never handed one to forward. `CliDeps`
+ *  carries only those two existing, narrowly-typed shapes — it is not a
+ *  general-purpose escape hatch, and it does not touch either command's
+ *  signature (both were already `(db, argv, json, deps = {})`).
+ *
+ *  Additive and optional, mirroring `dbPath`: existing callers of `run()`
+ *  (the `import.meta.main` entry point below, and every pre-Task-17 test)
+ *  pass nothing and get today's behaviour unchanged. */
 export interface CliDeps {
   watch?: WatchCommandDeps;
   review?: ReviewDeps;
