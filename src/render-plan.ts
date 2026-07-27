@@ -3,6 +3,15 @@ import type { Segment } from "@/segments";
 import type { DayWindow } from "@/days";
 import type { Placement, Unplaced } from "@/plan/types";
 
+/** The video's words, with OSM's local-script name beside them when it differs.
+ *  Both are kept: `name` is what the traveller recognises, `localName` is what
+ *  you show a taxi driver in a country whose script you do not read. */
+function displayName(s: { name: string; localName?: string | null }): string {
+  return s.localName && s.localName !== s.name
+    ? `${s.name} (${s.localName})`
+    : s.name;
+}
+
 /** Human rendering for the segment library and the compiled plan. Returns
  *  strings — printing belongs to cli.ts alone. */
 export function renderSegmentList(segments: Segment[]): string {
@@ -10,6 +19,9 @@ export function renderSegmentList(segments: Segment[]): string {
   for (const s of segments) {
     const dur = `${s.dwellMinutes}m`.padStart(5);
     const marks: string[] = [];
+    // The 60-minute fallback is a guess, so it is labelled. NOT "?" — that
+    // already means unknown opening hours on this same line.
+    if (s.dwellIsDefault) marks.push("[default]");
     if (s.latitude === null) marks.push("no coords");
     // A bare "?" is how unknown hours stay visible without pretending to a
     // value (M2-2).
@@ -24,7 +36,7 @@ export function renderSegmentList(segments: Segment[]): string {
     else marks.push(`${formatClock(s.opensMin)}-${s.closesMin === null ? "?" : formatClock(s.closesMin)}`);
     if (s.closedDays.length > 0) marks.push(`closed ${s.closedDays.join(",")}`);
     if (s.tags.length > 0) marks.push(`[${s.tags.join(",")}]`);
-    lines.push(`  ${String(s.id).padStart(2)} ${dur}   ${s.name}  ${marks.join("  ")}`);
+    lines.push(`  ${String(s.id).padStart(2)} ${dur}   ${displayName(s)}  ${marks.join("  ")}`);
   }
   return lines.join("\n");
 }
@@ -64,7 +76,7 @@ export function renderDay(
       // with no sign anything was omitted). The unplaced trailer below
       // already degrades honestly to `#<id>` for a segment it can't name;
       // match that instead of vanishing the line.
-      const name = s?.name ?? `#${p.segmentId}`;
+      const name = s ? displayName(s) : `#${p.segmentId}`;
       const dwell = s?.dwellMinutes ?? p.endMin - p.startMin;
       const marks: string[] = [];
       // Unknown hours are marked, never hidden. This is the visible half of
@@ -72,6 +84,7 @@ export function renderDay(
       // are known is itself unknowable for a segment lookup failed, so no
       // mark is added rather than guessing either way.
       if (s && s.opensMin === null) marks.push("?");
+      if (s?.dwellIsDefault) marks.push("[default]");
       if (p.pinned) marks.push("pinned");
       lines.push(
         `  ${formatClock(p.startMin)} ${name.padEnd(28)}` +

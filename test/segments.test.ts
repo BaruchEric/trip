@@ -1,6 +1,7 @@
 import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
-import { addSegment, listSegments, removeSegment } from "@/segments";
+import { addSegment, listSegments, removeSegment, setSegmentDwell } from "@/segments";
+import { createMention, resolveMention, getMention } from "@/mentions";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -82,9 +83,25 @@ describe("segments", () => {
 
   test("removing another trip's segment does nothing", async () => {
     const db = await freshDb("rm-scope");
-    const id = await addSegment(db, 1, FULL);
+    await db.execute({
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+    });
+    const mentionId = await createMention(db, 1, 1, {
+      text: "Hongya Cave", atSeconds: 272, dwellMinutes: null, tags: [],
+    });
+    const id = await addSegment(db, 1, { ...FULL, sourceId: 1 });
+    await resolveMention(db, mentionId, id);
+
     expect(await removeSegment(db, 2, id)).toBe(false);
     expect(await listSegments(db, 1)).toHaveLength(1);
+    // A no-op removal must not touch the mention either. The ownership check
+    // has to run BEFORE unlinkSegment, or a wrong-trip removeSegment call —
+    // one that correctly refuses to delete the segment — would still bump
+    // another trip's resolved mention back onto the review queue.
+    const m = (await getMention(db, 1, mentionId))!;
+    expect(m.state).toBe("resolved");
+    expect(m.segmentId).toBe(id);
   });
 
   test("a tag containing a comma cannot forge two tags", async () => {
@@ -228,5 +245,45 @@ describe("segments", () => {
     const fromVideo = await listSegments(db, 1, { sourceId: 1 });
     expect(fromVideo.length).toBe(1);
     expect(fromVideo[0]!.name).toBe("From video");
+  });
+
+  test("removing a video-sourced segment returns its mention to the queue", async () => {
+    const db = await freshDb("rm-requeue");
+    await db.execute({
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+    });
+    const mentionId = await createMention(db, 1, 1, {
+      text: "Hongya Cave", atSeconds: 272, dwellMinutes: null, tags: [],
+    });
+    const segId = await addSegment(db, 1, { ...FULL, sourceId: 1 });
+    await resolveMention(db, mentionId, segId);
+
+    expect(await removeSegment(db, 1, segId)).toBe(true);
+    const m = (await getMention(db, 1, mentionId))!;
+    // A place the video mentioned does not stop having been mentioned.
+    expect(m.state).toBe("pending");
+    expect(m.reason).toBe("segment deleted");
+    expect(m.segmentId).toBeNull();
+  });
+
+  test("setSegmentDwell replaces a defaulted dwell and clears the flag", async () => {
+    const db = await freshDb("set-dwell");
+    const id = await addSegment(db, 1, { ...FULL, dwellMinutes: 60, dwellIsDefault: true });
+    expect(await setSegmentDwell(db, 1, id, 75)).toBe(true);
+    const [seg] = await listSegments(db, 1);
+    expect(seg!.dwellMinutes).toBe(75);
+    expect(seg!.dwellIsDefault).toBe(false);
+  });
+
+  test("setSegmentDwell will not reach into another trip", async () => {
+    const db = await freshDb("set-dwell-scope");
+    const id = await addSegment(db, 1, FULL);
+    await db.execute({
+      sql: `INSERT INTO trips (name, created_at) VALUES (?, ?)`,
+      args: ["other", "2026-07-27"],
+    });
+    expect(await setSegmentDwell(db, 2, id, 75)).toBe(false);
+    expect((await listSegments(db, 1))[0]!.dwellMinutes).toBe(90);
   });
 });

@@ -2,7 +2,7 @@ import { expect, test, describe } from "bun:test";
 import { openDb, migrate } from "@/db";
 import { createTrip, setActiveTrip } from "@/trips";
 import { runSegmentsCommand } from "@/commands/segments";
-import { listSegments } from "@/segments";
+import { addSegment, listSegments } from "@/segments";
 import { rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -178,5 +178,45 @@ describe("trip seg rm", () => {
   test("a non-numeric id is rejected", async () => {
     const db = await freshDb("rmbad");
     await expect(runSegmentsCommand(db, ["rm", "abc"], false)).rejects.toThrow(/id/i);
+  });
+});
+
+describe("trip seg set", () => {
+  test("seg set --dur updates the dwell", async () => {
+    const db = await freshDb("cmd-set");
+    await runSegmentsCommand(db, ["add", "Museum", "--dur=60m"], false);
+    const out = await runSegmentsCommand(db, ["set", "1", "--dur=2h"], false);
+    expect(out).toContain("120m");
+    expect((await listSegments(db, 1))[0]!.dwellMinutes).toBe(120);
+  });
+
+  test("seg set requires --dur", async () => {
+    const db = await freshDb("cmd-set-nodur");
+    await runSegmentsCommand(db, ["add", "Museum", "--dur=60m"], false);
+    await expect(runSegmentsCommand(db, ["set", "1"], false)).rejects.toThrow(/--dur/);
+  });
+
+  test("seg set on an unknown id says so", async () => {
+    const db = await freshDb("cmd-set-missing");
+    await expect(runSegmentsCommand(db, ["set", "42", "--dur=1h"], false)).rejects.toThrow(/42/);
+  });
+});
+
+describe("trip seg ls --from", () => {
+  test("seg ls --from scopes to one video", async () => {
+    const db = await freshDb("cmd-from");
+    await db.execute({
+      sql: `INSERT INTO sources (trip_id, url, fetched_at) VALUES (?, ?, ?)`,
+      args: [1, "https://youtu.be/x", "2026-07-27T00:00:00Z"],
+    });
+    await runSegmentsCommand(db, ["add", "By hand", "--dur=60m"], false);
+    await addSegment(db, 1, {
+      name: "From video", latitude: 1, longitude: 1, dwellMinutes: 60,
+      cost: null, tags: [], opensMin: null, closesMin: null, closedDays: [],
+      sourceId: 1,
+    });
+    const out = JSON.parse(await runSegmentsCommand(db, ["ls", "--from=1"], true));
+    expect(out.segments.length).toBe(1);
+    expect(out.segments[0].name).toBe("From video");
   });
 });

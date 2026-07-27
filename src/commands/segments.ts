@@ -1,6 +1,6 @@
 import type { Client } from "@libsql/client";
 import { getActiveTrip } from "@/trips";
-import { addSegment, listSegments, removeSegment } from "@/segments";
+import { addSegment, listSegments, removeSegment, setSegmentDwell } from "@/segments";
 import { readPlacements } from "@/placements";
 import { parseClock, parseCoords, parseDuration, parseWeekdays } from "@/parse";
 import { renderSegmentList } from "@/render-plan";
@@ -8,7 +8,8 @@ import { renderSegmentList } from "@/render-plan";
 const USAGE =
   "usage: trip seg add <name> --dur=<90m> [--cost=25] [--tag=food] " +
   "[--at=lat,lon] [--hours=HH:MM-HH:MM] [--closed=mon,tue]\n" +
-  "       trip seg ls [--tag=food] [--unplaced]\n" +
+  "       trip seg ls [--tag=food] [--unplaced] [--from=<source-id>]\n" +
+  "       trip seg set <id> --dur=<90m>\n" +
   "       trip seg rm <id>";
 
 function flag(argv: string[], name: string): string | null {
@@ -34,6 +35,7 @@ export async function runSegmentsCommand(
   if (sub === "add") return addCmd(db, trip.id, rest, json);
   if (sub === "ls") return lsCmd(db, trip.id, rest, json);
   if (sub === "rm") return rmCmd(db, trip.id, rest, json);
+  if (sub === "set") return setCmd(db, trip.id, rest, json);
   throw new Error(USAGE);
 }
 
@@ -108,7 +110,12 @@ async function addCmd(
 async function lsCmd(
   db: Client, tripId: number, argv: string[], json: boolean,
 ): Promise<string> {
-  let segments = await listSegments(db, tripId);
+  const fromRaw = flag(argv, "--from");
+  if (fromRaw !== null && !Number.isInteger(Number(fromRaw))) {
+    throw new Error(`invalid --from "${fromRaw}" (expected a source id)`);
+  }
+  let segments = await listSegments(db, tripId,
+    fromRaw === null ? {} : { sourceId: Number(fromRaw) });
 
   const tag = flag(argv, "--tag");
   if (tag !== null) segments = segments.filter((s) => s.tags.includes(tag));
@@ -134,4 +141,23 @@ async function rmCmd(
   const removed = await removeSegment(db, tripId, id);
   if (!removed) throw new Error(`no segment #${id} in this trip`);
   return json ? JSON.stringify({ removed: id }) : `removed #${id}`;
+}
+
+async function setCmd(
+  db: Client, tripId: number, argv: string[], json: boolean,
+): Promise<string> {
+  const raw = argv[0];
+  const id = Number(raw);
+  if (!raw || !Number.isInteger(id)) {
+    throw new Error(`invalid segment id "${raw ?? ""}"`);
+  }
+  const durRaw = flag(argv, "--dur");
+  if (durRaw === null) throw new Error("--dur is required (e.g. --dur=90m)");
+  const dwellMinutes = parseDuration(durRaw);
+
+  const updated = await setSegmentDwell(db, tripId, id, dwellMinutes);
+  if (!updated) throw new Error(`no segment #${id} in this trip`);
+  return json
+    ? JSON.stringify({ id, dwellMinutes })
+    : `#${id} now ${dwellMinutes}m`;
 }

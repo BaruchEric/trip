@@ -94,3 +94,41 @@ describe("renderSegmentList: known open time with unknown close time (F7)", () =
     expect(out).toContain("09:00-18:00");
   });
 });
+
+describe("renderSegmentList: local name and defaulted dwell", () => {
+  test("a local name is shown beside the video's words, not instead of them", () => {
+    const out = renderSegmentList([
+      seg(1, { name: "Hongya Cave", localName: "洪崖洞" }),
+    ]);
+    expect(out).toContain("Hongya Cave (洪崖洞)");
+  });
+
+  test("a segment with no local name renders unchanged", () => {
+    const out = renderSegmentList([seg(1, { name: "Time Out Market" })]);
+    expect(out).toContain("Time Out Market");
+    expect(out).not.toContain("(");
+  });
+
+  test("a defaulted dwell is marked, and not with the unknown-hours question mark", () => {
+    const out = renderSegmentList([seg(1, { dwellMinutes: 60, dwellIsDefault: true })]);
+    expect(out).toContain("[default]");
+    expect(out).not.toContain("60m?");
+  });
+
+  test("a supplied dwell carries no marker", () => {
+    expect(renderSegmentList([seg(1, { dwellMinutes: 90 })])).not.toContain("[default]");
+  });
+
+  test("the day view marks a defaulted dwell too", () => {
+    const out = renderDay(
+      DAY,
+      [place(1, 600, 660)],
+      new Map([[1, seg(1, {
+        name: "Hongya Cave", localName: "洪崖洞",
+        dwellMinutes: 60, dwellIsDefault: true,
+      })]]),
+    );
+    expect(out).toContain("[default]");
+    expect(out).toContain("(洪崖洞)");
+  });
+});

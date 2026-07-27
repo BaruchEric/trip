@@ -1,5 +1,6 @@
 import type { Client } from "@libsql/client";
 import { joinList, normalizeWeekday } from "@/validate";
+import { unlinkSegment } from "@/mentions";
 
 export interface Segment {
   id: number;
@@ -193,12 +194,40 @@ export async function removeSegment(
   });
   if (owned.rows.length === 0) return false;
 
+  // A mention pointing at this segment would otherwise dangle at a row that
+  // no longer exists. It goes back on the queue instead: the video still said
+  // this place, and silently losing that is the failure mode this codebase
+  // exists to avoid.
+  await unlinkSegment(db, id, "segment deleted");
+
   // Placements reference segments, so the derived row goes first to satisfy
   // the foreign key.
   await db.execute({ sql: `DELETE FROM placements WHERE segment_id = ?`, args: [id] });
   const r = await db.execute({
     sql: `DELETE FROM segments WHERE id = ? AND trip_id = ?`,
     args: [id, tripId],
+  });
+  return r.rowsAffected > 0;
+}
+
+/** Correct a dwell without delete-and-re-add. Clearing dwell_is_default is the
+ *  point: once a human or an agent has supplied a real number, it must stop
+ *  being rendered as the 60-minute guess. */
+export async function setSegmentDwell(
+  db: Client,
+  tripId: number,
+  id: number,
+  dwellMinutes: number,
+): Promise<boolean> {
+  if (!Number.isInteger(dwellMinutes) || dwellMinutes <= 0) {
+    throw new Error(
+      `invalid dwell ${dwellMinutes} (expected a positive whole number of minutes)`,
+    );
+  }
+  const r = await db.execute({
+    sql: `UPDATE segments SET dwell_minutes = ?, dwell_is_default = 0
+          WHERE id = ? AND trip_id = ?`,
+    args: [dwellMinutes, id, tripId],
   });
   return r.rowsAffected > 0;
 }
