@@ -1,19 +1,22 @@
 import type { Client } from "@libsql/client";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { DEFAULT_DB_PATH } from "@/db";
 import { getActiveTrip, type Trip } from "@/trips";
 import { getDestination } from "@/climate/cache";
 import { upsertSource, getSourceByUrl, latestSource, getSource } from "@/sources";
 import { listMentions, deleteUnresolvedMentions } from "@/mentions";
-import { runWatch } from "@/watch/run";
+import { runWatch, runFrames, type FramesResult } from "@/watch/run";
 import { parseMentionsFile, ingestMentions, type IngestDeps } from "@/watch/ingest";
 import { SEARCH_RADIUS_KM } from "@/geo/poi";
 import {
-  formatStamp, parseTranscriptLines, type WatchReport,
+  formatStamp, parseStamp, parseTranscriptLines, type WatchReport,
 } from "@/watch/parse-report";
 
 const USAGE =
   "usage: trip watch <url> [--refresh] [--whisper]\n" +
-  "       trip watch ingest --mentions=<file.json> [--source=<id>] [--replace]";
+  "       trip watch ingest --mentions=<file.json> [--source=<id>] [--replace]\n" +
+  "       trip watch frames <source-id> --from=MM:SS --to=MM:SS";
 
 function flag(argv: string[], name: string): string | null {
   const hit = argv.find((a) => a.startsWith(`${name}=`));
@@ -25,6 +28,16 @@ export interface WatchCommandDeps {
   now?: () => string;
   readFile?: (path: string) => string;
   ingestDeps?: IngestDeps;
+  /** Injected so tests never spawn python3. Mirrors runFrames with the
+   *  options already applied. */
+  framesFn?: (
+    url: string, outDir: string, from: string, to: string,
+    opts: { maxFrames: number; width: number },
+  ) => Promise<FramesResult>;
+  /** Where frame directories live. Defaults to `<db dir>/frames`, threaded
+   *  from cli.ts — NOT hardcoded to ~/.trip, or every test and every scratch
+   *  run writes frames into the user's real home. */
+  framesRoot?: string;
 }
 
 export async function runWatchCommand(
@@ -37,6 +50,7 @@ export async function runWatchCommand(
   if (!trip) throw new Error("no active trip - run `trip use <name>` first");
 
   if (argv[0] === "ingest") return ingestCmd(db, trip, argv.slice(1), json, deps);
+  if (argv[0] === "frames") return framesCmd(db, trip, argv.slice(1), json, deps);
 
   const url = argv.find((a) => !a.startsWith("--"));
   if (url === undefined) throw new Error(USAGE);
@@ -255,4 +269,94 @@ async function ingestCmd(
   }
   if (result.queued + result.failed > 0) lines.push("", "run: trip review ls");
   return lines.join("\n");
+}
+
+
+/** `19:25` -> `19-25`. A colon is legal in a POSIX filename but breaks on
+ *  Windows and reads badly inside a path; the window still round-trips by
+ *  eye, which is what makes the directory name a usable cache key. */
+function windowSlug(from: string, to: string): string {
+  return `${from}_${to}`.replace(/:/g, "-");
+}
+
+function framesHint(): string[] {
+  return [
+    "",
+    "read them, then feed what you learn back with:",
+    "  trip watch ingest --mentions=<file.json>       (places, prices)",
+    "  trip costs add <label> --amount= --currency=   (an on-screen budget)",
+  ];
+}
+
+async function framesCmd(
+  db: Client, trip: Trip, argv: string[], json: boolean, deps: WatchCommandDeps,
+): Promise<string> {
+  const idRaw = argv.find((a) => !a.startsWith("--"));
+  if (!idRaw || !/^\d+$/.test(idRaw)) {
+    throw new Error(
+      "usage: trip watch frames <source-id> --from=MM:SS --to=MM:SS " +
+      "[--max=12] [--width=900] [--refresh]",
+    );
+  }
+  const from = flag(argv, "--from");
+  const to = flag(argv, "--to");
+  // BOTH required. A frames call with no window is the blanket pass the
+  // design rejected, and the cost stops being a deliberate choice.
+  if (from === null) throw new Error("--from is required (e.g. --from=19:25)");
+  if (to === null) throw new Error("--to is required (e.g. --to=20:20)");
+  // Parsed only to validate -- watch.py takes the strings. parseStamp throws
+  // naming the offending value, which is exactly the message wanted here.
+  parseStamp(from);
+  parseStamp(to);
+
+  const id = Number(idRaw);
+  const source = await getSource(db, trip.id, id);
+  // Checked BEFORE extraction, the same reasoning as the destination check
+  // on the watch path: minutes of download is the expensive place to find out.
+  if (!source) throw new Error(`no source #${id} on this trip`);
+
+  const root = deps.framesRoot ?? join(dirname(DEFAULT_DB_PATH), "frames");
+  const dir = join(root, String(id), windowSlug(from, to));
+  const frameDir = join(dir, "frames");
+
+  if (!argv.includes("--refresh") && existsSync(frameDir)) {
+    const cached = readdirSync(frameDir).filter((f) => f.endsWith(".jpg")).sort();
+    if (cached.length > 0) {
+      const files = cached.map((f) => join(frameDir, f));
+      if (json) return JSON.stringify({ dir: frameDir, files, cached: true });
+      return [
+        `${files.length} frame${files.length === 1 ? "" : "s"} already extracted ` +
+        `for ${from}-${to}:`,
+        ...files.map((f) => `  ${f}`),
+        ...framesHint(),
+        "",
+        "re-extract with --refresh",
+      ].join("\n");
+    }
+  }
+
+  const maxRaw = flag(argv, "--max");
+  const widthRaw = flag(argv, "--width");
+  const maxFrames = maxRaw === null ? 12 : Number(maxRaw);
+  const width = widthRaw === null ? 900 : Number(widthRaw);
+  if (!Number.isInteger(maxFrames) || maxFrames < 1) {
+    throw new Error(`invalid --max "${maxRaw}" (expected a whole number >= 1)`);
+  }
+  if (!Number.isInteger(width) || width < 1) {
+    throw new Error(`invalid --width "${widthRaw}" (expected a whole number >= 1)`);
+  }
+
+  const run = deps.framesFn ??
+    ((url, outDir, f, t, o) => runFrames(url, outDir, f, t, o));
+  const result = await run(source.url, dir, from, to, { maxFrames, width });
+
+  if (json) {
+    return JSON.stringify({ dir: result.dir, files: result.files, cached: false });
+  }
+  return [
+    `${result.files.length} frame${result.files.length === 1 ? "" : "s"} ` +
+    `for ${from}-${to}:`,
+    ...result.files.map((f) => `  ${f}`),
+    ...framesHint(),
+  ].join("\n");
 }

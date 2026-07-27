@@ -6,7 +6,8 @@ import { listMentions } from "@/mentions";
 import { listSegments } from "@/segments";
 import { SEARCH_RADIUS_KM } from "@/geo/poi";
 import type { WatchReport } from "@/watch/parse-report";
-import { rmSync, writeFileSync } from "node:fs";
+import { rmSync, writeFileSync, mkdtempSync, mkdirSync } from "node:fs";
+import { runFrames } from "@/watch/run";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -406,5 +407,146 @@ describe("trip watch ingest", () => {
     );
     expect(out).toMatchObject({ geocoded: 0, queued: 0, failed: 1 });
     expect(out.searchRadiusKm).toBe(SEARCH_RADIUS_KM);
+  });
+});
+
+describe("trip watch frames", () => {
+  /** db1 + a source row, which only exists once a watch has run. */
+  async function withSource(tag: string) {
+    const db = await db1(tag);
+    await runWatchCommand(db, [URL], false, deps);
+    return db;
+  }
+
+  function tmpRoot(tag: string): string {
+    return mkdtempSync(join(tmpdir(), `trip-framesroot-${tag}-`));
+  }
+
+  test("extracts a window and prints the directory and files", async () => {
+    const db = await withSource("frames-ok");
+    const root = tmpRoot("ok");
+    const out = await runWatchCommand(
+      db, ["frames", "1", "--from=19:25", "--to=20:20"], false,
+      {
+        framesRoot: root,
+        framesFn: async () => ({
+          dir: `${root}/1/19-25_20-20/frames`,
+          files: [`${root}/1/19-25_20-20/frames/frame_0001.jpg`],
+        }),
+      },
+    );
+    expect(out).toContain("1 frame");
+    expect(out).toContain("frame_0001.jpg");
+    // The agent has to be told what to do next, or the command is a dead end
+    // that produced files nobody knows how to feed back.
+    expect(out).toMatch(/read them/i);
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  test("--from and --to are BOTH required", async () => {
+    // Without a window this is the blanket pass the design rejected, and the
+    // cost stops being a deliberate choice.
+    const db = await withSource("frames-nowindow");
+    await expect(runWatchCommand(db, ["frames", "1"], false, {}))
+      .rejects.toThrow(/--from/);
+    await expect(runWatchCommand(db, ["frames", "1", "--from=1:00"], false, {}))
+      .rejects.toThrow(/--to/);
+  });
+
+  test("a source the trip does not have is refused BEFORE any extraction", async () => {
+    const db = await withSource("frames-nosource");
+    let called = false;
+    await expect(runWatchCommand(
+      db, ["frames", "9", "--from=0:00", "--to=1:00"], false,
+      { framesFn: async () => { called = true; throw new Error("should not run"); } },
+    )).rejects.toThrow(/9/);
+    expect(called).toBe(false);
+  });
+
+  test("a malformed window is rejected, naming the value", async () => {
+    const db = await withSource("frames-badwindow");
+    await expect(runWatchCommand(
+      db, ["frames", "1", "--from=banana", "--to=1:00"], false, {},
+    )).rejects.toThrow(/banana/);
+  });
+
+  test("a non-numeric --max is rejected", async () => {
+    const db = await withSource("frames-badmax");
+    await expect(runWatchCommand(
+      db, ["frames", "1", "--from=0:00", "--to=1:00", "--max=lots"], false, {},
+    )).rejects.toThrow(/--max/);
+  });
+
+  test("--refresh re-extracts over a cached window", async () => {
+    const db = await withSource("frames-refresh");
+    const root = tmpRoot("refresh");
+    let calls = 0;
+    const framesFn = async (_u: string, dir: string) => {
+      calls++;
+      mkdirSync(join(dir, "frames"), { recursive: true });
+      writeFileSync(join(dir, "frames", "frame_0001.jpg"), "jpeg");
+      return { dir: join(dir, "frames"), files: [join(dir, "frames", "frame_0001.jpg")] };
+    };
+    await runWatchCommand(db, ["frames", "1", "--from=0:00", "--to=1:00"], false,
+      { framesRoot: root, framesFn });
+    await runWatchCommand(db, ["frames", "1", "--from=0:00", "--to=1:00", "--refresh"], false,
+      { framesRoot: root, framesFn });
+    expect(calls).toBe(2);
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  test("json returns the paths, not prose", async () => {
+    const db = await withSource("frames-json");
+    const root = tmpRoot("json");
+    const out = await runWatchCommand(
+      db, ["frames", "1", "--from=0:00", "--to=1:00"], true,
+      {
+        framesRoot: root,
+        framesFn: async () => ({ dir: "/d/frames", files: ["/d/frames/frame_0001.jpg"] }),
+      },
+    );
+    expect(JSON.parse(out).files).toEqual(["/d/frames/frame_0001.jpg"]);
+    rmSync(root, { recursive: true, force: true });
+  });
+
+  test("the cache hits against the REAL runFrames and a stub script", async () => {
+    // The fakes above cannot check this: they write where the cache looks
+    // because the same person wrote both halves. This drives the real
+    // runFrames, so the write location and the read location have to agree
+    // for real -- and if they ever disagreed, the cache would silently never
+    // hit and every call would re-extract at full cost, looking like it
+    // worked.
+    const root = tmpRoot("realcache");
+    const script = join(root, "stub.py");
+    writeFileSync(script, [
+      "import sys, os",
+      "out = sys.argv[sys.argv.index('--out-dir') + 1]",
+      "os.makedirs(os.path.join(out, 'frames'), exist_ok=True)",
+      "open(os.path.join(out, 'frames', 'frame_0001.jpg'), 'w').write('jpeg')",
+      "print('ok')",
+    ].join("\n"));
+
+    const db = await withSource("frames-realcache");
+    const first = await runWatchCommand(
+      db, ["frames", "1", "--from=0:00", "--to=1:00"], false,
+      {
+        framesRoot: root,
+        framesFn: (url, dir, f, t, o) =>
+          runFrames(url, dir, f, t, { ...o, scriptPath: script }),
+      },
+    );
+    expect(first).toContain("frame_0001.jpg");
+
+    // A cache hit must never reach the extractor. This one throws if called.
+    const second = await runWatchCommand(
+      db, ["frames", "1", "--from=0:00", "--to=1:00"], false,
+      {
+        framesRoot: root,
+        framesFn: async () => { throw new Error("re-extracted"); },
+      },
+    );
+    expect(second).toMatch(/already/i);
+    expect(second).toContain("frame_0001.jpg");
+    rmSync(root, { recursive: true, force: true });
   });
 });

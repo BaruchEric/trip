@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 import type { Client } from "@libsql/client";
-import { openDb, migrate } from "@/db";
+import { openDb, migrate, DEFAULT_DB_PATH } from "@/db";
+import { join, dirname } from "node:path";
 import { runTripsCommand } from "@/commands/trips";
 import { runWhenCommand } from "@/commands/when";
 import { runDatesCommand } from "@/commands/dates";
@@ -39,6 +40,7 @@ Usage:
 
   trip watch <url>             Fetch a video transcript [--refresh] [--whisper]
   trip watch ingest            Geocode mentions --mentions=<file.json> [--replace]
+  trip watch frames <id>       Extract frames for a window --from=19:25 --to=20:20
   trip review ls               Mentions awaiting a decision
   trip review resolve <id>     --pick=<n> | --reject | --rename="Actual Name"
 
@@ -147,7 +149,11 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
   // the exact anti-pattern this file exists to prevent, for a brand-new flag.
   watch: {
     bool: ["--refresh", "--whisper", "--replace"],
-    value: ["--mentions", "--source"],
+    value: ["--mentions", "--source", "--from", "--to", "--max", "--width"],
+  },
+  "watch frames": {
+    bool: ["--refresh"],
+    value: ["--from", "--to", "--max", "--width"],
   },
   // No `"watch <url>"` key exists, and none can: `trip watch https://...`
   // takes a URL where `trip watch ingest` takes a subcommand, so it falls
@@ -260,6 +266,24 @@ const SUBCOMMAND_HELP: Record<string, string> = {
 
   Prices are derived at render time and stored nowhere, so this needs no
   replan. Totals simply change on the next command.
+`,
+  "watch frames": `trip watch frames <source-id> --from=19:25 --to=20:20
+                        [--max=12] [--width=900] [--refresh]
+
+  Extracts frames for ONE window of a video this trip already watched, and
+  prints where they are. trip never looks at them -- you do.
+
+  Use it when the transcript says something is on screen and does not say
+  what: "here is a budget breakdown", an unnamed viewpoint, a price card.
+  Measured on the Chongqing video, the whole budget lived in two frames of
+  19:25-20:20 and in no line of the transcript.
+
+  --from and --to are REQUIRED. A frames pass with no window is a blanket
+  pass over the whole video: far more expensive, and sampled too coarsely
+  to catch a card that is only up for a few seconds.
+
+  Frames are cached by window beside the database. A repeat call reuses
+  them; --refresh re-extracts.
 `,
   "review ls": `trip review ls [--source=<id>]
 
@@ -404,7 +428,18 @@ export async function run(
     await migrate(db);
 
     const [, ...args] = rest;
-    const output = await route(db, cmd, args, rest, json, opts.deps ?? {});
+    // Frames live beside the DATABASE, not in a hardcoded ~/.trip: the db
+    // path is already overridable (TRIP_TEST_DB), so hardcoding a home
+    // would make every test and scratch run write into the user's real one.
+    const deps: CliDeps = {
+      ...(opts.deps ?? {}),
+      watch: {
+        ...(opts.deps?.watch ?? {}),
+        framesRoot: opts.deps?.watch?.framesRoot
+          ?? join(dirname(opts.dbPath ?? DEFAULT_DB_PATH), "frames"),
+      },
+    };
+    const output = await route(db, cmd, args, rest, json, deps);
     return { stdout: output, stderr: "", code: 0 };
   } catch (err) {
     return fail(err instanceof Error ? err.message : String(err), json);
