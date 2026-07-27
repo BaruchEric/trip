@@ -45,7 +45,7 @@ export async function runWatchCommand(
 
   let report: WatchReport;
   let fromCache = false;
-  if (cached !== null && cached.transcript !== null && !refresh) {
+  if (cached !== null && !refresh) {
     fromCache = true;
     report = {
       title: cached.title,
@@ -53,9 +53,11 @@ export async function runWatchCommand(
       durationSeconds: cached.durationSeconds,
       transcriptSource: cached.transcriptSource,
       transcript: cached.transcript,
-      // Same grammar as the fresh path, so cached and freshly-watched runs
-      // return an identical shape rather than two nearly-identical ones.
-      lines: parseTranscriptLines(cached.transcript),
+      // A cached source with NO transcript is still a cache hit: the download
+      // really happened, and repeating it to rediscover the same absence is
+      // the cost this cache exists to avoid. Nothing to parse, so lines is
+      // empty rather than parsed — do not call parseTranscriptLines(null).
+      lines: cached.transcript === null ? [] : parseTranscriptLines(cached.transcript),
     };
   } else {
     const watchFn = deps.watchFn ??
@@ -96,9 +98,10 @@ export async function runWatchCommand(
     // and a re-run should not repeat it only to learn the same thing. But this
     // is still a failure — `ingest` has nothing to work from.
     throw new Error(
-      `no transcript available for ${url} (saved as source #${sourceId}). ` +
-      `The video has no captions; retry with --whisper if a Groq or OpenAI ` +
-      `key is set.`,
+      `no transcript available for ${url} (source #${sourceId}` +
+      `${fromCache ? ", from cache" : ""}). ` +
+      `The video has no captions; retry with --refresh --whisper if a Groq or ` +
+      `OpenAI key is set.`,
     );
   }
 

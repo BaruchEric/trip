@@ -130,6 +130,23 @@ describe("trip watch", () => {
     expect(s!.transcriptSource).toBe("captions");
   });
 
+  test("a second plain watch of a no-transcript video does not re-download", async () => {
+    const db = await db1("no-transcript-cached");
+    const empty: WatchReport = {
+      ...REPORT, transcript: null, transcriptSource: null, lines: [],
+    };
+    let calls = 0;
+    const counting = { ...deps, watchFn: async () => { calls += 1; return empty; } };
+
+    await expect(runWatchCommand(db, [URL], false, counting)).rejects.toThrow(/no transcript/i);
+    expect(calls).toBe(1);
+
+    // Second plain run: still fails, but from cache — the download is the
+    // expensive thing and it must not happen twice.
+    await expect(runWatchCommand(db, [URL], false, counting)).rejects.toThrow(/no transcript/i);
+    expect(calls).toBe(1);
+  });
+
   test("a trip with no destination is refused before anything is downloaded", async () => {
     const db = await db1("no-dest", false);
     let calls = 0;
