@@ -9,6 +9,7 @@ import { runPlanCommand } from "@/commands/plan";
 import { runWatchCommand, type WatchCommandDeps } from "@/commands/watch";
 import { runReviewCommand, type ReviewDeps } from "@/commands/review";
 import { runWhoCommand } from "@/commands/who";
+import { runPassCommand } from "@/commands/passes";
 
 export const USAGE = `trip - heat-aware trip planner
 
@@ -26,6 +27,8 @@ Usage:
   trip seg set <id> --dur=90m  Correct a segment's dwell time
   trip seg price <id>          Set concession prices --price=30 --price=65+:0
   trip seg rm <id>             Remove a segment
+  trip pass add <name>         Add a transport pass --days=2-4 --price=45
+  trip pass ls / rm <id>       List or remove passes
   trip plan                    Compile a day-by-day itinerary [--pace=] [--mode=]
   trip day <n>                 Show one day
   trip pin <seg> --day=<n>     Fix a segment in place [--at=HH:MM]
@@ -122,6 +125,11 @@ const COMMAND_FLAGS: Record<string, CommandFlags> = {
             "--closed", "--free-days"],
   },
   "seg price": { bool: ["--clear"], value: ["--price", "--cost"] },
+  // Fallback for a bare `trip pass`, and the union of the three below.
+  pass: { value: ["--days", "--price", "--cost"] },
+  "pass add": { value: ["--days", "--price", "--cost"] },
+  "pass ls": {},
+  "pass rm": {},
   "seg ls": { bool: ["--unplaced"], value: ["--from"] },
   "seg rm": {},
   "seg set": { value: ["--dur"] },
@@ -225,6 +233,23 @@ const SUBCOMMAND_HELP: Record<string, string> = {
   Every concession price is computed from this against THE DAY THE PLAN
   VISITS that place, so a birthday falling mid-trip prices correctly on
   both sides of itself.
+`,
+  "pass add": `trip pass add <name...> --days=2-4 --price=45 [--price=65+:0]
+
+  A pass is priced exactly like a segment -- the same age-range rules, so a
+  senior transit discount needs no new concept -- but it is counted ONCE per
+  traveller and reported on its own line.
+
+  It is deliberately NOT spread across the days it covers. No single day
+  costs a third of a three-day pass, and an average is not a fact.
+
+  --days takes 1-based day numbers, not dates, so it survives re-dating the
+  trip. The range is checked against the trip's length when dates are set,
+  and stored unchecked when they are not.
+`,
+  "pass rm": `trip pass rm <id>
+
+  Removes the pass and its price rules together.
 `,
   "who rm": `trip who rm <label>
 
@@ -394,6 +419,7 @@ async function route(
   if (cmd === "watch") return runWatchCommand(db, args, json, deps.watch);
   if (cmd === "review") return runReviewCommand(db, args, json, deps.review);
   if (cmd === "who") return runWhoCommand(db, args, json);
+  if (cmd === "pass") return runPassCommand(db, args, json);
   return runTripsCommand(db, rest, json);
 }
 
