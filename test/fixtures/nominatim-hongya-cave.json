@@ -1,0 +1,34 @@
+[
+  {
+    "place_id": 422549279,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 939578294,
+    "lat": "29.5650738",
+    "lon": "106.5753425",
+    "category": "tourism",
+    "type": "attraction",
+    "place_rank": 30,
+    "importance": 0.34081317763107843,
+    "addresstype": "tourism",
+    "name": "洪崖洞",
+    "display_name": "洪崖洞, 沧白路, 朝天门街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "tourism": "洪崖洞",
+      "road": "沧白路",
+      "city_district": "朝天门街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5645217",
+      "29.5656251",
+      "106.5742671",
+      "106.5763244"
+    ]
+  }
+]

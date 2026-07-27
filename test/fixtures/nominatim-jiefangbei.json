@@ -1,0 +1,36 @@
+[
+  {
+    "place_id": 241788009,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 12200059001,
+    "lat": "29.5573696",
+    "lon": "106.5758171",
+    "category": "tourism",
+    "type": "hotel",
+    "place_rank": 30,
+    "importance": 0.000058293278400809,
+    "addresstype": "tourism",
+    "name": "你好酒店(重庆解放碑步行街店)",
+    "display_name": "你好酒店(重庆解放碑步行街店), 337, 新华路, 解放碑, 解放碑街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "tourism": "你好酒店(重庆解放碑步行街店)",
+      "house_number": "337",
+      "road": "新华路",
+      "quarter": "解放碑",
+      "city_district": "解放碑街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5573196",
+      "29.5574196",
+      "106.5757671",
+      "106.5758671"
+    ]
+  }
+]

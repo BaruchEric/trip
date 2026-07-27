@@ -1,0 +1,36 @@
+[
+  {
+    "place_id": 241250539,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 412612157,
+    "lat": "29.5625664",
+    "lon": "106.5778425",
+    "category": "amenity",
+    "type": "place_of_worship",
+    "place_rank": 30,
+    "importance": 0.000058293278400809,
+    "addresstype": "amenity",
+    "name": "罗汉寺 1000 лет",
+    "display_name": "罗汉寺 1000 лет, 千厮门隧道, 筷和苑, 解放碑, 解放碑街道, 渝中区, 重庆市, 400010, 中国",
+    "address": {
+      "amenity": "罗汉寺 1000 лет",
+      "road": "千厮门隧道",
+      "residential": "筷和苑",
+      "quarter": "解放碑",
+      "city_district": "解放碑街道",
+      "city": "渝中区",
+      "state": "重庆市",
+      "ISO3166-2-lvl4": "CN-CQ",
+      "postcode": "400010",
+      "country": "中国",
+      "country_code": "cn"
+    },
+    "boundingbox": [
+      "29.5619333",
+      "29.5631934",
+      "106.5773614",
+      "106.5783335"
+    ]
+  }
+]
