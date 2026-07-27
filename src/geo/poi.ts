@@ -43,8 +43,8 @@ const KM_PER_DEGREE_LAT = 111;
 /** Nominatim wants `left,top,right,bottom` — that is lon,lat,lon,lat.
  *
  *  Longitude degrees shrink with latitude, so the longitude half-width is
- *  divided by cos(lat). A flat degree offset would make the box 40% too narrow
- *  at Chongqing's 29.6N and far worse further north. */
+ *  divided by cos(lat). A flat offset would cover only 21.7 km instead of 25 at
+ *  Chongqing's 29.6N, and 12.5 km by 59.9N. */
 export function viewbox(centre: Centre, km: number): string {
   const dLat = km / KM_PER_DEGREE_LAT;
   // Clamped so a centre at the pole does not divide by ~0 and produce Infinity.

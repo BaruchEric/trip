@@ -23,7 +23,7 @@ const HOTPOT = [
   {
     place_id: 3, osm_type: "node", osm_id: 2,
     lat: "29.5879", lon: "106.5480",
-    category: "amenity", type: "restaurant", importance: 0.0001,
+    category: "amenity", type: "restaurant", importance: 0.75,
     name: "地下之城老火锅", display_name: "地下之城老火锅, 五红路, 两江新区, 重庆市, 中国",
   },
 ];
@@ -35,9 +35,10 @@ describe("viewbox", () => {
     expect(bottom!).toBeLessThan(top!);
   });
 
-  test("longitude half-width widens as latitude falls", () => {
-    // A flat degree offset would make the box 40% too narrow at Chongqing's
-    // 29.6N and worse further north. Longitude degrees shrink with cos(lat).
+  test("longitude half-width widens as latitude rises", () => {
+    // A flat degree offset would cover only 21.7 km instead of 25 at
+    // Chongqing's 29.6N, and 12.5 km by 59.9N. Longitude degrees shrink with
+    // cos(lat).
     const wide = (c: { latitude: number; longitude: number }) => {
       const p = viewbox(c, 25).split(",").map(Number);
       return p[2]! - p[0]!;
