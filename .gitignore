@@ -2,5 +2,6 @@ node_modules/
 *.db
 *.db-*
 dist/
+scratchpad/
 .DS_Store
 *.webloc
